@@ -343,27 +343,32 @@ function Contact() {
   return (
     <section className="section narrow">
       <p className="eyebrow reveal">Contact</p>
-      <h1 className="reveal">Let's make something quiet together.</h1>
+      <h1 className="reveal">Let's make something good together.</h1>
       <p className="lede reveal">
-        I'm currently taking on a small number of new projects for late 2025 and
-        early 2026. If you're working on something thoughtful, I'd love to hear
+        I'm open to new projects and collaborations. If you're working on
+        something thoughtful — wherever you are in the world — I'd love to hear
         about it.
       </p>
       <div className="contact-grid reveal">
         <div>
           <p className="muted small">Email</p>
-          <a className="big-link" href="mailto:hello@arno.studio">
-            hello@arno.studio
+          <a className="big-link" href="mailto:arnoklettenbergneto@gmail.com">
+            arnoklettenbergneto@gmail.com
           </a>
         </div>
         <div>
+          <p className="muted small">Phone / WhatsApp</p>
+          <a className="big-link" href="tel:+5541992574885">
+            +55 41 99257-4885
+          </a>
+        </div>
+        <div>
+          <p className="muted small">Based in</p>
+          <p className="big-link as-text">Curitiba, PR — Brazil</p>
+        </div>
+        <div>
           <p className="muted small">Elsewhere</p>
-          <a className="big-link" href="#">
-            Read.cv
-          </a>
-          <a className="big-link" href="#">
-            LinkedIn
-          </a>
+          <a className="big-link" href="#">LinkedIn</a>
         </div>
       </div>
     </section>
