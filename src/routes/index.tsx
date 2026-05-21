@@ -213,14 +213,15 @@ function Index() {
 
         <footer className="footer">
           <div>
-            <p className="footer-mark">Arno Klettenberg</p>
-            <p className="muted">UX/UI Designer · Based in Berlin</p>
+            <p className="footer-mark">Arno K. Neto</p>
+            <p className="muted">UX/UI Designer · Curitiba, Brazil</p>
           </div>
           <div className="footer-links">
-            <a href="mailto:hello@arno.studio">hello@arno.studio</a>
+            <a href="mailto:arnoklettenbergneto@gmail.com">arnoklettenbergneto@gmail.com</a>
+            <a href="tel:+5541992574885">+55 41 99257-4885</a>
             <a href="#contact">Contact</a>
           </div>
-          <p className="muted small">© {new Date().getFullYear()}. Quietly made.</p>
+          <p className="muted small">© {new Date().getFullYear()}. Made with care.</p>
         </footer>
       </div>
     </>
