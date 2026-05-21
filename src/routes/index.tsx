@@ -283,10 +283,30 @@ function Home() {
       <section className="section about">
         <h2 className="section-title reveal">About</h2>
         <p className="reveal big">
-          Ten years of designing for fintech, retail, and research tools. I care
-          about typography, restraint, and the patience to remove what doesn't
-          belong.
+          Around ten years designing for international clients — from livestock
+          and agriculture platforms to real-time aircraft intelligence systems.
+          Most recently as Lead Designer at Tekna.rocks, where I led research,
+          prototyping and final UI across long-term SaaS engagements.
         </p>
+        <div className="about-grid reveal">
+          <div>
+            <p className="kicker">Education</p>
+            <p>Bachelor of Industrial Design — PUC-PR, Curitiba.</p>
+            <p className="muted small">Specialization in Design Trend Watching.</p>
+          </div>
+          <div>
+            <p className="kicker">Toolkit</p>
+            <p>Figma-first, open to whatever the team needs. Comfortable weaving AI tools into the workflow.</p>
+          </div>
+          <div>
+            <p className="kicker">Languages</p>
+            <p>Portuguese (native) · English (fluent)</p>
+          </div>
+          <div>
+            <p className="kicker">Working with</p>
+            <p>Founders, product teams, and developers — from kickoff to ship.</p>
+          </div>
+        </div>
       </section>
     </>
   );
