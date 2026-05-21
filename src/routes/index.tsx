@@ -179,7 +179,7 @@ function Index() {
       <div className="site" ref={revealRef} key={hash}>
         <header className="nav">
           <a href="#home" className="brand">
-            Arno Klettenberg
+            Arno K. Neto
           </a>
           <nav>
             <a href="#home" className={view === "home" ? "active" : ""}>
