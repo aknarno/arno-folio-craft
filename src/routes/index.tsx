@@ -441,27 +441,34 @@ function ProjectDetail({ slug }: { slug: string }) {
 }
 
 const styles = `
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;500;600;700&family=Fraunces:opsz,wght@9..144,400;9..144,500&display=swap');
+
 :root[data-theme="light"] {
-  --bg: #f5f1ea;
-  --surface: #ebe5d9;
-  --ink: #2a2620;
-  --ink-soft: #6b6358;
-  --line: #d9d1c1;
-  --accent: #8a6a3b;
+  --bg: #faf4ea;
+  --surface: #f1e7d4;
+  --ink: #2b211a;
+  --ink-soft: #6e5f51;
+  --line: #e2d4bc;
+  --accent: #c2522d;
+  --accent-soft: #f3c9b6;
+  --accent-2: #5b7a52;
+  --accent-3: #d8a13a;
 }
 :root[data-theme="dark"] {
-  --bg: #14110d;
-  --surface: #1c1813;
-  --ink: #ece6d6;
-  --ink-soft: #948a78;
-  --line: #2a2520;
-  --accent: #c9a87a;
+  --bg: #1a140f;
+  --surface: #241c15;
+  --ink: #f4ead7;
+  --ink-soft: #a89a83;
+  --line: #322619;
+  --accent: #e98060;
+  --accent-soft: #4a2b20;
+  --accent-2: #8fb284;
+  --accent-3: #e8be5f;
 }
 html, body { background: var(--bg); color: var(--ink); }
 body {
-  font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
-  font-feature-settings: "ss01", "ss02";
-  line-height: 1.55;
+  font-family: 'Nunito', ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+  line-height: 1.6;
   -webkit-font-smoothing: antialiased;
 }
 .site { min-height: 100vh; display: flex; flex-direction: column; }
