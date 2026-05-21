@@ -179,7 +179,7 @@ function Index() {
       <div className="site" ref={revealRef} key={hash}>
         <header className="nav">
           <a href="#home" className="brand">
-            Arno Klettenberg
+            Arno K. Neto
           </a>
           <nav>
             <a href="#home" className={view === "home" ? "active" : ""}>
@@ -213,14 +213,15 @@ function Index() {
 
         <footer className="footer">
           <div>
-            <p className="footer-mark">Arno Klettenberg</p>
-            <p className="muted">UX/UI Designer · Based in Berlin</p>
+            <p className="footer-mark">Arno K. Neto</p>
+            <p className="muted">UX/UI Designer · Curitiba, Brazil</p>
           </div>
           <div className="footer-links">
-            <a href="mailto:hello@arno.studio">hello@arno.studio</a>
+            <a href="mailto:arnoklettenbergneto@gmail.com">arnoklettenbergneto@gmail.com</a>
+            <a href="tel:+5541992574885">+55 41 99257-4885</a>
             <a href="#contact">Contact</a>
           </div>
-          <p className="muted small">© {new Date().getFullYear()}. Quietly made.</p>
+          <p className="muted small">© {new Date().getFullYear()}. Made with care.</p>
         </footer>
       </div>
     </>
@@ -231,13 +232,15 @@ function Home() {
   return (
     <>
       <section className="hero">
-        <p className="eyebrow reveal">Portfolio · 2020 — 2025</p>
+        <p className="eyebrow reveal">Portfolio · 2016 — 2026</p>
         <h1 className="reveal">
-          Designing quiet, considered<br />interfaces for ambitious teams.
+          Designing warm, considered<br />interfaces for ambitious teams.
         </h1>
         <p className="lede reveal">
-          I'm Arno, a UX/UI designer working with founders and product teams to
-          turn complex problems into calm, usable products.
+          I'm Arno — a UX/UI designer with around a decade of experience helping
+          international teams turn complex problems into friendly, usable
+          products. From small landing pages to multi-million-dollar SaaS
+          platforms.
         </p>
         <div className="actions reveal">
           <a className="btn" href="#projects">
@@ -280,10 +283,30 @@ function Home() {
       <section className="section about">
         <h2 className="section-title reveal">About</h2>
         <p className="reveal big">
-          Ten years of designing for fintech, retail, and research tools. I care
-          about typography, restraint, and the patience to remove what doesn't
-          belong.
+          Around ten years designing for international clients — from livestock
+          and agriculture platforms to real-time aircraft intelligence systems.
+          Most recently as Lead Designer at Tekna.rocks, where I led research,
+          prototyping and final UI across long-term SaaS engagements.
         </p>
+        <div className="about-grid reveal">
+          <div>
+            <p className="kicker">Education</p>
+            <p>Bachelor of Industrial Design — PUC-PR, Curitiba.</p>
+            <p className="muted small">Specialization in Design Trend Watching.</p>
+          </div>
+          <div>
+            <p className="kicker">Toolkit</p>
+            <p>Figma-first, open to whatever the team needs. Comfortable weaving AI tools into the workflow.</p>
+          </div>
+          <div>
+            <p className="kicker">Languages</p>
+            <p>Portuguese (native) · English (fluent)</p>
+          </div>
+          <div>
+            <p className="kicker">Working with</p>
+            <p>Founders, product teams, and developers — from kickoff to ship.</p>
+          </div>
+        </div>
       </section>
     </>
   );
@@ -320,27 +343,32 @@ function Contact() {
   return (
     <section className="section narrow">
       <p className="eyebrow reveal">Contact</p>
-      <h1 className="reveal">Let's make something quiet together.</h1>
+      <h1 className="reveal">Let's make something good together.</h1>
       <p className="lede reveal">
-        I'm currently taking on a small number of new projects for late 2025 and
-        early 2026. If you're working on something thoughtful, I'd love to hear
+        I'm open to new projects and collaborations. If you're working on
+        something thoughtful — wherever you are in the world — I'd love to hear
         about it.
       </p>
       <div className="contact-grid reveal">
         <div>
           <p className="muted small">Email</p>
-          <a className="big-link" href="mailto:hello@arno.studio">
-            hello@arno.studio
+          <a className="big-link" href="mailto:arnoklettenbergneto@gmail.com">
+            arnoklettenbergneto@gmail.com
           </a>
         </div>
         <div>
+          <p className="muted small">Phone / WhatsApp</p>
+          <a className="big-link" href="tel:+5541992574885">
+            +55 41 99257-4885
+          </a>
+        </div>
+        <div>
+          <p className="muted small">Based in</p>
+          <p className="big-link as-text">Curitiba, PR — Brazil</p>
+        </div>
+        <div>
           <p className="muted small">Elsewhere</p>
-          <a className="big-link" href="#">
-            Read.cv
-          </a>
-          <a className="big-link" href="#">
-            LinkedIn
-          </a>
+          <a className="big-link" href="#">LinkedIn</a>
         </div>
       </div>
     </section>
@@ -413,27 +441,34 @@ function ProjectDetail({ slug }: { slug: string }) {
 }
 
 const styles = `
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;500;600;700&family=Fraunces:opsz,wght@9..144,400;9..144,500&display=swap');
+
 :root[data-theme="light"] {
-  --bg: #f5f1ea;
-  --surface: #ebe5d9;
-  --ink: #2a2620;
-  --ink-soft: #6b6358;
-  --line: #d9d1c1;
-  --accent: #8a6a3b;
+  --bg: #faf4ea;
+  --surface: #f1e7d4;
+  --ink: #2b211a;
+  --ink-soft: #6e5f51;
+  --line: #e2d4bc;
+  --accent: #c2522d;
+  --accent-soft: #f3c9b6;
+  --accent-2: #5b7a52;
+  --accent-3: #d8a13a;
 }
 :root[data-theme="dark"] {
-  --bg: #14110d;
-  --surface: #1c1813;
-  --ink: #ece6d6;
-  --ink-soft: #948a78;
-  --line: #2a2520;
-  --accent: #c9a87a;
+  --bg: #1a140f;
+  --surface: #241c15;
+  --ink: #f4ead7;
+  --ink-soft: #a89a83;
+  --line: #322619;
+  --accent: #e98060;
+  --accent-soft: #4a2b20;
+  --accent-2: #8fb284;
+  --accent-3: #e8be5f;
 }
 html, body { background: var(--bg); color: var(--ink); }
 body {
-  font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
-  font-feature-settings: "ss01", "ss02";
-  line-height: 1.55;
+  font-family: 'Nunito', ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+  line-height: 1.6;
   -webkit-font-smoothing: antialiased;
 }
 .site { min-height: 100vh; display: flex; flex-direction: column; }
@@ -463,22 +498,29 @@ main { flex: 1; }
 }
 .eyebrow {
   text-transform: uppercase; letter-spacing: 0.18em; font-size: 0.75rem;
-  color: var(--ink-soft); margin-bottom: 1.5rem;
+  color: var(--accent); margin-bottom: 1.5rem; font-weight: 600;
 }
 h1 {
-  font-family: ui-serif, Georgia, "Times New Roman", serif;
+  font-family: 'Fraunces', ui-serif, Georgia, serif;
   font-weight: 400; font-size: clamp(2.2rem, 5.6vw, 4.6rem);
   line-height: 1.05; letter-spacing: -0.02em; margin: 0 0 1.5rem;
 }
+h1 .swash { color: var(--accent); font-style: italic; }
 .lede { font-size: clamp(1.05rem, 1.6vw, 1.25rem); color: var(--ink-soft); max-width: 36em; }
 .actions { display: flex; gap: 0.75rem; margin-top: 2rem; flex-wrap: wrap; }
 .btn {
-  display: inline-flex; align-items: center; min-height: 44px; padding: 0 1.25rem;
-  border-radius: 999px; background: var(--ink); color: var(--bg);
-  text-decoration: none; font-size: 0.95rem; transition: opacity .2s;
+  display: inline-flex; align-items: center; min-height: 44px; padding: 0 1.4rem;
+  border-radius: 999px; background: var(--accent); color: #fff;
+  text-decoration: none; font-size: 0.95rem; font-weight: 600;
+  transition: transform .2s ease, box-shadow .2s ease, background .2s;
+  box-shadow: 0 6px 20px -10px var(--accent);
 }
-.btn:hover { opacity: 0.85; }
-.btn.ghost { background: transparent; color: var(--ink); border: 1px solid var(--line); }
+.btn:hover { transform: translateY(-1px); box-shadow: 0 10px 24px -10px var(--accent); }
+.btn.ghost {
+  background: transparent; color: var(--ink);
+  border: 1.5px solid var(--line); box-shadow: none;
+}
+.btn.ghost:hover { border-color: var(--accent); color: var(--accent); }
 .section {
   padding: clamp(3rem, 8vw, 6rem) clamp(1rem, 4vw, 3rem);
   max-width: 1100px; margin: 0 auto;
@@ -486,47 +528,75 @@ h1 {
 .section.narrow { max-width: 760px; }
 .section-title {
   font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.18em;
-  color: var(--ink-soft); margin-bottom: 2.5rem; font-weight: 500;
+  color: var(--accent); margin-bottom: 2.5rem; font-weight: 700;
+  display: inline-flex; align-items: center; gap: 0.6rem;
+}
+.section-title::before {
+  content: ""; display: inline-block; width: 24px; height: 2px;
+  background: var(--accent); border-radius: 2px;
 }
 .project-list { display: grid; gap: clamp(2rem, 5vw, 4rem); }
 .project-card {
   display: grid; gap: 1.25rem; color: var(--ink); text-decoration: none;
 }
 .project-cover {
-  background: var(--surface); border-radius: 4px; overflow: hidden; aspect-ratio: 16/10;
+  background: var(--surface); border-radius: 14px; overflow: hidden; aspect-ratio: 16/10;
+  box-shadow: 0 1px 0 var(--line);
 }
-.project-cover.wide { margin: 2.5rem 0; }
+.project-cover.wide { margin: 2.5rem 0; border-radius: 18px; }
 .project-cover img {
   width: 100%; height: 100%; object-fit: cover; display: block;
   transition: transform .8s ease;
 }
-.project-card:hover .project-cover img { transform: scale(1.02); }
+.project-card:hover .project-cover img { transform: scale(1.03); }
 .project-meta { display: flex; justify-content: space-between; gap: 2rem; align-items: end; flex-wrap: wrap; }
 .project-meta h3 {
-  font-family: ui-serif, Georgia, serif; font-weight: 400; font-size: 1.5rem;
+  font-family: 'Fraunces', ui-serif, Georgia, serif;
+  font-weight: 500; font-size: 1.6rem;
   margin: 0 0 0.4rem; letter-spacing: -0.01em;
 }
+.project-card:hover .project-meta h3 { color: var(--accent); }
 .muted { color: var(--ink-soft); margin: 0; }
 .small { font-size: 0.85rem; }
 .about .big, .big {
-  font-family: ui-serif, Georgia, serif; font-size: clamp(1.4rem, 2.4vw, 2rem);
+  font-family: 'Fraunces', ui-serif, Georgia, serif;
+  font-size: clamp(1.4rem, 2.4vw, 2rem);
   line-height: 1.35; color: var(--ink); max-width: 24em; font-weight: 400;
 }
+.about-grid {
+  margin-top: 3rem; display: grid; grid-template-columns: repeat(2, 1fr);
+  gap: 1.5rem;
+}
+.about-grid > div {
+  padding: 1.5rem; border-radius: 14px;
+  background: var(--surface);
+  border: 1px solid var(--line);
+}
+.about-grid > div:nth-child(1) { border-left: 3px solid var(--accent); }
+.about-grid > div:nth-child(2) { border-left: 3px solid var(--accent-2); }
+.about-grid > div:nth-child(3) { border-left: 3px solid var(--accent-3); }
+.about-grid > div:nth-child(4) { border-left: 3px solid var(--accent); }
+.about-grid p { margin: 0 0 0.4rem; }
+.kicker {
+  font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.16em;
+  color: var(--accent); font-weight: 700; margin-bottom: 0.6rem !important;
+}
 .contact-grid {
-  margin-top: 3rem; display: grid; grid-template-columns: 1fr 1fr; gap: 2rem;
+  margin-top: 3rem; display: grid; grid-template-columns: 1fr 1fr; gap: 2rem 2.5rem;
   padding-top: 2rem; border-top: 1px solid var(--line);
 }
 .big-link {
-  display: block; font-family: ui-serif, Georgia, serif; font-size: 1.6rem;
-  color: var(--ink); text-decoration: none; margin-top: 0.4rem;
-  letter-spacing: -0.01em;
+  display: block; font-family: 'Fraunces', ui-serif, Georgia, serif;
+  font-size: 1.5rem; color: var(--ink); text-decoration: none; margin-top: 0.4rem;
+  letter-spacing: -0.01em; transition: color .2s;
 }
-.big-link:hover { color: var(--accent); }
+.big-link.as-text { cursor: default; }
+.big-link:hover:not(.as-text) { color: var(--accent); }
 .back-link {
   display: inline-block; margin-bottom: 2rem; color: var(--ink-soft);
   text-decoration: none; font-size: 0.9rem;
 }
-.back-link:hover { color: var(--ink); }
+.back-link:hover { color: var(--accent); }
 .meta-grid {
   display: grid; grid-template-columns: repeat(4, 1fr);
   gap: 1.5rem; margin: 2.5rem 0; padding: 1.5rem 0;
@@ -534,12 +604,13 @@ h1 {
 }
 .meta-grid dt {
   font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.18em;
-  color: var(--ink-soft); margin-bottom: 0.4rem;
+  color: var(--accent); margin-bottom: 0.4rem; font-weight: 700;
 }
 .meta-grid dd { margin: 0; font-size: 0.95rem; }
 .case-section { margin: 2.5rem 0; }
 .case-section h2 {
-  font-family: ui-serif, Georgia, serif; font-weight: 400; font-size: 1.4rem;
+  font-family: 'Fraunces', ui-serif, Georgia, serif;
+  font-weight: 500; font-size: 1.5rem;
   margin: 0 0 0.75rem; letter-spacing: -0.01em;
 }
 .case-section p { color: var(--ink-soft); max-width: 36em; }
@@ -549,10 +620,10 @@ h1 {
   display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 1.5rem; align-items: end;
   max-width: 1100px; margin: 0 auto; width: 100%;
 }
-.footer-mark { margin: 0; font-weight: 500; }
+.footer-mark { margin: 0; font-weight: 700; }
 .footer-links { display: flex; flex-direction: column; gap: 0.4rem; }
 .footer-links a { color: var(--ink-soft); text-decoration: none; }
-.footer-links a:hover { color: var(--ink); }
+.footer-links a:hover { color: var(--accent); }
 .reveal { opacity: 0; transform: translateY(12px); transition: opacity .8s ease, transform .8s ease; }
 .reveal.visible { opacity: 1; transform: none; }
 @media (prefers-reduced-motion: reduce) {
@@ -562,6 +633,7 @@ h1 {
 @media (max-width: 640px) {
   .meta-grid { grid-template-columns: 1fr 1fr; }
   .contact-grid { grid-template-columns: 1fr; }
+  .about-grid { grid-template-columns: 1fr; }
   .footer { grid-template-columns: 1fr; }
 }
 `;
