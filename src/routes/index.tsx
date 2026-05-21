@@ -232,13 +232,15 @@ function Home() {
   return (
     <>
       <section className="hero">
-        <p className="eyebrow reveal">Portfolio · 2020 — 2025</p>
+        <p className="eyebrow reveal">Portfolio · 2016 — 2026</p>
         <h1 className="reveal">
-          Designing quiet, considered<br />interfaces for ambitious teams.
+          Designing warm, considered<br />interfaces for ambitious teams.
         </h1>
         <p className="lede reveal">
-          I'm Arno, a UX/UI designer working with founders and product teams to
-          turn complex problems into calm, usable products.
+          I'm Arno — a UX/UI designer with around a decade of experience helping
+          international teams turn complex problems into friendly, usable
+          products. From small landing pages to multi-million-dollar SaaS
+          platforms.
         </p>
         <div className="actions reveal">
           <a className="btn" href="#projects">
