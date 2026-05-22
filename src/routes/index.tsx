@@ -12,6 +12,14 @@ export const Route = createFileRoute("/")({
           "Portfolio of Arno Klettenberg — UX/UI designer crafting quiet, content-first digital products.",
       },
     ],
+    links: [
+      { rel: "preconnect", href: "https://fonts.googleapis.com" },
+      { rel: "preconnect", href: "https://fonts.gstatic.com", crossOrigin: "anonymous" },
+      {
+        rel: "stylesheet",
+        href: "https://fonts.googleapis.com/css2?family=Quicksand:wght@700&family=Open+Sans:wght@300..700&display=swap",
+      },
+    ],
   }),
 });
 
@@ -31,76 +39,85 @@ type Project = {
 const projects: Project[] = [
   {
     slug: "replenishment-dashboard",
-    title: "Replenishment Dashboard",
-    client: "Northwind Retail",
+    title: "replenishment dashboard",
+    client: "northwind retail",
     year: "2025",
-    role: "Lead Product Designer",
+    role: "lead product designer",
     summary:
-      "A calm, data-dense interface that helps planners forecast stock without drowning in numbers.",
-    tags: ["Enterprise", "Data Viz", "Design System"],
+      "a calm, data-dense interface that helps planners forecast stock without drowning in numbers.",
+    tags: ["enterprise", "data viz", "design system"],
     cover:
       "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=1600&q=80",
     intro:
-      "Northwind's planning team manages thousands of SKUs across 40 stores. The legacy tool buried them in spreadsheets. We rebuilt the experience around a single question: what needs my attention today?",
+      "northwind's planning team manages thousands of skus across 40 stores. the legacy tool buried them in spreadsheets. we rebuilt the experience around a single question: what needs my attention today?",
     sections: [
       {
-        heading: "The problem",
-        body: "Planners spent the first 90 minutes of every day rebuilding context — pulling reports, cross-checking inventory, mentally flagging risk. The retailer's growth made the old workflow untenable.",
+        heading: "the problem",
+        body: "planners spent the first 90 minutes of every day rebuilding context — pulling reports, cross-checking inventory, mentally flagging risk. the retailer's growth made the old workflow untenable.",
       },
       {
-        heading: "Approach",
-        body: "We shadowed planners for two weeks, mapped their decision points, and prototyped a triage-first dashboard. Every screen now opens with prioritized actions instead of raw tables.",
+        heading: "approach",
+        body: "we shadowed planners for two weeks, mapped their decision points, and prototyped a triage-first dashboard. every screen now opens with prioritized actions instead of raw tables.",
       },
       {
-        heading: "Outcome",
-        body: "Time-to-first-decision dropped from 47 minutes to under 6. Forecast accuracy improved 12% in the first quarter post-launch.",
+        heading: "outcome",
+        body: "time-to-first-decision dropped from 47 minutes to under 6. forecast accuracy improved 12% in the first quarter post-launch.",
       },
     ],
   },
   {
-    slug: "field-notes-mobile",
-    title: "Field Notes Mobile",
-    client: "Terra Studio",
+    slug: "design-system-foundation",
+    title: "design system foundation",
+    client: "terra studio",
     year: "2024",
-    role: "Product Designer",
+    role: "product designer",
     summary:
-      "A note-taking app for field researchers, designed for one-handed use in unpredictable conditions.",
-    tags: ["Mobile", "iOS", "Research"],
+      "a note-taking app for field researchers, designed for one-handed use in unpredictable conditions.",
+    tags: ["mobile", "ios", "research"],
     cover:
       "https://images.unsplash.com/photo-1481349518771-20055b2a7b24?auto=format&fit=crop&w=1600&q=80",
     intro:
-      "Built for biologists and geologists working far from connectivity. The interface had to survive gloves, rain, and bright sunlight.",
+      "built for biologists and geologists working far from connectivity. the interface had to survive gloves, rain, and bright sunlight.",
     sections: [
       {
-        heading: "Constraints",
-        body: "Offline-first. Glove-friendly tap targets. Legible at noon in the desert and at dusk in the forest. Battery efficient.",
+        heading: "constraints",
+        body: "offline-first. glove-friendly tap targets. legible at noon in the desert and at dusk in the forest. battery efficient.",
       },
       {
-        heading: "Design choices",
-        body: "High-contrast typography, oversized touch zones, voice-capture as the primary input. Sync happens silently when signal returns.",
+        heading: "design choices",
+        body: "high-contrast typography, oversized touch zones, voice-capture as the primary input. sync happens silently when signal returns.",
       },
     ],
   },
   {
-    slug: "harbor-banking",
-    title: "Harbor Banking",
-    client: "Harbor Financial",
+    slug: "onboarding-flow-redesign",
+    title: "onboarding flow redesign",
+    client: "harbor financial",
     year: "2024",
-    role: "Senior UX Designer",
+    role: "senior ux designer",
     summary:
-      "Reimagining personal banking for people who'd rather think about anything else.",
-    tags: ["Fintech", "Web", "Brand"],
+      "reimagining personal banking for people who'd rather think about anything else.",
+    tags: ["fintech", "web", "brand"],
     cover:
       "https://images.unsplash.com/photo-1554224155-6726b3ff858f?auto=format&fit=crop&w=1600&q=80",
     intro:
-      "Harbor wanted to be the bank that respects your time. We translated that promise into every screen — fewer numbers, more meaning.",
+      "harbor wanted to be the bank that respects your time. we translated that promise into every screen — fewer numbers, more meaning.",
     sections: [
       {
-        heading: "Principles",
-        body: "Show the answer, not the data. Default to plain language. Never use red unless something is genuinely wrong.",
+        heading: "principles",
+        body: "show the answer, not the data. default to plain language. never use red unless something is genuinely wrong.",
       },
     ],
   },
+];
+
+const tools = [
+  { name: "figma", slug: "figma" },
+  { name: "jira", slug: "jira" },
+  { name: "balsamiq", slug: "balsamiq" },
+  { name: "notion", slug: "notion" },
+  { name: "miro", slug: "miro" },
+  { name: "claude", slug: "claude" },
 ];
 
 function useHashRoute() {
@@ -178,21 +195,22 @@ function Index() {
       <style>{styles}</style>
       <div className="site" ref={revealRef} key={hash}>
         <header className="nav">
-          <a href="#home" className="brand">
-            Arno K. Neto
+          <a href="#home" className="nav-brand" aria-label="Arno Klettenberg — Home">
+            <span className="nav-brand-name">arno klettenberg</span>
+            <span className="nav-brand-title">ux/ui designer</span>
           </a>
           <nav>
-            <a href="#home" className={view === "home" ? "active" : ""}>
-              Index
-            </a>
             <a
               href="#projects"
               className={view === "projects" || view === "project" ? "active" : ""}
             >
-              Work
+              work
+            </a>
+            <a href="#home" className={view === "home" ? "active" : ""}>
+              about
             </a>
             <a href="#contact" className={view === "contact" ? "active" : ""}>
-              Contact
+              contact
             </a>
             <button
               className="theme-toggle"
@@ -212,16 +230,11 @@ function Index() {
         </main>
 
         <footer className="footer">
-          <div>
-            <p className="footer-mark">Arno K. Neto</p>
-            <p className="muted">UX/UI Designer · Curitiba, Brazil</p>
+          <p className="footer-left">© 2026 arno klettenberg</p>
+          <div className="footer-right">
+            <a href="#" aria-label="LinkedIn">↗ linkedin</a>
+            <a href="mailto:hello@arnoklettenberg.com">hello@arnoklettenberg.com</a>
           </div>
-          <div className="footer-links">
-            <a href="mailto:arnoklettenbergneto@gmail.com">arnoklettenbergneto@gmail.com</a>
-            <a href="tel:+5541992574885">+55 41 99257-4885</a>
-            <a href="#contact">Contact</a>
-          </div>
-          <p className="muted small">© {new Date().getFullYear()}. Made with care.</p>
         </footer>
       </div>
     </>
@@ -232,28 +245,55 @@ function Home() {
   return (
     <>
       <section className="hero">
-        <p className="eyebrow reveal">Portfolio · 2016 — 2026</p>
-        <h1 className="reveal">
-          Designing warm, considered<br />interfaces for ambitious teams.
-        </h1>
-        <p className="lede reveal">
-          I'm Arno — a UX/UI designer with around a decade of experience helping
-          international teams turn complex problems into friendly, usable
-          products. From small landing pages to multi-million-dollar SaaS
-          platforms.
-        </p>
+        <p className="eyebrow reveal">portfolio · 2016 — 2026</p>
+        <h1 className="reveal">designing experiences that feel effortless.</h1>
+        <p className="lede reveal">ux/ui designer based in curitiba, brazil.</p>
         <div className="actions reveal">
-          <a className="btn" href="#projects">
-            See selected work
-          </a>
-          <a className="btn ghost" href="#contact">
-            Get in touch
-          </a>
+          <a className="btn" href="#projects">view work →</a>
+          <a className="btn ghost" href="#contact">get in touch</a>
+        </div>
+      </section>
+
+      <section className="section about">
+        <h2 className="section-title reveal">about</h2>
+        <p className="reveal big">
+          around ten years designing for international clients — from livestock
+          and agriculture platforms to real-time aircraft intelligence systems.
+          most recently as lead designer at tekna.rocks, where i led research,
+          prototyping and final ui across long-term saas engagements.
+        </p>
+        <div className="about-grid reveal">
+          <div>
+            <p className="kicker">education</p>
+            <p>bachelor of industrial design — puc-pr, curitiba.</p>
+            <p className="muted small">specialization in design trend watching.</p>
+          </div>
+          <div>
+            <p className="kicker">toolkit</p>
+            <div className="toolkit-list">
+              {tools.map((t) => (
+                <div className="toolkit-item" key={t.slug}>
+                  <img
+                    src={`https://cdn.simpleicons.org/${t.slug}`}
+                    alt={t.name}
+                    width={20}
+                    height={20}
+                    loading="lazy"
+                  />
+                  <span>{t.name}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+          <div>
+            <p className="kicker">languages</p>
+            <p>portuguese (native) · english (fluent)</p>
+          </div>
         </div>
       </section>
 
       <section className="section">
-        <h2 className="section-title reveal">Selected work</h2>
+        <h2 className="section-title reveal">selected work</h2>
         <div className="project-list">
           {projects.map((p) => (
             <a key={p.slug} href={`#project/${p.slug}`} className="project-card reveal">
@@ -271,41 +311,10 @@ function Home() {
                   <h3>{p.title}</h3>
                   <p className="muted">{p.summary}</p>
                 </div>
-                <p className="muted small">
-                  {p.client} · {p.year}
-                </p>
+                <p className="muted small">{p.client} · {p.year}</p>
               </div>
             </a>
           ))}
-        </div>
-      </section>
-
-      <section className="section about">
-        <h2 className="section-title reveal">About</h2>
-        <p className="reveal big">
-          Around ten years designing for international clients — from livestock
-          and agriculture platforms to real-time aircraft intelligence systems.
-          Most recently as Lead Designer at Tekna.rocks, where I led research,
-          prototyping and final UI across long-term SaaS engagements.
-        </p>
-        <div className="about-grid reveal">
-          <div>
-            <p className="kicker">Education</p>
-            <p>Bachelor of Industrial Design — PUC-PR, Curitiba.</p>
-            <p className="muted small">Specialization in Design Trend Watching.</p>
-          </div>
-          <div>
-            <p className="kicker">Toolkit</p>
-            <p>Figma-first, open to whatever the team needs. Comfortable weaving AI tools into the workflow.</p>
-          </div>
-          <div>
-            <p className="kicker">Languages</p>
-            <p>Portuguese (native) · English (fluent)</p>
-          </div>
-          <div>
-            <p className="kicker">Working with</p>
-            <p>Founders, product teams, and developers — from kickoff to ship.</p>
-          </div>
         </div>
       </section>
     </>
@@ -315,8 +324,8 @@ function Home() {
 function Projects() {
   return (
     <section className="section">
-      <p className="eyebrow reveal">Work · {projects.length} selected</p>
-      <h1 className="reveal">Projects</h1>
+      <p className="eyebrow reveal">work · {projects.length} selected</p>
+      <h1 className="reveal">projects</h1>
       <div className="project-list">
         {projects.map((p) => (
           <a key={p.slug} href={`#project/${p.slug}`} className="project-card reveal">
@@ -328,9 +337,7 @@ function Projects() {
                 <h3>{p.title}</h3>
                 <p className="muted">{p.summary}</p>
               </div>
-              <p className="muted small">
-                {p.client} · {p.year} · {p.role}
-              </p>
+              <p className="muted small">{p.client} · {p.year} · {p.role}</p>
             </div>
           </a>
         ))}
@@ -342,33 +349,29 @@ function Projects() {
 function Contact() {
   return (
     <section className="section narrow">
-      <p className="eyebrow reveal">Contact</p>
-      <h1 className="reveal">Let's make something good together.</h1>
+      <p className="eyebrow reveal">contact</p>
+      <h1 className="reveal">let's talk.</h1>
       <p className="lede reveal">
-        I'm open to new projects and collaborations. If you're working on
-        something thoughtful — wherever you are in the world — I'd love to hear
+        i'm open to new projects and collaborations. if you're working on
+        something thoughtful — wherever you are in the world — i'd love to hear
         about it.
       </p>
       <div className="contact-grid reveal">
         <div>
-          <p className="muted small">Email</p>
-          <a className="big-link" href="mailto:arnoklettenbergneto@gmail.com">
-            arnoklettenbergneto@gmail.com
-          </a>
+          <p className="muted small">email</p>
+          <a className="big-link" href="mailto:hello@arnoklettenberg.com">hello@arnoklettenberg.com</a>
         </div>
         <div>
-          <p className="muted small">Phone / WhatsApp</p>
-          <a className="big-link" href="tel:+5541992574885">
-            +55 41 99257-4885
-          </a>
+          <p className="muted small">phone / whatsapp</p>
+          <a className="big-link" href="tel:+5541992574885">+55 41 99257-4885</a>
         </div>
         <div>
-          <p className="muted small">Based in</p>
-          <p className="big-link as-text">Curitiba, PR — Brazil</p>
+          <p className="muted small">based in</p>
+          <p className="big-link as-text">curitiba, pr — brazil</p>
         </div>
         <div>
-          <p className="muted small">Elsewhere</p>
-          <a className="big-link" href="#">LinkedIn</a>
+          <p className="muted small">elsewhere</p>
+          <a className="big-link" href="#">↗ linkedin</a>
         </div>
       </div>
     </section>
@@ -380,42 +383,27 @@ function ProjectDetail({ slug }: { slug: string }) {
   if (!project) {
     return (
       <section className="section narrow">
-        <p className="eyebrow">Not found</p>
-        <h1>That project doesn't exist.</h1>
-        <p className="lede">
-          <a href="#projects">← Back to all work</a>
-        </p>
+        <p className="eyebrow">not found</p>
+        <h1>that project doesn't exist.</h1>
+        <p className="lede"><a href="#projects">← work</a></p>
       </section>
     );
   }
+  const idx = projects.findIndex((p) => p.slug === slug);
+  const prev = idx > 0 ? projects[idx - 1] : null;
+  const next = idx < projects.length - 1 ? projects[idx + 1] : null;
   return (
     <article className="section narrow">
-      <a href="#projects" className="back-link reveal">
-        ← Back to work
-      </a>
-      <p className="eyebrow reveal">
-        {project.client} · {project.year}
-      </p>
+      <a href="#projects" className="back-link reveal">← work</a>
+      <p className="eyebrow reveal">{project.client} · {project.year}</p>
       <h1 className="reveal">{project.title}</h1>
       <p className="lede reveal">{project.summary}</p>
 
       <dl className="meta-grid reveal">
-        <div>
-          <dt>Client</dt>
-          <dd>{project.client}</dd>
-        </div>
-        <div>
-          <dt>Year</dt>
-          <dd>{project.year}</dd>
-        </div>
-        <div>
-          <dt>Role</dt>
-          <dd>{project.role}</dd>
-        </div>
-        <div>
-          <dt>Tags</dt>
-          <dd>{project.tags.join(" · ")}</dd>
-        </div>
+        <div><dt>client</dt><dd>{project.client}</dd></div>
+        <div><dt>year</dt><dd>{project.year}</dd></div>
+        <div><dt>role</dt><dd>{project.role}</dd></div>
+        <div><dt>tags</dt><dd>{project.tags.join(" · ")}</dd></div>
       </dl>
 
       <div className="project-cover wide reveal">
@@ -431,65 +419,117 @@ function ProjectDetail({ slug }: { slug: string }) {
         </div>
       ))}
 
-      <div className="next reveal">
-        <a href="#projects" className="big-link">
-          See more work →
-        </a>
+      <div className="project-nav reveal">
+        {prev ? <a href={`#project/${prev.slug}`} className="big-link">← previous project</a> : <span />}
+        {next ? <a href={`#project/${next.slug}`} className="big-link">next project →</a> : <a href="#projects" className="big-link">all work →</a>}
       </div>
     </article>
   );
 }
 
 const styles = `
-@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;500;600;700&family=Fraunces:opsz,wght@9..144,400;9..144,500&display=swap');
-
-:root[data-theme="light"] {
-  --bg: #faf4ea;
-  --surface: #f1e7d4;
-  --ink: #2b211a;
-  --ink-soft: #6e5f51;
-  --line: #e2d4bc;
-  --accent: #c2522d;
-  --accent-soft: #f3c9b6;
-  --accent-2: #5b7a52;
-  --accent-3: #d8a13a;
+:root, :root[data-theme="light"] {
+  --color-bg: #F7F0E8;
+  --color-surface: #F2EAE0;
+  --color-surface-2: #EDE3D7;
+  --color-surface-offset: #D9C5AD;
+  --color-surface-dynamic: #C9B49A;
+  --color-divider: #C4A98A;
+  --color-border: #B89D7E;
+  --color-text: #40361B;
+  --color-text-muted: #595336;
+  --color-text-faint: #8C7A5E;
+  --color-text-inverse: #F7F0E8;
+  --color-primary: #8C4E37;
+  --color-primary-hover: #7A3E2A;
+  --color-primary-active: #622F1E;
+  --color-primary-highlight: #E8D3C8;
+  --color-accent-warm: #F2AB6D;
+  --color-accent-warm-hover: #E8954E;
+  --shadow-sm: 0 1px 3px oklch(0.25 0.04 50 / 0.08);
+  --shadow-md: 0 4px 16px oklch(0.25 0.04 50 / 0.10);
+  --shadow-lg: 0 12px 32px oklch(0.25 0.04 50 / 0.14);
+  --font-display: 'Quicksand', 'Georgia', sans-serif;
+  --font-body: 'Open Sans', 'Helvetica Neue', sans-serif;
 }
 :root[data-theme="dark"] {
-  --bg: #1a140f;
-  --surface: #241c15;
-  --ink: #f4ead7;
-  --ink-soft: #a89a83;
-  --line: #322619;
-  --accent: #e98060;
-  --accent-soft: #4a2b20;
-  --accent-2: #8fb284;
-  --accent-3: #e8be5f;
+  --color-bg: #1A160C;
+  --color-surface: #211C10;
+  --color-surface-2: #282214;
+  --color-surface-offset: #312A18;
+  --color-surface-dynamic: #3D3420;
+  --color-divider: #4A4028;
+  --color-border: #564A2F;
+  --color-text: #E8DDD0;
+  --color-text-muted: #A89880;
+  --color-text-faint: #6E5F48;
+  --color-text-inverse: #211C10;
+  --color-primary: #C47058;
+  --color-primary-hover: #D4806A;
+  --color-primary-active: #E0907C;
+  --color-primary-highlight: #3D2820;
+  --color-accent-warm: #F2AB6D;
+  --color-accent-warm-hover: #F5BC88;
+  --shadow-sm: 0 1px 3px oklch(0 0 0 / 0.25);
+  --shadow-md: 0 4px 16px oklch(0 0 0 / 0.35);
+  --shadow-lg: 0 12px 32px oklch(0 0 0 / 0.45);
 }
-html, body { background: var(--bg); color: var(--ink); }
+html, body { background: var(--color-bg); color: var(--color-text); }
 body {
-  font-family: 'Nunito', ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+  font-family: var(--font-body);
+  font-weight: 400;
   line-height: 1.6;
   -webkit-font-smoothing: antialiased;
+}
+h1, h2, h3, h4, h5, h6,
+p, a, button, label, li,
+nav a, .nav-brand-name,
+.btn, .tag, .badge,
+.card-title, .card-description,
+.section-label, .meta,
+footer, figcaption {
+  text-transform: lowercase;
 }
 .site { min-height: 100vh; display: flex; flex-direction: column; }
 .nav {
   display: flex; align-items: center; justify-content: space-between;
   padding: 1.25rem clamp(1rem, 4vw, 3rem);
-  border-bottom: 1px solid var(--line);
-  position: sticky; top: 0; background: color-mix(in oklab, var(--bg) 92%, transparent);
+  border-bottom: 1px solid var(--color-divider);
+  position: sticky; top: 0; background: color-mix(in oklab, var(--color-bg) 92%, transparent);
   backdrop-filter: blur(8px); z-index: 10;
 }
-.brand { font-weight: 500; letter-spacing: -0.01em; color: var(--ink); text-decoration: none; }
-.nav nav { display: flex; gap: 0.5rem; align-items: center; }
+.nav-brand {
+  display: flex; flex-direction: column; gap: 1px;
+  text-decoration: none; line-height: 1.2;
+}
+.nav-brand-name {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: clamp(1rem, 0.9rem + 0.5vw, 1.25rem);
+  color: #40361B;
+  letter-spacing: -0.01em;
+}
+.nav-brand-title {
+  font-family: var(--font-body);
+  font-weight: 400;
+  font-size: clamp(0.65rem, 0.6rem + 0.2vw, 0.75rem);
+  color: #595336;
+  letter-spacing: 0.08em;
+}
+[data-theme="dark"] .nav-brand-name { color: #E8DDD0; }
+[data-theme="dark"] .nav-brand-title { color: #A89880; }
+.nav-brand:hover .nav-brand-name { color: var(--color-primary); }
+.nav nav { display: flex; gap: 0.25rem; align-items: center; }
 .nav nav a {
-  color: var(--ink-soft); text-decoration: none; padding: 0.6rem 0.9rem;
+  color: var(--color-text-muted); text-decoration: none; padding: 0.6rem 0.9rem;
   min-height: 44px; display: inline-flex; align-items: center; border-radius: 999px;
   font-size: 0.95rem; transition: color .2s;
 }
-.nav nav a:hover, .nav nav a.active { color: var(--ink); }
+.nav nav a:hover { color: var(--color-primary); }
+.nav nav a.active { color: var(--color-primary); font-weight: 600; }
 .theme-toggle {
-  width: 44px; height: 44px; border-radius: 999px; border: 1px solid var(--line);
-  background: transparent; color: var(--ink); cursor: pointer; font-size: 1rem;
+  width: 44px; height: 44px; border-radius: 999px; border: 1px solid var(--color-divider);
+  background: transparent; color: var(--color-text); cursor: pointer; font-size: 1rem;
 }
 main { flex: 1; }
 .hero {
@@ -497,51 +537,54 @@ main { flex: 1; }
   max-width: 1100px; margin: 0 auto;
 }
 .eyebrow {
-  text-transform: uppercase; letter-spacing: 0.18em; font-size: 0.75rem;
-  color: var(--accent); margin-bottom: 1.5rem; font-weight: 600;
+  letter-spacing: 0.18em; font-size: 0.75rem;
+  color: var(--color-primary); margin-bottom: 1.5rem; font-weight: 600;
 }
 h1 {
-  font-family: 'Fraunces', ui-serif, Georgia, serif;
-  font-weight: 400; font-size: clamp(2.2rem, 5.6vw, 4.6rem);
-  line-height: 1.05; letter-spacing: -0.02em; margin: 0 0 1.5rem;
+  font-family: var(--font-display); font-weight: 700;
+  font-size: clamp(2.2rem, 5.6vw, 4.6rem);
+  line-height: 1.1; letter-spacing: -0.02em; margin: 0 0 1.5rem;
+  color: var(--color-text);
 }
-h1 .swash { color: var(--accent); font-style: italic; }
-.lede { font-size: clamp(1.05rem, 1.6vw, 1.25rem); color: var(--ink-soft); max-width: 36em; }
+.lede { font-size: clamp(1.05rem, 1.6vw, 1.25rem); color: var(--color-text-muted); max-width: 36em; }
 .actions { display: flex; gap: 0.75rem; margin-top: 2rem; flex-wrap: wrap; }
 .btn {
   display: inline-flex; align-items: center; min-height: 44px; padding: 0 1.4rem;
-  border-radius: 999px; background: var(--accent); color: #fff;
+  border-radius: 999px; background: var(--color-primary); color: #fff;
   text-decoration: none; font-size: 0.95rem; font-weight: 600;
+  font-family: var(--font-body);
   transition: transform .2s ease, box-shadow .2s ease, background .2s;
-  box-shadow: 0 6px 20px -10px var(--accent);
+  box-shadow: var(--shadow-sm);
+  border: none; cursor: pointer;
 }
-.btn:hover { transform: translateY(-1px); box-shadow: 0 10px 24px -10px var(--accent); }
+.btn:hover { background: var(--color-primary-hover); transform: translateY(-1px); box-shadow: var(--shadow-md); }
 .btn.ghost {
-  background: transparent; color: var(--ink);
-  border: 1.5px solid var(--line); box-shadow: none;
+  background: transparent; color: var(--color-primary);
+  border: 1.5px solid var(--color-primary); box-shadow: none;
 }
-.btn.ghost:hover { border-color: var(--accent); color: var(--accent); }
+.btn.ghost:hover { background: var(--color-primary-highlight); color: var(--color-primary); }
 .section {
   padding: clamp(3rem, 8vw, 6rem) clamp(1rem, 4vw, 3rem);
   max-width: 1100px; margin: 0 auto;
 }
 .section.narrow { max-width: 760px; }
 .section-title {
-  font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.18em;
-  color: var(--accent); margin-bottom: 2.5rem; font-weight: 700;
+  font-family: var(--font-display); font-weight: 700;
+  font-size: 0.85rem; letter-spacing: 0.18em;
+  color: var(--color-primary); margin-bottom: 2.5rem;
   display: inline-flex; align-items: center; gap: 0.6rem;
 }
 .section-title::before {
   content: ""; display: inline-block; width: 24px; height: 2px;
-  background: var(--accent); border-radius: 2px;
+  background: var(--color-accent-warm); border-radius: 2px;
 }
 .project-list { display: grid; gap: clamp(2rem, 5vw, 4rem); }
 .project-card {
-  display: grid; gap: 1.25rem; color: var(--ink); text-decoration: none;
+  display: grid; gap: 1.25rem; color: var(--color-text); text-decoration: none;
 }
 .project-cover {
-  background: var(--surface); border-radius: 14px; overflow: hidden; aspect-ratio: 16/10;
-  box-shadow: 0 1px 0 var(--line);
+  background: var(--color-surface); border-radius: 14px; overflow: hidden; aspect-ratio: 16/10;
+  box-shadow: var(--shadow-sm);
 }
 .project-cover.wide { margin: 2.5rem 0; border-radius: 18px; }
 .project-cover img {
@@ -551,89 +594,109 @@ h1 .swash { color: var(--accent); font-style: italic; }
 .project-card:hover .project-cover img { transform: scale(1.03); }
 .project-meta { display: flex; justify-content: space-between; gap: 2rem; align-items: end; flex-wrap: wrap; }
 .project-meta h3 {
-  font-family: 'Fraunces', ui-serif, Georgia, serif;
-  font-weight: 500; font-size: 1.6rem;
-  margin: 0 0 0.4rem; letter-spacing: -0.01em;
+  font-family: var(--font-display); font-weight: 700;
+  font-size: 1.5rem; margin: 0 0 0.4rem; letter-spacing: -0.01em;
+  color: var(--color-text);
 }
-.project-card:hover .project-meta h3 { color: var(--accent); }
-.muted { color: var(--ink-soft); margin: 0; }
+.project-card:hover .project-meta h3 { color: var(--color-primary); }
+.muted { color: var(--color-text-muted); margin: 0; }
 .small { font-size: 0.85rem; }
-.about .big, .big {
-  font-family: 'Fraunces', ui-serif, Georgia, serif;
-  font-size: clamp(1.4rem, 2.4vw, 2rem);
-  line-height: 1.35; color: var(--ink); max-width: 24em; font-weight: 400;
+.big {
+  font-family: var(--font-body); font-weight: 300;
+  font-size: clamp(1.2rem, 2vw, 1.6rem);
+  line-height: 1.5; color: var(--color-text); max-width: 28em;
 }
 .about-grid {
-  margin-top: 3rem; display: grid; grid-template-columns: repeat(2, 1fr);
+  margin-top: 3rem; display: grid; grid-template-columns: repeat(3, 1fr);
   gap: 1.5rem;
 }
 .about-grid > div {
   padding: 1.5rem; border-radius: 14px;
-  background: var(--surface);
-  border: 1px solid var(--line);
+  background: var(--color-surface);
+  border: 1px solid var(--color-divider);
 }
-.about-grid > div:nth-child(1) { border-left: 3px solid var(--accent); }
-.about-grid > div:nth-child(2) { border-left: 3px solid var(--accent-2); }
-.about-grid > div:nth-child(3) { border-left: 3px solid var(--accent-3); }
-.about-grid > div:nth-child(4) { border-left: 3px solid var(--accent); }
+.about-grid > div:nth-child(1) { border-left: 3px solid var(--color-primary); }
+.about-grid > div:nth-child(2) { border-left: 3px solid var(--color-accent-warm); }
+.about-grid > div:nth-child(3) { border-left: 3px solid var(--color-primary); }
 .about-grid p { margin: 0 0 0.4rem; }
 .kicker {
-  font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.16em;
-  color: var(--accent); font-weight: 700; margin-bottom: 0.6rem !important;
+  font-family: var(--font-display); font-weight: 700;
+  font-size: 0.75rem; letter-spacing: 0.16em;
+  color: var(--color-primary); margin-bottom: 0.75rem !important;
 }
+.toolkit-list { display: flex; flex-direction: column; }
+.toolkit-item {
+  display: flex; align-items: center; gap: 0.6rem;
+  font-family: var(--font-body); font-size: 0.875rem;
+  color: var(--color-text-muted);
+  padding: 0.4rem 0;
+  border-bottom: 1px solid var(--color-divider);
+}
+.toolkit-item:last-child { border-bottom: none; }
+.toolkit-item img { width: 20px; height: 20px; flex-shrink: 0; }
+[data-theme="dark"] .toolkit-item img[alt="notion"] { filter: invert(1); }
 .contact-grid {
   margin-top: 3rem; display: grid; grid-template-columns: 1fr 1fr; gap: 2rem 2.5rem;
-  padding-top: 2rem; border-top: 1px solid var(--line);
+  padding-top: 2rem; border-top: 1px solid var(--color-divider);
 }
 .big-link {
-  display: block; font-family: 'Fraunces', ui-serif, Georgia, serif;
-  font-size: 1.5rem; color: var(--ink); text-decoration: none; margin-top: 0.4rem;
+  display: block; font-family: var(--font-display); font-weight: 700;
+  font-size: 1.4rem; color: var(--color-text); text-decoration: none; margin-top: 0.4rem;
   letter-spacing: -0.01em; transition: color .2s;
 }
 .big-link.as-text { cursor: default; }
-.big-link:hover:not(.as-text) { color: var(--accent); }
+.big-link:hover:not(.as-text) { color: var(--color-primary); }
 .back-link {
-  display: inline-block; margin-bottom: 2rem; color: var(--ink-soft);
+  display: inline-block; margin-bottom: 2rem; color: var(--color-text-muted);
   text-decoration: none; font-size: 0.9rem;
 }
-.back-link:hover { color: var(--accent); }
+.back-link:hover { color: var(--color-primary); }
 .meta-grid {
   display: grid; grid-template-columns: repeat(4, 1fr);
   gap: 1.5rem; margin: 2.5rem 0; padding: 1.5rem 0;
-  border-top: 1px solid var(--line); border-bottom: 1px solid var(--line);
+  border-top: 1px solid var(--color-divider); border-bottom: 1px solid var(--color-divider);
 }
 .meta-grid dt {
-  font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.18em;
-  color: var(--accent); margin-bottom: 0.4rem; font-weight: 700;
+  font-family: var(--font-display); font-weight: 700;
+  font-size: 0.7rem; letter-spacing: 0.18em;
+  color: var(--color-primary); margin-bottom: 0.4rem;
 }
-.meta-grid dd { margin: 0; font-size: 0.95rem; }
-.case-section { margin: 2.5rem 0; }
+.meta-grid dd { margin: 0; font-size: 0.95rem; color: var(--color-text); }
+.case-section { margin: 2.5rem 0; border-left: 2px solid var(--color-accent-warm); padding-left: 1.25rem; }
 .case-section h2 {
-  font-family: 'Fraunces', ui-serif, Georgia, serif;
-  font-weight: 500; font-size: 1.5rem;
-  margin: 0 0 0.75rem; letter-spacing: -0.01em;
+  font-family: var(--font-display); font-weight: 700;
+  font-size: 1.4rem; margin: 0 0 0.75rem; letter-spacing: -0.01em;
+  color: var(--color-text);
 }
-.case-section p { color: var(--ink-soft); max-width: 36em; }
-.next { margin-top: 4rem; padding-top: 2rem; border-top: 1px solid var(--line); }
+.case-section p { color: var(--color-text-muted); max-width: 36em; }
+.project-nav {
+  margin-top: 4rem; padding-top: 2rem; border-top: 1px solid var(--color-divider);
+  display: flex; justify-content: space-between; gap: 1rem; flex-wrap: wrap;
+}
+input:focus, textarea:focus { outline: none; border: 2px solid var(--color-primary); }
 .footer {
-  border-top: 1px solid var(--line); padding: 3rem clamp(1rem, 4vw, 3rem);
-  display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 1.5rem; align-items: end;
+  border-top: 1px solid var(--color-divider); padding: 2rem clamp(1rem, 4vw, 3rem);
+  display: flex; justify-content: space-between; gap: 1.5rem; align-items: center;
   max-width: 1100px; margin: 0 auto; width: 100%;
+  flex-wrap: wrap;
 }
-.footer-mark { margin: 0; font-weight: 700; }
-.footer-links { display: flex; flex-direction: column; gap: 0.4rem; }
-.footer-links a { color: var(--ink-soft); text-decoration: none; }
-.footer-links a:hover { color: var(--accent); }
+.footer-left { margin: 0; color: var(--color-text-faint); font-size: 0.875rem; }
+.footer-right { display: flex; gap: 1.5rem; flex-wrap: wrap; }
+.footer-right a { color: var(--color-text-faint); text-decoration: none; font-size: 0.875rem; }
+.footer-right a:hover { color: var(--color-primary); }
 .reveal { opacity: 0; transform: translateY(12px); transition: opacity .8s ease, transform .8s ease; }
 .reveal.visible { opacity: 1; transform: none; }
 @media (prefers-reduced-motion: reduce) {
   .reveal { opacity: 1; transform: none; transition: none; }
   .project-card:hover .project-cover img { transform: none; }
 }
+@media (max-width: 768px) {
+  .nav-brand-title { display: none; }
+}
 @media (max-width: 640px) {
   .meta-grid { grid-template-columns: 1fr 1fr; }
   .contact-grid { grid-template-columns: 1fr; }
   .about-grid { grid-template-columns: 1fr; }
-  .footer { grid-template-columns: 1fr; }
+  .footer { flex-direction: column; align-items: flex-start; }
 }
 `;
