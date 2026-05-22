@@ -712,6 +712,17 @@ input:focus, textarea:focus { outline: none; border: 2px solid var(--color-prima
 .footer-right { display: flex; gap: 1.5rem; flex-wrap: wrap; }
 .footer-right a { color: var(--color-text-faint); text-decoration: none; font-size: 0.875rem; }
 .footer-right a:hover { color: var(--color-primary); }
+[data-theme="dark"] .site > .footer,
+[data-theme="dark"] footer.footer {
+  background: #0F0D08;
+  border-top-color: #0F0D08;
+  max-width: none;
+  padding-left: clamp(1rem, 4vw, 3rem);
+  padding-right: clamp(1rem, 4vw, 3rem);
+}
+[data-theme="dark"] .footer-left { color: #6E5F48; }
+[data-theme="dark"] .footer-right a { color: #A89880; }
+[data-theme="dark"] .footer-right a:hover { color: #F2AB6D; }
 .reveal { opacity: 0; transform: translateY(12px); transition: opacity .8s ease, transform .8s ease; }
 .reveal.visible { opacity: 1; transform: none; }
 @media (prefers-reduced-motion: reduce) {
