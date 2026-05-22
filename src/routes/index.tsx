@@ -195,10 +195,20 @@ function Index() {
       <style>{styles}</style>
       <div className="site" ref={revealRef} key={hash}>
         <header className="nav">
-          <a href="#home" className="nav-brand" aria-label="Arno Klettenberg — Home">
-            <span className="nav-brand-name">arno klettenberg</span>
-            <span className="nav-brand-title">ux/ui designer</span>
-          </a>
+          <div className="nav-left">
+            <a href="#home" className="nav-brand" aria-label="Arno Klettenberg — Home">
+              <span className="nav-brand-name">arno klettenberg</span>
+              <span className="nav-brand-title">ux/ui designer</span>
+            </a>
+            <button
+              className="theme-toggle"
+              aria-label={theme === "light" ? "Switch to dark mode" : "Switch to light mode"}
+              title="toggle theme"
+              onClick={() => setTheme(theme === "light" ? "dark" : "light")}
+            >
+              {theme === "light" ? "☾" : "☀"}
+            </button>
+          </div>
           <nav>
             <a
               href="#projects"
@@ -212,13 +222,6 @@ function Index() {
             <a href="#contact" className={view === "contact" ? "active" : ""}>
               contact
             </a>
-            <button
-              className="theme-toggle"
-              aria-label="Toggle theme"
-              onClick={() => setTheme(theme === "light" ? "dark" : "light")}
-            >
-              {theme === "light" ? "☾" : "☀"}
-            </button>
           </nav>
         </header>
 
@@ -475,11 +478,19 @@ const styles = `
   --shadow-lg: 0 12px 32px oklch(0 0 0 / 0.45);
 }
 html, body { background: var(--color-bg); color: var(--color-text); }
-body {
+body, body * {
   font-family: var(--font-body);
+}
+body {
   font-weight: 400;
   line-height: 1.6;
   -webkit-font-smoothing: antialiased;
+}
+h1, h2, h3, h4, h5, h6,
+.nav-brand-name, .section-title, .kicker,
+.project-meta h3, .big-link, .case-section h2,
+.meta-grid dt {
+  font-family: var(--font-display);
 }
 h1, h2, h3, h4, h5, h6,
 p, a, button, label, li,
@@ -495,9 +506,12 @@ footer, figcaption {
   display: flex; align-items: center; justify-content: space-between;
   padding: 1.25rem clamp(1rem, 4vw, 3rem);
   border-bottom: 1px solid var(--color-divider);
-  position: sticky; top: 0; background: color-mix(in oklab, var(--color-bg) 92%, transparent);
+  position: sticky; top: 0;
+  background: var(--color-surface);
   backdrop-filter: blur(8px); z-index: 10;
 }
+.nav-left { display: flex; align-items: center; gap: 0.75rem; }
+[data-theme="dark"] .nav { background: #0F0D08; border-bottom-color: #0F0D08; }
 .nav-brand {
   display: flex; flex-direction: column; gap: 1px;
   text-decoration: none; line-height: 1.2;
@@ -519,6 +533,7 @@ footer, figcaption {
 [data-theme="dark"] .nav-brand-name { color: #E8DDD0; }
 [data-theme="dark"] .nav-brand-title { color: #A89880; }
 .nav-brand:hover .nav-brand-name { color: var(--color-primary); }
+[data-theme="dark"] .nav-brand:hover .nav-brand-name { color: #F2AB6D; }
 .nav nav { display: flex; gap: 0.25rem; align-items: center; }
 .nav nav a {
   color: var(--color-text-muted); text-decoration: none; padding: 0.6rem 0.9rem;
@@ -527,10 +542,23 @@ footer, figcaption {
 }
 .nav nav a:hover { color: var(--color-primary); }
 .nav nav a.active { color: var(--color-primary); font-weight: 600; }
+[data-theme="dark"] .nav nav a { color: #A89880; }
+[data-theme="dark"] .nav nav a:hover { color: #F2AB6D; }
+[data-theme="dark"] .nav nav a.active { color: #F2AB6D; }
 .theme-toggle {
-  width: 44px; height: 44px; border-radius: 999px; border: 1px solid var(--color-divider);
-  background: transparent; color: var(--color-text); cursor: pointer; font-size: 1rem;
+  display: flex; align-items: center; justify-content: center;
+  width: 36px; height: 36px; border-radius: 10px;
+  border: none; background: transparent;
+  color: var(--color-text-muted); cursor: pointer; font-size: 1rem;
+  transition: color .2s, background .2s;
+  flex-shrink: 0;
 }
+.theme-toggle:hover {
+  color: var(--color-primary);
+  background: color-mix(in oklab, var(--color-primary) 10%, transparent);
+}
+[data-theme="dark"] .theme-toggle { color: #A89880; }
+[data-theme="dark"] .theme-toggle:hover { color: #F2AB6D; background: color-mix(in oklab, #F2AB6D 12%, transparent); }
 main { flex: 1; }
 .hero {
   padding: clamp(4rem, 12vw, 9rem) clamp(1rem, 4vw, 3rem) clamp(3rem, 8vw, 6rem);
@@ -684,6 +712,17 @@ input:focus, textarea:focus { outline: none; border: 2px solid var(--color-prima
 .footer-right { display: flex; gap: 1.5rem; flex-wrap: wrap; }
 .footer-right a { color: var(--color-text-faint); text-decoration: none; font-size: 0.875rem; }
 .footer-right a:hover { color: var(--color-primary); }
+[data-theme="dark"] .site > .footer,
+[data-theme="dark"] footer.footer {
+  background: #0F0D08;
+  border-top-color: #0F0D08;
+  max-width: none;
+  padding-left: clamp(1rem, 4vw, 3rem);
+  padding-right: clamp(1rem, 4vw, 3rem);
+}
+[data-theme="dark"] .footer-left { color: #6E5F48; }
+[data-theme="dark"] .footer-right a { color: #A89880; }
+[data-theme="dark"] .footer-right a:hover { color: #F2AB6D; }
 .reveal { opacity: 0; transform: translateY(12px); transition: opacity .8s ease, transform .8s ease; }
 .reveal.visible { opacity: 1; transform: none; }
 @media (prefers-reduced-motion: reduce) {
