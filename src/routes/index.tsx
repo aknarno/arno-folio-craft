@@ -195,10 +195,20 @@ function Index() {
       <style>{styles}</style>
       <div className="site" ref={revealRef} key={hash}>
         <header className="nav">
-          <a href="#home" className="nav-brand" aria-label="Arno Klettenberg — Home">
-            <span className="nav-brand-name">arno klettenberg</span>
-            <span className="nav-brand-title">ux/ui designer</span>
-          </a>
+          <div className="nav-left">
+            <a href="#home" className="nav-brand" aria-label="Arno Klettenberg — Home">
+              <span className="nav-brand-name">arno klettenberg</span>
+              <span className="nav-brand-title">ux/ui designer</span>
+            </a>
+            <button
+              className="theme-toggle"
+              aria-label={theme === "light" ? "Switch to dark mode" : "Switch to light mode"}
+              title="toggle theme"
+              onClick={() => setTheme(theme === "light" ? "dark" : "light")}
+            >
+              {theme === "light" ? "☾" : "☀"}
+            </button>
+          </div>
           <nav>
             <a
               href="#projects"
@@ -212,13 +222,6 @@ function Index() {
             <a href="#contact" className={view === "contact" ? "active" : ""}>
               contact
             </a>
-            <button
-              className="theme-toggle"
-              aria-label="Toggle theme"
-              onClick={() => setTheme(theme === "light" ? "dark" : "light")}
-            >
-              {theme === "light" ? "☾" : "☀"}
-            </button>
           </nav>
         </header>
 
