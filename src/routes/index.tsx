@@ -373,7 +373,7 @@ function Contact() {
         </div>
         <div>
           <p className="muted small">elsewhere</p>
-          <a className="big-link" href="#">↗ linkedin</a>
+          <a className="big-link" href="https://www.linkedin.com/in/arno-klettenberg-neto-b987a818a/" target="_blank" rel="noopener noreferrer">↗ linkedin</a>
         </div>
       </div>
     </section>
