@@ -234,8 +234,8 @@ function Index() {
         <footer className="footer">
           <p className="footer-left">© 2026 arno klettenberg</p>
           <div className="footer-right">
-            <a href="#" aria-label="LinkedIn">↗ linkedin</a>
-            <a href="mailto:hello@arnoklettenberg.com">hello@arnoklettenberg.com</a>
+            <a href="https://www.linkedin.com/in/arno-klettenberg-neto-b987a818a/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">↗ linkedin</a>
+            <a href="mailto:arnoklettenbergneto@gmail.com">arnoklettenbergneto@gmail.com</a>
           </div>
         </footer>
       </div>
