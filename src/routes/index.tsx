@@ -114,7 +114,6 @@ const projects: Project[] = [
 const tools = [
   { name: "figma", slug: "figma" },
   { name: "jira", slug: "jira" },
-  { name: "balsamiq", slug: "balsamiq" },
   { name: "notion", slug: "notion" },
   { name: "miro", slug: "miro" },
   { name: "claude", slug: "claude" },
