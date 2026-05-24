@@ -548,7 +548,7 @@ footer, figcaption {
   display: flex; align-items: center; justify-content: center;
   width: 36px; height: 36px; border-radius: 10px;
   border: none; background: transparent;
-  color: var(--color-text-muted); cursor: pointer; font-size: 1rem;
+  color: #D9C5AD; cursor: pointer; font-size: 18px; line-height: 1;
   transition: color .2s, background .2s;
   flex-shrink: 0;
 }
