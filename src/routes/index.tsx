@@ -114,7 +114,6 @@ const projects: Project[] = [
 const tools = [
   { name: "figma", slug: "figma" },
   { name: "jira", slug: "jira" },
-  { name: "balsamiq", slug: "balsamiq" },
   { name: "notion", slug: "notion" },
   { name: "miro", slug: "miro" },
   { name: "claude", slug: "claude" },
@@ -235,8 +234,8 @@ function Index() {
         <footer className="footer">
           <p className="footer-left">© 2026 arno klettenberg</p>
           <div className="footer-right">
-            <a href="#" aria-label="LinkedIn">↗ linkedin</a>
-            <a href="mailto:hello@arnoklettenberg.com">hello@arnoklettenberg.com</a>
+            <a href="https://www.linkedin.com/in/arno-klettenberg-neto-b987a818a/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">↗ linkedin</a>
+            <a href="mailto:arnoklettenbergneto@gmail.com">arnoklettenbergneto@gmail.com</a>
           </div>
         </footer>
       </div>
@@ -362,7 +361,7 @@ function Contact() {
       <div className="contact-grid reveal">
         <div>
           <p className="muted small">email</p>
-          <a className="big-link" href="mailto:hello@arnoklettenberg.com">hello@arnoklettenberg.com</a>
+          <a className="big-link" href="mailto:arnoklettenbergneto@gmail.com">arnoklettenbergneto@gmail.com</a>
         </div>
         <div>
           <p className="muted small">phone / whatsapp</p>
@@ -374,7 +373,7 @@ function Contact() {
         </div>
         <div>
           <p className="muted small">elsewhere</p>
-          <a className="big-link" href="#">↗ linkedin</a>
+          <a className="big-link" href="https://www.linkedin.com/in/arno-klettenberg-neto-b987a818a/" target="_blank" rel="noopener noreferrer">↗ linkedin</a>
         </div>
       </div>
     </section>
@@ -549,7 +548,7 @@ footer, figcaption {
   display: flex; align-items: center; justify-content: center;
   width: 36px; height: 36px; border-radius: 10px;
   border: none; background: transparent;
-  color: var(--color-text-muted); cursor: pointer; font-size: 1rem;
+  color: #D9C5AD; cursor: pointer; font-size: 18px; line-height: 1;
   transition: color .2s, background .2s;
   flex-shrink: 0;
 }
