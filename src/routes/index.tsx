@@ -109,7 +109,20 @@ const projects: Project[] = [
       },
     ],
   },
+  {
+    slug: "sous",
+    title: "sous — just-in-time cooking",
+    client: "portfolio project",
+    year: "2025",
+    role: "ux/ui designer",
+    summary:
+      "a just-in-time cooking assistant for busy beginners — no pantry database, no decision fatigue, just dinner.",
+    tags: ["mobile", "ux design", "product concept"],
+    cover:
+      "https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?auto=format&fit=crop&w=1600&q=80",
+  },
 ];
+
 
 const tools = [
   { name: "figma", slug: "figma" },
