@@ -361,7 +361,7 @@ function Contact() {
       <div className="contact-grid reveal">
         <div>
           <p className="muted small">email</p>
-          <a className="big-link" href="mailto:hello@arnoklettenberg.com">hello@arnoklettenberg.com</a>
+          <a className="big-link" href="mailto:arnoklettenbergneto@gmail.com">arnoklettenbergneto@gmail.com</a>
         </div>
         <div>
           <p className="muted small">phone / whatsapp</p>
