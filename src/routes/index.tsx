@@ -407,6 +407,11 @@ function ProjectDetail({ slug }: { slug: string }) {
   const idx = projects.findIndex((p) => p.slug === slug);
   const prev = idx > 0 ? projects[idx - 1] : null;
   const next = idx < projects.length - 1 ? projects[idx + 1] : null;
+
+  if (slug === "sous") {
+    return <SousCase prev={prev} next={next} />;
+  }
+
   return (
     <article className="section narrow">
       <a href="#projects" className="back-link reveal">← work</a>
@@ -441,6 +446,153 @@ function ProjectDetail({ slug }: { slug: string }) {
     </article>
   );
 }
+
+function SousCase({ prev, next }: { prev: Project | null; next: Project | null }) {
+  const stats = [
+    { label: "target user", value: "busy beginner", sub: "cooks 1–2× a week" },
+    { label: "core constraint", value: "≤ 15 sec", sub: "time to first recipe match" },
+    { label: "app pillars", value: "4 screens", sub: "cook · saved · habits · profile" },
+    { label: "project type", value: "concept", sub: "end-to-end ux design" },
+  ];
+  const pains = [
+    { eyebrow: "pain 01", title: "the inventory tax", body: "traditional cooking apps demand tedious ingredient logging. after an 8-hour workday, that 'tax' is higher than the benefit — users abandon the app and order delivery." },
+    { eyebrow: "pain 02", title: "decision fatigue", body: "thousands of recipes look like a feature. for a tired beginner, it's a wall. browsing for the 'right' meal burns the same energy needed to cook it." },
+    { eyebrow: "pain 03", title: "fear of failure", body: "missing one herb feels like a dead end. without 'chef's intuition,' beginners assume a recipe is broken instead of adaptable." },
+    { eyebrow: "pain 04", title: "the hostile kitchen", body: "cooking happens in glare, with wet or messy hands. an interface designed for the couch fails the moment hands touch food." },
+  ];
+  const decisions = [
+    { n: "01", title: "zero inventory model", body: "no pantry database to maintain. ingredients are entered fresh at the moment of cooking. a 15-second input, not a 15-minute setup." },
+    { n: "02", title: "time-first matching", body: "the time slider is the first input. 'i have 20 minutes' becomes the starting point, not a constraint added after browsing." },
+    { n: "03", title: "mise en place screen", body: "before any instruction appears, sous surfaces every ingredient and physical tool needed. no mid-cook surprises. no dead ends at step 4." },
+    { n: "04", title: "smart substitutions", body: "when an ingredient is missing, sous offers a vetted swap with a plain-language culinary reason. this builds intuition, not just workarounds." },
+  ];
+  const ia = [
+    "cook — ingredient input + time = recipe match",
+    "saved — pre-checks ingredient availability",
+    "habits — streaks, milestones, time saved",
+    "profile — dietary flags + equipment toggles",
+  ];
+  const outcomes = [
+    "zero inventory model",
+    "mise en place checkpoint",
+    "smart substitutions with culinary logic",
+    "habit loop with identity-based milestones",
+    "accessible cook mode with wakelock + timers",
+  ];
+  return (
+    <article className="section">
+      <a href="#projects" className="back-link reveal">← work</a>
+      <h1 className="reveal sous-title">sous — just-in-time cooking</h1>
+      <p className="sous-meta reveal">ux/ui designer · portfolio project · 2025 · figma · stitch · claude</p>
+      <div className="sous-pills reveal">
+        <span className="pill">mobile</span>
+        <span className="pill">ux design</span>
+        <span className="pill">product concept</span>
+      </div>
+
+      <div className="project-cover wide reveal">
+        <img
+          src="https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?auto=format&fit=crop&w=1600&q=80"
+          alt="sous app hero"
+          width={1600}
+          height={1000}
+          loading="lazy"
+        />
+      </div>
+
+      <section className="sous-section reveal">
+        <h2 className="section-title">overview</h2>
+        <p className="big">
+          sous is a just-in-time cooking assistant for busy beginners who want to eat well
+          without meal planning or pantry management. it narrows thousands of recipes down to
+          3–5 actionable matches, then guides cooking with high-contrast visuals and large tap
+          targets built for messy hands.
+        </p>
+        <div className="stat-row">
+          {stats.map((s) => (
+            <div key={s.label} className="stat">
+              <p className="stat-label">{s.label}</p>
+              <p className="stat-value">{s.value}</p>
+              <p className="stat-sub">{s.sub}</p>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      <section className="sous-section reveal">
+        <h2 className="section-title">the problem</h2>
+        <p>most food apps treat users like warehouse clerks. sous treats them like cooks.</p>
+        <div className="pain-grid">
+          {pains.map((p) => (
+            <div key={p.eyebrow} className="pain-card">
+              <p className="pain-eyebrow">{p.eyebrow}</p>
+              <h3>{p.title}</h3>
+              <p>{p.body}</p>
+            </div>
+          ))}
+        </div>
+        <blockquote className="pull-quote">
+          <p>"i want to eat better but i never know what to cook with what i have. by the time i figure it out, i've already ordered food."</p>
+          <cite>— john, 28, the target persona</cite>
+        </blockquote>
+      </section>
+
+      <section className="sous-section reveal">
+        <h2 className="section-title">design decisions</h2>
+        <p>four principles shaped every screen in the app.</p>
+        <ol className="numbered-list">
+          {decisions.map((d) => (
+            <li key={d.n}>
+              <span className="num">{d.n}</span>
+              <div>
+                <h3>{d.title}</h3>
+                <p>{d.body}</p>
+              </div>
+            </li>
+          ))}
+        </ol>
+      </section>
+
+      <section className="sous-section reveal">
+        <h2 className="section-title">information architecture</h2>
+        <p>four pillars, each with a single job. nothing competes for attention.</p>
+        <div className="ia-pills">
+          {ia.map((t) => <span key={t} className="pill">{t}</span>)}
+        </div>
+      </section>
+
+      <section className="sous-section reveal">
+        <h2 className="section-title">cooking mode</h2>
+        <p>
+          cook mode is the heart of sous: one step at a time, oversized tap targets, integrated
+          timers, and a screen that stays awake while hands stay busy.
+        </p>
+        <div className="insight-callout">
+          <p>the design principle: every feature in cook mode exists to reduce the number of things the user has to think about while physically cooking.</p>
+        </div>
+      </section>
+
+      <section className="sous-section reveal">
+        <h2 className="section-title">outcome</h2>
+        <p>an end-to-end concept that reframes cooking apps from inventory managers to assistants.</p>
+        <div className="ia-pills">
+          {outcomes.map((t) => <span key={t} className="pill">{t}</span>)}
+        </div>
+      </section>
+
+      <div className="sous-image-grid reveal">
+        <div className="project-cover"><img src="https://images.unsplash.com/photo-1495195134817-aeb325a55b65?auto=format&fit=crop&w=1200&q=80" alt="sous screen placeholder" loading="lazy" /></div>
+        <div className="project-cover"><img src="https://images.unsplash.com/photo-1490645935967-10de6ba17061?auto=format&fit=crop&w=1200&q=80" alt="sous screen placeholder" loading="lazy" /></div>
+      </div>
+
+      <div className="project-nav reveal">
+        {prev ? <a href={`#project/${prev.slug}`} className="big-link">← previous project</a> : <span />}
+        {next ? <a href={`#project/${next.slug}`} className="big-link">next project →</a> : <a href="#projects" className="big-link">all work →</a>}
+      </div>
+    </article>
+  );
+}
+
 
 const styles = `
 :root, :root[data-theme="light"] {
