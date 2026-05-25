@@ -1004,23 +1004,28 @@ input:focus, textarea:focus { outline: none; border: 2px solid var(--color-prima
   border-radius: 0 10px 10px 0;
 }
 .insight-callout p { font-style: italic; margin: 0; color: var(--color-text); }
-.sous-image-grid { margin-top: 3rem; display: grid; grid-template-columns: repeat(5, 1fr); gap: 1.25rem; }
-.phone-shot {
-  margin: 0;
+.sous-flow {
+  margin: 3rem 0 0;
   background: var(--color-surface);
   border-radius: 18px;
-  overflow: hidden;
-  aspect-ratio: 9 / 19;
+  padding: clamp(1rem, 3vw, 2rem);
   box-shadow: var(--shadow-sm);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 0.75rem;
 }
-.phone-shot img {
+.sous-flow img {
   width: 100%;
-  height: 100%;
+  height: auto;
+  display: block;
   object-fit: contain;
+}
+.sous-mockup {
+  margin: 2.5rem 0;
+  border-radius: 18px;
+  overflow: hidden;
+  box-shadow: var(--shadow-sm);
+}
+.sous-mockup img {
+  width: 100%;
+  height: auto;
   display: block;
 }
 `;
