@@ -592,12 +592,15 @@ function SousCase({ prev, next }: { prev: Project | null; next: Project | null }
       </div>
 
       <div className="sous-image-grid reveal">
-        <div className="project-cover"><img src={sousStep1} alt="sous step 1 — input ingredients and constraints" loading="lazy" /></div>
-        <div className="project-cover"><img src={sousStep2} alt="sous step 2 — three recipe matches" loading="lazy" /></div>
-        <div className="project-cover"><img src={sousStep3} alt="sous step 3 — mise en place" loading="lazy" /></div>
-        <div className="project-cover"><img src={sousStep4} alt="sous step 4 — cooking mode" loading="lazy" /></div>
-        <div className="project-cover"><img src={sousStep5} alt="sous step 5 — success screen" loading="lazy" /></div>
-        <div className="project-cover"><img src={sousMockup} alt="sous mockup in context" loading="lazy" /></div>
+        <figure className="phone-shot"><img src={sousStep1} alt="sous step 1 — input ingredients and constraints" loading="lazy" /></figure>
+        <figure className="phone-shot"><img src={sousStep2} alt="sous step 2 — three recipe matches" loading="lazy" /></figure>
+        <figure className="phone-shot"><img src={sousStep3} alt="sous step 3 — mise en place" loading="lazy" /></figure>
+        <figure className="phone-shot"><img src={sousStep4} alt="sous step 4 — cooking mode" loading="lazy" /></figure>
+        <figure className="phone-shot"><img src={sousStep5} alt="sous step 5 — success screen" loading="lazy" /></figure>
+      </div>
+
+      <div className="project-cover wide reveal">
+        <img src={sousMockup} alt="sous mockup in context" loading="lazy" />
       </div>
 
       <div className="project-nav reveal">
@@ -918,7 +921,7 @@ input:focus, textarea:focus { outline: none; border: 2px solid var(--color-prima
   .footer { flex-direction: column; align-items: flex-start; }
   .stat-row { grid-template-columns: 1fr !important; }
   .pain-grid { grid-template-columns: 1fr !important; }
-  .sous-image-grid { grid-template-columns: 1fr !important; }
+  .sous-image-grid { grid-template-columns: repeat(2, 1fr) !important; }
 }
 
 /* sous case study */
@@ -1009,5 +1012,23 @@ input:focus, textarea:focus { outline: none; border: 2px solid var(--color-prima
   border-radius: 0 10px 10px 0;
 }
 .insight-callout p { font-style: italic; margin: 0; color: var(--color-text); }
-.sous-image-grid { margin-top: 3rem; display: grid; grid-template-columns: 1fr 1fr; gap: 1.25rem; }
+.sous-image-grid { margin-top: 3rem; display: grid; grid-template-columns: repeat(5, 1fr); gap: 1.25rem; }
+.phone-shot {
+  margin: 0;
+  background: var(--color-surface);
+  border-radius: 18px;
+  overflow: hidden;
+  aspect-ratio: 9 / 19;
+  box-shadow: var(--shadow-sm);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.75rem;
+}
+.phone-shot img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  display: block;
+}
 `;
