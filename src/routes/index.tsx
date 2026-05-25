@@ -3,11 +3,7 @@ import { useEffect, useRef, useState } from "react";
 import sousCover from "@/assets/sous/cover.png";
 import sousDesignSystem from "@/assets/sous/design-system.png";
 import sousMockup from "@/assets/sous/mockup.png";
-import sousStep1 from "@/assets/sous/step-1.png";
-import sousStep2 from "@/assets/sous/step-2.png";
-import sousStep3 from "@/assets/sous/step-3.png";
-import sousStep4 from "@/assets/sous/step-4.png";
-import sousStep5 from "@/assets/sous/step-5.png";
+import sousStepByStep from "@/assets/sous/step-by-step.png";
 
 export const Route = createFileRoute("/")({
   component: Index,
@@ -497,15 +493,9 @@ function SousCase({ prev, next }: { prev: Project | null; next: Project | null }
         <span className="pill">product concept</span>
       </div>
 
-      <div className="project-cover wide reveal">
-        <img
-          src={sousCover}
-          alt="sous app cover"
-          width={1600}
-          height={1000}
-          loading="lazy"
-        />
-      </div>
+      <figure className="sous-mockup reveal">
+        <img src={sousCover} alt="sous app cover" loading="lazy" />
+      </figure>
 
       <section className="sous-section reveal">
         <h2 className="section-title">overview</h2>
@@ -587,21 +577,17 @@ function SousCase({ prev, next }: { prev: Project | null; next: Project | null }
         </div>
       </section>
 
-      <div className="project-cover wide reveal" style={{ marginTop: "3rem" }}>
+      <figure className="sous-flow reveal">
         <img src={sousDesignSystem} alt="sous design system — colors, typography, components" loading="lazy" />
-      </div>
+      </figure>
 
-      <div className="sous-image-grid reveal">
-        <figure className="phone-shot"><img src={sousStep1} alt="sous step 1 — input ingredients and constraints" loading="lazy" /></figure>
-        <figure className="phone-shot"><img src={sousStep2} alt="sous step 2 — three recipe matches" loading="lazy" /></figure>
-        <figure className="phone-shot"><img src={sousStep3} alt="sous step 3 — mise en place" loading="lazy" /></figure>
-        <figure className="phone-shot"><img src={sousStep4} alt="sous step 4 — cooking mode" loading="lazy" /></figure>
-        <figure className="phone-shot"><img src={sousStep5} alt="sous step 5 — success screen" loading="lazy" /></figure>
-      </div>
+      <figure className="sous-flow reveal">
+        <img src={sousStepByStep} alt="sous end-to-end flow — five key screens" loading="lazy" />
+      </figure>
 
-      <div className="project-cover wide reveal">
+      <figure className="sous-mockup reveal">
         <img src={sousMockup} alt="sous mockup in context" loading="lazy" />
-      </div>
+      </figure>
 
       <div className="project-nav reveal">
         {prev ? <a href={`#project/${prev.slug}`} className="big-link">← previous project</a> : <span />}
@@ -921,7 +907,7 @@ input:focus, textarea:focus { outline: none; border: 2px solid var(--color-prima
   .footer { flex-direction: column; align-items: flex-start; }
   .stat-row { grid-template-columns: 1fr !important; }
   .pain-grid { grid-template-columns: 1fr !important; }
-  .sous-image-grid { grid-template-columns: repeat(2, 1fr) !important; }
+  
 }
 
 /* sous case study */
@@ -1012,23 +998,28 @@ input:focus, textarea:focus { outline: none; border: 2px solid var(--color-prima
   border-radius: 0 10px 10px 0;
 }
 .insight-callout p { font-style: italic; margin: 0; color: var(--color-text); }
-.sous-image-grid { margin-top: 3rem; display: grid; grid-template-columns: repeat(5, 1fr); gap: 1.25rem; }
-.phone-shot {
-  margin: 0;
+.sous-flow {
+  margin: 3rem 0 0;
   background: var(--color-surface);
   border-radius: 18px;
-  overflow: hidden;
-  aspect-ratio: 9 / 19;
+  padding: clamp(1rem, 3vw, 2rem);
   box-shadow: var(--shadow-sm);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 0.75rem;
 }
-.phone-shot img {
+.sous-flow img {
   width: 100%;
-  height: 100%;
+  height: auto;
+  display: block;
   object-fit: contain;
+}
+.sous-mockup {
+  margin: 2.5rem 0;
+  border-radius: 18px;
+  overflow: hidden;
+  box-shadow: var(--shadow-sm);
+}
+.sous-mockup img {
+  width: 100%;
+  height: auto;
   display: block;
 }
 `;
