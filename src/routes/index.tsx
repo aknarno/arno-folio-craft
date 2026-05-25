@@ -1,5 +1,13 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useEffect, useRef, useState } from "react";
+import sousCover from "@/assets/sous/cover.png";
+import sousDesignSystem from "@/assets/sous/design-system.png";
+import sousMockup from "@/assets/sous/mockup.png";
+import sousStep1 from "@/assets/sous/step-1.png";
+import sousStep2 from "@/assets/sous/step-2.png";
+import sousStep3 from "@/assets/sous/step-3.png";
+import sousStep4 from "@/assets/sous/step-4.png";
+import sousStep5 from "@/assets/sous/step-5.png";
 
 export const Route = createFileRoute("/")({
   component: Index,
@@ -118,8 +126,7 @@ const projects: Project[] = [
     summary:
       "a just-in-time cooking assistant for busy beginners — no pantry database, no decision fatigue, just dinner.",
     tags: ["mobile", "ux design", "product concept"],
-    cover:
-      "https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?auto=format&fit=crop&w=1600&q=80",
+    cover: sousCover,
   },
 ];
 
@@ -492,8 +499,8 @@ function SousCase({ prev, next }: { prev: Project | null; next: Project | null }
 
       <div className="project-cover wide reveal">
         <img
-          src="https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?auto=format&fit=crop&w=1600&q=80"
-          alt="sous app hero"
+          src={sousCover}
+          alt="sous app cover"
           width={1600}
           height={1000}
           loading="lazy"
@@ -580,9 +587,17 @@ function SousCase({ prev, next }: { prev: Project | null; next: Project | null }
         </div>
       </section>
 
+      <div className="project-cover wide reveal" style={{ marginTop: "3rem" }}>
+        <img src={sousDesignSystem} alt="sous design system — colors, typography, components" loading="lazy" />
+      </div>
+
       <div className="sous-image-grid reveal">
-        <div className="project-cover"><img src="https://images.unsplash.com/photo-1495195134817-aeb325a55b65?auto=format&fit=crop&w=1200&q=80" alt="sous screen placeholder" loading="lazy" /></div>
-        <div className="project-cover"><img src="https://images.unsplash.com/photo-1490645935967-10de6ba17061?auto=format&fit=crop&w=1200&q=80" alt="sous screen placeholder" loading="lazy" /></div>
+        <div className="project-cover"><img src={sousStep1} alt="sous step 1 — input ingredients and constraints" loading="lazy" /></div>
+        <div className="project-cover"><img src={sousStep2} alt="sous step 2 — three recipe matches" loading="lazy" /></div>
+        <div className="project-cover"><img src={sousStep3} alt="sous step 3 — mise en place" loading="lazy" /></div>
+        <div className="project-cover"><img src={sousStep4} alt="sous step 4 — cooking mode" loading="lazy" /></div>
+        <div className="project-cover"><img src={sousStep5} alt="sous step 5 — success screen" loading="lazy" /></div>
+        <div className="project-cover"><img src={sousMockup} alt="sous mockup in context" loading="lazy" /></div>
       </div>
 
       <div className="project-nav reveal">
