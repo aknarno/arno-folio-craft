@@ -577,9 +577,9 @@ function SousCase({ prev, next }: { prev: Project | null; next: Project | null }
         </div>
       </section>
 
-      <div className="project-cover wide reveal" style={{ marginTop: "3rem" }}>
+      <figure className="sous-flow reveal">
         <img src={sousDesignSystem} alt="sous design system — colors, typography, components" loading="lazy" />
-      </div>
+      </figure>
 
       <figure className="sous-flow reveal">
         <img src={sousStepByStep} alt="sous end-to-end flow — five key screens" loading="lazy" />
