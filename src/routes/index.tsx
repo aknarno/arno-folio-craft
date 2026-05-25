@@ -587,17 +587,13 @@ function SousCase({ prev, next }: { prev: Project | null; next: Project | null }
         <img src={sousDesignSystem} alt="sous design system — colors, typography, components" loading="lazy" />
       </div>
 
-      <div className="sous-image-grid reveal">
-        <figure className="phone-shot"><img src={sousStep1} alt="sous step 1 — input ingredients and constraints" loading="lazy" /></figure>
-        <figure className="phone-shot"><img src={sousStep2} alt="sous step 2 — three recipe matches" loading="lazy" /></figure>
-        <figure className="phone-shot"><img src={sousStep3} alt="sous step 3 — mise en place" loading="lazy" /></figure>
-        <figure className="phone-shot"><img src={sousStep4} alt="sous step 4 — cooking mode" loading="lazy" /></figure>
-        <figure className="phone-shot"><img src={sousStep5} alt="sous step 5 — success screen" loading="lazy" /></figure>
-      </div>
+      <figure className="sous-flow reveal">
+        <img src={sousStepByStep} alt="sous end-to-end flow — five key screens" loading="lazy" />
+      </figure>
 
-      <div className="project-cover wide reveal">
+      <figure className="sous-mockup reveal">
         <img src={sousMockup} alt="sous mockup in context" loading="lazy" />
-      </div>
+      </figure>
 
       <div className="project-nav reveal">
         {prev ? <a href={`#project/${prev.slug}`} className="big-link">← previous project</a> : <span />}
