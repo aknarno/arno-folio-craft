@@ -592,12 +592,15 @@ function SousCase({ prev, next }: { prev: Project | null; next: Project | null }
       </div>
 
       <div className="sous-image-grid reveal">
-        <div className="project-cover"><img src={sousStep1} alt="sous step 1 — input ingredients and constraints" loading="lazy" /></div>
-        <div className="project-cover"><img src={sousStep2} alt="sous step 2 — three recipe matches" loading="lazy" /></div>
-        <div className="project-cover"><img src={sousStep3} alt="sous step 3 — mise en place" loading="lazy" /></div>
-        <div className="project-cover"><img src={sousStep4} alt="sous step 4 — cooking mode" loading="lazy" /></div>
-        <div className="project-cover"><img src={sousStep5} alt="sous step 5 — success screen" loading="lazy" /></div>
-        <div className="project-cover"><img src={sousMockup} alt="sous mockup in context" loading="lazy" /></div>
+        <figure className="phone-shot"><img src={sousStep1} alt="sous step 1 — input ingredients and constraints" loading="lazy" /></figure>
+        <figure className="phone-shot"><img src={sousStep2} alt="sous step 2 — three recipe matches" loading="lazy" /></figure>
+        <figure className="phone-shot"><img src={sousStep3} alt="sous step 3 — mise en place" loading="lazy" /></figure>
+        <figure className="phone-shot"><img src={sousStep4} alt="sous step 4 — cooking mode" loading="lazy" /></figure>
+        <figure className="phone-shot"><img src={sousStep5} alt="sous step 5 — success screen" loading="lazy" /></figure>
+      </div>
+
+      <div className="project-cover wide reveal">
+        <img src={sousMockup} alt="sous mockup in context" loading="lazy" />
       </div>
 
       <div className="project-nav reveal">
