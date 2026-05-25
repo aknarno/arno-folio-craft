@@ -493,15 +493,9 @@ function SousCase({ prev, next }: { prev: Project | null; next: Project | null }
         <span className="pill">product concept</span>
       </div>
 
-      <div className="project-cover wide reveal">
-        <img
-          src={sousCover}
-          alt="sous app cover"
-          width={1600}
-          height={1000}
-          loading="lazy"
-        />
-      </div>
+      <figure className="sous-mockup reveal">
+        <img src={sousCover} alt="sous app cover" loading="lazy" />
+      </figure>
 
       <section className="sous-section reveal">
         <h2 className="section-title">overview</h2>
