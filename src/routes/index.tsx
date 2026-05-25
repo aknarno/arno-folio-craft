@@ -921,7 +921,7 @@ input:focus, textarea:focus { outline: none; border: 2px solid var(--color-prima
   .footer { flex-direction: column; align-items: flex-start; }
   .stat-row { grid-template-columns: 1fr !important; }
   .pain-grid { grid-template-columns: 1fr !important; }
-  .sous-image-grid { grid-template-columns: 1fr !important; }
+  .sous-image-grid { grid-template-columns: repeat(2, 1fr) !important; }
 }
 
 /* sous case study */
