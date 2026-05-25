@@ -3,11 +3,7 @@ import { useEffect, useRef, useState } from "react";
 import sousCover from "@/assets/sous/cover.png";
 import sousDesignSystem from "@/assets/sous/design-system.png";
 import sousMockup from "@/assets/sous/mockup.png";
-import sousStep1 from "@/assets/sous/step-1.png";
-import sousStep2 from "@/assets/sous/step-2.png";
-import sousStep3 from "@/assets/sous/step-3.png";
-import sousStep4 from "@/assets/sous/step-4.png";
-import sousStep5 from "@/assets/sous/step-5.png";
+import sousStepByStep from "@/assets/sous/step-by-step.png";
 
 export const Route = createFileRoute("/")({
   component: Index,
