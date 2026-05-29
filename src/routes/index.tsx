@@ -4,6 +4,9 @@ import sousCover from "@/assets/sous/cover.png";
 import sousDesignSystem from "@/assets/sous/design-system.png";
 import sousMockup from "@/assets/sous/mockup.png";
 import sousStepByStep from "@/assets/sous/step-by-step.png";
+import overseerList from "@/assets/overseer/work-order-list.png";
+import overseerDetail from "@/assets/overseer/work-order-detail.png";
+import overseerReport from "@/assets/overseer/labor-report.png";
 
 export const Route = createFileRoute("/")({
   component: Index,
