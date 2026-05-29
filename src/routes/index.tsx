@@ -127,6 +127,17 @@ const projects: Project[] = [
     tags: ["mobile", "ux design", "product concept"],
     cover: sousCover,
   },
+  {
+    slug: "overseer",
+    title: "overseer — aircraft maintenance management",
+    client: "portfolio project",
+    year: "2024",
+    role: "ux/ui designer",
+    summary:
+      "a web-based mro platform that consolidates work orders, discrepancies, labor reporting and compliance into a single focused workspace.",
+    tags: ["b2b saas", "web app", "mro platform", "ux design"],
+    cover: overseerList,
+  },
 ];
 
 
