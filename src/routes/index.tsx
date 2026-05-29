@@ -1225,4 +1225,77 @@ input:focus, textarea:focus { outline: none; border: 2px solid var(--color-prima
   height: auto;
   display: block;
 }
+.sous-mockup img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* overseer-specific */
+.confidentiality-notice {
+  margin: 0 0 2rem;
+  padding: 0.75rem 1rem;
+  background: var(--color-surface-offset);
+  color: var(--color-text-muted);
+  border-radius: 8px;
+  font-size: 0.82rem;
+  line-height: 1.5;
+}
+.industry-context {
+  margin-top: 1.5rem;
+  padding: 1.75rem 2rem;
+  border-left: 3px solid var(--color-accent-warm);
+  background: color-mix(in oklab, var(--color-accent-warm) 8%, transparent);
+  border-radius: 0 12px 12px 0;
+}
+.industry-context h3 {
+  font-family: var(--font-display); font-weight: 700;
+  font-size: clamp(1.25rem, 2.2vw, 1.6rem);
+  color: var(--color-text); margin: 0 0 0.75rem; line-height: 1.25;
+}
+.industry-context p {
+  font-size: 1.05rem; color: var(--color-text); margin: 0; line-height: 1.65;
+}
+.feature-list {
+  list-style: none; padding: 0; margin: 1.5rem 0 0;
+}
+.feature-list li {
+  display: grid; grid-template-columns: 1fr 2fr; gap: 1.5rem;
+  padding: 1.1rem 0; border-bottom: 1px solid var(--color-border);
+  align-items: baseline;
+}
+.feature-list li:last-child { border-bottom: none; }
+.feature-name {
+  font-family: var(--font-display); font-weight: 700;
+  font-size: 1rem; color: var(--color-text); letter-spacing: 0.01em;
+}
+.feature-body {
+  color: var(--color-text-muted); font-size: 0.95rem; line-height: 1.55;
+}
+.focus-section { margin: 5rem 0; }
+.impact-grid {
+  margin-top: 1.5rem;
+  display: grid; grid-template-columns: 1fr 1fr; gap: 2.5rem;
+  align-items: start;
+}
+.impact-grid > p { font-size: 1.02rem; line-height: 1.7; color: var(--color-text); margin: 0; }
+.impact-stats { display: flex; flex-direction: column; gap: 1rem; }
+.impact-stat-card {
+  padding: 1.5rem;
+  background: var(--color-surface-offset);
+  border: 1px solid var(--color-divider);
+  border-radius: 14px;
+}
+.impact-org {
+  font-family: var(--font-display); font-weight: 700;
+  font-size: clamp(1.1rem, 1.8vw, 1.35rem);
+  color: var(--color-text); margin: 0 0 0.5rem; line-height: 1.2;
+}
+.impact-label {
+  font-size: 0.85rem; color: var(--color-text-muted); margin: 0; line-height: 1.5;
+}
+@media (max-width: 768px) {
+  .feature-list li { grid-template-columns: 1fr; gap: 0.4rem; }
+  .impact-grid { grid-template-columns: 1fr; gap: 1.5rem; }
+}
 `;
