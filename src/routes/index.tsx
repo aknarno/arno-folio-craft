@@ -429,6 +429,10 @@ function ProjectDetail({ slug }: { slug: string }) {
     return <SousCase prev={prev} next={next} />;
   }
 
+  if (slug === "overseer") {
+    return <OverseerCase prev={prev} next={next} />;
+  }
+
   return (
     <article className="section narrow">
       <a href="#projects" className="back-link reveal">← work</a>
