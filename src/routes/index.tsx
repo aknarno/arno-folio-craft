@@ -4,6 +4,7 @@ import sousCover from "@/assets/sous/cover.png";
 import sousDesignSystem from "@/assets/sous/design-system.png";
 import sousMockup from "@/assets/sous/mockup.png";
 import sousStepByStep from "@/assets/sous/step-by-step.png";
+import overseerCover from "@/assets/overseer/cover.png";
 import overseerList from "@/assets/overseer/work-order-list.png";
 import overseerDetail from "@/assets/overseer/work-order-detail.png";
 import overseerReport from "@/assets/overseer/labor-report.png";
@@ -135,8 +136,8 @@ const projects: Project[] = [
     role: "ux/ui designer",
     summary:
       "a web-based mro platform that consolidates work orders, discrepancies, labor reporting and compliance into a single focused workspace.",
-    tags: ["b2b saas", "web app", "mro platform", "ux design"],
-    cover: overseerList,
+    tags: ["b2b saas", "web & mobile", "mro platform", "ux design", "design system"],
+    cover: overseerCover,
   },
 ];
 
