@@ -4,6 +4,7 @@ import sousCover from "@/assets/sous/cover.png";
 import sousDesignSystem from "@/assets/sous/design-system.png";
 import sousMockup from "@/assets/sous/mockup.png";
 import sousStepByStep from "@/assets/sous/step-by-step.png";
+import overseerCover from "@/assets/overseer/cover.png";
 import overseerList from "@/assets/overseer/work-order-list.png";
 import overseerDetail from "@/assets/overseer/work-order-detail.png";
 import overseerReport from "@/assets/overseer/labor-report.png";
@@ -135,8 +136,8 @@ const projects: Project[] = [
     role: "ux/ui designer",
     summary:
       "a web-based mro platform that consolidates work orders, discrepancies, labor reporting and compliance into a single focused workspace.",
-    tags: ["b2b saas", "web app", "mro platform", "ux design"],
-    cover: overseerList,
+    tags: ["b2b saas", "web & mobile", "mro platform", "ux design", "design system"],
+    cover: overseerCover,
   },
 ];
 
@@ -617,60 +618,67 @@ function SousCase({ prev, next }: { prev: Project | null; next: Project | null }
 
 function OverseerCase({ prev, next }: { prev: Project | null; next: Project | null }) {
   const stats = [
-    { label: "platform type", value: "web app", sub: "b2b saas · mro-focused" },
-    { label: "core users", value: "mx professionals", sub: "mros, a&p mechanics, fleet managers" },
-    { label: "key modules", value: "4 areas", sub: "work orders · labor · inventory · reports" },
-    { label: "project type", value: "concept", sub: "end-to-end ux design" },
+    { label: "platform", value: "web + mobile", sub: "cross-platform b2b saas" },
+    { label: "users", value: "mros · mechanics · fleet ops", sub: "pilots and maintenance professionals" },
+    { label: "my contribution", value: "work order module", sub: "plus supporting features and design system" },
+    { label: "real-world impact", value: "robinson · garmin", sub: "enterprise deals closed" },
   ];
-  const pains = [
-    { eyebrow: "pain 01", title: "fragmented workflows", body: "work order creation, discrepancy tracking, labor logging, and reporting lived in separate tools — or on paper. no single source of truth." },
-    { eyebrow: "pain 02", title: "zero visibility on labor", body: "supervisors had no real-time view of who was working what, how many hours were logged, or where a job stood without walking the floor." },
-    { eyebrow: "pain 03", title: "compliance risk", body: "ad/sb tracking and sign-off documentation were manual and error-prone. one missed entry could ground an aircraft or trigger a regulatory finding." },
-    { eyebrow: "pain 04", title: "customer disconnect", body: "mro customers had no visibility into their aircraft's maintenance status. updates came by phone, if at all." },
+  const features = [
+    { name: "my reservations", body: "a personal view of all aircraft reserved by the logged-in user, with schedule context and aircraft status." },
+    { name: "manage members", body: "role and permission management for everyone inside an organization — mechanics, supervisors, and administrators." },
+    { name: "manage aircraft", body: "full aircraft profile management: make, model, serial number, tail number, time-tracking (ttis, sfrm, tt, snew), and maintenance history." },
+    { name: "manage inventory", body: "parts and tooling not already attached to a specific aircraft — organization-level inventory with availability tracking." },
+    { name: "document center", body: "centralized document management for ads, sbs, maintenance manuals, and aircraft logs — all associated to the relevant aircraft or organization." },
+    { name: "work order mx", body: "end-to-end work order lifecycle: creation, discrepancy tracking, labor logging, tooling allocation, cost tracking, approval workflow, and client-ready reporting. (primary contribution — built from scratch.)" },
   ];
   const decisions = [
-    { n: "01", title: "work order as the atomic unit", body: "everything — labor entries, discrepancy items, tooling allocation, cost tracking — is anchored to a single work order. nothing lives outside of it." },
-    { n: "02", title: "discrepancy list as the task layer", body: "within each work order, a hierarchical discrepancy list (items and sub-items) gives mechanics a structured way to log findings, estimates, and actions taken — without free-form notes that get lost." },
-    { n: "03", title: "labor visibility through reporting", body: "a dedicated labor report surfaces hours by work order, by sub-item, and by technician — giving supervisors the audit trail they need without building a separate reporting tool." },
-    { n: "04", title: "progressive disclosure for complexity", body: "the work order form surfaces only what's needed at each stage: customer info first, then aircraft context, then scheduling, then scope. 620-row sku tables appear only after the job is defined." },
+    { n: "01", title: "work order as the single source of truth", body: "customer info, aircraft context, schedule, labor rate, tooling, discrepancies, costs, and sign-offs all live inside one work order. nothing is scattered across separate tools or paper sheets." },
+    { n: "02", title: "hierarchical discrepancy list", body: "each work order contains a nested discrepancy list — items and sub-items — where mechanics log findings, estimated and actual hours, parts used, action taken, and approval status per line. this replaces the handwritten squawk sheet." },
+    { n: "03", title: "labor visibility for supervisors", body: "hours are logged at the sub-item level by technician, giving supervisors a real-time view of job progress without walking the shop floor. the labor report generates a client-ready document from this data automatically." },
+    { n: "04", title: "tooling allocation", body: "tools are assigned directly to the work order — not just noted on paper — creating accountability and reducing the 'where is the torque wrench' problem endemic to shared shop environments." },
+    { n: "05", title: "status workflow", body: "work orders move through defined states (estimate, in progress, submitted, archived) with role-based permissions on transitions. customers gain visibility into their aircraft's status without a phone call." },
   ];
-  const screens = [
-    { n: "01", title: "work order list", body: "the operations hub. filterable by maintainer, status, date range, and tail number. each row surfaces the work order number, aircraft identity, assignees, and status at a glance. a 'create new work order' cta is always accessible from here." },
-    { n: "02", title: "work order detail", body: "the most complex screen in the platform. organized into customer, aircraft, schedule, and discrepancy sections. the discrepancy list supports nested items with labor rate, estimated and actual hours, cost, action taken, and approval status per line." },
-    { n: "03", title: "labor report", body: "a generated document view showing logged hours by work order and sub-item, grouped by technician. designed to be print-ready and client-shareable without exporting to another tool." },
+  const impactStats = [
+    { org: "robinson helicopter company", label: "enterprise partnership — digital maintenance management added to future aircraft production" },
+    { org: "garmin", label: "integration partnership — live flight logs, digital records, and maintenance management connected to garmin avionics" },
   ];
   const outcomes = [
-    "work order management",
+    "cross-platform web + mobile",
+    "work order module — built from scratch",
+    "design system reconstruction",
     "hierarchical discrepancy tracking",
-    "real-time labor logging",
-    "print-ready labor reports",
-    "fleet-level aircraft context",
-    "role-based assignment",
+    "client-ready labor reporting",
+    "robinson & garmin partnerships",
   ];
   return (
     <article className="section">
       <a href="#projects" className="back-link reveal">← work</a>
       <h1 className="reveal sous-title">overseer — aircraft maintenance management</h1>
-      <p className="sous-meta reveal">ux/ui designer · portfolio project · 2024 · figma · b2b saas</p>
+      <p className="sous-meta reveal">ux/ui designer · real-world project · 2024 · figma · b2b saas</p>
       <div className="sous-pills reveal">
         <span className="pill">b2b saas</span>
-        <span className="pill">web app</span>
+        <span className="pill">web & mobile</span>
         <span className="pill">mro platform</span>
         <span className="pill">ux design</span>
+        <span className="pill">design system</span>
+      </div>
+      <div className="confidentiality-notice reveal">
+        this is a real shipped product. name and branding have been changed for confidentiality.
       </div>
 
       <figure className="sous-mockup reveal">
-        <img src={overseerList} alt="overseer work order list" loading="lazy" />
+        <img src={overseerCover} alt="overseer — aircraft maintenance management cover" loading="lazy" />
       </figure>
 
       <section className="sous-section reveal">
         <h2 className="section-title">overview</h2>
         <p className="big">
-          overseer is a web-based aircraft maintenance management platform built for mro
-          organizations and maintenance professionals. it centralizes work order creation,
-          discrepancy tracking, labor reporting, and compliance documentation into a single
-          focused workspace — replacing fragmented spreadsheets and paper-based workflows that
-          still dominate the aviation maintenance industry.
+          overseer is a cross-platform aircraft maintenance management system — available on web and
+          mobile — built for mro organizations, independent a&p mechanics, and fleet operators. it
+          digitizes the entire maintenance workflow: from work order creation and discrepancy tracking
+          to labor reporting, compliance documentation, inventory management, and crew coordination.
+          the platform serves pilots, fleets, and maintenance professionals across a single connected
+          system.
         </p>
         <div className="stat-row">
           {stats.map((s) => (
@@ -684,49 +692,45 @@ function OverseerCase({ prev, next }: { prev: Project | null; next: Project | nu
       </section>
 
       <section className="sous-section reveal">
-        <h2 className="section-title">the problem</h2>
-        <p>
-          aviation maintenance organizations operate in one of the most compliance-heavy
-          environments outside of healthcare — yet most still rely on paper work orders,
-          disconnected spreadsheets, and manual labor logs. four core problems defined the
-          design challenge.
-        </p>
-        <div className="pain-grid">
-          {pains.map((p) => (
-            <div key={p.eyebrow} className="pain-card">
-              <p className="pain-eyebrow">{p.eyebrow}</p>
-              <h3>{p.title}</h3>
-              <p>{p.body}</p>
-            </div>
-          ))}
+        <h2 className="section-title">the industry context</h2>
+        <div className="industry-context">
+          <h3>almost every aircraft in the world is still maintained with paper and pencil.</h3>
+          <p>
+            in 2024, the majority of general aviation and mro maintenance documentation is still
+            analog — handwritten work orders, paper logbooks, pencil-marked inspection sheets.
+            regulatory compliance, multi-technician coordination, and customer communication all run
+            through physical documents that can be lost, misread, or never filed. overseer exists to
+            replace that stack of paper with a single connected platform that travels with the
+            aircraft.
+          </p>
         </div>
-        <blockquote className="pull-quote">
-          <p>"every shop i visited had the same setup — a whiteboard, a folder of printed work orders, and someone whose entire job was chasing updates."</p>
-          <cite>— research synthesis</cite>
-        </blockquote>
       </section>
 
       <section className="sous-section reveal">
-        <h2 className="section-title">design decisions</h2>
-        <p>four decisions shaped the platform's structure and interaction model.</p>
-        <ol className="numbered-list">
-          {decisions.map((d) => (
-            <li key={d.n}>
-              <span className="num">{d.n}</span>
-              <div>
-                <h3>{d.title}</h3>
-                <p>{d.body}</p>
-              </div>
+        <h2 className="section-title">platform features</h2>
+        <p>
+          overseer covers the full operational surface of an mro organization. i worked across several
+          of these modules — each solving a distinct pain point for a different user type.
+        </p>
+        <ul className="feature-list">
+          {features.map((f) => (
+            <li key={f.name}>
+              <span className="feature-name">{f.name}</span>
+              <span className="feature-body">{f.body}</span>
             </li>
           ))}
-        </ol>
+        </ul>
       </section>
 
-      <section className="sous-section reveal">
-        <h2 className="section-title">key screens</h2>
-        <p>three screens carry most of the platform's functional weight.</p>
+      <section className="sous-section focus-section reveal">
+        <h2 className="section-title">focus: work order mx</h2>
+        <p>
+          the work order module was my primary contribution — designed entirely from scratch, within a
+          design system i also had to rebuild. it is the most complex screen in the platform and the
+          one that most directly replaced a physical paper process.
+        </p>
         <ol className="numbered-list">
-          {screens.map((d) => (
+          {decisions.map((d) => (
             <li key={d.n}>
               <span className="num">{d.n}</span>
               <div>
@@ -742,38 +746,51 @@ function OverseerCase({ prev, next }: { prev: Project | null; next: Project | nu
         <img src={overseerDetail} alt="overseer work order detail screen" loading="lazy" />
       </figure>
 
-      <figure className="sous-mockup reveal">
-        <img src={overseerReport} alt="overseer labor report" loading="lazy" />
-      </figure>
-
       <section className="sous-section reveal">
-        <h2 className="section-title">design considerations</h2>
+        <h2 className="section-title">design system</h2>
         <p>
-          aviation maintenance is a high-stakes, highly regulated environment. every design
-          decision had to account for two things: the cognitive load of a mechanic mid-job,
-          and the audit requirements of an faa-regulated shop. this meant prioritizing
-          scannable tables over dashboards, explicit status labels over ambiguous icons, and
-          a form structure that mirrors the mental model of an experienced a&p mechanic
-          rather than a generic project management tool.
+          the overseer design system didn't exist when i joined the project. before i could design the
+          work order module, i needed to reconstruct the system from the existing product —
+          documenting components, establishing token structure, and creating a figma library that the
+          team could build from. the work order module was then the first feature designed entirely
+          within that rebuilt system.
         </p>
         <div className="insight-callout">
-          <p>the platform uses a dark sidebar with a high-contrast yellow accent — not as a style choice, but as a functional one. in a shop environment with varying light conditions, high-contrast navigation reduces the cognitive cost of context-switching between the screen and the aircraft.</p>
+          <p>designing within a system you built yourself creates a different kind of accountability. every component decision in the work order had to work not just for this screen, but for every screen that came after it.</p>
         </div>
       </section>
 
+      <figure className="sous-mockup reveal">
+        <img src={overseerList} alt="overseer work order list" loading="lazy" />
+      </figure>
+
       <section className="sous-section reveal">
-        <h2 className="section-title">outcome</h2>
-        <p>
-          overseer consolidates the full mro workflow — from work order creation through
-          labor reporting — into a single platform that matches how maintenance professionals
-          actually think and work. the result is a system that reduces documentation overhead,
-          gives supervisors real-time job visibility, and provides customers a transparent
-          window into their aircraft's maintenance status.
-        </p>
+        <h2 className="section-title">impact</h2>
+        <div className="impact-grid">
+          <p>
+            overseer is a live product used by real mro organizations. the work order module — and the
+            broader platform work i contributed to — played a direct role in closing partnerships with
+            two of the largest names in general aviation. these weren't small deals: robinson
+            helicopter company and garmin both integrated crewchief into their aircraft and systems,
+            validating the platform's readiness for enterprise-scale operations.
+          </p>
+          <div className="impact-stats">
+            {impactStats.map((s) => (
+              <div key={s.org} className="impact-stat-card">
+                <p className="impact-org">{s.org}</p>
+                <p className="impact-label">{s.label}</p>
+              </div>
+            ))}
+          </div>
+        </div>
         <div className="ia-pills">
           {outcomes.map((t) => <span key={t} className="pill">{t}</span>)}
         </div>
       </section>
+
+      <figure className="sous-mockup reveal">
+        <img src={overseerReport} alt="overseer labor report" loading="lazy" />
+      </figure>
 
       <div className="project-nav reveal">
         {prev ? <a href={`#project/${prev.slug}`} className="big-link">← previous project</a> : <span />}
@@ -1207,5 +1224,75 @@ input:focus, textarea:focus { outline: none; border: 2px solid var(--color-prima
   width: 100%;
   height: auto;
   display: block;
+}
+
+
+
+/* overseer-specific */
+.confidentiality-notice {
+  margin: 0 0 2rem;
+  padding: 0.75rem 1rem;
+  background: var(--color-surface-offset);
+  color: var(--color-text-muted);
+  border-radius: 8px;
+  font-size: 0.82rem;
+  line-height: 1.5;
+}
+.industry-context {
+  margin-top: 1.5rem;
+  padding: 1.75rem 2rem;
+  border-left: 3px solid var(--color-accent-warm);
+  background: color-mix(in oklab, var(--color-accent-warm) 8%, transparent);
+  border-radius: 0 12px 12px 0;
+}
+.industry-context h3 {
+  font-family: var(--font-display); font-weight: 700;
+  font-size: clamp(1.25rem, 2.2vw, 1.6rem);
+  color: var(--color-text); margin: 0 0 0.75rem; line-height: 1.25;
+}
+.industry-context p {
+  font-size: 1.05rem; color: var(--color-text); margin: 0; line-height: 1.65;
+}
+.feature-list {
+  list-style: none; padding: 0; margin: 1.5rem 0 0;
+}
+.feature-list li {
+  display: grid; grid-template-columns: 1fr 2fr; gap: 1.5rem;
+  padding: 1.1rem 0; border-bottom: 1px solid var(--color-border);
+  align-items: baseline;
+}
+.feature-list li:last-child { border-bottom: none; }
+.feature-name {
+  font-family: var(--font-display); font-weight: 700;
+  font-size: 1rem; color: var(--color-text); letter-spacing: 0.01em;
+}
+.feature-body {
+  color: var(--color-text-muted); font-size: 0.95rem; line-height: 1.55;
+}
+.focus-section { margin: 5rem 0; }
+.impact-grid {
+  margin-top: 1.5rem;
+  display: grid; grid-template-columns: 1fr 1fr; gap: 2.5rem;
+  align-items: start;
+}
+.impact-grid > p { font-size: 1.02rem; line-height: 1.7; color: var(--color-text); margin: 0; }
+.impact-stats { display: flex; flex-direction: column; gap: 1rem; }
+.impact-stat-card {
+  padding: 1.5rem;
+  background: var(--color-surface-offset);
+  border: 1px solid var(--color-divider);
+  border-radius: 14px;
+}
+.impact-org {
+  font-family: var(--font-display); font-weight: 700;
+  font-size: clamp(1.1rem, 1.8vw, 1.35rem);
+  color: var(--color-text); margin: 0 0 0.5rem; line-height: 1.2;
+}
+.impact-label {
+  font-size: 0.85rem; color: var(--color-text-muted); margin: 0; line-height: 1.5;
+}
+@media (max-width: 768px) {
+  .feature-list li { grid-template-columns: 1fr; gap: 0.4rem; }
+  .impact-grid { grid-template-columns: 1fr; gap: 1.5rem; }
 }
 `;
