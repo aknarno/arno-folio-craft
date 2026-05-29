@@ -1225,11 +1225,8 @@ input:focus, textarea:focus { outline: none; border: 2px solid var(--color-prima
   height: auto;
   display: block;
 }
-.sous-mockup img {
-  width: 100%;
-  height: auto;
-  display: block;
-}
+
+
 
 /* overseer-specific */
 .confidentiality-notice {
