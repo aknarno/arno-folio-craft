@@ -4,6 +4,9 @@ import sousCover from "@/assets/sous/cover.png";
 import sousDesignSystem from "@/assets/sous/design-system.png";
 import sousMockup from "@/assets/sous/mockup.png";
 import sousStepByStep from "@/assets/sous/step-by-step.png";
+import overseerList from "@/assets/overseer/work-order-list.png";
+import overseerDetail from "@/assets/overseer/work-order-detail.png";
+import overseerReport from "@/assets/overseer/labor-report.png";
 
 export const Route = createFileRoute("/")({
   component: Index,
@@ -123,6 +126,17 @@ const projects: Project[] = [
       "a just-in-time cooking assistant for busy beginners — no pantry database, no decision fatigue, just dinner.",
     tags: ["mobile", "ux design", "product concept"],
     cover: sousCover,
+  },
+  {
+    slug: "overseer",
+    title: "overseer — aircraft maintenance management",
+    client: "portfolio project",
+    year: "2024",
+    role: "ux/ui designer",
+    summary:
+      "a web-based mro platform that consolidates work orders, discrepancies, labor reporting and compliance into a single focused workspace.",
+    tags: ["b2b saas", "web app", "mro platform", "ux design"],
+    cover: overseerList,
   },
 ];
 
@@ -415,6 +429,10 @@ function ProjectDetail({ slug }: { slug: string }) {
     return <SousCase prev={prev} next={next} />;
   }
 
+  if (slug === "overseer") {
+    return <OverseerCase prev={prev} next={next} />;
+  }
+
   return (
     <article className="section narrow">
       <a href="#projects" className="back-link reveal">← work</a>
@@ -588,6 +606,174 @@ function SousCase({ prev, next }: { prev: Project | null; next: Project | null }
       <figure className="sous-mockup reveal">
         <img src={sousMockup} alt="sous mockup in context" loading="lazy" />
       </figure>
+
+      <div className="project-nav reveal">
+        {prev ? <a href={`#project/${prev.slug}`} className="big-link">← previous project</a> : <span />}
+        {next ? <a href={`#project/${next.slug}`} className="big-link">next project →</a> : <a href="#projects" className="big-link">all work →</a>}
+      </div>
+    </article>
+  );
+}
+
+function OverseerCase({ prev, next }: { prev: Project | null; next: Project | null }) {
+  const stats = [
+    { label: "platform type", value: "web app", sub: "b2b saas · mro-focused" },
+    { label: "core users", value: "mx professionals", sub: "mros, a&p mechanics, fleet managers" },
+    { label: "key modules", value: "4 areas", sub: "work orders · labor · inventory · reports" },
+    { label: "project type", value: "concept", sub: "end-to-end ux design" },
+  ];
+  const pains = [
+    { eyebrow: "pain 01", title: "fragmented workflows", body: "work order creation, discrepancy tracking, labor logging, and reporting lived in separate tools — or on paper. no single source of truth." },
+    { eyebrow: "pain 02", title: "zero visibility on labor", body: "supervisors had no real-time view of who was working what, how many hours were logged, or where a job stood without walking the floor." },
+    { eyebrow: "pain 03", title: "compliance risk", body: "ad/sb tracking and sign-off documentation were manual and error-prone. one missed entry could ground an aircraft or trigger a regulatory finding." },
+    { eyebrow: "pain 04", title: "customer disconnect", body: "mro customers had no visibility into their aircraft's maintenance status. updates came by phone, if at all." },
+  ];
+  const decisions = [
+    { n: "01", title: "work order as the atomic unit", body: "everything — labor entries, discrepancy items, tooling allocation, cost tracking — is anchored to a single work order. nothing lives outside of it." },
+    { n: "02", title: "discrepancy list as the task layer", body: "within each work order, a hierarchical discrepancy list (items and sub-items) gives mechanics a structured way to log findings, estimates, and actions taken — without free-form notes that get lost." },
+    { n: "03", title: "labor visibility through reporting", body: "a dedicated labor report surfaces hours by work order, by sub-item, and by technician — giving supervisors the audit trail they need without building a separate reporting tool." },
+    { n: "04", title: "progressive disclosure for complexity", body: "the work order form surfaces only what's needed at each stage: customer info first, then aircraft context, then scheduling, then scope. 620-row sku tables appear only after the job is defined." },
+  ];
+  const screens = [
+    { n: "01", title: "work order list", body: "the operations hub. filterable by maintainer, status, date range, and tail number. each row surfaces the work order number, aircraft identity, assignees, and status at a glance. a 'create new work order' cta is always accessible from here." },
+    { n: "02", title: "work order detail", body: "the most complex screen in the platform. organized into customer, aircraft, schedule, and discrepancy sections. the discrepancy list supports nested items with labor rate, estimated and actual hours, cost, action taken, and approval status per line." },
+    { n: "03", title: "labor report", body: "a generated document view showing logged hours by work order and sub-item, grouped by technician. designed to be print-ready and client-shareable without exporting to another tool." },
+  ];
+  const outcomes = [
+    "work order management",
+    "hierarchical discrepancy tracking",
+    "real-time labor logging",
+    "print-ready labor reports",
+    "fleet-level aircraft context",
+    "role-based assignment",
+  ];
+  return (
+    <article className="section">
+      <a href="#projects" className="back-link reveal">← work</a>
+      <h1 className="reveal sous-title">overseer — aircraft maintenance management</h1>
+      <p className="sous-meta reveal">ux/ui designer · portfolio project · 2024 · figma · b2b saas</p>
+      <div className="sous-pills reveal">
+        <span className="pill">b2b saas</span>
+        <span className="pill">web app</span>
+        <span className="pill">mro platform</span>
+        <span className="pill">ux design</span>
+      </div>
+
+      <figure className="sous-mockup reveal">
+        <img src={overseerList} alt="overseer work order list" loading="lazy" />
+      </figure>
+
+      <section className="sous-section reveal">
+        <h2 className="section-title">overview</h2>
+        <p className="big">
+          overseer is a web-based aircraft maintenance management platform built for mro
+          organizations and maintenance professionals. it centralizes work order creation,
+          discrepancy tracking, labor reporting, and compliance documentation into a single
+          focused workspace — replacing fragmented spreadsheets and paper-based workflows that
+          still dominate the aviation maintenance industry.
+        </p>
+        <div className="stat-row">
+          {stats.map((s) => (
+            <div key={s.label} className="stat">
+              <p className="stat-label">{s.label}</p>
+              <p className="stat-value">{s.value}</p>
+              <p className="stat-sub">{s.sub}</p>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      <section className="sous-section reveal">
+        <h2 className="section-title">the problem</h2>
+        <p>
+          aviation maintenance organizations operate in one of the most compliance-heavy
+          environments outside of healthcare — yet most still rely on paper work orders,
+          disconnected spreadsheets, and manual labor logs. four core problems defined the
+          design challenge.
+        </p>
+        <div className="pain-grid">
+          {pains.map((p) => (
+            <div key={p.eyebrow} className="pain-card">
+              <p className="pain-eyebrow">{p.eyebrow}</p>
+              <h3>{p.title}</h3>
+              <p>{p.body}</p>
+            </div>
+          ))}
+        </div>
+        <blockquote className="pull-quote">
+          <p>"every shop i visited had the same setup — a whiteboard, a folder of printed work orders, and someone whose entire job was chasing updates."</p>
+          <cite>— research synthesis</cite>
+        </blockquote>
+      </section>
+
+      <section className="sous-section reveal">
+        <h2 className="section-title">design decisions</h2>
+        <p>four decisions shaped the platform's structure and interaction model.</p>
+        <ol className="numbered-list">
+          {decisions.map((d) => (
+            <li key={d.n}>
+              <span className="num">{d.n}</span>
+              <div>
+                <h3>{d.title}</h3>
+                <p>{d.body}</p>
+              </div>
+            </li>
+          ))}
+        </ol>
+      </section>
+
+      <section className="sous-section reveal">
+        <h2 className="section-title">key screens</h2>
+        <p>three screens carry most of the platform's functional weight.</p>
+        <ol className="numbered-list">
+          {screens.map((d) => (
+            <li key={d.n}>
+              <span className="num">{d.n}</span>
+              <div>
+                <h3>{d.title}</h3>
+                <p>{d.body}</p>
+              </div>
+            </li>
+          ))}
+        </ol>
+      </section>
+
+      <figure className="sous-mockup reveal">
+        <img src={overseerDetail} alt="overseer work order detail screen" loading="lazy" />
+      </figure>
+
+      <figure className="sous-mockup reveal">
+        <img src={overseerReport} alt="overseer labor report" loading="lazy" />
+      </figure>
+
+      <section className="sous-section reveal">
+        <h2 className="section-title">design considerations</h2>
+        <p>
+          aviation maintenance is a high-stakes, highly regulated environment. every design
+          decision had to account for two things: the cognitive load of a mechanic mid-job,
+          and the audit requirements of an faa-regulated shop. this meant prioritizing
+          scannable tables over dashboards, explicit status labels over ambiguous icons, and
+          a form structure that mirrors the mental model of an experienced a&p mechanic
+          rather than a generic project management tool.
+        </p>
+        <div className="insight-callout">
+          <p>the platform uses a dark sidebar with a high-contrast yellow accent — not as a style choice, but as a functional one. in a shop environment with varying light conditions, high-contrast navigation reduces the cognitive cost of context-switching between the screen and the aircraft.</p>
+        </div>
+      </section>
+
+      <section className="sous-section reveal">
+        <h2 className="section-title">outcome</h2>
+        <p>
+          overseer consolidates the full mro workflow — from work order creation through
+          labor reporting — into a single platform that matches how maintenance professionals
+          actually think and work. the result is a system that reduces documentation overhead,
+          gives supervisors real-time job visibility, and provides customers a transparent
+          window into their aircraft's maintenance status.
+        </p>
+        <div className="ia-pills">
+          {outcomes.map((t) => <span key={t} className="pill">{t}</span>)}
+        </div>
+      </section>
 
       <div className="project-nav reveal">
         {prev ? <a href={`#project/${prev.slug}`} className="big-link">← previous project</a> : <span />}
