@@ -233,10 +233,20 @@ function Home() {
       <section className="section about">
         <h2 className="section-title reveal">about</h2>
         <p className="reveal big">
-          around ten years designing for international clients — from livestock
-          and agriculture platforms to real-time aircraft intelligence systems.
-          most recently as lead designer at tekna.rocks, where i led research,
-          prototyping and final ui across long-term saas engagements.
+          i'm arno klettenberg, a ux/ui designer based in curitiba, brazil,
+          focused on building complex digital products that actually work for
+          the people using them. my background spans b2b saas platforms,
+          cross-platform systems, and data-heavy interfaces — from aircraft
+          maintenance management tools used by mro professionals to carbon
+          credit platforms serving farmers and ranchers across north america.
+          i care about the details that most people don't notice until they're
+          missing: the form that doesn't lose your data, the table that's
+          readable at 6am in a shop, the onboarding that doesn't require a
+          manual. i've worked on products that have helped close enterprise
+          deals with robinson helicopter company and garmin, and contributed
+          to systems that operate at scale in regulated, high-stakes
+          environments. i design for clarity, build for context, and take
+          complexity seriously.
         </p>
         <div className="about-grid reveal">
           <div>
@@ -263,7 +273,8 @@ function Home() {
           </div>
           <div>
             <p className="kicker">languages</p>
-            <p>portuguese (native) · english (fluent)</p>
+            <p>portuguese (native)</p>
+            <p>english (fluent)</p>
           </div>
         </div>
       </section>
