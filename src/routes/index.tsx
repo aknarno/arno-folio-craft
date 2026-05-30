@@ -298,7 +298,7 @@ function Home() {
                   <h3>{p.title}</h3>
                   <p className="muted">{p.summary}</p>
                 </div>
-                <p className="muted small">{p.client} · {p.year}</p>
+                <p className="muted small project-meta-line">{p.client} · {p.year} · {p.role}</p>
               </div>
             </a>
           ))}
