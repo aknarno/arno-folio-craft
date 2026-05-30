@@ -8,6 +8,10 @@ import overseerCover from "@/assets/overseer/cover.png";
 import overseerList from "@/assets/overseer/work-order-list.png";
 import overseerDetail from "@/assets/overseer/work-order-detail.png";
 import overseerReport from "@/assets/overseer/labor-report.png";
+import argoCover from "@/assets/argo/cover.png";
+import argoEstimate from "@/assets/argo/estimate.png";
+import argoDrawBoundary from "@/assets/argo/draw-boundary.png";
+import argoDataCollection from "@/assets/argo/data-collection.png";
 
 export const Route = createFileRoute("/")({
   component: Index,
@@ -46,82 +50,10 @@ type Project = {
 
 const projects: Project[] = [
   {
-    slug: "replenishment-dashboard",
-    title: "replenishment dashboard",
-    client: "northwind retail",
-    year: "2025",
-    role: "lead product designer",
-    summary:
-      "a calm, data-dense interface that helps planners forecast stock without drowning in numbers.",
-    tags: ["enterprise", "data viz", "design system"],
-    cover:
-      "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=1600&q=80",
-    intro:
-      "northwind's planning team manages thousands of skus across 40 stores. the legacy tool buried them in spreadsheets. we rebuilt the experience around a single question: what needs my attention today?",
-    sections: [
-      {
-        heading: "the problem",
-        body: "planners spent the first 90 minutes of every day rebuilding context — pulling reports, cross-checking inventory, mentally flagging risk. the retailer's growth made the old workflow untenable.",
-      },
-      {
-        heading: "approach",
-        body: "we shadowed planners for two weeks, mapped their decision points, and prototyped a triage-first dashboard. every screen now opens with prioritized actions instead of raw tables.",
-      },
-      {
-        heading: "outcome",
-        body: "time-to-first-decision dropped from 47 minutes to under 6. forecast accuracy improved 12% in the first quarter post-launch.",
-      },
-    ],
-  },
-  {
-    slug: "design-system-foundation",
-    title: "design system foundation",
-    client: "terra studio",
-    year: "2024",
-    role: "product designer",
-    summary:
-      "a note-taking app for field researchers, designed for one-handed use in unpredictable conditions.",
-    tags: ["mobile", "ios", "research"],
-    cover:
-      "https://images.unsplash.com/photo-1481349518771-20055b2a7b24?auto=format&fit=crop&w=1600&q=80",
-    intro:
-      "built for biologists and geologists working far from connectivity. the interface had to survive gloves, rain, and bright sunlight.",
-    sections: [
-      {
-        heading: "constraints",
-        body: "offline-first. glove-friendly tap targets. legible at noon in the desert and at dusk in the forest. battery efficient.",
-      },
-      {
-        heading: "design choices",
-        body: "high-contrast typography, oversized touch zones, voice-capture as the primary input. sync happens silently when signal returns.",
-      },
-    ],
-  },
-  {
-    slug: "onboarding-flow-redesign",
-    title: "onboarding flow redesign",
-    client: "harbor financial",
-    year: "2024",
-    role: "senior ux designer",
-    summary:
-      "reimagining personal banking for people who'd rather think about anything else.",
-    tags: ["fintech", "web", "brand"],
-    cover:
-      "https://images.unsplash.com/photo-1554224155-6726b3ff858f?auto=format&fit=crop&w=1600&q=80",
-    intro:
-      "harbor wanted to be the bank that respects your time. we translated that promise into every screen — fewer numbers, more meaning.",
-    sections: [
-      {
-        heading: "principles",
-        body: "show the answer, not the data. default to plain language. never use red unless something is genuinely wrong.",
-      },
-    ],
-  },
-  {
     slug: "sous",
     title: "sous — just-in-time cooking",
     client: "portfolio project",
-    year: "2025",
+    year: "2026",
     role: "ux/ui designer",
     summary:
       "a just-in-time cooking assistant for busy beginners — no pantry database, no decision fatigue, just dinner.",
@@ -135,9 +67,20 @@ const projects: Project[] = [
     year: "2024",
     role: "ux/ui designer",
     summary:
-      "a web-based mro platform that consolidates work orders, discrepancies, labor reporting and compliance into a single focused workspace.",
+      "a cross-platform web and mobile mro platform that consolidates work orders, discrepancies, labor reporting and compliance into a single focused workspace.",
     tags: ["b2b saas", "web & mobile", "mro platform", "ux design", "design system"],
     cover: overseerCover,
+  },
+  {
+    slug: "argo",
+    title: "argo — carbon credits management platform",
+    client: "real-world project",
+    year: "2024",
+    role: "ux/ui designer",
+    summary:
+      "a carbon credits platform connecting farmers and ranchers with voluntary carbon markets — boundary drawing, data collection and an 11-year credit projection.",
+    tags: ["b2b saas", "web app", "agtech", "ux design", "data visualization"],
+    cover: argoCover,
   },
 ];
 
@@ -290,10 +233,20 @@ function Home() {
       <section className="section about">
         <h2 className="section-title reveal">about</h2>
         <p className="reveal big">
-          around ten years designing for international clients — from livestock
-          and agriculture platforms to real-time aircraft intelligence systems.
-          most recently as lead designer at tekna.rocks, where i led research,
-          prototyping and final ui across long-term saas engagements.
+          i'm arno klettenberg, a ux/ui designer based in curitiba, brazil,
+          focused on building complex digital products that actually work for
+          the people using them. my background spans b2b saas platforms,
+          cross-platform systems, and data-heavy interfaces — from aircraft
+          maintenance management tools used by mro professionals to carbon
+          credit platforms serving farmers and ranchers across north america.
+          i care about the details that most people don't notice until they're
+          missing: the form that doesn't lose your data, the table that's
+          readable at 6am in a shop, the onboarding that doesn't require a
+          manual. i've worked on products that have helped close enterprise
+          deals with robinson helicopter company and garmin, and contributed
+          to systems that operate at scale in regulated, high-stakes
+          environments. i design for clarity, build for context, and take
+          complexity seriously.
         </p>
         <div className="about-grid reveal">
           <div>
@@ -320,7 +273,8 @@ function Home() {
           </div>
           <div>
             <p className="kicker">languages</p>
-            <p>portuguese (native) · english (fluent)</p>
+            <p>portuguese (native)</p>
+            <p>english (fluent)</p>
           </div>
         </div>
       </section>
@@ -344,7 +298,7 @@ function Home() {
                   <h3>{p.title}</h3>
                   <p className="muted">{p.summary}</p>
                 </div>
-                <p className="muted small">{p.client} · {p.year}</p>
+                <p className="muted small project-meta-line">{p.client} · {p.year} · {p.role}</p>
               </div>
             </a>
           ))}
@@ -370,7 +324,7 @@ function Projects() {
                 <h3>{p.title}</h3>
                 <p className="muted">{p.summary}</p>
               </div>
-              <p className="muted small">{p.client} · {p.year} · {p.role}</p>
+              <p className="muted small project-meta-line">{p.client} · {p.year} · {p.role}</p>
             </div>
           </a>
         ))}
@@ -432,6 +386,10 @@ function ProjectDetail({ slug }: { slug: string }) {
 
   if (slug === "overseer") {
     return <OverseerCase prev={prev} next={next} />;
+  }
+
+  if (slug === "argo") {
+    return <ArgoCase prev={prev} next={next} />;
   }
 
   return (
@@ -720,14 +678,33 @@ function OverseerCase({ prev, next }: { prev: Project | null; next: Project | nu
             </li>
           ))}
         </ul>
+        <p style={{ marginTop: "1.25rem" }}>
+          beyond the work order module, i contributed to multiple other features within the platform.
+          i also led design work on separate projects outside the core product, including the design
+          system reconstruction that made all of this possible.
+        </p>
+      </section>
+
+      <section className="sous-section reveal">
+        <h2 className="section-title">design system</h2>
+        <p>
+          the overseer design system didn't exist when i joined the project. before i could design the
+          work order module, i needed to reconstruct the system from the existing product —
+          documenting components, establishing token structure, and creating a figma library that the
+          team could build from. the work order module was then the first feature designed entirely
+          within that rebuilt system.
+        </p>
+        <div className="insight-callout">
+          <p>designing within a system you built yourself creates a different kind of accountability. every component decision in the work order had to work not just for this screen, but for every screen that came after it.</p>
+        </div>
       </section>
 
       <section className="sous-section focus-section reveal">
         <h2 className="section-title">focus: work order mx</h2>
         <p>
-          the work order module was my primary contribution — designed entirely from scratch, within a
-          design system i also had to rebuild. it is the most complex screen in the platform and the
-          one that most directly replaced a physical paper process.
+          the work order module was my primary contribution — designed entirely from scratch, within
+          the design system above. it is the most complex screen in the platform and the one that
+          most directly replaced a physical paper process.
         </p>
         <ol className="numbered-list">
           {decisions.map((d) => (
@@ -745,20 +722,6 @@ function OverseerCase({ prev, next }: { prev: Project | null; next: Project | nu
       <figure className="sous-mockup reveal">
         <img src={overseerDetail} alt="overseer work order detail screen" loading="lazy" />
       </figure>
-
-      <section className="sous-section reveal">
-        <h2 className="section-title">design system</h2>
-        <p>
-          the overseer design system didn't exist when i joined the project. before i could design the
-          work order module, i needed to reconstruct the system from the existing product —
-          documenting components, establishing token structure, and creating a figma library that the
-          team could build from. the work order module was then the first feature designed entirely
-          within that rebuilt system.
-        </p>
-        <div className="insight-callout">
-          <p>designing within a system you built yourself creates a different kind of accountability. every component decision in the work order had to work not just for this screen, but for every screen that came after it.</p>
-        </div>
-      </section>
 
       <figure className="sous-mockup reveal">
         <img src={overseerList} alt="overseer work order list" loading="lazy" />
@@ -790,7 +753,179 @@ function OverseerCase({ prev, next }: { prev: Project | null; next: Project | nu
 
       <figure className="sous-mockup reveal">
         <img src={overseerReport} alt="overseer labor report" loading="lazy" />
+        <figcaption className="image-caption">
+          example of a client-ready labor report generated directly from the platform — no export to
+          a third-party tool required.
+        </figcaption>
       </figure>
+
+      <div className="project-nav reveal">
+        {prev ? <a href={`#project/${prev.slug}`} className="big-link">← previous project</a> : <span />}
+        {next ? <a href={`#project/${next.slug}`} className="big-link">next project →</a> : <a href="#projects" className="big-link">all work →</a>}
+      </div>
+    </article>
+  );
+}
+
+function ArgoCase({ prev, next }: { prev: Project | null; next: Project | null }) {
+  const stats = [
+    { label: "platform", value: "web app", sub: "b2b saas · agtech" },
+    { label: "users", value: "farmers · ranchers", sub: "landowners across north america" },
+    { label: "my contribution", value: "2 core modules", sub: "draw boundary + data collection" },
+    { label: "project type", value: "real product", sub: "shipped · name changed for confidentiality" },
+  ];
+  const contributions = [
+    { n: "01", title: "draw boundary tool", body: "an interactive satellite map interface where farmers draw the precise boundaries of their fields using polygon tools. the tool supports multiple drawing modes — freehand polygon, circular border, inner border — and allows users to name fields, set acreage, define land ownership type, and classify field type (row crop, range and pasture) before saving. accuracy here determines the carbon calculation downstream, so the ux had to be precise without being intimidating to a rancher who has never used gis software." },
+    { n: "02", title: "data collection module", body: "a centralized, structured view of all data associated with a producer's farm — herd data, fertilizer and amendment applications, forage management practices, and more. data is organized into collapsible sections per practice category, with inline error surfacing, edit mode, and multi-year filtering. this screen is the scientific backbone of the carbon estimate: every field logged here feeds directly into the carbon modeling engine." },
+  ];
+  const challenges = [
+    { n: "01", title: "spatial accuracy vs. accessibility", body: "the draw boundary tool needed to be precise enough for scientific modeling while remaining usable by someone drawing field boundaries on a tablet from a ranch office. the solution was a constrained, opinionated drawing toolbar — limited options, clear visual feedback, and a fields list panel that kept the user grounded in what they'd already defined." },
+    { n: "02", title: "data density without overwhelm", body: "the data collection module aggregates years of agricultural practice data across multiple categories. the challenge was making that density navigable — collapsible sections, progressive disclosure, a persistent error count (\"show only errors: 3\"), and multi-axis filtering (by field, by year, by event) all worked together to give the user control without cognitive overload." },
+    { n: "03", title: "trust in the numbers", body: "the carbon estimate is the emotional core of the product — it's the number that convinces a skeptical farmer to enroll. every design decision in the flow leading up to it had to build confidence that the inputs were correct, the methodology was sound, and the projected payment was real." },
+  ];
+  const outcomes = [
+    "interactive satellite boundary drawing",
+    "multi-mode polygon tools",
+    "hierarchical agricultural data collection",
+    "11-year carbon credit projection",
+    "inline error surfacing and validation",
+    "real-world shipped product",
+  ];
+  return (
+    <article className="section">
+      <a href="#projects" className="back-link reveal">← work</a>
+      <h1 className="reveal sous-title">argo — carbon credits management platform</h1>
+      <p className="sous-meta reveal">ux/ui designer · real-world project · 2024 · figma · b2b saas</p>
+      <div className="sous-pills reveal">
+        <span className="pill">b2b saas</span>
+        <span className="pill">web app</span>
+        <span className="pill">agtech</span>
+        <span className="pill">ux design</span>
+        <span className="pill">data visualization</span>
+      </div>
+      <div className="confidentiality-notice reveal">
+        this is a real shipped product. name and branding have been changed for confidentiality.
+      </div>
+
+      <figure className="sous-mockup reveal">
+        <img src={argoCover} alt="argo — carbon credits management platform cover" loading="lazy" />
+      </figure>
+
+      <section className="sous-section reveal">
+        <h2 className="section-title">overview</h2>
+        <p className="big">
+          argo is a carbon credits management platform that connects farmers and ranchers with
+          voluntary carbon markets. landowners upload or draw their farm boundaries directly on a
+          satellite map, apply science-backed land management practices, and receive an 11-year
+          projection of the carbon credits their land could generate. argo handles the entire
+          process — from initial enrollment and soil data collection through credit issuance and
+          payment — taking a percentage for facilitating the program. my work focused on two of the
+          platform's most technically complex surfaces: the draw boundary tool and the data
+          collection module.
+        </p>
+        <div className="stat-row">
+          {stats.map((s) => (
+            <div key={s.label} className="stat">
+              <p className="stat-label">{s.label}</p>
+              <p className="stat-value">{s.value}</p>
+              <p className="stat-sub">{s.sub}</p>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      <section className="sous-section reveal">
+        <h2 className="section-title">the context</h2>
+        <div className="industry-context">
+          <h3>farmers are sitting on one of the largest untapped carbon sinks on the planet — and most don't know it.</h3>
+          <p>
+            regenerative land management practices — reduced tillage, cover cropping, improved
+            grazing — sequester carbon in the soil at scale. but translating those practices into
+            verified, tradeable carbon credits requires scientific modeling, regulatory compliance,
+            and years of documentation that most individual landowners can't navigate alone. argo
+            exists to make that process accessible: a farmer draws their fields, logs their
+            practices, and argo handles the rest — turning better land stewardship into a new
+            revenue stream.
+          </p>
+        </div>
+      </section>
+
+      <section className="sous-section reveal">
+        <h2 className="section-title">my contribution</h2>
+        <p>
+          i was primarily responsible for two modules that sit at the beginning and the middle of
+          the landowner journey — the moments where complexity is highest and where dropping out is
+          most likely.
+        </p>
+        <ol className="numbered-list">
+          {contributions.map((d) => (
+            <li key={d.n}>
+              <span className="num">{d.n}</span>
+              <div>
+                <h3>{d.title}</h3>
+                <p>{d.body}</p>
+              </div>
+            </li>
+          ))}
+        </ol>
+      </section>
+
+      <figure className="sous-mockup reveal">
+        <img src={argoDrawBoundary} alt="argo draw boundary tool" loading="lazy" />
+      </figure>
+
+      <figure className="sous-mockup reveal">
+        <img src={argoDataCollection} alt="argo data collection module" loading="lazy" />
+      </figure>
+
+      <section className="sous-section reveal">
+        <h2 className="section-title">design challenges</h2>
+        <p>both modules required solving for a user who is an expert in their land — but not in software.</p>
+        <ol className="numbered-list">
+          {challenges.map((d) => (
+            <li key={d.n}>
+              <span className="num">{d.n}</span>
+              <div>
+                <h3>{d.title}</h3>
+                <p>{d.body}</p>
+              </div>
+            </li>
+          ))}
+        </ol>
+      </section>
+
+      <section className="sous-section reveal">
+        <h2 className="section-title">the estimate</h2>
+        <p>
+          the output of the draw boundary and data collection flow is a carbon estimate screen that
+          shows the landowner their total potential payment over 11 years, broken down by field,
+          payment option (option a and option b), carbon tonnage, deductions, and a year-by-year
+          payment calendar. the estimate is designed to be the moment of conversion — clear enough
+          to understand in 30 seconds, detailed enough to download and bring to a meeting.
+        </p>
+        <div className="insight-callout">
+          <p>designing the estimate screen meant designing for a decision — not just a data display. the layout hierarchy had to answer "how much do i get?" before "how is that calculated?" every element was ordered to build confidence before it built detail.</p>
+        </div>
+      </section>
+
+      <figure className="sous-mockup reveal">
+        <img src={argoEstimate} alt="argo estimate screen" loading="lazy" />
+      </figure>
+
+      <section className="sous-section reveal">
+        <h2 className="section-title">impact</h2>
+        <p>
+          argo operates in a market where trust and scientific credibility are the product. the
+          draw boundary tool and data collection module sit at the foundation of that trust —
+          they're the surfaces where the platform's scientific claims become the farmer's
+          documented reality. getting these two modules right meant the carbon models were fed
+          accurate data, the estimates were defensible, and the landowners felt in control of a
+          process that could generate meaningful income from land they already own.
+        </p>
+        <div className="ia-pills">
+          {outcomes.map((t) => <span key={t} className="pill">{t}</span>)}
+        </div>
+      </section>
 
       <div className="project-nav reveal">
         {prev ? <a href={`#project/${prev.slug}`} className="big-link">← previous project</a> : <span />}
@@ -878,11 +1013,11 @@ footer, figcaption {
   padding: 1.25rem clamp(1rem, 4vw, 3rem);
   border-bottom: 1px solid var(--color-divider);
   position: sticky; top: 0;
-  background: var(--color-surface);
+  background: #E8DBC8;
   backdrop-filter: blur(8px); z-index: 10;
 }
 .nav-left { display: flex; align-items: center; gap: 0.75rem; }
-[data-theme="dark"] .nav { background: #0F0D08; border-bottom-color: #0F0D08; }
+[data-theme="dark"] .nav { background: #060503; border-bottom-color: #060503; }
 .nav-brand {
   display: flex; flex-direction: column; gap: 1px;
   text-decoration: none; line-height: 1.2;
@@ -918,18 +1053,27 @@ footer, figcaption {
 [data-theme="dark"] .nav nav a.active { color: #F2AB6D; }
 .theme-toggle {
   display: flex; align-items: center; justify-content: center;
-  width: 36px; height: 36px; border-radius: 10px;
-  border: none; background: transparent;
-  color: #D9C5AD; cursor: pointer; font-size: 18px; line-height: 1;
-  transition: color .2s, background .2s;
+  width: 36px; height: 36px;
+  border-radius: var(--radius-sm, 6px);
+  border: 1px solid var(--color-border);
+  background: var(--color-surface-offset);
+  color: var(--color-text); cursor: pointer; font-size: 18px; line-height: 1;
+  transition: color .2s, background .2s, border-color .2s;
   flex-shrink: 0;
 }
 .theme-toggle:hover {
   color: var(--color-primary);
-  background: color-mix(in oklab, var(--color-primary) 10%, transparent);
+  border-color: var(--color-primary);
+  background: color-mix(in oklab, var(--color-primary) 10%, var(--color-surface-offset));
 }
-[data-theme="dark"] .theme-toggle { color: #A89880; }
-[data-theme="dark"] .theme-toggle:hover { color: #F2AB6D; background: color-mix(in oklab, #F2AB6D 12%, transparent); }
+[data-theme="dark"] .theme-toggle { color: #E8DDD0; background: #312A18; border-color: #564A2F; }
+[data-theme="dark"] .theme-toggle:hover { color: #F2AB6D; border-color: #F2AB6D; background: color-mix(in oklab, #F2AB6D 12%, #312A18); }
+.project-meta-line { white-space: nowrap; }
+.image-caption {
+  margin-top: 0.75rem; padding: 0 0.25rem;
+  font-size: 0.85rem; color: var(--color-text-muted);
+  font-style: italic; line-height: 1.5; text-align: center;
+}
 main { flex: 1; }
 .hero {
   padding: clamp(4rem, 12vw, 9rem) clamp(1rem, 4vw, 3rem) clamp(3rem, 8vw, 6rem);
