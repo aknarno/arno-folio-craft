@@ -678,14 +678,33 @@ function OverseerCase({ prev, next }: { prev: Project | null; next: Project | nu
             </li>
           ))}
         </ul>
+        <p style={{ marginTop: "1.25rem" }}>
+          beyond the work order module, i contributed to multiple other features within the platform.
+          i also led design work on separate projects outside the core product, including the design
+          system reconstruction that made all of this possible.
+        </p>
+      </section>
+
+      <section className="sous-section reveal">
+        <h2 className="section-title">design system</h2>
+        <p>
+          the overseer design system didn't exist when i joined the project. before i could design the
+          work order module, i needed to reconstruct the system from the existing product —
+          documenting components, establishing token structure, and creating a figma library that the
+          team could build from. the work order module was then the first feature designed entirely
+          within that rebuilt system.
+        </p>
+        <div className="insight-callout">
+          <p>designing within a system you built yourself creates a different kind of accountability. every component decision in the work order had to work not just for this screen, but for every screen that came after it.</p>
+        </div>
       </section>
 
       <section className="sous-section focus-section reveal">
         <h2 className="section-title">focus: work order mx</h2>
         <p>
-          the work order module was my primary contribution — designed entirely from scratch, within a
-          design system i also had to rebuild. it is the most complex screen in the platform and the
-          one that most directly replaced a physical paper process.
+          the work order module was my primary contribution — designed entirely from scratch, within
+          the design system above. it is the most complex screen in the platform and the one that
+          most directly replaced a physical paper process.
         </p>
         <ol className="numbered-list">
           {decisions.map((d) => (
@@ -703,20 +722,6 @@ function OverseerCase({ prev, next }: { prev: Project | null; next: Project | nu
       <figure className="sous-mockup reveal">
         <img src={overseerDetail} alt="overseer work order detail screen" loading="lazy" />
       </figure>
-
-      <section className="sous-section reveal">
-        <h2 className="section-title">design system</h2>
-        <p>
-          the overseer design system didn't exist when i joined the project. before i could design the
-          work order module, i needed to reconstruct the system from the existing product —
-          documenting components, establishing token structure, and creating a figma library that the
-          team could build from. the work order module was then the first feature designed entirely
-          within that rebuilt system.
-        </p>
-        <div className="insight-callout">
-          <p>designing within a system you built yourself creates a different kind of accountability. every component decision in the work order had to work not just for this screen, but for every screen that came after it.</p>
-        </div>
-      </section>
 
       <figure className="sous-mockup reveal">
         <img src={overseerList} alt="overseer work order list" loading="lazy" />
@@ -748,6 +753,10 @@ function OverseerCase({ prev, next }: { prev: Project | null; next: Project | nu
 
       <figure className="sous-mockup reveal">
         <img src={overseerReport} alt="overseer labor report" loading="lazy" />
+        <figcaption className="image-caption">
+          example of a client-ready labor report generated directly from the platform — no export to
+          a third-party tool required.
+        </figcaption>
       </figure>
 
       <div className="project-nav reveal">
