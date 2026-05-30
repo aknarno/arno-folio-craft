@@ -50,82 +50,10 @@ type Project = {
 
 const projects: Project[] = [
   {
-    slug: "replenishment-dashboard",
-    title: "replenishment dashboard",
-    client: "northwind retail",
-    year: "2025",
-    role: "lead product designer",
-    summary:
-      "a calm, data-dense interface that helps planners forecast stock without drowning in numbers.",
-    tags: ["enterprise", "data viz", "design system"],
-    cover:
-      "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=1600&q=80",
-    intro:
-      "northwind's planning team manages thousands of skus across 40 stores. the legacy tool buried them in spreadsheets. we rebuilt the experience around a single question: what needs my attention today?",
-    sections: [
-      {
-        heading: "the problem",
-        body: "planners spent the first 90 minutes of every day rebuilding context — pulling reports, cross-checking inventory, mentally flagging risk. the retailer's growth made the old workflow untenable.",
-      },
-      {
-        heading: "approach",
-        body: "we shadowed planners for two weeks, mapped their decision points, and prototyped a triage-first dashboard. every screen now opens with prioritized actions instead of raw tables.",
-      },
-      {
-        heading: "outcome",
-        body: "time-to-first-decision dropped from 47 minutes to under 6. forecast accuracy improved 12% in the first quarter post-launch.",
-      },
-    ],
-  },
-  {
-    slug: "design-system-foundation",
-    title: "design system foundation",
-    client: "terra studio",
-    year: "2024",
-    role: "product designer",
-    summary:
-      "a note-taking app for field researchers, designed for one-handed use in unpredictable conditions.",
-    tags: ["mobile", "ios", "research"],
-    cover:
-      "https://images.unsplash.com/photo-1481349518771-20055b2a7b24?auto=format&fit=crop&w=1600&q=80",
-    intro:
-      "built for biologists and geologists working far from connectivity. the interface had to survive gloves, rain, and bright sunlight.",
-    sections: [
-      {
-        heading: "constraints",
-        body: "offline-first. glove-friendly tap targets. legible at noon in the desert and at dusk in the forest. battery efficient.",
-      },
-      {
-        heading: "design choices",
-        body: "high-contrast typography, oversized touch zones, voice-capture as the primary input. sync happens silently when signal returns.",
-      },
-    ],
-  },
-  {
-    slug: "onboarding-flow-redesign",
-    title: "onboarding flow redesign",
-    client: "harbor financial",
-    year: "2024",
-    role: "senior ux designer",
-    summary:
-      "reimagining personal banking for people who'd rather think about anything else.",
-    tags: ["fintech", "web", "brand"],
-    cover:
-      "https://images.unsplash.com/photo-1554224155-6726b3ff858f?auto=format&fit=crop&w=1600&q=80",
-    intro:
-      "harbor wanted to be the bank that respects your time. we translated that promise into every screen — fewer numbers, more meaning.",
-    sections: [
-      {
-        heading: "principles",
-        body: "show the answer, not the data. default to plain language. never use red unless something is genuinely wrong.",
-      },
-    ],
-  },
-  {
     slug: "sous",
     title: "sous — just-in-time cooking",
     client: "portfolio project",
-    year: "2025",
+    year: "2026",
     role: "ux/ui designer",
     summary:
       "a just-in-time cooking assistant for busy beginners — no pantry database, no decision fatigue, just dinner.",
@@ -139,9 +67,20 @@ const projects: Project[] = [
     year: "2024",
     role: "ux/ui designer",
     summary:
-      "a web-based mro platform that consolidates work orders, discrepancies, labor reporting and compliance into a single focused workspace.",
+      "a cross-platform web and mobile mro platform that consolidates work orders, discrepancies, labor reporting and compliance into a single focused workspace.",
     tags: ["b2b saas", "web & mobile", "mro platform", "ux design", "design system"],
     cover: overseerCover,
+  },
+  {
+    slug: "argo",
+    title: "argo — carbon credits management platform",
+    client: "real-world project",
+    year: "2024",
+    role: "ux/ui designer",
+    summary:
+      "a carbon credits platform connecting farmers and ranchers with voluntary carbon markets — boundary drawing, data collection and an 11-year credit projection.",
+    tags: ["b2b saas", "web app", "agtech", "ux design", "data visualization"],
+    cover: argoCover,
   },
 ];
 
