@@ -1053,18 +1053,27 @@ footer, figcaption {
 [data-theme="dark"] .nav nav a.active { color: #F2AB6D; }
 .theme-toggle {
   display: flex; align-items: center; justify-content: center;
-  width: 36px; height: 36px; border-radius: 10px;
-  border: none; background: transparent;
-  color: #D9C5AD; cursor: pointer; font-size: 18px; line-height: 1;
-  transition: color .2s, background .2s;
+  width: 36px; height: 36px;
+  border-radius: var(--radius-sm, 6px);
+  border: 1px solid var(--color-border);
+  background: var(--color-surface-offset);
+  color: var(--color-text); cursor: pointer; font-size: 18px; line-height: 1;
+  transition: color .2s, background .2s, border-color .2s;
   flex-shrink: 0;
 }
 .theme-toggle:hover {
   color: var(--color-primary);
-  background: color-mix(in oklab, var(--color-primary) 10%, transparent);
+  border-color: var(--color-primary);
+  background: color-mix(in oklab, var(--color-primary) 10%, var(--color-surface-offset));
 }
-[data-theme="dark"] .theme-toggle { color: #A89880; }
-[data-theme="dark"] .theme-toggle:hover { color: #F2AB6D; background: color-mix(in oklab, #F2AB6D 12%, transparent); }
+[data-theme="dark"] .theme-toggle { color: #E8DDD0; background: #312A18; border-color: #564A2F; }
+[data-theme="dark"] .theme-toggle:hover { color: #F2AB6D; border-color: #F2AB6D; background: color-mix(in oklab, #F2AB6D 12%, #312A18); }
+.project-meta-line { white-space: nowrap; }
+.image-caption {
+  margin-top: 0.75rem; padding: 0 0.25rem;
+  font-size: 0.85rem; color: var(--color-text-muted);
+  font-style: italic; line-height: 1.5; text-align: center;
+}
 main { flex: 1; }
 .hero {
   padding: clamp(4rem, 12vw, 9rem) clamp(1rem, 4vw, 3rem) clamp(3rem, 8vw, 6rem);
