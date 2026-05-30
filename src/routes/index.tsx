@@ -767,6 +767,174 @@ function OverseerCase({ prev, next }: { prev: Project | null; next: Project | nu
   );
 }
 
+function ArgoCase({ prev, next }: { prev: Project | null; next: Project | null }) {
+  const stats = [
+    { label: "platform", value: "web app", sub: "b2b saas · agtech" },
+    { label: "users", value: "farmers · ranchers", sub: "landowners across north america" },
+    { label: "my contribution", value: "2 core modules", sub: "draw boundary + data collection" },
+    { label: "project type", value: "real product", sub: "shipped · name changed for confidentiality" },
+  ];
+  const contributions = [
+    { n: "01", title: "draw boundary tool", body: "an interactive satellite map interface where farmers draw the precise boundaries of their fields using polygon tools. the tool supports multiple drawing modes — freehand polygon, circular border, inner border — and allows users to name fields, set acreage, define land ownership type, and classify field type (row crop, range and pasture) before saving. accuracy here determines the carbon calculation downstream, so the ux had to be precise without being intimidating to a rancher who has never used gis software." },
+    { n: "02", title: "data collection module", body: "a centralized, structured view of all data associated with a producer's farm — herd data, fertilizer and amendment applications, forage management practices, and more. data is organized into collapsible sections per practice category, with inline error surfacing, edit mode, and multi-year filtering. this screen is the scientific backbone of the carbon estimate: every field logged here feeds directly into the carbon modeling engine." },
+  ];
+  const challenges = [
+    { n: "01", title: "spatial accuracy vs. accessibility", body: "the draw boundary tool needed to be precise enough for scientific modeling while remaining usable by someone drawing field boundaries on a tablet from a ranch office. the solution was a constrained, opinionated drawing toolbar — limited options, clear visual feedback, and a fields list panel that kept the user grounded in what they'd already defined." },
+    { n: "02", title: "data density without overwhelm", body: "the data collection module aggregates years of agricultural practice data across multiple categories. the challenge was making that density navigable — collapsible sections, progressive disclosure, a persistent error count (\"show only errors: 3\"), and multi-axis filtering (by field, by year, by event) all worked together to give the user control without cognitive overload." },
+    { n: "03", title: "trust in the numbers", body: "the carbon estimate is the emotional core of the product — it's the number that convinces a skeptical farmer to enroll. every design decision in the flow leading up to it had to build confidence that the inputs were correct, the methodology was sound, and the projected payment was real." },
+  ];
+  const outcomes = [
+    "interactive satellite boundary drawing",
+    "multi-mode polygon tools",
+    "hierarchical agricultural data collection",
+    "11-year carbon credit projection",
+    "inline error surfacing and validation",
+    "real-world shipped product",
+  ];
+  return (
+    <article className="section">
+      <a href="#projects" className="back-link reveal">← work</a>
+      <h1 className="reveal sous-title">argo — carbon credits management platform</h1>
+      <p className="sous-meta reveal">ux/ui designer · real-world project · 2024 · figma · b2b saas</p>
+      <div className="sous-pills reveal">
+        <span className="pill">b2b saas</span>
+        <span className="pill">web app</span>
+        <span className="pill">agtech</span>
+        <span className="pill">ux design</span>
+        <span className="pill">data visualization</span>
+      </div>
+      <div className="confidentiality-notice reveal">
+        this is a real shipped product. name and branding have been changed for confidentiality.
+      </div>
+
+      <figure className="sous-mockup reveal">
+        <img src={argoCover} alt="argo — carbon credits management platform cover" loading="lazy" />
+      </figure>
+
+      <section className="sous-section reveal">
+        <h2 className="section-title">overview</h2>
+        <p className="big">
+          argo is a carbon credits management platform that connects farmers and ranchers with
+          voluntary carbon markets. landowners upload or draw their farm boundaries directly on a
+          satellite map, apply science-backed land management practices, and receive an 11-year
+          projection of the carbon credits their land could generate. argo handles the entire
+          process — from initial enrollment and soil data collection through credit issuance and
+          payment — taking a percentage for facilitating the program. my work focused on two of the
+          platform's most technically complex surfaces: the draw boundary tool and the data
+          collection module.
+        </p>
+        <div className="stat-row">
+          {stats.map((s) => (
+            <div key={s.label} className="stat">
+              <p className="stat-label">{s.label}</p>
+              <p className="stat-value">{s.value}</p>
+              <p className="stat-sub">{s.sub}</p>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      <section className="sous-section reveal">
+        <h2 className="section-title">the context</h2>
+        <div className="industry-context">
+          <h3>farmers are sitting on one of the largest untapped carbon sinks on the planet — and most don't know it.</h3>
+          <p>
+            regenerative land management practices — reduced tillage, cover cropping, improved
+            grazing — sequester carbon in the soil at scale. but translating those practices into
+            verified, tradeable carbon credits requires scientific modeling, regulatory compliance,
+            and years of documentation that most individual landowners can't navigate alone. argo
+            exists to make that process accessible: a farmer draws their fields, logs their
+            practices, and argo handles the rest — turning better land stewardship into a new
+            revenue stream.
+          </p>
+        </div>
+      </section>
+
+      <section className="sous-section reveal">
+        <h2 className="section-title">my contribution</h2>
+        <p>
+          i was primarily responsible for two modules that sit at the beginning and the middle of
+          the landowner journey — the moments where complexity is highest and where dropping out is
+          most likely.
+        </p>
+        <ol className="numbered-list">
+          {contributions.map((d) => (
+            <li key={d.n}>
+              <span className="num">{d.n}</span>
+              <div>
+                <h3>{d.title}</h3>
+                <p>{d.body}</p>
+              </div>
+            </li>
+          ))}
+        </ol>
+      </section>
+
+      <figure className="sous-mockup reveal">
+        <img src={argoDrawBoundary} alt="argo draw boundary tool" loading="lazy" />
+      </figure>
+
+      <figure className="sous-mockup reveal">
+        <img src={argoDataCollection} alt="argo data collection module" loading="lazy" />
+      </figure>
+
+      <section className="sous-section reveal">
+        <h2 className="section-title">design challenges</h2>
+        <p>both modules required solving for a user who is an expert in their land — but not in software.</p>
+        <ol className="numbered-list">
+          {challenges.map((d) => (
+            <li key={d.n}>
+              <span className="num">{d.n}</span>
+              <div>
+                <h3>{d.title}</h3>
+                <p>{d.body}</p>
+              </div>
+            </li>
+          ))}
+        </ol>
+      </section>
+
+      <section className="sous-section reveal">
+        <h2 className="section-title">the estimate</h2>
+        <p>
+          the output of the draw boundary and data collection flow is a carbon estimate screen that
+          shows the landowner their total potential payment over 11 years, broken down by field,
+          payment option (option a and option b), carbon tonnage, deductions, and a year-by-year
+          payment calendar. the estimate is designed to be the moment of conversion — clear enough
+          to understand in 30 seconds, detailed enough to download and bring to a meeting.
+        </p>
+        <div className="insight-callout">
+          <p>designing the estimate screen meant designing for a decision — not just a data display. the layout hierarchy had to answer "how much do i get?" before "how is that calculated?" every element was ordered to build confidence before it built detail.</p>
+        </div>
+      </section>
+
+      <figure className="sous-mockup reveal">
+        <img src={argoEstimate} alt="argo estimate screen" loading="lazy" />
+      </figure>
+
+      <section className="sous-section reveal">
+        <h2 className="section-title">impact</h2>
+        <p>
+          argo operates in a market where trust and scientific credibility are the product. the
+          draw boundary tool and data collection module sit at the foundation of that trust —
+          they're the surfaces where the platform's scientific claims become the farmer's
+          documented reality. getting these two modules right meant the carbon models were fed
+          accurate data, the estimates were defensible, and the landowners felt in control of a
+          process that could generate meaningful income from land they already own.
+        </p>
+        <div className="ia-pills">
+          {outcomes.map((t) => <span key={t} className="pill">{t}</span>)}
+        </div>
+      </section>
+
+      <div className="project-nav reveal">
+        {prev ? <a href={`#project/${prev.slug}`} className="big-link">← previous project</a> : <span />}
+        {next ? <a href={`#project/${next.slug}`} className="big-link">next project →</a> : <a href="#projects" className="big-link">all work →</a>}
+      </div>
+    </article>
+  );
+}
+
 
 const styles = `
 :root, :root[data-theme="light"] {
