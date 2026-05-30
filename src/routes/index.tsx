@@ -1013,11 +1013,11 @@ footer, figcaption {
   padding: 1.25rem clamp(1rem, 4vw, 3rem);
   border-bottom: 1px solid var(--color-divider);
   position: sticky; top: 0;
-  background: var(--color-surface);
+  background: #E8DBC8;
   backdrop-filter: blur(8px); z-index: 10;
 }
 .nav-left { display: flex; align-items: center; gap: 0.75rem; }
-[data-theme="dark"] .nav { background: #0F0D08; border-bottom-color: #0F0D08; }
+[data-theme="dark"] .nav { background: #060503; border-bottom-color: #060503; }
 .nav-brand {
   display: flex; flex-direction: column; gap: 1px;
   text-decoration: none; line-height: 1.2;
