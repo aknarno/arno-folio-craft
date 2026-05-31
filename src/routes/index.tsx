@@ -133,28 +133,30 @@ function Index() {
               <span className="nav-brand-name">arno klettenberg</span>
               <span className="nav-brand-title">{copy.nav.brandTitle}</span>
             </a>
-            <button
-              className="theme-toggle"
-              aria-label={theme === "light" ? copy.nav.themeLight : copy.nav.themeDark}
-              title={theme === "light" ? copy.nav.themeLight : copy.nav.themeDark}
-              onClick={() => setTheme(theme === "light" ? "dark" : "light")}
-            >
-              {theme === "light" ? "☾" : "☀"}
-            </button>
-            <button
-              className="lang-toggle"
-              aria-label={copy.nav.langToggle}
-              title={copy.nav.langToggle}
-              aria-pressed={lang === "pt"}
-              onClick={() => setLang(lang === "en" ? "pt" : "en")}
-            >
-              <span className={`lang-opt ${lang === "en" ? "lang-active" : ""}`}>
-                <img src="https://flagcdn.com/w20/us.png" srcSet="https://flagcdn.com/w40/us.png 2x" width="18" height="14" alt="" className="lang-flag" /> EN
-              </span>
-              <span className={`lang-opt ${lang === "pt" ? "lang-active" : ""}`}>
-                <img src="https://flagcdn.com/w20/br.png" srcSet="https://flagcdn.com/w40/br.png 2x" width="18" height="14" alt="" className="lang-flag" /> PT-BR
-              </span>
-            </button>
+            <div className="nav-controls">
+              <button
+                className="theme-toggle"
+                aria-label={theme === "light" ? copy.nav.themeLight : copy.nav.themeDark}
+                title={theme === "light" ? copy.nav.themeLight : copy.nav.themeDark}
+                onClick={() => setTheme(theme === "light" ? "dark" : "light")}
+              >
+                {theme === "light" ? "☾" : "☀"}
+              </button>
+              <button
+                className="lang-toggle"
+                aria-label={copy.nav.langToggle}
+                title={copy.nav.langToggle}
+                aria-pressed={lang === "pt"}
+                onClick={() => setLang(lang === "en" ? "pt" : "en")}
+              >
+                <span className={`lang-opt ${lang === "en" ? "lang-active" : ""}`}>
+                  <img src="https://flagcdn.com/w20/us.png" srcSet="https://flagcdn.com/w40/us.png 2x" width="18" height="14" alt="" className="lang-flag" /> EN
+                </span>
+                <span className={`lang-opt ${lang === "pt" ? "lang-active" : ""}`}>
+                  <img src="https://flagcdn.com/w20/br.png" srcSet="https://flagcdn.com/w40/br.png 2x" width="18" height="14" alt="" className="lang-flag" /> PT-BR
+                </span>
+              </button>
+            </div>
           </div>
           <nav>
             <a
