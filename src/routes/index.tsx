@@ -1066,7 +1066,16 @@ footer, figcaption {
 }
 [data-theme="dark"] .theme-toggle { color: #E8DDD0; background: #312A18; border-color: #564A2F; }
 [data-theme="dark"] .theme-toggle:hover { color: #F2AB6D; border-color: #F2AB6D; background: color-mix(in oklab, #F2AB6D 12%, #312A18); }
-.project-meta-line { white-space: nowrap; }
+.project-meta-line {
+  font-size: 0.78rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+  margin: 0.6rem 0 0;
+  padding-top: 0.6rem;
+  border-top: 1px solid var(--color-border);
+  white-space: nowrap;
+}
 .image-caption {
   margin-top: 0.75rem; padding: 0 0.25rem;
   font-size: 0.85rem; color: var(--color-text-muted);
