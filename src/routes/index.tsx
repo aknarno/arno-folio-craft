@@ -570,7 +570,7 @@ function SousCase({ prev, next }: { prev: Project | null; next: Project | null }
 function OverseerCase({ prev, next }: { prev: Project | null; next: Project | null }) {
   const stats = [
     { label: "platform", value: "web + mobile", sub: "cross-platform b2b saas" },
-    { label: "users", value: "mros · mechanics · fleet ops", sub: "pilots and maintenance professionals" },
+    { label: "users", value: "MROs · mechanics · fleet ops", sub: "pilots and maintenance professionals" },
     { label: "my contribution", value: "work order module", sub: "plus supporting features and design system" },
     { label: "real-world impact", value: "robinson · garmin", sub: "enterprise deals closed" },
   ];
@@ -578,9 +578,9 @@ function OverseerCase({ prev, next }: { prev: Project | null; next: Project | nu
     { name: "my reservations", body: "a personal view of all aircraft reserved by the logged-in user, with schedule context and aircraft status." },
     { name: "manage members", body: "role and permission management for everyone inside an organization — mechanics, supervisors, and administrators." },
     { name: "manage aircraft", body: "full aircraft profile management: make, model, serial number, tail number, time-tracking (ttis, sfrm, tt, snew), and maintenance history." },
-    { name: "manage inventory", body: "parts and tooling not already attached to a specific aircraft — organization-level inventory with availability tracking." },
+    { name: "manage inventory", body: "organization-level parts and tooling inventory, separate from aircraft-specific components." },
     { name: "document center", body: "centralized document management for ads, sbs, maintenance manuals, and aircraft logs — all associated to the relevant aircraft or organization." },
-    { name: "work order mx", body: "end-to-end work order lifecycle: creation, discrepancy tracking, labor logging, tooling allocation, cost tracking, approval workflow, and client-ready reporting. (primary contribution — built from scratch.)" },
+    { name: "work order mx", body: "end-to-end work order lifecycle: creation, discrepancy tracking, labor logging, tooling allocation, cost tracking, approval workflow, and client-ready reporting." },
   ];
   const decisions = [
     { n: "01", title: "work order as the single source of truth", body: "customer info, aircraft context, schedule, labor rate, tooling, discrepancies, costs, and sign-offs all live inside one work order. nothing is scattered across separate tools or paper sheets." },
@@ -609,7 +609,7 @@ function OverseerCase({ prev, next }: { prev: Project | null; next: Project | nu
       <div className="sous-pills reveal">
         <span className="pill">b2b saas</span>
         <span className="pill">web & mobile</span>
-        <span className="pill">mro platform</span>
+        <span className="pill">MRO platform</span>
         <span className="pill">ux design</span>
         <span className="pill">design system</span>
       </div>
