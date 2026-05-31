@@ -294,12 +294,11 @@ function Home() {
                 />
               </div>
               <div className="project-meta">
-                <div>
-                  <h3>{p.title}</h3>
-                  <p className="muted">{p.summary}</p>
-                </div>
-                <p className="muted small project-meta-line">{p.client} · {p.year} · {p.role}</p>
+                <h3>{p.title}</h3>
+                <p className="muted">{p.summary}</p>
+                <p className="project-meta-line">{p.client} · {p.year} · {p.role}</p>
               </div>
+
             </a>
           ))}
         </div>
