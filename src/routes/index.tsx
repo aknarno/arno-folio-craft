@@ -1142,7 +1142,7 @@ h1 {
   transition: transform .8s ease;
 }
 .project-card:hover .project-cover img { transform: scale(1.03); }
-.project-meta { display: flex; justify-content: space-between; gap: 2rem; align-items: end; flex-wrap: wrap; }
+.project-meta { display: flex; flex-direction: column; gap: 0.4rem; }
 .project-meta h3 {
   font-family: var(--font-display); font-weight: 700;
   font-size: 1.5rem; margin: 0 0 0.4rem; letter-spacing: -0.01em;
