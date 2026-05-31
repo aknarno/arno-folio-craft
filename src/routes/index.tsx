@@ -148,9 +148,9 @@ function Index() {
               aria-pressed={lang === "pt"}
               onClick={() => setLang(lang === "en" ? "pt" : "en")}
             >
-              <span className={lang === "en" ? "lang-active" : ""}>EN</span>
+              <span className={lang === "en" ? "lang-active" : ""}>🇺🇸 EN</span>
               <span className="lang-sep" aria-hidden="true">/</span>
-              <span className={lang === "pt" ? "lang-active" : ""}>PT-BR</span>
+              <span className={lang === "pt" ? "lang-active" : ""}>🇧🇷 PT-BR</span>
             </button>
           </div>
           <nav>
