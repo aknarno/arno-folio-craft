@@ -657,9 +657,6 @@ function OverseerCase({ prev, next }: { prev: Project | null; next: Project | nu
             </li>
           ))}
         </ul>
-        <div className="insight-callout" style={{ marginTop: "1.5rem" }}>
-          <p><strong>i also designed the complete parts ordering flow</strong> — a multi-organization purchasing system built directly into the platform, functioning as a mini e-commerce experience where MRO organizations can source parts from other organizations within the network.</p>
-        </div>
       </section>
 
       <section className="sous-section reveal">
