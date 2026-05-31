@@ -431,12 +431,6 @@ function SousCase({ prev, next }: { prev: Project | null; next: Project | null }
     { n: "03", title: "mise en place screen", body: "before any instruction appears, sous surfaces every ingredient and physical tool needed. no mid-cook surprises. no dead ends at step 4." },
     { n: "04", title: "smart substitutions", body: "when an ingredient is missing, sous offers a vetted swap with a plain-language culinary reason. this builds intuition, not just workarounds." },
   ];
-  const ia = [
-    "cook — ingredient input + time = recipe match",
-    "saved — pre-checks ingredient availability",
-    "habits — streaks, milestones, time saved",
-    "profile — dietary flags + equipment toggles",
-  ];
   const outcomes = [
     "zero inventory model",
     "mise en place checkpoint",
