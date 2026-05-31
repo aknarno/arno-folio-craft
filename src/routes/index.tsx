@@ -767,32 +767,23 @@ body { position: relative; }
 body::before {
   content: "";
   position: fixed; inset: 0; pointer-events: none; z-index: 0;
-  background:
-    radial-gradient(60vw 60vw at 12% 8%, color-mix(in oklab, var(--color-primary) 18%, transparent), transparent 60%),
-    radial-gradient(50vw 50vw at 90% 18%, color-mix(in oklab, var(--color-accent-warm) 16%, transparent), transparent 65%),
-    radial-gradient(70vw 70vw at 80% 95%, color-mix(in oklab, var(--color-primary) 14%, transparent), transparent 70%),
-    radial-gradient(45vw 45vw at 10% 85%, color-mix(in oklab, var(--color-accent-warm) 12%, transparent), transparent 70%);
-  filter: blur(20px);
+  background-image: url('/bg-blobs.svg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  opacity: 0.9;
 }
 body::after {
   content: "";
   position: fixed; inset: 0; pointer-events: none; z-index: 0;
-  background-image:
-    radial-gradient(circle at 1px 1px, color-mix(in oklab, var(--color-text) 14%, transparent) 1px, transparent 0);
-  background-size: 22px 22px;
-  opacity: 0.35;
-  mask-image: radial-gradient(ellipse at center, black 40%, transparent 75%);
-  -webkit-mask-image: radial-gradient(ellipse at center, black 40%, transparent 75%);
+  background-image: url('/bg-lines.svg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  opacity: 0.55;
 }
-[data-theme="dark"] body::before {
-  background:
-    radial-gradient(60vw 60vw at 12% 8%, color-mix(in oklab, var(--color-primary) 22%, transparent), transparent 60%),
-    radial-gradient(50vw 50vw at 90% 18%, color-mix(in oklab, var(--color-accent-warm) 14%, transparent), transparent 65%),
-    radial-gradient(70vw 70vw at 80% 95%, color-mix(in oklab, var(--color-primary) 18%, transparent), transparent 70%),
-    radial-gradient(45vw 45vw at 10% 85%, color-mix(in oklab, #F2AB6D 10%, transparent), transparent 70%);
-  filter: blur(28px);
-}
-[data-theme="dark"] body::after { opacity: 0.18; }
+[data-theme="dark"] body::before { opacity: 0.18; filter: hue-rotate(-10deg) saturate(0.8); }
+[data-theme="dark"] body::after { opacity: 0.28; }
 .site { overflow-x: clip; max-width: 100%; position: relative; z-index: 1; }
 body, body * {
   font-family: var(--font-body);
