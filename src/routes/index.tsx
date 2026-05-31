@@ -891,14 +891,33 @@ function ArgoCase({ prev, next }: { prev: Project | null; next: Project | null }
       <section className="sous-section reveal">
         <h2 className="section-title">the estimate</h2>
         <p>
-          the output of the draw boundary and data collection flow is a carbon estimate screen that
-          shows the landowner their total potential payment over 11 years, broken down by field,
-          payment option (option a and option b), carbon tonnage, deductions, and a year-by-year
-          payment calendar. the estimate is designed to be the moment of conversion — clear enough
-          to understand in 30 seconds, detailed enough to download and bring to a meeting.
+          before a farmer commits to any practice changes, argo gives them a full financial
+          picture. the estimate screen presents two payment options side by side:
+        </p>
+        <p>
+          <strong>option a</strong> is a full-payment model — the farmer receives the total carbon
+          value of their land in two payments, at year 5 and year 11. higher total return, longer
+          wait.
+        </p>
+        <p>
+          <strong>option b</strong> is a cash-flow model — smaller payments distributed across
+          years 1 through 5, followed by a larger payment at year 11. lower total return, but the
+          early payments help farmers fund the practice changes required to generate the credits
+          in the first place.
+        </p>
+        <p>
+          the farmer sees both projections simultaneously — total carbon tonnage, deductions,
+          payable carbon, and a year-by-year payment calendar — so the decision is financial, not
+          technical.
+        </p>
+        <p>
+          once the farmer selects a preferred option, they connect with argo's support team, who
+          guide them through the next steps: using the draw boundary tool to define their fields
+          and submit the initial deliverables required by argo's engineers and agronomists to
+          begin setting up the practice program.
         </p>
         <div className="insight-callout">
-          <p>designing the estimate screen meant designing for a decision — not just a data display. the layout hierarchy had to answer "how much do i get?" before "how is that calculated?" every element was ordered to build confidence before it built detail.</p>
+          <p>the estimate had to answer "how much do i get and when?" before anything else. option a or option b isn't a technical choice — it's a cash flow decision for a working farm. the design had to make that comparison immediate and legible, not buried in footnotes.</p>
         </div>
       </section>
 
