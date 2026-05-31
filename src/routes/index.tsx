@@ -625,7 +625,7 @@ function OverseerCase({ prev, next }: { prev: Project | null; next: Project | nu
         <h2 className="section-title">overview</h2>
         <p className="big">
           overseer is a cross-platform aircraft maintenance management system — available on web and
-          mobile — built for mro organizations, independent a&p mechanics, and fleet operators. it
+          mobile — built for MRO organizations, independent A&P mechanics, and fleet operators. it
           digitizes the entire maintenance workflow: from work order creation and discrepancy tracking
           to labor reporting, compliance documentation, inventory management, and crew coordination.
           the platform serves pilots, fleets, and maintenance professionals across a single connected
@@ -647,7 +647,7 @@ function OverseerCase({ prev, next }: { prev: Project | null; next: Project | nu
         <div className="industry-context">
           <h3>almost every aircraft in the world is still maintained with paper and pencil.</h3>
           <p>
-            in 2024, the majority of general aviation and mro maintenance documentation is still
+            even today, the majority of general aviation and MRO maintenance documentation is still
             analog — handwritten work orders, paper logbooks, pencil-marked inspection sheets.
             regulatory compliance, multi-technician coordination, and customer communication all run
             through physical documents that can be lost, misread, or never filed. overseer exists to
@@ -660,7 +660,7 @@ function OverseerCase({ prev, next }: { prev: Project | null; next: Project | nu
       <section className="sous-section reveal">
         <h2 className="section-title">platform features</h2>
         <p>
-          overseer covers the full operational surface of an mro organization. i worked across several
+          overseer covers the full operational surface of an MRO organization. i worked across several
           of these modules — each solving a distinct pain point for a different user type.
         </p>
         <ul className="feature-list">
@@ -671,21 +671,20 @@ function OverseerCase({ prev, next }: { prev: Project | null; next: Project | nu
             </li>
           ))}
         </ul>
-        <p style={{ marginTop: "1.25rem" }}>
-          beyond the work order module, i contributed to multiple other features within the platform.
-          i also led design work on separate projects outside the core product, including the design
-          system reconstruction that made all of this possible.
-        </p>
+        <div className="insight-callout" style={{ marginTop: "1.5rem" }}>
+          <p><strong>i also designed the complete parts ordering flow</strong> — a multi-organization purchasing system built directly into the platform, functioning as a mini e-commerce experience where MRO organizations can source parts from other organizations within the network.</p>
+        </div>
       </section>
 
       <section className="sous-section reveal">
         <h2 className="section-title">design system</h2>
         <p>
-          the overseer design system didn't exist when i joined the project. before i could design the
-          work order module, i needed to reconstruct the system from the existing product —
-          documenting components, establishing token structure, and creating a figma library that the
-          team could build from. the work order module was then the first feature designed entirely
-          within that rebuilt system.
+          the overseer design system existed when i joined the project — but it was significantly
+          outdated and inconsistent. rather than patching it, i rebuilt it from scratch:
+          re-establishing the token structure, auditing and redrawing components, and documenting
+          usage rules the team could follow. i preserved variables and components where they still
+          held up, but the result was effectively a new system built on the bones of the old one.
+          the work order module was the first feature designed entirely within the rebuilt system.
         </p>
         <div className="insight-callout">
           <p>designing within a system you built yourself creates a different kind of accountability. every component decision in the work order had to work not just for this screen, but for every screen that came after it.</p>
@@ -695,9 +694,9 @@ function OverseerCase({ prev, next }: { prev: Project | null; next: Project | nu
       <section className="sous-section focus-section reveal">
         <h2 className="section-title">focus: work order mx</h2>
         <p>
-          the work order module was my primary contribution — designed entirely from scratch, within
-          the design system above. it is the most complex screen in the platform and the one that
-          most directly replaced a physical paper process.
+          the work order module is the feature i want to highlight here — it's where the design
+          challenge was most visible and where the decisions i made had the most direct impact on
+          how MRO professionals do their daily work.
         </p>
         <ol className="numbered-list">
           {decisions.map((d) => (
