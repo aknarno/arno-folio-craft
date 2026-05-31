@@ -63,18 +63,18 @@ const projects: Project[] = [
   {
     slug: "overseer",
     title: "overseer — aircraft maintenance management",
-    client: "professional design project",
-    year: "2025",
+    client: "portfolio project",
+    year: "2024",
     role: "ux/ui designer",
     summary:
-      "a cross-platform web and mobile MRO platform that consolidates work orders, discrepancies, labor reporting and compliance into a single focused workspace.",
+      "a cross-platform web and mobile mro platform that consolidates work orders, discrepancies, labor reporting and compliance into a single focused workspace.",
     tags: ["b2b saas", "web & mobile", "mro platform", "ux design", "design system"],
     cover: overseerCover,
   },
   {
     slug: "argo",
     title: "argo — carbon credits management platform",
-    client: "professional design project",
+    client: "real-world project",
     year: "2024",
     role: "ux/ui designer",
     summary:
@@ -233,13 +233,20 @@ function Home() {
       <section className="section about">
         <h2 className="section-title reveal">about</h2>
         <p className="reveal big">
-          i'm arno klettenberg, a ux/ui designer based in curitiba, brazil. i
-          design complex digital products for regulated, data-heavy
-          environments — aircraft maintenance platforms, carbon credit
-          systems, and enterprise b2b tools. i care about the details that
-          matter in the field: the table that's readable at 6am in a shop,
-          the form that doesn't lose your data, the map tool that works
-          without internet.
+          i'm arno klettenberg, a ux/ui designer based in curitiba, brazil,
+          focused on building complex digital products that actually work for
+          the people using them. my background spans b2b saas platforms,
+          cross-platform systems, and data-heavy interfaces — from aircraft
+          maintenance management tools used by mro professionals to carbon
+          credit platforms serving farmers and ranchers across north america.
+          i care about the details that most people don't notice until they're
+          missing: the form that doesn't lose your data, the table that's
+          readable at 6am in a shop, the onboarding that doesn't require a
+          manual. i've worked on products that have helped close enterprise
+          deals with robinson helicopter company and garmin, and contributed
+          to systems that operate at scale in regulated, high-stakes
+          environments. i design for clarity, build for context, and take
+          complexity seriously.
         </p>
         <div className="about-grid reveal">
           <div>
@@ -289,9 +296,9 @@ function Home() {
               <div className="project-meta">
                 <div>
                   <h3>{p.title}</h3>
-                  <p className="muted small project-meta-line">{p.client} · {p.year} · {p.role}</p>
                   <p className="muted">{p.summary}</p>
                 </div>
+                <p className="muted small project-meta-line">{p.client} · {p.year} · {p.role}</p>
               </div>
             </a>
           ))}
@@ -315,9 +322,9 @@ function Projects() {
             <div className="project-meta">
               <div>
                 <h3>{p.title}</h3>
-                <p className="muted small project-meta-line">{p.client} · {p.year} · {p.role}</p>
                 <p className="muted">{p.summary}</p>
               </div>
+              <p className="muted small project-meta-line">{p.client} · {p.year} · {p.role}</p>
             </div>
           </a>
         ))}
@@ -570,17 +577,17 @@ function SousCase({ prev, next }: { prev: Project | null; next: Project | null }
 function OverseerCase({ prev, next }: { prev: Project | null; next: Project | null }) {
   const stats = [
     { label: "platform", value: "web + mobile", sub: "cross-platform b2b saas" },
-    { label: "users", value: "MROs · mechanics · fleet ops", sub: "pilots and maintenance professionals" },
+    { label: "users", value: "mros · mechanics · fleet ops", sub: "pilots and maintenance professionals" },
     { label: "my contribution", value: "work order module", sub: "plus supporting features and design system" },
-    { label: "professional impact", value: "robinson · garmin", sub: "enterprise deals closed" },
+    { label: "real-world impact", value: "robinson · garmin", sub: "enterprise deals closed" },
   ];
   const features = [
     { name: "my reservations", body: "a personal view of all aircraft reserved by the logged-in user, with schedule context and aircraft status." },
     { name: "manage members", body: "role and permission management for everyone inside an organization — mechanics, supervisors, and administrators." },
     { name: "manage aircraft", body: "full aircraft profile management: make, model, serial number, tail number, time-tracking (ttis, sfrm, tt, snew), and maintenance history." },
-    { name: "manage inventory", body: "organization-level parts and tooling inventory, separate from aircraft-specific components." },
+    { name: "manage inventory", body: "parts and tooling not already attached to a specific aircraft — organization-level inventory with availability tracking." },
     { name: "document center", body: "centralized document management for ads, sbs, maintenance manuals, and aircraft logs — all associated to the relevant aircraft or organization." },
-    { name: "work order mx", body: "end-to-end work order lifecycle: creation, discrepancy tracking, labor logging, tooling allocation, cost tracking, approval workflow, and client-ready reporting." },
+    { name: "work order mx", body: "end-to-end work order lifecycle: creation, discrepancy tracking, labor logging, tooling allocation, cost tracking, approval workflow, and client-ready reporting. (primary contribution — built from scratch.)" },
   ];
   const decisions = [
     { n: "01", title: "work order as the single source of truth", body: "customer info, aircraft context, schedule, labor rate, tooling, discrepancies, costs, and sign-offs all live inside one work order. nothing is scattered across separate tools or paper sheets." },
@@ -605,11 +612,11 @@ function OverseerCase({ prev, next }: { prev: Project | null; next: Project | nu
     <article className="section">
       <a href="#projects" className="back-link reveal">← work</a>
       <h1 className="reveal sous-title">overseer — aircraft maintenance management</h1>
-      <p className="sous-meta reveal">ux/ui designer · professional design project · 2025 · figma · b2b saas</p>
+      <p className="sous-meta reveal">ux/ui designer · real-world project · 2024 · figma · b2b saas</p>
       <div className="sous-pills reveal">
         <span className="pill">b2b saas</span>
         <span className="pill">web & mobile</span>
-        <span className="pill">MRO platform</span>
+        <span className="pill">mro platform</span>
         <span className="pill">ux design</span>
         <span className="pill">design system</span>
       </div>
@@ -625,7 +632,7 @@ function OverseerCase({ prev, next }: { prev: Project | null; next: Project | nu
         <h2 className="section-title">overview</h2>
         <p className="big">
           overseer is a cross-platform aircraft maintenance management system — available on web and
-          mobile — built for MRO organizations, independent A&P mechanics, and fleet operators. it
+          mobile — built for mro organizations, independent a&p mechanics, and fleet operators. it
           digitizes the entire maintenance workflow: from work order creation and discrepancy tracking
           to labor reporting, compliance documentation, inventory management, and crew coordination.
           the platform serves pilots, fleets, and maintenance professionals across a single connected
@@ -647,7 +654,7 @@ function OverseerCase({ prev, next }: { prev: Project | null; next: Project | nu
         <div className="industry-context">
           <h3>almost every aircraft in the world is still maintained with paper and pencil.</h3>
           <p>
-            even today, the majority of general aviation and MRO maintenance documentation is still
+            in 2024, the majority of general aviation and mro maintenance documentation is still
             analog — handwritten work orders, paper logbooks, pencil-marked inspection sheets.
             regulatory compliance, multi-technician coordination, and customer communication all run
             through physical documents that can be lost, misread, or never filed. overseer exists to
@@ -660,7 +667,7 @@ function OverseerCase({ prev, next }: { prev: Project | null; next: Project | nu
       <section className="sous-section reveal">
         <h2 className="section-title">platform features</h2>
         <p>
-          overseer covers the full operational surface of an MRO organization. i worked across several
+          overseer covers the full operational surface of an mro organization. i worked across several
           of these modules — each solving a distinct pain point for a different user type.
         </p>
         <ul className="feature-list">
@@ -671,25 +678,21 @@ function OverseerCase({ prev, next }: { prev: Project | null; next: Project | nu
             </li>
           ))}
         </ul>
-        <div className="insight-callout" style={{ marginTop: "1.25rem" }}>
-          <p>
-            <strong>i also designed the complete parts ordering flow</strong> — a multi-organization
-            purchasing system built directly into the platform, functioning as a mini e-commerce
-            experience where MRO organizations can source parts from other organizations within the
-            network.
-          </p>
-        </div>
+        <p style={{ marginTop: "1.25rem" }}>
+          beyond the work order module, i contributed to multiple other features within the platform.
+          i also led design work on separate projects outside the core product, including the design
+          system reconstruction that made all of this possible.
+        </p>
       </section>
 
       <section className="sous-section reveal">
         <h2 className="section-title">design system</h2>
         <p>
-          the overseer design system existed when i joined the project — but it was significantly
-          outdated and inconsistent. rather than patching it, i rebuilt it from scratch:
-          re-establishing the token structure, auditing and redrawing components, and documenting
-          usage rules the team could follow. i preserved variables and components where they still
-          held up, but the result was effectively a new system built on the bones of the old one. the
-          work order module was the first feature designed entirely within the rebuilt system.
+          the overseer design system didn't exist when i joined the project. before i could design the
+          work order module, i needed to reconstruct the system from the existing product —
+          documenting components, establishing token structure, and creating a figma library that the
+          team could build from. the work order module was then the first feature designed entirely
+          within that rebuilt system.
         </p>
         <div className="insight-callout">
           <p>designing within a system you built yourself creates a different kind of accountability. every component decision in the work order had to work not just for this screen, but for every screen that came after it.</p>
@@ -699,9 +702,9 @@ function OverseerCase({ prev, next }: { prev: Project | null; next: Project | nu
       <section className="sous-section focus-section reveal">
         <h2 className="section-title">focus: work order mx</h2>
         <p>
-          the work order module is the feature i want to highlight here — it's where the design
-          challenge was most visible and where the decisions i made had the most direct impact on
-          how MRO professionals do their daily work.
+          the work order module was my primary contribution — designed entirely from scratch, within
+          the design system above. it is the most complex screen in the platform and the one that
+          most directly replaced a physical paper process.
         </p>
         <ol className="numbered-list">
           {decisions.map((d) => (
@@ -728,10 +731,10 @@ function OverseerCase({ prev, next }: { prev: Project | null; next: Project | nu
         <h2 className="section-title">impact</h2>
         <div className="impact-grid">
           <p>
-            overseer is a live product used by real MRO organizations. the work order module — and the
+            overseer is a live product used by real mro organizations. the work order module — and the
             broader platform work i contributed to — played a direct role in closing partnerships with
             two of the largest names in general aviation. these weren't small deals: robinson
-            helicopter company and garmin both integrated overseer into their aircraft and systems,
+            helicopter company and garmin both integrated crewchief into their aircraft and systems,
             validating the platform's readiness for enterprise-scale operations.
           </p>
           <div className="impact-stats">
@@ -778,24 +781,21 @@ function ArgoCase({ prev, next }: { prev: Project | null; next: Project | null }
   const challenges = [
     { n: "01", title: "spatial accuracy vs. accessibility", body: "the draw boundary tool needed to be precise enough for scientific modeling while remaining usable by someone drawing field boundaries on a tablet from a ranch office. the solution was a constrained, opinionated drawing toolbar — limited options, clear visual feedback, and a fields list panel that kept the user grounded in what they'd already defined." },
     { n: "02", title: "data density without overwhelm", body: "the data collection module aggregates years of agricultural practice data across multiple categories. the challenge was making that density navigable — collapsible sections, progressive disclosure, a persistent error count (\"show only errors: 3\"), and multi-axis filtering (by field, by year, by event) all worked together to give the user control without cognitive overload." },
-    { n: "03", title: "offline-first in remote environments", body: "ranchers and farmers often live and work in areas with no reliable internet connection. the platform had to function fully offline — syncing data when connectivity was restored. this shaped every interaction that involved saving field boundaries or logging practice data: nothing could depend on a live connection, and nothing could be lost." },
-    { n: "04", title: "designing for non-technical users", body: "the target user is an expert in land and livestock — not software. most ranchers' closest reference for data entry is a spreadsheet. every screen had to feel familiar to that mental model: tabular layouts, clear labels, predictable row structures, and no interaction patterns that required prior digital literacy. complexity had to be invisible." },
-    { n: "05", title: "trust in the numbers", body: "the carbon estimate is the emotional core of the product — it's the number that convinces a skeptical farmer to enroll. every design decision in the flow leading up to it had to build confidence that the inputs were correct, the methodology was sound, and the projected payment was real." },
+    { n: "03", title: "trust in the numbers", body: "the carbon estimate is the emotional core of the product — it's the number that convinces a skeptical farmer to enroll. every design decision in the flow leading up to it had to build confidence that the inputs were correct, the methodology was sound, and the projected payment was real." },
   ];
   const outcomes = [
     "interactive satellite boundary drawing",
     "multi-mode polygon tools",
-    "offline-first field data sync",
     "hierarchical agricultural data collection",
     "11-year carbon credit projection",
     "inline error surfacing and validation",
-    "professional shipped product",
+    "real-world shipped product",
   ];
   return (
     <article className="section">
       <a href="#projects" className="back-link reveal">← work</a>
       <h1 className="reveal sous-title">argo — carbon credits management platform</h1>
-      <p className="sous-meta reveal">ux/ui designer · professional design project · 2024 · figma · b2b saas</p>
+      <p className="sous-meta reveal">ux/ui designer · real-world project · 2024 · figma · b2b saas</p>
       <div className="sous-pills reveal">
         <span className="pill">b2b saas</span>
         <span className="pill">web app</span>
@@ -820,7 +820,7 @@ function ArgoCase({ prev, next }: { prev: Project | null; next: Project | null }
           projection of the carbon credits their land could generate. argo handles the entire
           process — from initial enrollment and soil data collection through credit issuance and
           payment — taking a percentage for facilitating the program. my work focused on two of the
-          platform's most important user-facing modules: the draw boundary tool and the data
+          platform's most technically complex surfaces: the draw boundary tool and the data
           collection module.
         </p>
         <div className="stat-row">
@@ -897,31 +897,14 @@ function ArgoCase({ prev, next }: { prev: Project | null; next: Project | null }
       <section className="sous-section reveal">
         <h2 className="section-title">the estimate</h2>
         <p>
-          before a farmer commits to any practice changes, argo gives them a full financial picture.
-          the estimate screen presents two payment options side by side:
-        </p>
-        <ul className="feature-list" style={{ marginTop: "1rem" }}>
-          <li>
-            <span className="feature-name">option a</span>
-            <span className="feature-body">a full-payment model — the farmer receives the total carbon value of their land in two payments, at year 5 and year 11. higher total return, longer wait.</span>
-          </li>
-          <li>
-            <span className="feature-name">option b</span>
-            <span className="feature-body">a cash-flow model — smaller payments distributed across years 1 through 5, followed by a larger payment at year 11. lower total return, but the early payments help farmers fund the practice changes required to generate the credits in the first place.</span>
-          </li>
-        </ul>
-        <p style={{ marginTop: "1.25rem" }}>
-          the farmer sees both projections simultaneously — total carbon tonnage, deductions, payable
-          carbon, and a year-by-year payment calendar — so the decision is financial, not technical.
-        </p>
-        <p>
-          once the farmer selects a preferred option, they connect with argo's support team, who
-          guide them through the next steps: using the draw boundary tool to define their fields and
-          submit the initial deliverables required by argo's engineers and agronomists to begin
-          setting up the practice program.
+          the output of the draw boundary and data collection flow is a carbon estimate screen that
+          shows the landowner their total potential payment over 11 years, broken down by field,
+          payment option (option a and option b), carbon tonnage, deductions, and a year-by-year
+          payment calendar. the estimate is designed to be the moment of conversion — clear enough
+          to understand in 30 seconds, detailed enough to download and bring to a meeting.
         </p>
         <div className="insight-callout">
-          <p>the estimate had to answer "how much do i get and when?" before anything else. option a or option b isn't a technical choice — it's a cash flow decision for a working farm. the design had to make that comparison immediate and legible, not buried in footnotes.</p>
+          <p>designing the estimate screen meant designing for a decision — not just a data display. the layout hierarchy had to answer "how much do i get?" before "how is that calculated?" every element was ordered to build confidence before it built detail.</p>
         </div>
       </section>
 
