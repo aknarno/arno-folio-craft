@@ -1350,6 +1350,62 @@ input:focus, textarea:focus { outline: none; border: 2px solid var(--color-prima
   border-radius: 0 10px 10px 0;
 }
 .insight-callout p { font-style: italic; margin: 0; color: var(--color-text); }
+.estimate-options {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.25rem;
+  margin: 1.75rem 0;
+}
+@media (max-width: 760px) {
+  .estimate-options { grid-template-columns: 1fr; }
+}
+.estimate-option {
+  padding: 1.5rem 1.5rem 1.75rem;
+  border-radius: 10px;
+  border: 1px solid var(--color-border);
+  background: var(--color-surface);
+  display: flex; flex-direction: column; gap: 0.6rem;
+}
+.estimate-option-a {
+  background: var(--color-surface-offset);
+  border-color: var(--color-divider);
+}
+.estimate-option-b {
+  background: color-mix(in oklab, var(--color-primary) 8%, var(--color-surface));
+  border-color: color-mix(in oklab, var(--color-primary) 35%, var(--color-border));
+}
+.estimate-option h3 {
+  font-family: var(--font-display);
+  font-size: 1.25rem;
+  margin: 0;
+  color: var(--color-text);
+}
+.estimate-tag {
+  font-size: 0.72rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  font-weight: 700;
+  color: var(--color-primary);
+  margin: 0;
+}
+.estimate-summary {
+  font-style: italic;
+  color: var(--color-text-muted);
+  margin: 0 0 0.4rem;
+}
+.estimate-bullets {
+  list-style: none;
+  padding: 0;
+  margin: 0.4rem 0 0;
+  display: flex; flex-direction: column; gap: 0.4rem;
+}
+.estimate-bullets li {
+  font-size: 0.92rem;
+  color: var(--color-text);
+  padding-top: 0.4rem;
+  border-top: 1px solid var(--color-border);
+}
+.estimate-bullets li:first-child { border-top: none; padding-top: 0; }
 .sous-flow {
   margin: 3rem 0 0;
   background: var(--color-surface);
