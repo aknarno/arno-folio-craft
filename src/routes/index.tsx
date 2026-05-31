@@ -778,15 +778,18 @@ function ArgoCase({ prev, next }: { prev: Project | null; next: Project | null }
   const challenges = [
     { n: "01", title: "spatial accuracy vs. accessibility", body: "the draw boundary tool needed to be precise enough for scientific modeling while remaining usable by someone drawing field boundaries on a tablet from a ranch office. the solution was a constrained, opinionated drawing toolbar — limited options, clear visual feedback, and a fields list panel that kept the user grounded in what they'd already defined." },
     { n: "02", title: "data density without overwhelm", body: "the data collection module aggregates years of agricultural practice data across multiple categories. the challenge was making that density navigable — collapsible sections, progressive disclosure, a persistent error count (\"show only errors: 3\"), and multi-axis filtering (by field, by year, by event) all worked together to give the user control without cognitive overload." },
-    { n: "03", title: "trust in the numbers", body: "the carbon estimate is the emotional core of the product — it's the number that convinces a skeptical farmer to enroll. every design decision in the flow leading up to it had to build confidence that the inputs were correct, the methodology was sound, and the projected payment was real." },
+    { n: "03", title: "offline-first in remote environments", body: "ranchers and farmers often live and work in areas with no reliable internet connection. the platform had to function fully offline — syncing data when connectivity was restored. this shaped every interaction that involved saving field boundaries or logging practice data: nothing could depend on a live connection, and nothing could be lost." },
+    { n: "04", title: "designing for non-technical users", body: "the target user is an expert in land and livestock — not software. most ranchers' closest reference for data entry is a spreadsheet. every screen had to feel familiar to that mental model: tabular layouts, clear labels, predictable row structures, and no interaction patterns that required prior digital literacy. complexity had to be invisible." },
+    { n: "05", title: "trust in the numbers", body: "the carbon estimate is the emotional core of the product — it's the number that convinces a skeptical farmer to enroll. every design decision in the flow leading up to it had to build confidence that the inputs were correct, the methodology was sound, and the projected payment was real." },
   ];
   const outcomes = [
     "interactive satellite boundary drawing",
     "multi-mode polygon tools",
+    "offline-first field data sync",
     "hierarchical agricultural data collection",
     "11-year carbon credit projection",
     "inline error surfacing and validation",
-    "real-world shipped product",
+    "professional shipped product",
   ];
   return (
     <article className="section">
