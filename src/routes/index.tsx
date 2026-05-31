@@ -148,9 +148,13 @@ function Index() {
               aria-pressed={lang === "pt"}
               onClick={() => setLang(lang === "en" ? "pt" : "en")}
             >
-              <span className={lang === "en" ? "lang-active" : ""}>🇺🇸 EN</span>
+              <span className={lang === "en" ? "lang-active" : ""}>
+                <img src="https://flagcdn.com/w20/us.png" srcSet="https://flagcdn.com/w40/us.png 2x" width="20" height="15" alt="" className="lang-flag" /> EN
+              </span>
               <span className="lang-sep" aria-hidden="true">/</span>
-              <span className={lang === "pt" ? "lang-active" : ""}>🇧🇷 PT-BR</span>
+              <span className={lang === "pt" ? "lang-active" : ""}>
+                <img src="https://flagcdn.com/w20/br.png" srcSet="https://flagcdn.com/w40/br.png 2x" width="20" height="15" alt="" className="lang-flag" /> PT-BR
+              </span>
             </button>
           </div>
           <nav>
