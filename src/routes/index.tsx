@@ -566,6 +566,7 @@ function OverseerCase({ prev, next }: { prev: Project | null; next: Project | nu
     { name: "manage inventory", body: "organization-level parts and tooling inventory, separate from aircraft-specific components." },
     { name: "document center", body: "centralized document management for ads, sbs, maintenance manuals, and aircraft logs — all associated to the relevant aircraft or organization." },
     { name: "work order mx", body: "end-to-end work order lifecycle: creation, discrepancy tracking, labor logging, tooling allocation, cost tracking, approval workflow, and client-ready reporting." },
+    { name: "parts ordering flow", body: "a multi-organization purchasing system built directly into the platform — a mini e-commerce experience where MRO organizations can source parts from other organizations within the network." },
   ];
   const decisions = [
     { n: "01", title: "work order as the single source of truth", body: "customer info, aircraft context, schedule, labor rate, tooling, discrepancies, costs, and sign-offs all live inside one work order. nothing is scattered across separate tools or paper sheets." },
