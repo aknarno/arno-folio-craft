@@ -63,18 +63,18 @@ const projects: Project[] = [
   {
     slug: "overseer",
     title: "overseer — aircraft maintenance management",
-    client: "portfolio project",
-    year: "2024",
+    client: "professional design project",
+    year: "2025",
     role: "ux/ui designer",
     summary:
-      "a cross-platform web and mobile mro platform that consolidates work orders, discrepancies, labor reporting and compliance into a single focused workspace.",
+      "a cross-platform web and mobile MRO platform that consolidates work orders, discrepancies, labor reporting and compliance into a single focused workspace.",
     tags: ["b2b saas", "web & mobile", "mro platform", "ux design", "design system"],
     cover: overseerCover,
   },
   {
     slug: "argo",
     title: "argo — carbon credits management platform",
-    client: "real-world project",
+    client: "professional design project",
     year: "2024",
     role: "ux/ui designer",
     summary:
