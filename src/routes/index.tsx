@@ -1003,13 +1003,7 @@ h1, h2, h3, h4, h5, h6,
 .meta-grid dt {
   font-family: var(--font-display);
 }
-h1, h2, h3, h4, h5, h6,
-p, a, button, label, li,
-nav a, .nav-brand-name,
-.btn, .tag, .badge,
-.card-title, .card-description,
-.section-label, .meta,
-footer, figcaption {
+.nav, .nav *, .section-title {
   text-transform: lowercase;
 }
 .site { min-height: 100vh; display: flex; flex-direction: column; }
