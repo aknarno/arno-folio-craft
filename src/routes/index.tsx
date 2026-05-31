@@ -1073,20 +1073,16 @@ input:focus, textarea:focus { outline: none; border: 2px solid var(--color-prima
   .pain-grid { grid-template-columns: 1fr !important; }
 
   /* Tighten header on mobile so it never overflows */
-  .nav { padding: 0.85rem 1rem; gap: 0.5rem; flex-wrap: nowrap; }
-  .nav-left { gap: 0.4rem; min-width: 0; flex: 0 1 auto; }
+  .nav { padding: 0.85rem 1rem; gap: 0.5rem; flex-wrap: nowrap; align-items: flex-start; }
+  .nav-left { gap: 0.4rem; min-width: 0; flex: 1 1 auto; }
+  .nav-controls { gap: 0.4rem; }
   .nav-brand-name { font-size: 0.95rem; white-space: nowrap; }
   .theme-toggle { width: 30px; height: 30px; font-size: 0.95rem; flex-shrink: 0; }
   .lang-toggle { height: 28px; padding: 2px; flex-shrink: 0; }
   .lang-toggle .lang-opt { padding: 0 0.45rem; font-size: 0.7rem; gap: 0.25rem; }
   .lang-toggle .lang-flag { width: 14px; height: 11px; }
-  .nav nav { gap: 0.1rem; flex-shrink: 0; }
-  .nav nav a { padding: 0.25rem 0.4rem; font-size: 0.78rem; }
-}
-@media (max-width: 420px) {
-  .nav { flex-wrap: wrap; row-gap: 0.5rem; padding: 0.75rem 0.9rem; }
-  .nav-left { order: 1; }
-  .nav nav { order: 2; width: 100%; justify-content: flex-start; }
+  .nav nav { gap: 0.1rem; flex-shrink: 0; flex-direction: column; align-items: flex-end; }
+  .nav nav a { padding: 0.2rem 0.4rem; font-size: 0.78rem; }
 }
 
 /* sous case study */
