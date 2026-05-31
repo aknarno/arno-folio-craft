@@ -789,7 +789,7 @@ function ArgoCase({ prev, next }: { prev: Project | null; next: Project | null }
     <article className="section">
       <a href="#projects" className="back-link reveal">← work</a>
       <h1 className="reveal sous-title">argo — carbon credits management platform</h1>
-      <p className="sous-meta reveal">ux/ui designer · real-world project · 2024 · figma · b2b saas</p>
+      <p className="sous-meta reveal">ux/ui designer · professional design project · 2024 · figma · b2b saas</p>
       <div className="sous-pills reveal">
         <span className="pill">b2b saas</span>
         <span className="pill">web app</span>
