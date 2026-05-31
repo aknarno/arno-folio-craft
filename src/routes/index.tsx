@@ -884,7 +884,8 @@ h1, h2, h3, h4, h5, h6,
   margin: 0.6rem 0 0;
   padding-top: 0.6rem;
   border-top: 1px solid var(--color-border);
-  white-space: nowrap;
+  white-space: normal;
+  overflow-wrap: anywhere;
 }
 .image-caption {
   margin-top: 0.75rem; padding: 0 0.25rem;
