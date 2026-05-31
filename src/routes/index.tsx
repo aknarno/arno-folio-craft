@@ -860,6 +860,7 @@ h1, h2, h3, h4, h5, h6,
 }
 .lang-toggle .lang-active { color: var(--color-primary); }
 .lang-toggle .lang-sep { opacity: 0.5; }
+.lang-toggle .lang-flag { display: inline-block; vertical-align: -2px; border-radius: 2px; box-shadow: 0 0 0 1px rgba(0,0,0,0.08); }
 [data-theme="dark"] .lang-toggle { color: #A89880; background: #312A18; border-color: #564A2F; }
 [data-theme="dark"] .lang-toggle:hover { border-color: #F2AB6D; background: color-mix(in oklab, #F2AB6D 12%, #312A18); }
 [data-theme="dark"] .lang-toggle .lang-active { color: #F2AB6D; }
