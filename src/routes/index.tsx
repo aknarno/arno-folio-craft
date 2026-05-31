@@ -570,17 +570,17 @@ function SousCase({ prev, next }: { prev: Project | null; next: Project | null }
 function OverseerCase({ prev, next }: { prev: Project | null; next: Project | null }) {
   const stats = [
     { label: "platform", value: "web + mobile", sub: "cross-platform b2b saas" },
-    { label: "users", value: "mros · mechanics · fleet ops", sub: "pilots and maintenance professionals" },
+    { label: "users", value: "MROs · mechanics · fleet ops", sub: "pilots and maintenance professionals" },
     { label: "my contribution", value: "work order module", sub: "plus supporting features and design system" },
-    { label: "real-world impact", value: "robinson · garmin", sub: "enterprise deals closed" },
+    { label: "professional impact", value: "robinson · garmin", sub: "enterprise deals closed" },
   ];
   const features = [
     { name: "my reservations", body: "a personal view of all aircraft reserved by the logged-in user, with schedule context and aircraft status." },
     { name: "manage members", body: "role and permission management for everyone inside an organization — mechanics, supervisors, and administrators." },
     { name: "manage aircraft", body: "full aircraft profile management: make, model, serial number, tail number, time-tracking (ttis, sfrm, tt, snew), and maintenance history." },
-    { name: "manage inventory", body: "parts and tooling not already attached to a specific aircraft — organization-level inventory with availability tracking." },
+    { name: "manage inventory", body: "organization-level parts and tooling inventory, separate from aircraft-specific components." },
     { name: "document center", body: "centralized document management for ads, sbs, maintenance manuals, and aircraft logs — all associated to the relevant aircraft or organization." },
-    { name: "work order mx", body: "end-to-end work order lifecycle: creation, discrepancy tracking, labor logging, tooling allocation, cost tracking, approval workflow, and client-ready reporting. (primary contribution — built from scratch.)" },
+    { name: "work order mx", body: "end-to-end work order lifecycle: creation, discrepancy tracking, labor logging, tooling allocation, cost tracking, approval workflow, and client-ready reporting." },
   ];
   const decisions = [
     { n: "01", title: "work order as the single source of truth", body: "customer info, aircraft context, schedule, labor rate, tooling, discrepancies, costs, and sign-offs all live inside one work order. nothing is scattered across separate tools or paper sheets." },
@@ -605,11 +605,11 @@ function OverseerCase({ prev, next }: { prev: Project | null; next: Project | nu
     <article className="section">
       <a href="#projects" className="back-link reveal">← work</a>
       <h1 className="reveal sous-title">overseer — aircraft maintenance management</h1>
-      <p className="sous-meta reveal">ux/ui designer · real-world project · 2024 · figma · b2b saas</p>
+      <p className="sous-meta reveal">ux/ui designer · professional design project · 2025 · figma · b2b saas</p>
       <div className="sous-pills reveal">
         <span className="pill">b2b saas</span>
         <span className="pill">web & mobile</span>
-        <span className="pill">mro platform</span>
+        <span className="pill">MRO platform</span>
         <span className="pill">ux design</span>
         <span className="pill">design system</span>
       </div>
@@ -625,7 +625,7 @@ function OverseerCase({ prev, next }: { prev: Project | null; next: Project | nu
         <h2 className="section-title">overview</h2>
         <p className="big">
           overseer is a cross-platform aircraft maintenance management system — available on web and
-          mobile — built for mro organizations, independent a&p mechanics, and fleet operators. it
+          mobile — built for MRO organizations, independent A&P mechanics, and fleet operators. it
           digitizes the entire maintenance workflow: from work order creation and discrepancy tracking
           to labor reporting, compliance documentation, inventory management, and crew coordination.
           the platform serves pilots, fleets, and maintenance professionals across a single connected
@@ -647,7 +647,7 @@ function OverseerCase({ prev, next }: { prev: Project | null; next: Project | nu
         <div className="industry-context">
           <h3>almost every aircraft in the world is still maintained with paper and pencil.</h3>
           <p>
-            in 2024, the majority of general aviation and mro maintenance documentation is still
+            even today, the majority of general aviation and MRO maintenance documentation is still
             analog — handwritten work orders, paper logbooks, pencil-marked inspection sheets.
             regulatory compliance, multi-technician coordination, and customer communication all run
             through physical documents that can be lost, misread, or never filed. overseer exists to
@@ -660,7 +660,7 @@ function OverseerCase({ prev, next }: { prev: Project | null; next: Project | nu
       <section className="sous-section reveal">
         <h2 className="section-title">platform features</h2>
         <p>
-          overseer covers the full operational surface of an mro organization. i worked across several
+          overseer covers the full operational surface of an MRO organization. i worked across several
           of these modules — each solving a distinct pain point for a different user type.
         </p>
         <ul className="feature-list">
@@ -671,21 +671,25 @@ function OverseerCase({ prev, next }: { prev: Project | null; next: Project | nu
             </li>
           ))}
         </ul>
-        <p style={{ marginTop: "1.25rem" }}>
-          beyond the work order module, i contributed to multiple other features within the platform.
-          i also led design work on separate projects outside the core product, including the design
-          system reconstruction that made all of this possible.
-        </p>
+        <div className="insight-callout" style={{ marginTop: "1.25rem" }}>
+          <p>
+            <strong>i also designed the complete parts ordering flow</strong> — a multi-organization
+            purchasing system built directly into the platform, functioning as a mini e-commerce
+            experience where MRO organizations can source parts from other organizations within the
+            network.
+          </p>
+        </div>
       </section>
 
       <section className="sous-section reveal">
         <h2 className="section-title">design system</h2>
         <p>
-          the overseer design system didn't exist when i joined the project. before i could design the
-          work order module, i needed to reconstruct the system from the existing product —
-          documenting components, establishing token structure, and creating a figma library that the
-          team could build from. the work order module was then the first feature designed entirely
-          within that rebuilt system.
+          the overseer design system existed when i joined the project — but it was significantly
+          outdated and inconsistent. rather than patching it, i rebuilt it from scratch:
+          re-establishing the token structure, auditing and redrawing components, and documenting
+          usage rules the team could follow. i preserved variables and components where they still
+          held up, but the result was effectively a new system built on the bones of the old one. the
+          work order module was the first feature designed entirely within the rebuilt system.
         </p>
         <div className="insight-callout">
           <p>designing within a system you built yourself creates a different kind of accountability. every component decision in the work order had to work not just for this screen, but for every screen that came after it.</p>
@@ -695,9 +699,9 @@ function OverseerCase({ prev, next }: { prev: Project | null; next: Project | nu
       <section className="sous-section focus-section reveal">
         <h2 className="section-title">focus: work order mx</h2>
         <p>
-          the work order module was my primary contribution — designed entirely from scratch, within
-          the design system above. it is the most complex screen in the platform and the one that
-          most directly replaced a physical paper process.
+          the work order module is the feature i want to highlight here — it's where the design
+          challenge was most visible and where the decisions i made had the most direct impact on
+          how MRO professionals do their daily work.
         </p>
         <ol className="numbered-list">
           {decisions.map((d) => (
@@ -724,10 +728,10 @@ function OverseerCase({ prev, next }: { prev: Project | null; next: Project | nu
         <h2 className="section-title">impact</h2>
         <div className="impact-grid">
           <p>
-            overseer is a live product used by real mro organizations. the work order module — and the
+            overseer is a live product used by real MRO organizations. the work order module — and the
             broader platform work i contributed to — played a direct role in closing partnerships with
             two of the largest names in general aviation. these weren't small deals: robinson
-            helicopter company and garmin both integrated crewchief into their aircraft and systems,
+            helicopter company and garmin both integrated overseer into their aircraft and systems,
             validating the platform's readiness for enterprise-scale operations.
           </p>
           <div className="impact-stats">
