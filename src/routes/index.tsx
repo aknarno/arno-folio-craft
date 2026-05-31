@@ -512,13 +512,6 @@ function SousCase({ prev, next }: { prev: Project | null; next: Project | null }
         </ol>
       </section>
 
-      <section className="sous-section reveal">
-        <h2 className="section-title">information architecture</h2>
-        <p>four pillars, each with a single job. nothing competes for attention.</p>
-        <div className="ia-pills">
-          {ia.map((t) => <span key={t} className="pill">{t}</span>)}
-        </div>
-      </section>
 
       <section className="sous-section reveal">
         <h2 className="section-title">cooking mode</h2>
