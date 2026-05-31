@@ -762,7 +762,8 @@ const styles = `
   --shadow-md: 0 4px 16px oklch(0 0 0 / 0.35);
   --shadow-lg: 0 12px 32px oklch(0 0 0 / 0.45);
 }
-html, body { background: var(--color-bg); color: var(--color-text); }
+html, body { background: var(--color-bg); color: var(--color-text); overflow-x: hidden; max-width: 100%; }
+.site { overflow-x: hidden; max-width: 100%; }
 body, body * {
   font-family: var(--font-body);
 }
