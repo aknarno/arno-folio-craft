@@ -578,9 +578,6 @@ function SousCase({ prev, next }: { prev: Project | null; next: Project | null }
         <img src={sousDesignSystem} alt="Sous design system — colors, typography, components" loading="lazy" />
       </figure>
 
-      <figure className="sous-flow reveal">
-        <img src={sousStepByStep} alt="Sous end-to-end flow — five key screens" loading="lazy" />
-      </figure>
 
       <figure className="sous-mockup reveal">
         <img src={sousMockup} alt="Sous mockup in context" loading="lazy" />
