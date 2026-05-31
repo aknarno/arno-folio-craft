@@ -723,7 +723,7 @@ function OverseerCase({ prev, next }: { prev: Project | null; next: Project | nu
         <h2 className="section-title">impact</h2>
         <div className="impact-grid">
           <p>
-            overseer is a live product used by real mro organizations. the work order module — and the
+            overseer is a live product used by real MRO organizations. the work order module — and the
             broader platform work i contributed to — played a direct role in closing partnerships with
             two of the largest names in general aviation. these weren't small deals: robinson
             helicopter company and garmin both integrated crewchief into their aircraft and systems,
