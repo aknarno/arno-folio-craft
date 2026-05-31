@@ -820,7 +820,7 @@ function ArgoCase({ prev, next }: { prev: Project | null; next: Project | null }
           projection of the carbon credits their land could generate. argo handles the entire
           process — from initial enrollment and soil data collection through credit issuance and
           payment — taking a percentage for facilitating the program. my work focused on two of the
-          platform's most technically complex surfaces: the draw boundary tool and the data
+          platform's most important user-facing modules: the draw boundary tool and the data
           collection module.
         </p>
         <div className="stat-row">
