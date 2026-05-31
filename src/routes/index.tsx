@@ -148,9 +148,13 @@ function Index() {
               aria-pressed={lang === "pt"}
               onClick={() => setLang(lang === "en" ? "pt" : "en")}
             >
-              <span className={lang === "en" ? "lang-active" : ""}>🇺🇸 EN</span>
+              <span className={lang === "en" ? "lang-active" : ""}>
+                <img src="https://flagcdn.com/w20/us.png" srcSet="https://flagcdn.com/w40/us.png 2x" width="20" height="15" alt="" className="lang-flag" /> EN
+              </span>
               <span className="lang-sep" aria-hidden="true">/</span>
-              <span className={lang === "pt" ? "lang-active" : ""}>🇧🇷 PT-BR</span>
+              <span className={lang === "pt" ? "lang-active" : ""}>
+                <img src="https://flagcdn.com/w20/br.png" srcSet="https://flagcdn.com/w40/br.png 2x" width="20" height="15" alt="" className="lang-flag" /> PT-BR
+              </span>
             </button>
           </div>
           <nav>
@@ -856,6 +860,7 @@ h1, h2, h3, h4, h5, h6,
 }
 .lang-toggle .lang-active { color: var(--color-primary); }
 .lang-toggle .lang-sep { opacity: 0.5; }
+.lang-toggle .lang-flag { display: inline-block; vertical-align: -2px; border-radius: 2px; box-shadow: 0 0 0 1px rgba(0,0,0,0.08); }
 [data-theme="dark"] .lang-toggle { color: #A89880; background: #312A18; border-color: #564A2F; }
 [data-theme="dark"] .lang-toggle:hover { border-color: #F2AB6D; background: color-mix(in oklab, #F2AB6D 12%, #312A18); }
 [data-theme="dark"] .lang-toggle .lang-active { color: #F2AB6D; }
