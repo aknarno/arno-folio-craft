@@ -473,11 +473,6 @@ function SousCase({ prev, next }: { prev: Project | null; next: Project | null }
           a time budget, and a few dietary constraints, then narrows thousands of recipes
           down to 3–5 actionable matches.
         </p>
-        <p>
-          Cook Mode is designed for high-glare kitchens and messy hands: high-contrast type,
-          oversized tap targets, one step at a time, integrated timers, and a screen that
-          stays awake while the user works.
-        </p>
         <div className="stat-row">
           {stats.map((s) => (
             <div key={s.label} className="stat">
