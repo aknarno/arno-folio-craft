@@ -1074,7 +1074,7 @@ input:focus, textarea:focus { outline: none; border: 2px solid var(--color-prima
   .pain-grid { grid-template-columns: 1fr !important; }
 
   /* Tighten header on mobile so it never overflows */
-  .nav { padding: 0.85rem 1rem; gap: 0.5rem; flex-wrap: nowrap; align-items: flex-start; }
+  .nav { padding: 0.85rem 1rem; gap: 0.5rem; flex-wrap: nowrap; align-items: flex-end; }
   .nav-left { gap: 0.4rem; min-width: 0; flex: 1 1 auto; }
   .nav-controls { gap: 0.4rem; }
   .nav-brand-name { font-size: 0.95rem; white-space: nowrap; }
