@@ -51,34 +51,34 @@ type Project = {
 const projects: Project[] = [
   {
     slug: "sous",
-    title: "sous — just-in-time cooking",
+    title: "Sous — Just-in-Time Cooking",
     client: "portfolio project",
     year: "2026",
     role: "ux/ui designer",
     summary:
-      "a just-in-time cooking assistant for busy beginners — no pantry database, no decision fatigue, just dinner.",
+      "A just-in-time cooking assistant for busy beginners — no pantry database, no decision fatigue, just dinner.",
     tags: ["mobile", "ux design", "product concept"],
     cover: sousCover,
   },
   {
     slug: "overseer",
-    title: "overseer — aircraft maintenance management",
+    title: "Overseer — Aircraft Maintenance Management",
     client: "professional design project",
     year: "2025",
     role: "ux/ui designer",
     summary:
-      "a cross-platform web and mobile MRO platform that consolidates work orders, discrepancies, labor reporting and compliance into a single focused workspace.",
+      "A cross-platform web and mobile MRO platform that consolidates work orders, discrepancies, labor reporting and compliance into a single focused workspace.",
     tags: ["b2b saas", "web & mobile", "MRO platform", "ux design", "design system"],
     cover: overseerCover,
   },
   {
     slug: "argo",
-    title: "argo — carbon credits management platform",
+    title: "Argo — Carbon Credits Management Platform",
     client: "professional design project",
     year: "2024",
     role: "ux/ui designer",
     summary:
-      "a carbon credits platform connecting farmers and ranchers with voluntary carbon markets — boundary drawing, data collection and an 11-year credit projection.",
+      "A carbon credits platform connecting farmers and ranchers with voluntary carbon markets — boundary drawing, data collection and an 11-year credit projection.",
     tags: ["b2b saas", "web app", "agtech", "ux design", "data visualization"],
     cover: argoCover,
   },
@@ -417,32 +417,43 @@ function SousCase({ prev, next }: { prev: Project | null; next: Project | null }
     { label: "target user", value: "busy beginner", sub: "cooks 1–2× a week" },
     { label: "core constraint", value: "≤ 15 sec", sub: "time to first recipe match" },
     { label: "app pillars", value: "4 screens", sub: "cook · saved · habits · profile" },
-    { label: "project type", value: "concept", sub: "end-to-end ux design" },
+    { label: "project type", value: "concept", sub: "end-to-end UX design" },
   ];
-  const pains = [
-    { eyebrow: "pain 01", title: "the inventory tax", body: "traditional cooking apps demand tedious ingredient logging. after an 8-hour workday, that 'tax' is higher than the benefit — users abandon the app and order delivery." },
-    { eyebrow: "pain 02", title: "decision fatigue", body: "thousands of recipes look like a feature. for a tired beginner, it's a wall. browsing for the 'right' meal burns the same energy needed to cook it." },
-    { eyebrow: "pain 03", title: "fear of failure", body: "missing one herb feels like a dead end. without 'chef's intuition,' beginners assume a recipe is broken instead of adaptable." },
-    { eyebrow: "pain 04", title: "the hostile kitchen", body: "cooking happens in glare, with wet or messy hands. an interface designed for the couch fails the moment hands touch food." },
+  const research = [
+    { eyebrow: "pillar 01", title: "The psychology of administrative burden", body: "Every time an app asks a user to log an item or choose from a list of 100, it spends their mental energy. For someone coming home after an 8-hour workday, that energy is already at zero." },
+    { eyebrow: "pillar 02", title: "Inventory managers vs. assistants", body: "Most cooking apps focus on storage — managing a database — rather than execution. That leaves a wide gap for a just-in-time engine that requires no prior data entry." },
+    { eyebrow: "pillar 03", title: "The kitchen as a hostile environment", body: "Cooking happens in high-glare environments with temporarily disabled hands — messy, wet, busy. That reframed the work from mobile UI to contextual utility." },
+  ];
+  const personas = [
+    { name: "Alex", quote: "I just want to eat something healthy without having to think about it after an 8-hour workday.", problem: "Has a fridge with random ingredients but lacks the mental energy to figure out how they fit together.", pain: "Choice overload sends Alex straight back to delivery apps." },
+    { name: "Jordan", quote: "I want to eat better, but I'm terrified of wasting food or ruining a recipe because I'm missing one specific herb.", problem: "If a recipe calls for kale and Jordan only has spinach, they assume the dish is off the table.", pain: "Fear of failure and lack of chef's intuition." },
+    { name: "Sam", quote: "I hate wasting food, but I don't have the patience to maintain a digital inventory of every onion in my drawer.", problem: "Has tried fridge tracker apps before but finds the upkeep impossible.", pain: "The tax of logging groceries is higher than the benefit of the app." },
   ];
   const decisions = [
-    { n: "01", title: "zero inventory model", body: "no pantry database to maintain. ingredients are entered fresh at the moment of cooking. a 15-second input, not a 15-minute setup." },
-    { n: "02", title: "time-first matching", body: "the time slider is the first input. 'i have 20 minutes' becomes the starting point, not a constraint added after browsing." },
-    { n: "03", title: "mise en place screen", body: "before any instruction appears, sous surfaces every ingredient and physical tool needed. no mid-cook surprises. no dead ends at step 4." },
-    { n: "04", title: "smart substitutions", body: "when an ingredient is missing, sous offers a vetted swap with a plain-language culinary reason. this builds intuition, not just workarounds." },
+    { n: "01", title: "Zero inventory model", body: "No pantry database to maintain. Ingredients are entered fresh at the moment of cooking — a 15-second input, not a 15-minute setup." },
+    { n: "02", title: "Time-first matching", body: "The time slider is the first input. 'I have 20 minutes' becomes the starting point, not a constraint added after browsing." },
+    { n: "03", title: "Mise en place screen", body: "Before any instruction appears, Sous surfaces every ingredient and physical tool needed. No mid-cook surprises, no dead ends at step 4." },
+    { n: "04", title: "Smart substitutions", body: "When an ingredient is missing, Sous offers a vetted swap with a plain-language culinary reason — building intuition, not just workarounds." },
+  ];
+  const process = [
+    { n: "01", title: "Empathize", body: "Audited the recipe app landscape and identified that constant grocery logging creates an inventory burden — a real barrier to healthy eating. Users want to cook, not manage a database." },
+    { n: "02", title: "Define", body: "Framed the product as a just-in-time engine: a high-value, zero-maintenance assistant that delivers immediate solutions without administrative upkeep." },
+    { n: "03", title: "Ideate", body: "Mapped critical edge cases alongside the happy path — no matching ingredients, skipped steps, connectivity dropping mid-recipe — so the design held up under real-world failure." },
+    { n: "04", title: "Prototype", body: "Built inclusive interactions: voice commands, oversized tap targets, and high-contrast surfaces that work with messy hands or limited dexterity." },
+    { n: "05", title: "Test", body: "Working with a culinary expert, Cook Mode shifted from dense text lists to a one-step-at-a-time card layout with integrated timers — cutting cognitive load in high-activity kitchens." },
   ];
   const outcomes = [
-    "zero inventory model",
-    "mise en place checkpoint",
-    "smart substitutions with culinary logic",
-    "habit loop with identity-based milestones",
-    "accessible cook mode with wakelock + timers",
+    "Zero inventory model",
+    "Mise en place checkpoint",
+    "Smart substitutions with culinary logic",
+    "Habit loop with identity-based milestones",
+    "Accessible Cook Mode with wakelock + timers",
   ];
   return (
     <article className="section">
       <a href="#projects" className="back-link reveal">← work</a>
-      <h1 className="reveal sous-title">sous — just-in-time cooking</h1>
-      <p className="sous-meta reveal">ux/ui designer · portfolio project · 2025 · figma · stitch · claude</p>
+      <h1 className="reveal sous-title">Sous — Just-in-Time Cooking</h1>
+      <p className="sous-meta reveal">UX/UI Designer · Portfolio project · 2026 · Figma · Claude · Miro</p>
       <div className="sous-pills reveal">
         <span className="pill">mobile</span>
         <span className="pill">ux design</span>
@@ -450,16 +461,25 @@ function SousCase({ prev, next }: { prev: Project | null; next: Project | null }
       </div>
 
       <figure className="sous-mockup reveal">
-        <img src={sousCover} alt="sous app cover" loading="lazy" />
+        <img src={sousCover} alt="Sous app cover" loading="lazy" />
       </figure>
 
       <section className="sous-section reveal">
         <h2 className="section-title">overview</h2>
         <p className="big">
-          sous is a just-in-time cooking assistant for busy beginners who want to eat well
-          without meal planning or pantry management. it narrows thousands of recipes down to
-          3–5 actionable matches, then guides cooking with high-contrast visuals and large tap
-          targets built for messy hands.
+          Sous is a just-in-time cooking assistant for busy beginners who want to eat well
+          without the friction of meal planning or pantry management. Instead of asking users
+          to maintain a digital inventory, Sous takes whatever ingredients they have on hand,
+          a time budget, and a few dietary constraints, then narrows thousands of recipes
+          down to 3–5 actionable matches.
+        </p>
+        <p>
+          The product is built for the version of the user who is already tired, already
+          hungry, and one step away from opening a delivery app. Cook Mode is designed for
+          high-glare kitchens and messy hands: high-contrast type, oversized tap targets,
+          one step at a time, integrated timers, and a screen that stays awake while the
+          user works. The goal is simple — make healthy cooking the path of least
+          resistance, not another chore on the to-do list.
         </p>
         <div className="stat-row">
           {stats.map((s) => (
@@ -473,26 +493,55 @@ function SousCase({ prev, next }: { prev: Project | null; next: Project | null }
       </section>
 
       <section className="sous-section reveal">
-        <h2 className="section-title">the problem</h2>
-        <p>most food apps treat users like warehouse clerks. sous treats them like cooks.</p>
+        <h2 className="section-title">research</h2>
+        <p>Every pixel in Sous was designed to solve a specific, researched problem — anchored on three pillars.</p>
         <div className="pain-grid">
-          {pains.map((p) => (
-            <div key={p.eyebrow} className="pain-card">
-              <p className="pain-eyebrow">{p.eyebrow}</p>
-              <h3>{p.title}</h3>
-              <p>{p.body}</p>
+          {research.map((r) => (
+            <div key={r.eyebrow} className="pain-card">
+              <p className="pain-eyebrow">{r.eyebrow}</p>
+              <h3>{r.title}</h3>
+              <p>{r.body}</p>
             </div>
           ))}
         </div>
-        <blockquote className="pull-quote">
-          <p>"i want to eat better but i never know what to cook with what i have. by the time i figure it out, i've already ordered food."</p>
-          <cite>— john, 28, the target persona</cite>
-        </blockquote>
+      </section>
+
+      <section className="sous-section reveal">
+        <h2 className="section-title">personas</h2>
+        <p>Three archetypes cover the most common barriers to healthy cooking — different entry points into the same problem of administrative burnout.</p>
+        <div className="pain-grid">
+          {personas.map((p) => (
+            <div key={p.name} className="pain-card">
+              <p className="pain-eyebrow">{p.name}</p>
+              <blockquote className="pull-quote" style={{ margin: "0 0 1rem" }}>
+                <p>"{p.quote}"</p>
+              </blockquote>
+              <p><strong>The problem.</strong> {p.problem}</p>
+              <p><strong>Main pain point.</strong> {p.pain}</p>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      <section className="sous-section reveal">
+        <h2 className="section-title">design process</h2>
+        <p>Moving from the chaos of a messy kitchen to the clarity of a guided cooking experience, using the Design Thinking methodology.</p>
+        <ol className="numbered-list">
+          {process.map((d) => (
+            <li key={d.n}>
+              <span className="num">{d.n}</span>
+              <div>
+                <h3>{d.title}</h3>
+                <p>{d.body}</p>
+              </div>
+            </li>
+          ))}
+        </ol>
       </section>
 
       <section className="sous-section reveal">
         <h2 className="section-title">design decisions</h2>
-        <p>four principles shaped every screen in the app.</p>
+        <p>Four principles shaped every screen in the app.</p>
         <ol className="numbered-list">
           {decisions.map((d) => (
             <li key={d.n}>
@@ -506,36 +555,35 @@ function SousCase({ prev, next }: { prev: Project | null; next: Project | null }
         </ol>
       </section>
 
-
       <section className="sous-section reveal">
         <h2 className="section-title">cooking mode</h2>
         <p>
-          cook mode is the heart of sous: one step at a time, oversized tap targets, integrated
+          Cook Mode is the heart of Sous: one step at a time, oversized tap targets, integrated
           timers, and a screen that stays awake while hands stay busy.
         </p>
         <div className="insight-callout">
-          <p>the design principle: every feature in cook mode exists to reduce the number of things the user has to think about while physically cooking.</p>
+          <p>The design principle: every feature in Cook Mode exists to reduce the number of things the user has to think about while physically cooking.</p>
         </div>
       </section>
 
       <section className="sous-section reveal">
         <h2 className="section-title">outcome</h2>
-        <p>an end-to-end concept that reframes cooking apps from inventory managers to assistants.</p>
+        <p>An end-to-end concept that reframes cooking apps from inventory managers into assistants.</p>
         <div className="ia-pills">
           {outcomes.map((t) => <span key={t} className="pill">{t}</span>)}
         </div>
       </section>
 
       <figure className="sous-flow reveal">
-        <img src={sousDesignSystem} alt="sous design system — colors, typography, components" loading="lazy" />
+        <img src={sousDesignSystem} alt="Sous design system — colors, typography, components" loading="lazy" />
       </figure>
 
       <figure className="sous-flow reveal">
-        <img src={sousStepByStep} alt="sous end-to-end flow — five key screens" loading="lazy" />
+        <img src={sousStepByStep} alt="Sous end-to-end flow — five key screens" loading="lazy" />
       </figure>
 
       <figure className="sous-mockup reveal">
-        <img src={sousMockup} alt="sous mockup in context" loading="lazy" />
+        <img src={sousMockup} alt="Sous mockup in context" loading="lazy" />
       </figure>
 
       <div className="project-nav reveal">
@@ -548,30 +596,30 @@ function SousCase({ prev, next }: { prev: Project | null; next: Project | null }
 
 function OverseerCase({ prev, next }: { prev: Project | null; next: Project | null }) {
   const stats = [
-    { label: "platform", value: "web + mobile", sub: "cross-platform b2b saas" },
+    { label: "platform", value: "web + mobile", sub: "cross-platform B2B SaaS" },
     { label: "users", value: "MROs · mechanics · fleet ops", sub: "pilots and maintenance professionals" },
-    { label: "my contribution", value: "work order module", sub: "plus supporting features and design system" },
-    { label: "real-world impact", value: "robinson · garmin", sub: "enterprise deals closed" },
+    { label: "my contribution", value: "Work Order module", sub: "plus supporting features and design system" },
+    { label: "real-world impact", value: "Robinson · Garmin", sub: "enterprise deals closed" },
   ];
   const features = [
-    { name: "my reservations", body: "a personal view of all aircraft reserved by the logged-in user, with schedule context and aircraft status." },
-    { name: "manage members", body: "role and permission management for everyone inside an organization — mechanics, supervisors, and administrators." },
-    { name: "manage aircraft", body: "full aircraft profile management: make, model, serial number, tail number, time-tracking (ttis, sfrm, tt, snew), and maintenance history." },
-    { name: "manage inventory", body: "organization-level parts and tooling inventory, separate from aircraft-specific components." },
-    { name: "document center", body: "centralized document management for ads, sbs, maintenance manuals, and aircraft logs — all associated to the relevant aircraft or organization." },
-    { name: "work order mx", body: "end-to-end work order lifecycle: creation, discrepancy tracking, labor logging, tooling allocation, cost tracking, approval workflow, and client-ready reporting." },
-    { name: "parts ordering flow", body: "a multi-organization purchasing system built directly into the platform — a mini e-commerce experience where MRO organizations can source parts from other organizations within the network." },
+    { name: "My Reservations", body: "A personal view of all aircraft reserved by the logged-in user, with schedule context and aircraft status." },
+    { name: "Manage Members", body: "Role and permission management for everyone inside an organization — mechanics, supervisors, and administrators." },
+    { name: "Manage Aircraft", body: "Full aircraft profile management: make, model, serial number, tail number, time-tracking (TTIS, SFRM, TT, SNEW), and maintenance history." },
+    { name: "Manage Inventory", body: "Organization-level parts and tooling inventory, separate from aircraft-specific components." },
+    { name: "Document Center", body: "Centralized document management for ADs, SBs, maintenance manuals, and aircraft logs — all associated to the relevant aircraft or organization." },
+    { name: "Work Order MX", body: "End-to-end work order lifecycle: creation, discrepancy tracking, labor logging, tooling allocation, cost tracking, approval workflow, and client-ready reporting." },
+    { name: "Parts Ordering Flow", body: "A multi-organization purchasing system built directly into the platform — a mini e-commerce experience where MRO organizations can source parts from other organizations within the network." },
   ];
   const decisions = [
-    { n: "01", title: "work order as the single source of truth", body: "customer info, aircraft context, schedule, labor rate, tooling, discrepancies, costs, and sign-offs all live inside one work order. nothing is scattered across separate tools or paper sheets." },
-    { n: "02", title: "hierarchical discrepancy list", body: "each work order contains a nested discrepancy list — items and sub-items — where mechanics log findings, estimated and actual hours, parts used, action taken, and approval status per line. this replaces the handwritten squawk sheet." },
-    { n: "03", title: "labor visibility for supervisors", body: "hours are logged at the sub-item level by technician, giving supervisors a real-time view of job progress without walking the shop floor. the labor report generates a client-ready document from this data automatically." },
-    { n: "04", title: "tooling allocation", body: "tools are assigned directly to the work order — not just noted on paper — creating accountability and reducing the 'where is the torque wrench' problem endemic to shared shop environments." },
-    { n: "05", title: "status workflow", body: "work orders move through defined states (estimate, in progress, submitted, archived) with role-based permissions on transitions. customers gain visibility into their aircraft's status without a phone call." },
+    { n: "01", title: "Work order as the single source of truth", body: "Customer info, aircraft context, schedule, labor rate, tooling, discrepancies, costs, and sign-offs all live inside one work order. Nothing is scattered across separate tools or paper sheets." },
+    { n: "02", title: "Hierarchical discrepancy list", body: "Each work order contains a nested discrepancy list — items and sub-items — where mechanics log findings, estimated and actual hours, parts used, action taken, and approval status per line. This replaces the handwritten squawk sheet." },
+    { n: "03", title: "Labor visibility for supervisors", body: "Hours are logged at the sub-item level by technician, giving supervisors a real-time view of job progress without walking the shop floor. The labor report generates a client-ready document from this data automatically." },
+    { n: "04", title: "Tooling allocation", body: "Tools are assigned directly to the work order — not just noted on paper — creating accountability and reducing the 'where is the torque wrench' problem endemic to shared shop environments." },
+    { n: "05", title: "Status workflow", body: "Work orders move through defined states (Estimate, In Progress, Submitted, Archived) with role-based permissions on transitions. Customers gain visibility into their aircraft's status without a phone call." },
   ];
   const impactStats = [
-    { org: "robinson helicopter company", label: "enterprise partnership — digital maintenance management added to future aircraft production" },
-    { org: "garmin", label: "integration partnership — live flight logs, digital records, and maintenance management connected to garmin avionics" },
+    { org: "Robinson Helicopter Company", label: "Enterprise partnership — digital maintenance management added to future aircraft production." },
+    { org: "Garmin", label: "Integration partnership — live flight logs, digital records, and maintenance management connected to Garmin avionics." },
   ];
   const outcomes = [
     "cross-platform web + mobile",
@@ -584,8 +632,8 @@ function OverseerCase({ prev, next }: { prev: Project | null; next: Project | nu
   return (
     <article className="section">
       <a href="#projects" className="back-link reveal">← work</a>
-      <h1 className="reveal sous-title">overseer — aircraft maintenance management</h1>
-      <p className="sous-meta reveal">ux/ui designer · professional design project · 2025 · figma · b2b saas</p>
+      <h1 className="reveal sous-title">Overseer — Aircraft Maintenance Management</h1>
+      <p className="sous-meta reveal">UX/UI Designer · Professional design project · 2025 · Figma · B2B SaaS</p>
       <div className="sous-pills reveal">
         <span className="pill">b2b saas</span>
         <span className="pill">web & mobile</span>
@@ -594,7 +642,7 @@ function OverseerCase({ prev, next }: { prev: Project | null; next: Project | nu
         <span className="pill">design system</span>
       </div>
       <div className="confidentiality-notice reveal">
-        this is a real shipped product. name and branding have been changed for confidentiality.
+        This is a real shipped product. Name and branding have been changed for confidentiality.
       </div>
 
       <figure className="sous-mockup reveal">
@@ -604,11 +652,11 @@ function OverseerCase({ prev, next }: { prev: Project | null; next: Project | nu
       <section className="sous-section reveal">
         <h2 className="section-title">overview</h2>
         <p className="big">
-          overseer is a cross-platform aircraft maintenance management system — available on web and
-          mobile — built for MRO organizations, independent A&P mechanics, and fleet operators. it
+          Overseer is a cross-platform aircraft maintenance management system — available on web and
+          mobile — built for MRO organizations, independent A&P mechanics, and fleet operators. It
           digitizes the entire maintenance workflow: from work order creation and discrepancy tracking
           to labor reporting, compliance documentation, inventory management, and crew coordination.
-          the platform serves pilots, fleets, and maintenance professionals across a single connected
+          The platform serves pilots, fleets, and maintenance professionals across a single connected
           system.
         </p>
         <div className="stat-row">
@@ -625,12 +673,12 @@ function OverseerCase({ prev, next }: { prev: Project | null; next: Project | nu
       <section className="sous-section reveal">
         <h2 className="section-title">the industry context</h2>
         <div className="industry-context">
-          <h3>almost every aircraft in the world is still maintained with paper and pencil.</h3>
+          <h3>Almost every aircraft in the world is still maintained with paper and pencil.</h3>
           <p>
-            even today, the majority of general aviation and MRO maintenance documentation is still
+            Even today, the majority of general aviation and MRO maintenance documentation is still
             analog — handwritten work orders, paper logbooks, pencil-marked inspection sheets.
-            regulatory compliance, multi-technician coordination, and customer communication all run
-            through physical documents that can be lost, misread, or never filed. overseer exists to
+            Regulatory compliance, multi-technician coordination, and customer communication all run
+            through physical documents that can be lost, misread, or never filed. Overseer exists to
             replace that stack of paper with a single connected platform that travels with the
             aircraft.
           </p>
@@ -640,7 +688,7 @@ function OverseerCase({ prev, next }: { prev: Project | null; next: Project | nu
       <section className="sous-section reveal">
         <h2 className="section-title">platform features</h2>
         <p>
-          overseer covers the full operational surface of an MRO organization. i worked across several
+          Overseer covers the full operational surface of an MRO organization. I worked across several
           of these modules — each solving a distinct pain point for a different user type.
         </p>
         <ul className="feature-list">
@@ -656,23 +704,23 @@ function OverseerCase({ prev, next }: { prev: Project | null; next: Project | nu
       <section className="sous-section reveal">
         <h2 className="section-title">design system</h2>
         <p>
-          the overseer design system existed when i joined the project — but it was significantly
-          outdated and inconsistent. rather than patching it, i rebuilt it from scratch:
+          The Overseer design system existed when I joined the project — but it was significantly
+          outdated and inconsistent. Rather than patching it, I rebuilt it from scratch:
           re-establishing the token structure, auditing and redrawing components, and documenting
-          usage rules the team could follow. i preserved variables and components where they still
+          usage rules the team could follow. I preserved variables and components where they still
           held up, but the result was effectively a new system built on the bones of the old one.
-          the work order module was the first feature designed entirely within the rebuilt system.
+          The Work Order module was the first feature designed entirely within the rebuilt system.
         </p>
         <div className="insight-callout">
-          <p>designing within a system you built yourself creates a different kind of accountability. every component decision in the work order had to work not just for this screen, but for every screen that came after it.</p>
+          <p>Designing within a system you built yourself creates a different kind of accountability. Every component decision in the Work Order had to work not just for this screen, but for every screen that came after it.</p>
         </div>
       </section>
 
       <section className="sous-section focus-section reveal">
-        <h2 className="section-title">focus: work order mx</h2>
+        <h2 className="section-title">focus: Work Order MX</h2>
         <p>
-          the work order module is the feature i want to highlight here — it's where the design
-          challenge was most visible and where the decisions i made had the most direct impact on
+          The Work Order module is the feature I want to highlight here — it's where the design
+          challenge was most visible and where the decisions I made had the most direct impact on
           how MRO professionals do their daily work.
         </p>
         <ol className="numbered-list">
@@ -700,11 +748,12 @@ function OverseerCase({ prev, next }: { prev: Project | null; next: Project | nu
         <h2 className="section-title">impact</h2>
         <div className="impact-grid">
           <p>
-            overseer is a live product used by real MRO organizations. the work order module — and the
-            broader platform work i contributed to — played a direct role in closing partnerships with
-            two of the largest names in general aviation. these weren't small deals: robinson
-            helicopter company and garmin both integrated overseer into their aircraft and systems,
-            validating the platform's readiness for enterprise-scale operations.
+            Overseer is a live product used by real MRO organizations. The Work Order module — and
+            the broader platform work I contributed to — played a direct role in closing
+            partnerships with two of the largest names in general aviation. These weren't small
+            deals: Robinson Helicopter Company and Garmin both integrated Overseer into their
+            aircraft and systems, validating the platform's readiness for enterprise-scale
+            operations.
           </p>
           <div className="impact-stats">
             {impactStats.map((s) => (
@@ -738,35 +787,35 @@ function OverseerCase({ prev, next }: { prev: Project | null; next: Project | nu
 
 function ArgoCase({ prev, next }: { prev: Project | null; next: Project | null }) {
   const stats = [
-    { label: "platform", value: "web app", sub: "b2b saas · agtech" },
-    { label: "users", value: "farmers · ranchers", sub: "landowners across north america" },
-    { label: "my contribution", value: "2 core modules", sub: "draw boundary + data collection" },
+    { label: "platform", value: "web app", sub: "B2B SaaS · agtech" },
+    { label: "users", value: "farmers · ranchers", sub: "landowners across North America" },
+    { label: "my contribution", value: "2 core modules", sub: "Draw Boundary + Data Collection" },
     { label: "project type", value: "real product", sub: "shipped · name changed for confidentiality" },
   ];
   const contributions = [
-    { n: "01", title: "draw boundary tool", body: "an interactive satellite map interface where farmers draw the precise boundaries of their fields using polygon tools. the tool supports multiple drawing modes — freehand polygon, circular border, inner border — and allows users to name fields, set acreage, define land ownership type, and classify field type (row crop, range and pasture) before saving. accuracy here determines the carbon calculation downstream, so the ux had to be precise without being intimidating to a rancher who has never used gis software." },
-    { n: "02", title: "data collection module", body: "a centralized, structured view of all data associated with a producer's farm — herd data, fertilizer and amendment applications, forage management practices, and more. data is organized into collapsible sections per practice category, with inline error surfacing, edit mode, and multi-year filtering. this screen is the scientific backbone of the carbon estimate: every field logged here feeds directly into the carbon modeling engine." },
+    { n: "01", title: "Draw Boundary tool", body: "An interactive satellite map interface where farmers draw the precise boundaries of their fields using polygon tools. The tool supports multiple drawing modes — freehand polygon, circular border, inner border — and allows users to name fields, set acreage, define land ownership type, and classify field type (row crop, range and pasture) before saving. Accuracy here determines the carbon calculation downstream, so the UX had to be precise without being intimidating to a rancher who has never used GIS software." },
+    { n: "02", title: "Data Collection module", body: "A centralized, structured view of all data associated with a producer's farm — herd data, fertilizer and amendment applications, forage management practices, and more. Data is organized into collapsible sections per practice category, with inline error surfacing, edit mode, and multi-year filtering. This screen is the scientific backbone of the carbon estimate: every field logged here feeds directly into the carbon modeling engine." },
   ];
   const challenges = [
-    { n: "01", title: "spatial accuracy vs. accessibility", body: "the draw boundary tool needed to be precise enough for scientific modeling while remaining usable by someone drawing field boundaries on a tablet from a ranch office. the solution was a constrained, opinionated drawing toolbar — limited options, clear visual feedback, and a fields list panel that kept the user grounded in what they'd already defined." },
-    { n: "02", title: "data density without overwhelm", body: "the data collection module aggregates years of agricultural practice data across multiple categories. the challenge was making that density navigable — collapsible sections, progressive disclosure, a persistent error count (\"show only errors: 3\"), and multi-axis filtering (by field, by year, by event) all worked together to give the user control without cognitive overload." },
-    { n: "03", title: "offline-first in remote environments", body: "ranchers and farmers often live and work in areas with no reliable internet connection. the platform had to function fully offline — syncing data when connectivity was restored. this shaped every interaction that involved saving field boundaries or logging practice data: nothing could depend on a live connection, and nothing could be lost." },
-    { n: "04", title: "designing for non-technical users", body: "the target user is an expert in land and livestock — not software. most ranchers' closest reference for data entry is a spreadsheet. every screen had to feel familiar to that mental model: tabular layouts, clear labels, predictable row structures, and no interaction patterns that required prior digital literacy. complexity had to be invisible." },
-    { n: "05", title: "trust in the numbers", body: "the carbon estimate is the emotional core of the product — it's the number that convinces a skeptical farmer to enroll. every design decision in the flow leading up to it had to build confidence that the inputs were correct, the methodology was sound, and the projected payment was real." },
+    { n: "01", title: "Spatial accuracy vs. accessibility", body: "The Draw Boundary tool needed to be precise enough for scientific modeling while remaining usable by someone drawing field boundaries on a tablet from a ranch office. The solution was a constrained, opinionated drawing toolbar — limited options, clear visual feedback, and a fields list panel that kept the user grounded in what they'd already defined." },
+    { n: "02", title: "Data density without overwhelm", body: "The Data Collection module aggregates years of agricultural practice data across multiple categories. The challenge was making that density navigable — collapsible sections, progressive disclosure, a persistent error count (\"Show only errors: 3\"), and multi-axis filtering (by field, by year, by event) all worked together to give the user control without cognitive overload." },
+    { n: "03", title: "Offline-first in remote environments", body: "Ranchers and farmers often live and work in areas with no reliable internet connection. The platform had to function fully offline — syncing data when connectivity was restored. This shaped every interaction that involved saving field boundaries or logging practice data: nothing could depend on a live connection, and nothing could be lost." },
+    { n: "04", title: "Designing for non-technical users", body: "The target user is an expert in land and livestock — not software. Most ranchers' closest reference for data entry is a spreadsheet. Every screen had to feel familiar to that mental model: tabular layouts, clear labels, predictable row structures, and no interaction patterns that required prior digital literacy. Complexity had to be invisible." },
+    { n: "05", title: "Trust in the numbers", body: "The carbon estimate is the emotional core of the product — it's the number that convinces a skeptical farmer to enroll. Every design decision in the flow leading up to it had to build confidence that the inputs were correct, the methodology was sound, and the projected payment was real." },
   ];
   const outcomes = [
-    "interactive satellite boundary drawing",
-    "multi-mode polygon tools",
-    "hierarchical agricultural data collection",
+    "Interactive satellite boundary drawing",
+    "Multi-mode polygon tools",
+    "Hierarchical agricultural data collection",
     "11-year carbon credit projection",
-    "inline error surfacing and validation",
-    "professional design project",
+    "Inline error surfacing and validation",
+    "Professional design project",
   ];
   return (
     <article className="section">
       <a href="#projects" className="back-link reveal">← work</a>
-      <h1 className="reveal sous-title">argo — carbon credits management platform</h1>
-      <p className="sous-meta reveal">ux/ui designer · professional design project · 2024 · figma · b2b saas</p>
+      <h1 className="reveal sous-title">Argo — Carbon Credits Management Platform</h1>
+      <p className="sous-meta reveal">UX/UI Designer · Professional design project · 2024 · Figma · B2B SaaS</p>
       <div className="sous-pills reveal">
         <span className="pill">b2b saas</span>
         <span className="pill">web app</span>
@@ -775,24 +824,24 @@ function ArgoCase({ prev, next }: { prev: Project | null; next: Project | null }
         <span className="pill">data visualization</span>
       </div>
       <div className="confidentiality-notice reveal">
-        this is a real shipped product. name and branding have been changed for confidentiality.
+        This is a real shipped product. Name and branding have been changed for confidentiality.
       </div>
 
       <figure className="sous-mockup reveal">
-        <img src={argoCover} alt="argo — carbon credits management platform cover" loading="lazy" />
+        <img src={argoCover} alt="Argo — carbon credits management platform cover" loading="lazy" />
       </figure>
 
       <section className="sous-section reveal">
         <h2 className="section-title">overview</h2>
         <p className="big">
-          argo is a carbon credits management platform that connects farmers and ranchers with
-          voluntary carbon markets. landowners upload or draw their farm boundaries directly on a
+          Argo is a carbon credits management platform that connects farmers and ranchers with
+          voluntary carbon markets. Landowners upload or draw their farm boundaries directly on a
           satellite map, apply science-backed land management practices, and receive an 11-year
-          projection of the carbon credits their land could generate. argo handles the entire
+          projection of the carbon credits their land could generate. Argo handles the entire
           process — from initial enrollment and soil data collection through credit issuance and
-          payment — taking a percentage for facilitating the program. my work focused on two of the
-          platform's most important user-facing modules: the draw boundary tool and the data
-          collection module.
+          payment — taking a percentage for facilitating the program. My work focused on two of the
+          platform's most important user-facing modules: the Draw Boundary tool and the Data
+          Collection module.
         </p>
         <div className="stat-row">
           {stats.map((s) => (
@@ -808,7 +857,7 @@ function ArgoCase({ prev, next }: { prev: Project | null; next: Project | null }
       <section className="sous-section reveal">
         <h2 className="section-title">the context</h2>
         <div className="industry-context">
-          <h3>farmers are sitting on one of the largest untapped carbon sinks on the planet — and most don't know it.</h3>
+          <h3>Farmers are sitting on one of the largest untapped carbon sinks on the planet — and most don't know it.</h3>
           <p>
             Regenerative land management practices — reduced tillage, cover cropping, improved grazing — sequester carbon in the soil at scale. But translating those practices into verified, tradeable carbon credits requires scientific modeling, regulatory compliance, and years of documentation that most individual landowners can't navigate alone. Argo exists to make that process accessible: a farmer draws their fields, logs their practices, and Argo handles the rest — turning better land stewardship into a new revenue stream.
           </p>
@@ -818,7 +867,7 @@ function ArgoCase({ prev, next }: { prev: Project | null; next: Project | null }
       <section className="sous-section reveal">
         <h2 className="section-title">the estimate</h2>
         <p>
-          Before a farmer commits to any practice changes, Argo gives them a full financial picture. The estimate screen presents two payment options side by side — total carbon tonnage, deductions, payable carbon, and a year-by-year payment calendar — so the decision is financial, not technical.
+          The Estimate screen was the first thing I worked on after joining the project. My specific contribution was adding the <strong>Option B</strong> payment model and its business rules to the existing payment flow — designing a second payout structure that could sit alongside the original Option A without breaking the surrounding screens. Before a farmer commits to any practice changes, Argo gives them a full financial picture: total carbon tonnage, deductions, payable carbon, and a year-by-year payment calendar — so the decision is financial, not technical.
         </p>
 
         <div className="estimate-options">
@@ -859,15 +908,12 @@ function ArgoCase({ prev, next }: { prev: Project | null; next: Project | null }
         </div>
 
         <figure className="sous-mockup" style={{ marginTop: "2rem" }}>
-          <img src={argoEstimate} alt="argo estimate screen" loading="lazy" />
+          <img src={argoEstimate} alt="Argo estimate screen" loading="lazy" />
         </figure>
       </section>
 
       <section className="sous-section reveal">
         <h2 className="section-title">my contribution</h2>
-        <div className="insight-callout" style={{ marginBottom: "1.75rem" }}>
-          <p>After joining the project, I also contributed extra features to the home/dashboard screen — the starting point of the landowner's flow. Even though it wasn't my main contribution, it connects directly to the next features I owned: <strong>Boundaries</strong> and <strong>Data Collection</strong>.</p>
-        </div>
         <p>
           I was primarily responsible for two modules that sit at the beginning and the middle of the landowner journey — the moments where complexity is highest and where dropping out is most likely.
         </p>
@@ -885,11 +931,11 @@ function ArgoCase({ prev, next }: { prev: Project | null; next: Project | null }
       </section>
 
       <figure className="sous-mockup reveal">
-        <img src={argoDrawBoundary} alt="argo draw boundary tool" loading="lazy" />
+        <img src={argoDrawBoundary} alt="Argo Draw Boundary tool" loading="lazy" />
       </figure>
 
       <figure className="sous-mockup reveal">
-        <img src={argoDataCollection} alt="argo data collection module" loading="lazy" />
+        <img src={argoDataCollection} alt="Argo Data Collection module" loading="lazy" />
       </figure>
 
       <section className="sous-section reveal">
@@ -911,10 +957,10 @@ function ArgoCase({ prev, next }: { prev: Project | null; next: Project | null }
       <section className="sous-section reveal">
         <h2 className="section-title">impact</h2>
         <p>
-          argo operates in a market where trust and scientific credibility are the product. the
-          draw boundary tool and data collection module sit at the foundation of that trust —
+          Argo operates in a market where trust and scientific credibility are the product. The
+          Draw Boundary tool and Data Collection module sit at the foundation of that trust —
           they're the surfaces where the platform's scientific claims become the farmer's
-          documented reality. getting these two modules right meant the carbon models were fed
+          documented reality. Getting these two modules right meant the carbon models were fed
           accurate data, the estimates were defensible, and the landowners felt in control of a
           process that could generate meaningful income from land they already own.
         </p>
