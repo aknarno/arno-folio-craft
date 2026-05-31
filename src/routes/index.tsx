@@ -841,29 +841,36 @@ h1, h2, h3, h4, h5, h6,
 [data-theme="dark"] .theme-toggle { color: #E8DDD0; background: #312A18; border-color: #564A2F; }
 [data-theme="dark"] .theme-toggle:hover { color: #F2AB6D; border-color: #F2AB6D; background: color-mix(in oklab, #F2AB6D 12%, #312A18); }
 .lang-toggle {
-  display: inline-flex; align-items: center; justify-content: center;
-  gap: 0.35rem;
-  height: 36px; padding: 0 0.65rem;
-  border-radius: 6px;
+  display: inline-flex; align-items: center;
+  gap: 2px;
+  height: 32px; padding: 3px;
+  border-radius: 999px;
   border: 1px solid var(--color-border);
   background: var(--color-surface-offset);
   color: var(--color-text-muted); cursor: pointer;
   font-family: var(--font-body);
-  font-size: 0.72rem; font-weight: 600; letter-spacing: 0.04em;
-  transition: color .2s, background .2s, border-color .2s;
+  font-size: 0.7rem; font-weight: 600; letter-spacing: 0.04em;
+  transition: border-color .2s, background .2s;
   flex-shrink: 0;
 }
-.lang-toggle:hover {
-  border-color: var(--color-primary);
-  background: color-mix(in oklab, var(--color-primary) 10%, var(--color-surface-offset));
+.lang-toggle:hover { border-color: var(--color-primary); }
+.lang-toggle .lang-opt {
+  display: inline-flex; align-items: center; gap: 0.35rem;
+  padding: 0 0.65rem; height: 100%;
+  border-radius: 999px;
+  transition: background .2s, color .2s, box-shadow .2s;
 }
-.lang-toggle .lang-active { color: var(--color-primary); }
-.lang-toggle .lang-sep { opacity: 0.5; }
+.lang-toggle .lang-active {
+  background: var(--color-primary);
+  color: #fff;
+  box-shadow: 0 1px 2px rgba(0,0,0,0.15);
+}
 .lang-toggle .lang-flag { display: inline-block; vertical-align: -2px; border-radius: 2px; box-shadow: 0 0 0 1px rgba(0,0,0,0.08); }
 [data-theme="dark"] .lang-toggle { color: #A89880; background: #312A18; border-color: #564A2F; }
-[data-theme="dark"] .lang-toggle:hover { border-color: #F2AB6D; background: color-mix(in oklab, #F2AB6D 12%, #312A18); }
-[data-theme="dark"] .lang-toggle .lang-active { color: #F2AB6D; }
+[data-theme="dark"] .lang-toggle:hover { border-color: #F2AB6D; }
+[data-theme="dark"] .lang-toggle .lang-active { background: #F2AB6D; color: #1B1611; }
 .lang-toggle:focus-visible { outline: 2px solid var(--color-primary); outline-offset: 2px; }
+.theme-toggle:focus-visible { outline: 2px solid var(--color-primary); outline-offset: 2px; }
 .theme-toggle:focus-visible { outline: 2px solid var(--color-primary); outline-offset: 2px; }
 .project-meta-line {
   font-size: 0.78rem;
