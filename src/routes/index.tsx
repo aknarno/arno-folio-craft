@@ -782,8 +782,18 @@ body::after {
   background-repeat: no-repeat;
   opacity: 0.55;
 }
-[data-theme="dark"] body::before { opacity: 0.18; filter: hue-rotate(-10deg) saturate(0.8); }
-[data-theme="dark"] body::after { opacity: 0.28; }
+[data-theme="dark"] body::before { opacity: 0.32; filter: hue-rotate(-10deg) saturate(0.85); }
+[data-theme="dark"] body::after { opacity: 0.4; }
+@media (max-width: 768px) {
+  body::before {
+    background-size: 220% auto;
+    background-position: top right;
+  }
+  body::after {
+    background-size: 260% auto;
+    background-position: top right;
+  }
+}
 .site { overflow-x: clip; max-width: 100%; position: relative; z-index: 1; }
 body, body * {
   font-family: var(--font-body);
