@@ -176,7 +176,7 @@ const en: Copy = {
   nav: { work: "work", about: "about", contact: "contact", brandTitle: "ux/ui designer", themeLight: "Switch to dark mode", themeDark: "Switch to light mode", langToggle: "Switch language" },
   hero: {
     eyebrow: "portfolio · 2016 — 2026",
-    title: "designing experiences that feel effortless.",
+    title: "Helping people work better in complex tools.",
     viewWork: "view work →",
     getInTouch: "get in touch",
   },
@@ -379,7 +379,7 @@ const pt: Copy = {
   nav: { work: "trabalhos", about: "sobre", contact: "contato", brandTitle: "designer ux/ui", themeLight: "Mudar para o modo escuro", themeDark: "Mudar para o modo claro", langToggle: "Alterar idioma" },
   hero: {
     eyebrow: "portfólio · 2016 — 2026",
-    title: "criando experiências que parecem naturais.",
+    title: "Ajudando as pessoas a trabalharem melhor em ferramentas complexas.",
     viewWork: "ver trabalhos →",
     getInTouch: "entrar em contato",
   },
@@ -464,7 +464,7 @@ const pt: Copy = {
       { n: "03", title: "Tela de mise en place", body: "Antes de qualquer instrução, o Sous mostra todos os ingredientes e utensílios necessários. Sem surpresas no meio do preparo, sem becos sem saída no passo 4." },
       { n: "04", title: "Substituições inteligentes", body: "Quando falta um ingrediente, o Sous oferece uma troca validada com uma justificativa culinária em linguagem simples — construindo intuição, não só remendos." },
     ],
-    cookingTitle: "modo cozinha",
+    cookingTitle: "Cook Mode",
     cookingBody: "O Cook Mode é o coração do Sous: um passo por vez, áreas de toque generosas, timers integrados e tela que continua acesa enquanto as mãos estão ocupadas.",
     cookingInsight: "Princípio de design: cada recurso do Cook Mode existe para reduzir o número de coisas em que o usuário precisa pensar enquanto cozinha.",
     outcomeTitle: "resultado",
