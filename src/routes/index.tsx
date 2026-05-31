@@ -790,7 +790,8 @@ h1, h2, h3, h4, h5, h6,
   background: #E8DBC8;
   backdrop-filter: blur(8px); z-index: 10;
 }
-.nav-left { display: flex; align-items: center; gap: 0.75rem; }
+.nav-left { display: flex; flex-direction: column; align-items: flex-start; gap: 0.5rem; min-width: 0; }
+.nav-controls { display: flex; align-items: center; gap: 0.5rem; flex-wrap: wrap; }
 [data-theme="dark"] .nav { background: #060503; border-bottom-color: #060503; }
 .nav-brand {
   display: flex; flex-direction: column; gap: 1px;
