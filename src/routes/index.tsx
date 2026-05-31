@@ -816,23 +816,66 @@ function ArgoCase({ prev, next }: { prev: Project | null; next: Project | null }
         <div className="industry-context">
           <h3>farmers are sitting on one of the largest untapped carbon sinks on the planet — and most don't know it.</h3>
           <p>
-            regenerative land management practices — reduced tillage, cover cropping, improved
-            grazing — sequester carbon in the soil at scale. but translating those practices into
-            verified, tradeable carbon credits requires scientific modeling, regulatory compliance,
-            and years of documentation that most individual landowners can't navigate alone. argo
-            exists to make that process accessible: a farmer draws their fields, logs their
-            practices, and argo handles the rest — turning better land stewardship into a new
-            revenue stream.
+            Regenerative land management practices — reduced tillage, cover cropping, improved grazing — sequester carbon in the soil at scale. But translating those practices into verified, tradeable carbon credits requires scientific modeling, regulatory compliance, and years of documentation that most individual landowners can't navigate alone. Argo exists to make that process accessible: a farmer draws their fields, logs their practices, and Argo handles the rest — turning better land stewardship into a new revenue stream.
           </p>
         </div>
       </section>
 
       <section className="sous-section reveal">
-        <h2 className="section-title">my contribution</h2>
+        <h2 className="section-title">the estimate</h2>
         <p>
-          i was primarily responsible for two modules that sit at the beginning and the middle of
-          the landowner journey — the moments where complexity is highest and where dropping out is
-          most likely.
+          Before a farmer commits to any practice changes, Argo gives them a full financial picture. The estimate screen presents two payment options side by side — total carbon tonnage, deductions, payable carbon, and a year-by-year payment calendar — so the decision is financial, not technical.
+        </p>
+
+        <div className="estimate-options">
+          <div className="estimate-option estimate-option-a">
+            <p className="estimate-tag">Option A</p>
+            <h3>Full-payment model</h3>
+            <p className="estimate-summary">Higher total return, longer wait.</p>
+            <p>
+              The farmer receives the total carbon value of their land in two payments — at year 5 and year 11. Best for landowners who can absorb the wait in exchange for the largest possible payout.
+            </p>
+            <ul className="estimate-bullets">
+              <li><strong>Payout schedule</strong> — year 5 and year 11</li>
+              <li><strong>Profile</strong> — maximum return</li>
+              <li><strong>Tradeoff</strong> — no early cash flow</li>
+            </ul>
+          </div>
+          <div className="estimate-option estimate-option-b">
+            <p className="estimate-tag">Option B</p>
+            <h3>Cash-flow model</h3>
+            <p className="estimate-summary">Smaller, earlier payments to fund the work.</p>
+            <p>
+              Smaller payments distributed across years 1 through 5, followed by a larger payment at year 11. Lower total return, but the early payments help fund the practice changes required to generate the credits in the first place.
+            </p>
+            <ul className="estimate-bullets">
+              <li><strong>Payout schedule</strong> — years 1–5, plus year 11</li>
+              <li><strong>Profile</strong> — sustained cash flow</li>
+              <li><strong>Tradeoff</strong> — lower total payout</li>
+            </ul>
+          </div>
+        </div>
+
+        <p>
+          Once the farmer selects a preferred option, they connect with Argo's support team, who guide them through the next steps: using the draw boundary tool to define their fields and submit the initial deliverables required by Argo's engineers and agronomists to begin setting up the practice program.
+        </p>
+
+        <div className="insight-callout">
+          <p>The estimate had to answer "how much do I get and when?" before anything else. Option A or Option B isn't a technical choice — it's a cash flow decision for a working farm. The design had to make that comparison immediate and legible, not buried in footnotes.</p>
+        </div>
+
+        <figure className="sous-mockup" style={{ marginTop: "2rem" }}>
+          <img src={argoEstimate} alt="argo estimate screen" loading="lazy" />
+        </figure>
+      </section>
+
+      <section className="sous-section reveal">
+        <h2 className="section-title">my contribution</h2>
+        <div className="insight-callout" style={{ marginBottom: "1.75rem" }}>
+          <p>After joining the project, I also contributed extra features to the home/dashboard screen — the starting point of the landowner's flow. Even though it wasn't my main contribution, it connects directly to the next features I owned: <strong>Boundaries</strong> and <strong>Data Collection</strong>.</p>
+        </div>
+        <p>
+          I was primarily responsible for two modules that sit at the beginning and the middle of the landowner journey — the moments where complexity is highest and where dropping out is most likely.
         </p>
         <ol className="numbered-list">
           {contributions.map((d) => (
@@ -857,7 +900,7 @@ function ArgoCase({ prev, next }: { prev: Project | null; next: Project | null }
 
       <section className="sous-section reveal">
         <h2 className="section-title">design challenges</h2>
-        <p>both modules required solving for a user who is an expert in their land — but not in software.</p>
+        <p>Both modules required solving for a user who is an expert in their land — but not in software.</p>
         <ol className="numbered-list">
           {challenges.map((d) => (
             <li key={d.n}>
@@ -870,43 +913,6 @@ function ArgoCase({ prev, next }: { prev: Project | null; next: Project | null }
           ))}
         </ol>
       </section>
-
-      <section className="sous-section reveal">
-        <h2 className="section-title">the estimate</h2>
-        <p>
-          before a farmer commits to any practice changes, argo gives them a full financial
-          picture. the estimate screen presents two payment options side by side:
-        </p>
-        <p>
-          <strong>option a</strong> is a full-payment model — the farmer receives the total carbon
-          value of their land in two payments, at year 5 and year 11. higher total return, longer
-          wait.
-        </p>
-        <p>
-          <strong>option b</strong> is a cash-flow model — smaller payments distributed across
-          years 1 through 5, followed by a larger payment at year 11. lower total return, but the
-          early payments help farmers fund the practice changes required to generate the credits
-          in the first place.
-        </p>
-        <p>
-          the farmer sees both projections simultaneously — total carbon tonnage, deductions,
-          payable carbon, and a year-by-year payment calendar — so the decision is financial, not
-          technical.
-        </p>
-        <p>
-          once the farmer selects a preferred option, they connect with argo's support team, who
-          guide them through the next steps: using the draw boundary tool to define their fields
-          and submit the initial deliverables required by argo's engineers and agronomists to
-          begin setting up the practice program.
-        </p>
-        <div className="insight-callout">
-          <p>the estimate had to answer "how much do i get and when?" before anything else. option a or option b isn't a technical choice — it's a cash flow decision for a working farm. the design had to make that comparison immediate and legible, not buried in footnotes.</p>
-        </div>
-      </section>
-
-      <figure className="sous-mockup reveal">
-        <img src={argoEstimate} alt="argo estimate screen" loading="lazy" />
-      </figure>
 
       <section className="sous-section reveal">
         <h2 className="section-title">impact</h2>
