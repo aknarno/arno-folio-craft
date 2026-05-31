@@ -12,6 +12,7 @@ import argoCover from "@/assets/argo/cover.png";
 import argoEstimate from "@/assets/argo/estimate.png";
 import argoDrawBoundary from "@/assets/argo/draw-boundary.png";
 import argoDataCollection from "@/assets/argo/data-collection.png";
+import { useCopy, useLanguage, type ProjectCopy } from "@/lib/i18n";
 
 export const Route = createFileRoute("/")({
   component: Index,
@@ -35,55 +36,11 @@ export const Route = createFileRoute("/")({
   }),
 });
 
-type Project = {
-  slug: string;
-  title: string;
-  client: string;
-  year: string;
-  role: string;
-  summary: string;
-  tags: string[];
-  cover: string;
-  intro?: string;
-  sections?: { heading: string; body: string }[];
+const covers: Record<string, string> = {
+  sous: sousCover,
+  overseer: overseerCover,
+  argo: argoCover,
 };
-
-const projects: Project[] = [
-  {
-    slug: "sous",
-    title: "Sous — Just-in-Time Cooking",
-    client: "portfolio project",
-    year: "2026",
-    role: "ux/ui designer",
-    summary:
-      "A just-in-time cooking assistant for busy beginners — no pantry database, no decision fatigue, just dinner.",
-    tags: ["mobile", "ux design", "product concept"],
-    cover: sousCover,
-  },
-  {
-    slug: "overseer",
-    title: "Overseer — Aircraft Maintenance Management",
-    client: "professional design project",
-    year: "2025",
-    role: "ux/ui designer",
-    summary:
-      "A cross-platform web and mobile MRO platform that consolidates work orders, discrepancies, labor reporting and compliance into a single focused workspace.",
-    tags: ["b2b saas", "web & mobile", "MRO platform", "ux design", "design system"],
-    cover: overseerCover,
-  },
-  {
-    slug: "argo",
-    title: "Argo — Carbon Credits Management Platform",
-    client: "professional design project",
-    year: "2024",
-    role: "ux/ui designer",
-    summary:
-      "A carbon credits platform connecting farmers and ranchers with voluntary carbon markets — boundary drawing, data collection and an 11-year credit projection.",
-    tags: ["b2b saas", "web app", "agtech", "ux design", "data visualization"],
-    cover: argoCover,
-  },
-];
-
 
 const tools = [
   { name: "figma", slug: "figma" },
@@ -107,7 +64,7 @@ function useHashRoute() {
   return hash;
 }
 
-function useReveal() {
+function useReveal(deps: unknown[] = []) {
   const ref = useRef<HTMLDivElement>(null);
   useEffect(() => {
     const root = ref.current;
@@ -131,13 +88,16 @@ function useReveal() {
     );
     nodes.forEach((n) => io.observe(n));
     return () => io.disconnect();
-  });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, deps);
   return ref;
 }
 
 function Index() {
   const hash = useHashRoute();
   const [theme, setTheme] = useState<"light" | "dark">("light");
+  const copy = useCopy();
+  const { lang, setLang } = useLanguage();
 
   useEffect(() => {
     const m = window.matchMedia("(prefers-color-scheme: dark)");
@@ -152,7 +112,7 @@ function Index() {
     window.scrollTo({ top: 0, behavior: "instant" as ScrollBehavior });
   }, [hash]);
 
-  const revealRef = useReveal();
+  const revealRef = useReveal([hash, lang]);
 
   let view: "home" | "projects" | "contact" | "project" = "home";
   let projectSlug = "";
@@ -166,20 +126,31 @@ function Index() {
   return (
     <>
       <style>{styles}</style>
-      <div className="site" ref={revealRef} key={hash}>
+      <div className="site" ref={revealRef} key={`${hash}-${lang}`}>
         <header className="nav">
           <div className="nav-left">
             <a href="#home" className="nav-brand" aria-label="Arno Klettenberg — Home">
               <span className="nav-brand-name">arno klettenberg</span>
-              <span className="nav-brand-title">ux/ui designer</span>
+              <span className="nav-brand-title">{copy.nav.brandTitle}</span>
             </a>
             <button
               className="theme-toggle"
-              aria-label={theme === "light" ? "Switch to dark mode" : "Switch to light mode"}
-              title="toggle theme"
+              aria-label={theme === "light" ? copy.nav.themeLight : copy.nav.themeDark}
+              title={theme === "light" ? copy.nav.themeLight : copy.nav.themeDark}
               onClick={() => setTheme(theme === "light" ? "dark" : "light")}
             >
               {theme === "light" ? "☾" : "☀"}
+            </button>
+            <button
+              className="lang-toggle"
+              aria-label={copy.nav.langToggle}
+              title={copy.nav.langToggle}
+              aria-pressed={lang === "pt"}
+              onClick={() => setLang(lang === "en" ? "pt" : "en")}
+            >
+              <span className={lang === "en" ? "lang-active" : ""}>EN</span>
+              <span className="lang-sep" aria-hidden="true">/</span>
+              <span className={lang === "pt" ? "lang-active" : ""}>PT-BR</span>
             </button>
           </div>
           <nav>
@@ -187,13 +158,13 @@ function Index() {
               href="#projects"
               className={view === "projects" || view === "project" ? "active" : ""}
             >
-              work
+              {copy.nav.work}
             </a>
             <a href="#home" className={view === "home" ? "active" : ""}>
-              about
+              {copy.nav.about}
             </a>
             <a href="#contact" className={view === "contact" ? "active" : ""}>
-              contact
+              {copy.nav.contact}
             </a>
           </nav>
         </header>
@@ -206,7 +177,7 @@ function Index() {
         </main>
 
         <footer className="footer">
-          <p className="footer-left">© 2026 arno klettenberg</p>
+          <p className="footer-left">{copy.footer.copyright}</p>
           <div className="footer-right">
             <a href="https://www.linkedin.com/in/arno-klettenberg-neto-b987a818a/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">↗ linkedin</a>
             <a href="mailto:arnoklettenbergneto@gmail.com">arnoklettenbergneto@gmail.com</a>
@@ -218,31 +189,29 @@ function Index() {
 }
 
 function Home() {
+  const copy = useCopy();
   return (
     <>
       <section className="hero">
-        <p className="eyebrow reveal">portfolio · 2016 — 2026</p>
-        <h1 className="reveal">designing experiences that feel effortless.</h1>
-        <p className="lede reveal">ux/ui designer based in curitiba, brazil.</p>
+        <p className="eyebrow reveal">{copy.hero.eyebrow}</p>
+        <h1 className="reveal">{copy.hero.title}</h1>
         <div className="actions reveal">
-          <a className="btn" href="#projects">view work →</a>
-          <a className="btn ghost" href="#contact">get in touch</a>
+          <a className="btn" href="#projects">{copy.hero.viewWork}</a>
+          <a className="btn ghost" href="#contact">{copy.hero.getInTouch}</a>
         </div>
       </section>
 
       <section className="section about">
-        <h2 className="section-title reveal">about</h2>
-        <p className="reveal big">
-          I'm Arno Klettenberg, a UX/UI designer based in Curitiba, Brazil. I design complex digital products for regulated, data-heavy environments — aircraft maintenance platforms, carbon credit systems, and enterprise B2B tools. I care about the details that matter in the field: the table that's readable at 6am in a shop, the form that doesn't lose your data, the map tool that works without internet.
-        </p>
+        <h2 className="section-title reveal">{copy.homeAbout.title}</h2>
+        <p className="reveal big">{copy.homeAbout.body}</p>
         <div className="about-grid reveal">
           <div>
-            <p className="kicker">education</p>
-            <p>bachelor of industrial design — puc-pr, curitiba.</p>
-            <p className="muted small">specialization in design trend watching.</p>
+            <p className="kicker">{copy.homeAbout.educationKicker}</p>
+            <p>{copy.homeAbout.education}</p>
+            <p className="muted small">{copy.homeAbout.educationSub}</p>
           </div>
           <div>
-            <p className="kicker">toolkit</p>
+            <p className="kicker">{copy.homeAbout.toolkitKicker}</p>
             <div className="toolkit-list">
               {tools.map((t) => (
                 <div className="toolkit-item" key={t.slug}>
@@ -259,21 +228,22 @@ function Home() {
             </div>
           </div>
           <div>
-            <p className="kicker">languages</p>
-            <p>portuguese (native)</p>
-            <p>english (fluent)</p>
+            <p className="kicker">{copy.homeAbout.languagesKicker}</p>
+            {copy.homeAbout.languages.map((l) => (
+              <p key={l}>{l}</p>
+            ))}
           </div>
         </div>
       </section>
 
       <section className="section">
-        <h2 className="section-title reveal">selected work</h2>
+        <h2 className="section-title reveal">{copy.selectedWork}</h2>
         <div className="project-list">
-          {projects.map((p) => (
+          {copy.projects.map((p) => (
             <a key={p.slug} href={`#project/${p.slug}`} className="project-card reveal">
               <div className="project-cover">
                 <img
-                  src={p.cover}
+                  src={covers[p.slug]}
                   alt={p.title}
                   width={1600}
                   height={1000}
@@ -285,7 +255,6 @@ function Home() {
                 <p className="muted">{p.summary}</p>
                 <p className="project-meta-line">{p.client} · {p.year} · {p.role}</p>
               </div>
-
             </a>
           ))}
         </div>
@@ -295,22 +264,22 @@ function Home() {
 }
 
 function Projects() {
+  const copy = useCopy();
   return (
     <section className="section">
-      <p className="eyebrow reveal">work · {projects.length} selected</p>
-      <h1 className="reveal">projects</h1>
+      <p className="eyebrow reveal">{copy.nav.work} · {copy.projects.length} {copy.projectsView.eyebrowSuffix}</p>
+      <h1 className="reveal">{copy.projectsView.title}</h1>
       <div className="project-list">
-        {projects.map((p) => (
+        {copy.projects.map((p) => (
           <a key={p.slug} href={`#project/${p.slug}`} className="project-card reveal">
             <div className="project-cover">
-              <img src={p.cover} alt={p.title} width={1600} height={1000} loading="lazy" />
+              <img src={covers[p.slug]} alt={p.title} width={1600} height={1000} loading="lazy" />
             </div>
             <div className="project-meta">
               <h3>{p.title}</h3>
               <p className="muted">{p.summary}</p>
               <p className="project-meta-line">{p.client} · {p.year} · {p.role}</p>
             </div>
-
           </a>
         ))}
       </div>
@@ -319,30 +288,27 @@ function Projects() {
 }
 
 function Contact() {
+  const copy = useCopy();
   return (
     <section className="section narrow">
-      <p className="eyebrow reveal">contact</p>
-      <h1 className="reveal">let's talk.</h1>
-      <p className="lede reveal">
-        i'm open to new projects and collaborations. if you're working on
-        something thoughtful — wherever you are in the world — i'd love to hear
-        about it.
-      </p>
+      <p className="eyebrow reveal">{copy.contact.eyebrow}</p>
+      <h1 className="reveal">{copy.contact.title}</h1>
+      <p className="lede reveal">{copy.contact.lede}</p>
       <div className="contact-grid reveal">
         <div>
-          <p className="muted small">email</p>
+          <p className="muted small">{copy.contact.email}</p>
           <a className="big-link" href="mailto:arnoklettenbergneto@gmail.com">arnoklettenbergneto@gmail.com</a>
         </div>
         <div>
-          <p className="muted small">phone / whatsapp</p>
+          <p className="muted small">{copy.contact.phone}</p>
           <a className="big-link" href="tel:+5541992574885">+55 41 99257-4885</a>
         </div>
         <div>
-          <p className="muted small">based in</p>
-          <p className="big-link as-text">curitiba, pr — brazil</p>
+          <p className="muted small">{copy.contact.basedIn}</p>
+          <p className="big-link as-text">{copy.contact.basedInValue}</p>
         </div>
         <div>
-          <p className="muted small">elsewhere</p>
+          <p className="muted small">{copy.contact.elsewhere}</p>
           <a className="big-link" href="https://www.linkedin.com/in/arno-klettenberg-neto-b987a818a/" target="_blank" rel="noopener noreferrer">↗ linkedin</a>
         </div>
       </div>
@@ -351,113 +317,48 @@ function Contact() {
 }
 
 function ProjectDetail({ slug }: { slug: string }) {
-  const project = projects.find((p) => p.slug === slug);
+  const copy = useCopy();
+  const project = copy.projects.find((p) => p.slug === slug);
   if (!project) {
     return (
       <section className="section narrow">
-        <p className="eyebrow">not found</p>
-        <h1>that project doesn't exist.</h1>
-        <p className="lede"><a href="#projects">← work</a></p>
+        <p className="eyebrow">{copy.notFoundProject.eyebrow}</p>
+        <h1>{copy.notFoundProject.title}</h1>
+        <p className="lede"><a href="#projects">{copy.notFoundProject.back}</a></p>
       </section>
     );
   }
-  const idx = projects.findIndex((p) => p.slug === slug);
-  const prev = idx > 0 ? projects[idx - 1] : null;
-  const next = idx < projects.length - 1 ? projects[idx + 1] : null;
+  const idx = copy.projects.findIndex((p) => p.slug === slug);
+  const prev = idx > 0 ? copy.projects[idx - 1] : null;
+  const next = idx < copy.projects.length - 1 ? copy.projects[idx + 1] : null;
 
-  if (slug === "sous") {
-    return <SousCase prev={prev} next={next} />;
-  }
+  if (slug === "sous") return <SousCase prev={prev} next={next} />;
+  if (slug === "overseer") return <OverseerCase prev={prev} next={next} />;
+  if (slug === "argo") return <ArgoCase prev={prev} next={next} />;
 
-  if (slug === "overseer") {
-    return <OverseerCase prev={prev} next={next} />;
-  }
+  return null;
+}
 
-  if (slug === "argo") {
-    return <ArgoCase prev={prev} next={next} />;
-  }
-
+function CaseNav({ prev, next }: { prev: ProjectCopy | null; next: ProjectCopy | null }) {
+  const copy = useCopy();
   return (
-    <article className="section narrow">
-      <a href="#projects" className="back-link reveal">← work</a>
-      <p className="eyebrow reveal">{project.client} · {project.year}</p>
-      <h1 className="reveal">{project.title}</h1>
-      <p className="lede reveal">{project.summary}</p>
-
-      <dl className="meta-grid reveal">
-        <div><dt>client</dt><dd>{project.client}</dd></div>
-        <div><dt>year</dt><dd>{project.year}</dd></div>
-        <div><dt>role</dt><dd>{project.role}</dd></div>
-        <div><dt>tags</dt><dd>{project.tags.join(" · ")}</dd></div>
-      </dl>
-
-      <div className="project-cover wide reveal">
-        <img src={project.cover} alt={project.title} width={1600} height={1000} loading="lazy" />
-      </div>
-
-      {project.intro && <p className="big reveal">{project.intro}</p>}
-
-      {project.sections?.map((s) => (
-        <div key={s.heading} className="case-section reveal">
-          <h2>{s.heading}</h2>
-          <p>{s.body}</p>
-        </div>
-      ))}
-
-      <div className="project-nav reveal">
-        {prev ? <a href={`#project/${prev.slug}`} className="big-link">← previous project</a> : <span />}
-        {next ? <a href={`#project/${next.slug}`} className="big-link">next project →</a> : <a href="#projects" className="big-link">all work →</a>}
-      </div>
-    </article>
+    <div className="project-nav reveal">
+      {prev ? <a href={`#project/${prev.slug}`} className="big-link">{copy.caseUI.prevProject}</a> : <span />}
+      {next ? <a href={`#project/${next.slug}`} className="big-link">{copy.caseUI.nextProject}</a> : <a href="#projects" className="big-link">{copy.caseUI.allWork}</a>}
+    </div>
   );
 }
 
-function SousCase({ prev, next }: { prev: Project | null; next: Project | null }) {
-  const stats = [
-    { label: "target user", value: "busy beginner", sub: "cooks 1–2× a week" },
-    { label: "core constraint", value: "≤ 15 sec", sub: "time to first recipe match" },
-    { label: "app pillars", value: "4 screens", sub: "cook · saved · habits · profile" },
-    { label: "project type", value: "concept", sub: "end-to-end UX design" },
-  ];
-  const research = [
-    { eyebrow: "pillar 01", title: "The psychology of administrative burden", body: "Every time an app asks a user to log an item or choose from a list of 100, it spends their mental energy. For someone coming home after an 8-hour workday, that energy is already at zero." },
-    { eyebrow: "pillar 02", title: "Inventory managers vs. assistants", body: "Most cooking apps focus on storage — managing a database — rather than execution. That leaves a wide gap for a just-in-time engine that requires no prior data entry." },
-    { eyebrow: "pillar 03", title: "The kitchen as a hostile environment", body: "Cooking happens in high-glare environments with temporarily disabled hands — messy, wet, busy. That reframed the work from mobile UI to contextual utility." },
-  ];
-  const personas = [
-    { name: "Alex", quote: "I just want to eat something healthy without having to think about it after an 8-hour workday.", problem: "Has a fridge with random ingredients but lacks the mental energy to figure out how they fit together.", pain: "Choice overload sends Alex straight back to delivery apps." },
-    { name: "Jordan", quote: "I want to eat better, but I'm terrified of wasting food or ruining a recipe because I'm missing one specific herb.", problem: "If a recipe calls for kale and Jordan only has spinach, they assume the dish is off the table.", pain: "Fear of failure and lack of chef's intuition." },
-    { name: "Sam", quote: "I hate wasting food, but I don't have the patience to maintain a digital inventory of every onion in my drawer.", problem: "Has tried fridge tracker apps before but finds the upkeep impossible.", pain: "The tax of logging groceries is higher than the benefit of the app." },
-  ];
-  const decisions = [
-    { n: "01", title: "Zero inventory model", body: "No pantry database to maintain. Ingredients are entered fresh at the moment of cooking — a 15-second input, not a 15-minute setup." },
-    { n: "02", title: "Time-first matching", body: "The time slider is the first input. 'I have 20 minutes' becomes the starting point, not a constraint added after browsing." },
-    { n: "03", title: "Mise en place screen", body: "Before any instruction appears, Sous surfaces every ingredient and physical tool needed. No mid-cook surprises, no dead ends at step 4." },
-    { n: "04", title: "Smart substitutions", body: "When an ingredient is missing, Sous offers a vetted swap with a plain-language culinary reason — building intuition, not just workarounds." },
-  ];
-  const process = [
-    { n: "01", title: "Empathize", body: "Audited the recipe app landscape and identified that constant grocery logging creates an inventory burden — a real barrier to healthy eating. Users want to cook, not manage a database." },
-    { n: "02", title: "Define", body: "Framed the product as a just-in-time engine: a high-value, zero-maintenance assistant that delivers immediate solutions without administrative upkeep." },
-    { n: "03", title: "Ideate", body: "Mapped critical edge cases alongside the happy path — no matching ingredients, skipped steps, connectivity dropping mid-recipe — so the design held up under real-world failure." },
-    { n: "04", title: "Prototype", body: "Built inclusive interactions: voice commands, oversized tap targets, and high-contrast surfaces that work with messy hands or limited dexterity." },
-    { n: "05", title: "Test", body: "Working with a culinary expert, Cook Mode shifted from dense text lists to a one-step-at-a-time card layout with integrated timers — cutting cognitive load in high-activity kitchens." },
-  ];
-  const outcomes = [
-    "Zero inventory model",
-    "Mise en place checkpoint",
-    "Smart substitutions with culinary logic",
-    "Habit loop with identity-based milestones",
-    "Accessible Cook Mode with wakelock + timers",
-  ];
+function SousCase({ prev, next }: { prev: ProjectCopy | null; next: ProjectCopy | null }) {
+  const copy = useCopy();
+  const s = copy.sous;
   return (
     <article className="section">
-      <a href="#projects" className="back-link reveal">← work</a>
-      <h1 className="reveal sous-title">Sous — Just-in-Time Cooking</h1>
-      <p className="sous-meta reveal">UX/UI Designer · Portfolio project · 2026 · Figma · Claude · Miro</p>
+      <a href="#projects" className="back-link reveal">{copy.caseUI.backWork}</a>
+      <h1 className="reveal sous-title">{s.title}</h1>
+      <p className="sous-meta reveal">{copy.caseUI.metaLineSous}</p>
       <div className="sous-pills reveal">
-        <span className="pill">mobile</span>
-        <span className="pill">ux design</span>
-        <span className="pill">product concept</span>
+        {s.pills.map((p) => <span key={p} className="pill">{p}</span>)}
       </div>
 
       <figure className="sous-mockup reveal">
@@ -465,30 +366,24 @@ function SousCase({ prev, next }: { prev: Project | null; next: Project | null }
       </figure>
 
       <section className="sous-section reveal">
-        <h2 className="section-title">overview</h2>
-        <p className="big">
-          Sous is a just-in-time cooking assistant for busy beginners who want to eat well
-          without the friction of meal planning or pantry management. Instead of asking users
-          to maintain a digital inventory, Sous takes whatever ingredients they have on hand,
-          a time budget, and a few dietary constraints, then narrows thousands of recipes
-          down to 3–5 actionable matches.
-        </p>
+        <h2 className="section-title">{copy.caseUI.overview}</h2>
+        <p className="big">{s.overview}</p>
         <div className="stat-row">
-          {stats.map((s) => (
-            <div key={s.label} className="stat">
-              <p className="stat-label">{s.label}</p>
-              <p className="stat-value">{s.value}</p>
-              <p className="stat-sub">{s.sub}</p>
+          {s.stats.map((st) => (
+            <div key={st.label} className="stat">
+              <p className="stat-label">{st.label}</p>
+              <p className="stat-value">{st.value}</p>
+              <p className="stat-sub">{st.sub}</p>
             </div>
           ))}
         </div>
       </section>
 
       <section className="sous-section reveal">
-        <h2 className="section-title">research</h2>
-        <p>Every pixel in Sous was designed to solve a specific, researched problem — anchored on three pillars.</p>
+        <h2 className="section-title">{s.researchTitle}</h2>
+        <p>{s.researchIntro}</p>
         <div className="pain-grid">
-          {research.map((r) => (
+          {s.research.map((r) => (
             <div key={r.eyebrow} className="pain-card">
               <p className="pain-eyebrow">{r.eyebrow}</p>
               <h3>{r.title}</h3>
@@ -499,27 +394,27 @@ function SousCase({ prev, next }: { prev: Project | null; next: Project | null }
       </section>
 
       <section className="sous-section reveal">
-        <h2 className="section-title">personas</h2>
-        <p>Three archetypes cover the most common barriers to healthy cooking — different entry points into the same problem of administrative burnout.</p>
+        <h2 className="section-title">{s.personasTitle}</h2>
+        <p>{s.personasIntro}</p>
         <div className="pain-grid">
-          {personas.map((p) => (
+          {s.personas.map((p) => (
             <div key={p.name} className="pain-card">
               <p className="pain-eyebrow">{p.name}</p>
               <blockquote className="pull-quote" style={{ margin: "0 0 1rem" }}>
                 <p>"{p.quote}"</p>
               </blockquote>
-              <p><strong>The problem.</strong> {p.problem}</p>
-              <p><strong>Main pain point.</strong> {p.pain}</p>
+              <p><strong>{s.problemLabel}</strong> {p.problem}</p>
+              <p><strong>{s.painLabel}</strong> {p.pain}</p>
             </div>
           ))}
         </div>
       </section>
 
       <section className="sous-section reveal">
-        <h2 className="section-title">design process</h2>
-        <p>Moving from the chaos of a messy kitchen to the clarity of a guided cooking experience, using the Design Thinking methodology.</p>
+        <h2 className="section-title">{s.designProcessTitle}</h2>
+        <p>{s.designProcessIntro}</p>
         <ol className="numbered-list">
-          {process.map((d) => (
+          {s.process.map((d) => (
             <li key={d.n}>
               <span className="num">{d.n}</span>
               <div>
@@ -532,10 +427,10 @@ function SousCase({ prev, next }: { prev: Project | null; next: Project | null }
       </section>
 
       <section className="sous-section reveal">
-        <h2 className="section-title">design decisions</h2>
-        <p>Four principles shaped every screen in the app.</p>
+        <h2 className="section-title">{s.designDecisionsTitle}</h2>
+        <p>{s.designDecisionsIntro}</p>
         <ol className="numbered-list">
-          {decisions.map((d) => (
+          {s.decisions.map((d) => (
             <li key={d.n}>
               <span className="num">{d.n}</span>
               <div>
@@ -548,13 +443,10 @@ function SousCase({ prev, next }: { prev: Project | null; next: Project | null }
       </section>
 
       <section className="sous-section reveal">
-        <h2 className="section-title">cooking mode</h2>
-        <p>
-          Cook Mode is the heart of Sous: one step at a time, oversized tap targets, integrated
-          timers, and a screen that stays awake while hands stay busy.
-        </p>
+        <h2 className="section-title">{s.cookingTitle}</h2>
+        <p>{s.cookingBody}</p>
         <div className="insight-callout">
-          <p>The design principle: every feature in Cook Mode exists to reduce the number of things the user has to think about while physically cooking.</p>
+          <p>{s.cookingInsight}</p>
         </div>
         <figure className="sous-flow reveal">
           <img src={sousStepByStep} alt="Sous end-to-end flow — five key screens" loading="lazy" />
@@ -562,10 +454,10 @@ function SousCase({ prev, next }: { prev: Project | null; next: Project | null }
       </section>
 
       <section className="sous-section reveal">
-        <h2 className="section-title">outcome</h2>
-        <p>An end-to-end concept that reframes cooking apps from inventory managers into assistants.</p>
+        <h2 className="section-title">{s.outcomeTitle}</h2>
+        <p>{s.outcomeIntro}</p>
         <div className="ia-pills">
-          {outcomes.map((t) => <span key={t} className="pill">{t}</span>)}
+          {s.outcomes.map((t) => <span key={t} className="pill">{t}</span>)}
         </div>
       </section>
 
@@ -573,86 +465,37 @@ function SousCase({ prev, next }: { prev: Project | null; next: Project | null }
         <img src={sousDesignSystem} alt="Sous design system — colors, typography, components" loading="lazy" />
       </figure>
 
-
       <figure className="sous-mockup reveal">
         <img src={sousMockup} alt="Sous mockup in context" loading="lazy" />
       </figure>
 
-      <div className="project-nav reveal">
-        {prev ? <a href={`#project/${prev.slug}`} className="big-link">← previous project</a> : <span />}
-        {next ? <a href={`#project/${next.slug}`} className="big-link">next project →</a> : <a href="#projects" className="big-link">all work →</a>}
-      </div>
+      <CaseNav prev={prev} next={next} />
     </article>
   );
 }
 
-function OverseerCase({ prev, next }: { prev: Project | null; next: Project | null }) {
-  const stats = [
-    { label: "platform", value: "web + mobile", sub: "cross-platform B2B SaaS" },
-    { label: "users", value: "MROs · mechanics · fleet ops", sub: "pilots and maintenance professionals" },
-    { label: "my contribution", value: "Work Order module", sub: "plus supporting features and design system" },
-    { label: "real-world impact", value: "Robinson · Garmin", sub: "enterprise deals closed" },
-  ];
-  const features = [
-    { name: "My Reservations", body: "A personal view of all aircraft reserved by the logged-in user, with schedule context and aircraft status." },
-    { name: "Manage Members", body: "Role and permission management for everyone inside an organization — mechanics, supervisors, and administrators." },
-    { name: "Manage Aircraft", body: "Full aircraft profile management: make, model, serial number, tail number, time-tracking (TTIS, SFRM, TT, SNEW), and maintenance history." },
-    { name: "Manage Inventory", body: "Organization-level parts and tooling inventory, separate from aircraft-specific components." },
-    { name: "Document Center", body: "Centralized document management for ADs, SBs, maintenance manuals, and aircraft logs — all associated to the relevant aircraft or organization." },
-    { name: "Work Order MX", body: "End-to-end work order lifecycle: creation, discrepancy tracking, labor logging, tooling allocation, cost tracking, approval workflow, and client-ready reporting." },
-    { name: "Parts Ordering Flow", body: "A multi-organization purchasing system built directly into the platform — a mini e-commerce experience where MRO organizations can source parts from other organizations within the network." },
-  ];
-  const decisions = [
-    { n: "01", title: "Work order as the single source of truth", body: "Customer info, aircraft context, schedule, labor rate, tooling, discrepancies, costs, and sign-offs all live inside one work order. Nothing is scattered across separate tools or paper sheets." },
-    { n: "02", title: "Hierarchical discrepancy list", body: "Each work order contains a nested discrepancy list — items and sub-items — where mechanics log findings, estimated and actual hours, parts used, action taken, and approval status per line. This replaces the handwritten squawk sheet." },
-    { n: "03", title: "Labor visibility for supervisors", body: "Hours are logged at the sub-item level by technician, giving supervisors a real-time view of job progress without walking the shop floor. The labor report generates a client-ready document from this data automatically." },
-    { n: "04", title: "Tooling allocation", body: "Tools are assigned directly to the work order — not just noted on paper — creating accountability and reducing the 'where is the torque wrench' problem endemic to shared shop environments." },
-    { n: "05", title: "Status workflow", body: "Work orders move through defined states (Estimate, In Progress, Submitted, Archived) with role-based permissions on transitions. Customers gain visibility into their aircraft's status without a phone call." },
-  ];
-  const impactStats = [
-    { org: "Robinson Helicopter Company", label: "Enterprise partnership — digital maintenance management added to future aircraft production." },
-    { org: "Garmin", label: "Integration partnership — live flight logs, digital records, and maintenance management connected to Garmin avionics." },
-  ];
-  const outcomes = [
-    "cross-platform web + mobile",
-    "work order module — built from scratch",
-    "design system reconstruction",
-    "hierarchical discrepancy tracking",
-    "client-ready labor reporting",
-    "robinson & garmin partnerships",
-  ];
+function OverseerCase({ prev, next }: { prev: ProjectCopy | null; next: ProjectCopy | null }) {
+  const copy = useCopy();
+  const o = copy.overseer;
   return (
     <article className="section">
-      <a href="#projects" className="back-link reveal">← work</a>
-      <h1 className="reveal sous-title">Overseer — Aircraft Maintenance Management</h1>
-      <p className="sous-meta reveal">UX/UI Designer · Professional design project · 2025 · Figma · B2B SaaS</p>
+      <a href="#projects" className="back-link reveal">{copy.caseUI.backWork}</a>
+      <h1 className="reveal sous-title">{o.title}</h1>
+      <p className="sous-meta reveal">{copy.caseUI.metaLineOverseer}</p>
       <div className="sous-pills reveal">
-        <span className="pill">b2b saas</span>
-        <span className="pill">web & mobile</span>
-        <span className="pill">MRO platform</span>
-        <span className="pill">ux design</span>
-        <span className="pill">design system</span>
+        {o.pills.map((p) => <span key={p} className="pill">{p}</span>)}
       </div>
-      <div className="confidentiality-notice reveal">
-        This is a real shipped product. Name and branding have been changed for confidentiality.
-      </div>
+      <div className="confidentiality-notice reveal">{copy.caseUI.confidentiality}</div>
 
       <figure className="sous-mockup reveal">
-        <img src={overseerCover} alt="overseer — aircraft maintenance management cover" loading="lazy" />
+        <img src={overseerCover} alt="Overseer — aircraft maintenance management cover" loading="lazy" />
       </figure>
 
       <section className="sous-section reveal">
-        <h2 className="section-title">overview</h2>
-        <p className="big">
-          Overseer is a cross-platform aircraft maintenance management system — available on web and
-          mobile — built for MRO organizations, independent A&P mechanics, and fleet operators. It
-          digitizes the entire maintenance workflow: from work order creation and discrepancy tracking
-          to labor reporting, compliance documentation, inventory management, and crew coordination.
-          The platform serves pilots, fleets, and maintenance professionals across a single connected
-          system.
-        </p>
+        <h2 className="section-title">{copy.caseUI.overview}</h2>
+        <p className="big">{o.overview}</p>
         <div className="stat-row">
-          {stats.map((s) => (
+          {o.stats.map((s) => (
             <div key={s.label} className="stat">
               <p className="stat-label">{s.label}</p>
               <p className="stat-value">{s.value}</p>
@@ -663,28 +506,18 @@ function OverseerCase({ prev, next }: { prev: Project | null; next: Project | nu
       </section>
 
       <section className="sous-section reveal">
-        <h2 className="section-title">the industry context</h2>
+        <h2 className="section-title">{o.industryTitle}</h2>
         <div className="industry-context">
-          <h3>Almost every aircraft in the world is still maintained with paper and pencil.</h3>
-          <p>
-            Even today, the majority of general aviation and MRO maintenance documentation is still
-            analog — handwritten work orders, paper logbooks, pencil-marked inspection sheets.
-            Regulatory compliance, multi-technician coordination, and customer communication all run
-            through physical documents that can be lost, misread, or never filed. Overseer exists to
-            replace that stack of paper with a single connected platform that travels with the
-            aircraft.
-          </p>
+          <h3>{o.industryHeadline}</h3>
+          <p>{o.industryBody}</p>
         </div>
       </section>
 
       <section className="sous-section reveal">
-        <h2 className="section-title">platform features</h2>
-        <p>
-          Overseer covers the full operational surface of an MRO organization. I worked across several
-          of these modules — each solving a distinct pain point for a different user type.
-        </p>
+        <h2 className="section-title">{o.featuresTitle}</h2>
+        <p>{o.featuresIntro}</p>
         <ul className="feature-list">
-          {features.map((f) => (
+          {o.features.map((f) => (
             <li key={f.name}>
               <span className="feature-name">{f.name}</span>
               <span className="feature-body">{f.body}</span>
@@ -694,29 +527,18 @@ function OverseerCase({ prev, next }: { prev: Project | null; next: Project | nu
       </section>
 
       <section className="sous-section reveal">
-        <h2 className="section-title">design system</h2>
-        <p>
-          The Overseer design system existed when I joined the project — but it was significantly
-          outdated and inconsistent. Rather than patching it, I rebuilt it from scratch:
-          re-establishing the token structure, auditing and redrawing components, and documenting
-          usage rules the team could follow. I preserved variables and components where they still
-          held up, but the result was effectively a new system built on the bones of the old one.
-          The Work Order module was the first feature designed entirely within the rebuilt system.
-        </p>
+        <h2 className="section-title">{o.dsTitle}</h2>
+        <p>{o.dsBody}</p>
         <div className="insight-callout">
-          <p>Designing within a system you built yourself creates a different kind of accountability. Every component decision in the Work Order had to work not just for this screen, but for every screen that came after it.</p>
+          <p>{o.dsInsight}</p>
         </div>
       </section>
 
       <section className="sous-section focus-section reveal">
-        <h2 className="section-title">focus: Work Order MX</h2>
-        <p>
-          The Work Order module is the feature I want to highlight here — it's where the design
-          challenge was most visible and where the decisions I made had the most direct impact on
-          how MRO professionals do their daily work.
-        </p>
+        <h2 className="section-title">{o.focusTitle}</h2>
+        <p>{o.focusIntro}</p>
         <ol className="numbered-list">
-          {decisions.map((d) => (
+          {o.decisions.map((d) => (
             <li key={d.n}>
               <span className="num">{d.n}</span>
               <div>
@@ -729,26 +551,19 @@ function OverseerCase({ prev, next }: { prev: Project | null; next: Project | nu
       </section>
 
       <figure className="sous-mockup reveal">
-        <img src={overseerDetail} alt="overseer work order detail screen" loading="lazy" />
+        <img src={overseerDetail} alt="Overseer work order detail screen" loading="lazy" />
       </figure>
 
       <figure className="sous-mockup reveal">
-        <img src={overseerList} alt="overseer work order list" loading="lazy" />
+        <img src={overseerList} alt="Overseer work order list" loading="lazy" />
       </figure>
 
       <section className="sous-section reveal">
-        <h2 className="section-title">impact</h2>
+        <h2 className="section-title">{o.impactTitle}</h2>
         <div className="impact-grid">
-          <p>
-            Overseer is a live product used by real MRO organizations. The Work Order module — and
-            the broader platform work I contributed to — played a direct role in closing
-            partnerships with two of the largest names in general aviation. These weren't small
-            deals: Robinson Helicopter Company and Garmin both integrated Overseer into their
-            aircraft and systems, validating the platform's readiness for enterprise-scale
-            operations.
-          </p>
+          <p>{o.impactBody}</p>
           <div className="impact-stats">
-            {impactStats.map((s) => (
+            {o.impactStats.map((s) => (
               <div key={s.org} className="impact-stat-card">
                 <p className="impact-org">{s.org}</p>
                 <p className="impact-label">{s.label}</p>
@@ -757,86 +572,42 @@ function OverseerCase({ prev, next }: { prev: Project | null; next: Project | nu
           </div>
         </div>
         <div className="ia-pills">
-          {outcomes.map((t) => <span key={t} className="pill">{t}</span>)}
+          {o.outcomes.map((t) => <span key={t} className="pill">{t}</span>)}
         </div>
       </section>
 
       <figure className="sous-mockup reveal">
-        <img src={overseerReport} alt="overseer labor report" loading="lazy" />
-        <figcaption className="image-caption">
-          example of a client-ready labor report generated directly from the platform — no export to
-          a third-party tool required.
-        </figcaption>
+        <img src={overseerReport} alt="Overseer labor report" loading="lazy" />
+        <figcaption className="image-caption">{o.reportCaption}</figcaption>
       </figure>
 
-      <div className="project-nav reveal">
-        {prev ? <a href={`#project/${prev.slug}`} className="big-link">← previous project</a> : <span />}
-        {next ? <a href={`#project/${next.slug}`} className="big-link">next project →</a> : <a href="#projects" className="big-link">all work →</a>}
-      </div>
+      <CaseNav prev={prev} next={next} />
     </article>
   );
 }
 
-function ArgoCase({ prev, next }: { prev: Project | null; next: Project | null }) {
-  const stats = [
-    { label: "platform", value: "web app", sub: "B2B SaaS · agtech" },
-    { label: "users", value: "farmers · ranchers", sub: "landowners across North America" },
-    { label: "my contribution", value: "2 core modules", sub: "Draw Boundary + Data Collection" },
-    { label: "project type", value: "real product", sub: "shipped · name changed for confidentiality" },
-  ];
-  const contributions = [
-    { n: "01", title: "Draw Boundary tool", body: "An interactive satellite map interface where farmers draw the precise boundaries of their fields using polygon tools. The tool supports multiple drawing modes — freehand polygon, circular border, inner border — and allows users to name fields, set acreage, define land ownership type, and classify field type (row crop, range and pasture) before saving. Accuracy here determines the carbon calculation downstream, so the UX had to be precise without being intimidating to a rancher who has never used GIS software." },
-    { n: "02", title: "Data Collection module", body: "A centralized, structured view of all data associated with a producer's farm — herd data, fertilizer and amendment applications, forage management practices, and more. Data is organized into collapsible sections per practice category, with inline error surfacing, edit mode, and multi-year filtering. This screen is the scientific backbone of the carbon estimate: every field logged here feeds directly into the carbon modeling engine." },
-  ];
-  const challenges = [
-    { n: "01", title: "Spatial accuracy vs. accessibility", body: "The Draw Boundary tool needed to be precise enough for scientific modeling while remaining usable by someone drawing field boundaries on a tablet from a ranch office. The solution was a constrained, opinionated drawing toolbar — limited options, clear visual feedback, and a fields list panel that kept the user grounded in what they'd already defined." },
-    { n: "02", title: "Data density without overwhelm", body: "The Data Collection module aggregates years of agricultural practice data across multiple categories. The challenge was making that density navigable — collapsible sections, progressive disclosure, a persistent error count (\"Show only errors: 3\"), and multi-axis filtering (by field, by year, by event) all worked together to give the user control without cognitive overload." },
-    { n: "03", title: "Offline-first in remote environments", body: "Ranchers and farmers often live and work in areas with no reliable internet connection. The platform had to function fully offline — syncing data when connectivity was restored. This shaped every interaction that involved saving field boundaries or logging practice data: nothing could depend on a live connection, and nothing could be lost." },
-    { n: "04", title: "Designing for non-technical users", body: "The target user is an expert in land and livestock — not software. Most ranchers' closest reference for data entry is a spreadsheet. Every screen had to feel familiar to that mental model: tabular layouts, clear labels, predictable row structures, and no interaction patterns that required prior digital literacy. Complexity had to be invisible." },
-    { n: "05", title: "Trust in the numbers", body: "The carbon estimate is the emotional core of the product — it's the number that convinces a skeptical farmer to enroll. Every design decision in the flow leading up to it had to build confidence that the inputs were correct, the methodology was sound, and the projected payment was real." },
-  ];
-  const outcomes = [
-    "Interactive satellite boundary drawing",
-    "Multi-mode polygon tools",
-    "Hierarchical agricultural data collection",
-    "11-year carbon credit projection",
-    "Inline error surfacing and validation",
-    "Professional design project",
-  ];
+function ArgoCase({ prev, next }: { prev: ProjectCopy | null; next: ProjectCopy | null }) {
+  const copy = useCopy();
+  const a = copy.argo;
   return (
     <article className="section">
-      <a href="#projects" className="back-link reveal">← work</a>
-      <h1 className="reveal sous-title">Argo — Carbon Credits Management Platform</h1>
-      <p className="sous-meta reveal">UX/UI Designer · Professional design project · 2024 · Figma · B2B SaaS</p>
+      <a href="#projects" className="back-link reveal">{copy.caseUI.backWork}</a>
+      <h1 className="reveal sous-title">{a.title}</h1>
+      <p className="sous-meta reveal">{copy.caseUI.metaLineArgo}</p>
       <div className="sous-pills reveal">
-        <span className="pill">b2b saas</span>
-        <span className="pill">web app</span>
-        <span className="pill">agtech</span>
-        <span className="pill">ux design</span>
-        <span className="pill">data visualization</span>
+        {a.pills.map((p) => <span key={p} className="pill">{p}</span>)}
       </div>
-      <div className="confidentiality-notice reveal">
-        This is a real shipped product. Name and branding have been changed for confidentiality.
-      </div>
+      <div className="confidentiality-notice reveal">{copy.caseUI.confidentiality}</div>
 
       <figure className="sous-mockup reveal">
         <img src={argoCover} alt="Argo — carbon credits management platform cover" loading="lazy" />
       </figure>
 
       <section className="sous-section reveal">
-        <h2 className="section-title">overview</h2>
-        <p className="big">
-          Argo is a carbon credits management platform that connects farmers and ranchers with
-          voluntary carbon markets. Landowners upload or draw their farm boundaries directly on a
-          satellite map, apply science-backed land management practices, and receive an 11-year
-          projection of the carbon credits their land could generate. Argo handles the entire
-          process — from initial enrollment and soil data collection through credit issuance and
-          payment — taking a percentage for facilitating the program. My work focused on two of the
-          platform's most important user-facing modules: the Draw Boundary tool and the Data
-          Collection module.
-        </p>
+        <h2 className="section-title">{copy.caseUI.overview}</h2>
+        <p className="big">{a.overview}</p>
         <div className="stat-row">
-          {stats.map((s) => (
+          {a.stats.map((s) => (
             <div key={s.label} className="stat">
               <p className="stat-label">{s.label}</p>
               <p className="stat-value">{s.value}</p>
@@ -847,56 +618,37 @@ function ArgoCase({ prev, next }: { prev: Project | null; next: Project | null }
       </section>
 
       <section className="sous-section reveal">
-        <h2 className="section-title">the context</h2>
+        <h2 className="section-title">{a.contextTitle}</h2>
         <div className="industry-context">
-          <h3>Farmers are sitting on one of the largest untapped carbon sinks on the planet — and most don't know it.</h3>
-          <p>
-            Regenerative land management practices — reduced tillage, cover cropping, improved grazing — sequester carbon in the soil at scale. But translating those practices into verified, tradeable carbon credits requires scientific modeling, regulatory compliance, and years of documentation that most individual landowners can't navigate alone. Argo exists to make that process accessible: a farmer draws their fields, logs their practices, and Argo handles the rest — turning better land stewardship into a new revenue stream.
-          </p>
+          <h3>{a.contextHeadline}</h3>
+          <p>{a.contextBody}</p>
         </div>
       </section>
 
       <section className="sous-section reveal">
-        <h2 className="section-title">the estimate</h2>
-        <p>
-          The Estimate screen was the first thing I worked on after joining the project. My specific contribution was adding the <strong>Option B</strong> payment model and its business rules to the existing payment flow — designing a second payout structure that could sit alongside the original Option A without breaking the surrounding screens. Before a farmer commits to any practice changes, Argo gives them a full financial picture: total carbon tonnage, deductions, payable carbon, and a year-by-year payment calendar — so the decision is financial, not technical.
-        </p>
+        <h2 className="section-title">{a.estimateTitle}</h2>
+        <p>{a.estimateIntro}</p>
 
         <div className="estimate-options">
-          <div className="estimate-option estimate-option-a">
-            <p className="estimate-tag">Option A</p>
-            <h3>Full-payment model</h3>
-            <p className="estimate-summary">Higher total return, longer wait.</p>
-            <p>
-              The farmer receives the total carbon value of their land in two payments — at year 5 and year 11. Best for landowners who can absorb the wait in exchange for the largest possible payout.
-            </p>
-            <ul className="estimate-bullets">
-              <li><strong>Payout schedule</strong> — year 5 and year 11</li>
-              <li><strong>Profile</strong> — maximum return</li>
-              <li><strong>Tradeoff</strong> — no early cash flow</li>
-            </ul>
-          </div>
-          <div className="estimate-option estimate-option-b">
-            <p className="estimate-tag">Option B</p>
-            <h3>Cash-flow model</h3>
-            <p className="estimate-summary">Smaller, earlier payments to fund the work.</p>
-            <p>
-              Smaller payments distributed across years 1 through 5, followed by a larger payment at year 11. Lower total return, but the early payments help fund the practice changes required to generate the credits in the first place.
-            </p>
-            <ul className="estimate-bullets">
-              <li><strong>Payout schedule</strong> — years 1–5, plus year 11</li>
-              <li><strong>Profile</strong> — sustained cash flow</li>
-              <li><strong>Tradeoff</strong> — lower total payout</li>
-            </ul>
-          </div>
+          {[a.optionA, a.optionB].map((opt, i) => (
+            <div key={opt.tag} className={`estimate-option ${i === 0 ? "estimate-option-a" : "estimate-option-b"}`}>
+              <p className="estimate-tag">{opt.tag}</p>
+              <h3>{opt.title}</h3>
+              <p className="estimate-summary">{opt.summary}</p>
+              <p>{opt.body}</p>
+              <ul className="estimate-bullets">
+                {opt.bullets.map((b) => (
+                  <li key={b.label}><strong>{b.label}</strong> — {b.value}</li>
+                ))}
+              </ul>
+            </div>
+          ))}
         </div>
 
-        <p>
-          Once the farmer selects a preferred option, they connect with Argo's support team, who guide them through the next steps: using the draw boundary tool to define their fields and submit the initial deliverables required by Argo's engineers and agronomists to begin setting up the practice program.
-        </p>
+        <p>{a.estimateFollowup}</p>
 
         <div className="insight-callout">
-          <p>The estimate had to answer "how much do I get and when?" before anything else. Option A or Option B isn't a technical choice — it's a cash flow decision for a working farm. The design had to make that comparison immediate and legible, not buried in footnotes.</p>
+          <p>{a.estimateInsight}</p>
         </div>
 
         <figure className="sous-mockup" style={{ marginTop: "2rem" }}>
@@ -905,12 +657,10 @@ function ArgoCase({ prev, next }: { prev: Project | null; next: Project | null }
       </section>
 
       <section className="sous-section reveal">
-        <h2 className="section-title">my contribution</h2>
-        <p>
-          I was primarily responsible for two modules that sit at the beginning and the middle of the landowner journey — the moments where complexity is highest and where dropping out is most likely.
-        </p>
+        <h2 className="section-title">{a.contributionTitle}</h2>
+        <p>{a.contributionIntro}</p>
         <ol className="numbered-list">
-          {contributions.map((d) => (
+          {a.contributions.map((d) => (
             <li key={d.n}>
               <span className="num">{d.n}</span>
               <div>
@@ -931,10 +681,10 @@ function ArgoCase({ prev, next }: { prev: Project | null; next: Project | null }
       </figure>
 
       <section className="sous-section reveal">
-        <h2 className="section-title">design challenges</h2>
-        <p>Both modules required solving for a user who is an expert in their land — but not in software.</p>
+        <h2 className="section-title">{a.challengesTitle}</h2>
+        <p>{a.challengesIntro}</p>
         <ol className="numbered-list">
-          {challenges.map((d) => (
+          {a.challenges.map((d) => (
             <li key={d.n}>
               <span className="num">{d.n}</span>
               <div>
@@ -947,24 +697,14 @@ function ArgoCase({ prev, next }: { prev: Project | null; next: Project | null }
       </section>
 
       <section className="sous-section reveal">
-        <h2 className="section-title">impact</h2>
-        <p>
-          Argo operates in a market where trust and scientific credibility are the product. The
-          Draw Boundary tool and Data Collection module sit at the foundation of that trust —
-          they're the surfaces where the platform's scientific claims become the farmer's
-          documented reality. Getting these two modules right meant the carbon models were fed
-          accurate data, the estimates were defensible, and the landowners felt in control of a
-          process that could generate meaningful income from land they already own.
-        </p>
+        <h2 className="section-title">{a.impactTitle}</h2>
+        <p>{a.impactBody}</p>
         <div className="ia-pills">
-          {outcomes.map((t) => <span key={t} className="pill">{t}</span>)}
+          {a.outcomes.map((t) => <span key={t} className="pill">{t}</span>)}
         </div>
       </section>
 
-      <div className="project-nav reveal">
-        {prev ? <a href={`#project/${prev.slug}`} className="big-link">← previous project</a> : <span />}
-        {next ? <a href={`#project/${next.slug}`} className="big-link">next project →</a> : <a href="#projects" className="big-link">all work →</a>}
-      </div>
+      <CaseNav prev={prev} next={next} />
     </article>
   );
 }
@@ -1035,6 +775,7 @@ h1, h2, h3, h4, h5, h6,
 .nav, .nav *, .section-title {
   text-transform: lowercase;
 }
+.lang-toggle, .lang-toggle * { text-transform: none; }
 .site { min-height: 100vh; display: flex; flex-direction: column; }
 .nav {
   display: flex; align-items: center; justify-content: space-between;
@@ -1096,6 +837,30 @@ h1, h2, h3, h4, h5, h6,
 }
 [data-theme="dark"] .theme-toggle { color: #E8DDD0; background: #312A18; border-color: #564A2F; }
 [data-theme="dark"] .theme-toggle:hover { color: #F2AB6D; border-color: #F2AB6D; background: color-mix(in oklab, #F2AB6D 12%, #312A18); }
+.lang-toggle {
+  display: inline-flex; align-items: center; justify-content: center;
+  gap: 0.35rem;
+  height: 36px; padding: 0 0.65rem;
+  border-radius: 6px;
+  border: 1px solid var(--color-border);
+  background: var(--color-surface-offset);
+  color: var(--color-text-muted); cursor: pointer;
+  font-family: var(--font-body);
+  font-size: 0.72rem; font-weight: 600; letter-spacing: 0.04em;
+  transition: color .2s, background .2s, border-color .2s;
+  flex-shrink: 0;
+}
+.lang-toggle:hover {
+  border-color: var(--color-primary);
+  background: color-mix(in oklab, var(--color-primary) 10%, var(--color-surface-offset));
+}
+.lang-toggle .lang-active { color: var(--color-primary); }
+.lang-toggle .lang-sep { opacity: 0.5; }
+[data-theme="dark"] .lang-toggle { color: #A89880; background: #312A18; border-color: #564A2F; }
+[data-theme="dark"] .lang-toggle:hover { border-color: #F2AB6D; background: color-mix(in oklab, #F2AB6D 12%, #312A18); }
+[data-theme="dark"] .lang-toggle .lang-active { color: #F2AB6D; }
+.lang-toggle:focus-visible { outline: 2px solid var(--color-primary); outline-offset: 2px; }
+.theme-toggle:focus-visible { outline: 2px solid var(--color-primary); outline-offset: 2px; }
 .project-meta-line {
   font-size: 0.78rem;
   letter-spacing: 0.08em;
@@ -1113,7 +878,7 @@ h1, h2, h3, h4, h5, h6,
 }
 main { flex: 1; }
 .hero {
-  padding: clamp(4rem, 12vw, 9rem) clamp(1rem, 4vw, 3rem) clamp(3rem, 8vw, 6rem);
+  padding: clamp(3rem, 8vw, 6rem) clamp(1rem, 4vw, 3rem) clamp(1.5rem, 4vw, 3rem);
   max-width: 1100px; margin: 0 auto;
 }
 .eyebrow {
@@ -1144,14 +909,14 @@ h1 {
 }
 .btn.ghost:hover { background: var(--color-primary-highlight); color: var(--color-primary); }
 .section {
-  padding: clamp(3rem, 8vw, 6rem) clamp(1rem, 4vw, 3rem);
+  padding: clamp(1.75rem, 4vw, 3rem) clamp(1rem, 4vw, 3rem);
   max-width: 1100px; margin: 0 auto;
 }
 .section.narrow { max-width: 760px; }
 .section-title {
   font-family: var(--font-display); font-weight: 700;
   font-size: 0.85rem; letter-spacing: 0.18em;
-  color: var(--color-primary); margin-bottom: 2.5rem;
+  color: var(--color-primary); margin-bottom: 2rem;
   display: inline-flex; align-items: center; gap: 0.6rem;
 }
 .section-title::before {
@@ -1291,7 +1056,7 @@ input:focus, textarea:focus { outline: none; border: 2px solid var(--color-prima
   .footer { flex-direction: column; align-items: flex-start; }
   .stat-row { grid-template-columns: 1fr !important; }
   .pain-grid { grid-template-columns: 1fr !important; }
-  
+
 }
 
 /* sous case study */
