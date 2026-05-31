@@ -561,6 +561,9 @@ function SousCase({ prev, next }: { prev: Project | null; next: Project | null }
         <div className="insight-callout">
           <p>The design principle: every feature in Cook Mode exists to reduce the number of things the user has to think about while physically cooking.</p>
         </div>
+        <figure className="sous-flow reveal">
+          <img src={sousStepByStep} alt="Sous end-to-end flow — five key screens" loading="lazy" />
+        </figure>
       </section>
 
       <section className="sous-section reveal">
