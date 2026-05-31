@@ -605,7 +605,7 @@ function OverseerCase({ prev, next }: { prev: Project | null; next: Project | nu
     <article className="section">
       <a href="#projects" className="back-link reveal">← work</a>
       <h1 className="reveal sous-title">overseer — aircraft maintenance management</h1>
-      <p className="sous-meta reveal">ux/ui designer · real-world project · 2024 · figma · b2b saas</p>
+      <p className="sous-meta reveal">ux/ui designer · professional design project · 2025 · figma · b2b saas</p>
       <div className="sous-pills reveal">
         <span className="pill">b2b saas</span>
         <span className="pill">web & mobile</span>
