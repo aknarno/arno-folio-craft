@@ -1080,9 +1080,9 @@ input:focus, textarea:focus { outline: none; border: 2px solid var(--color-prima
   .nav nav a { padding: 0.25rem 0.4rem; font-size: 0.78rem; }
 }
 @media (max-width: 420px) {
-  .nav-left .theme-toggle,
-  .nav-left .lang-toggle { display: none; }
-  .nav { padding: 0.85rem 0.9rem; }
+  .nav { flex-wrap: wrap; row-gap: 0.5rem; padding: 0.75rem 0.9rem; }
+  .nav-left { order: 1; }
+  .nav nav { order: 2; width: 100%; justify-content: flex-start; }
 }
 
 /* sous case study */
