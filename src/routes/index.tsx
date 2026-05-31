@@ -884,7 +884,8 @@ h1, h2, h3, h4, h5, h6,
   margin: 0.6rem 0 0;
   padding-top: 0.6rem;
   border-top: 1px solid var(--color-border);
-  white-space: nowrap;
+  white-space: normal;
+  overflow-wrap: anywhere;
 }
 .image-caption {
   margin-top: 0.75rem; padding: 0 0.25rem;
@@ -1081,7 +1082,7 @@ input:focus, textarea:focus { outline: none; border: 2px solid var(--color-prima
   .lang-toggle { height: 28px; padding: 2px; flex-shrink: 0; }
   .lang-toggle .lang-opt { padding: 0 0.45rem; font-size: 0.7rem; gap: 0.25rem; }
   .lang-toggle .lang-flag { width: 14px; height: 11px; }
-  .nav nav { gap: 0.1rem; flex-shrink: 0; flex-direction: column; align-items: flex-end; }
+  .nav nav { gap: 0.25rem; flex-shrink: 0; flex-direction: row; align-items: center; flex-wrap: wrap; justify-content: flex-end; }
   .nav nav a { padding: 0.2rem 0.4rem; font-size: 0.78rem; }
 }
 
