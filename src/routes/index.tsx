@@ -787,35 +787,35 @@ function OverseerCase({ prev, next }: { prev: Project | null; next: Project | nu
 
 function ArgoCase({ prev, next }: { prev: Project | null; next: Project | null }) {
   const stats = [
-    { label: "platform", value: "web app", sub: "b2b saas · agtech" },
-    { label: "users", value: "farmers · ranchers", sub: "landowners across north america" },
-    { label: "my contribution", value: "2 core modules", sub: "draw boundary + data collection" },
+    { label: "platform", value: "web app", sub: "B2B SaaS · agtech" },
+    { label: "users", value: "farmers · ranchers", sub: "landowners across North America" },
+    { label: "my contribution", value: "2 core modules", sub: "Draw Boundary + Data Collection" },
     { label: "project type", value: "real product", sub: "shipped · name changed for confidentiality" },
   ];
   const contributions = [
-    { n: "01", title: "draw boundary tool", body: "an interactive satellite map interface where farmers draw the precise boundaries of their fields using polygon tools. the tool supports multiple drawing modes — freehand polygon, circular border, inner border — and allows users to name fields, set acreage, define land ownership type, and classify field type (row crop, range and pasture) before saving. accuracy here determines the carbon calculation downstream, so the ux had to be precise without being intimidating to a rancher who has never used gis software." },
-    { n: "02", title: "data collection module", body: "a centralized, structured view of all data associated with a producer's farm — herd data, fertilizer and amendment applications, forage management practices, and more. data is organized into collapsible sections per practice category, with inline error surfacing, edit mode, and multi-year filtering. this screen is the scientific backbone of the carbon estimate: every field logged here feeds directly into the carbon modeling engine." },
+    { n: "01", title: "Draw Boundary tool", body: "An interactive satellite map interface where farmers draw the precise boundaries of their fields using polygon tools. The tool supports multiple drawing modes — freehand polygon, circular border, inner border — and allows users to name fields, set acreage, define land ownership type, and classify field type (row crop, range and pasture) before saving. Accuracy here determines the carbon calculation downstream, so the UX had to be precise without being intimidating to a rancher who has never used GIS software." },
+    { n: "02", title: "Data Collection module", body: "A centralized, structured view of all data associated with a producer's farm — herd data, fertilizer and amendment applications, forage management practices, and more. Data is organized into collapsible sections per practice category, with inline error surfacing, edit mode, and multi-year filtering. This screen is the scientific backbone of the carbon estimate: every field logged here feeds directly into the carbon modeling engine." },
   ];
   const challenges = [
-    { n: "01", title: "spatial accuracy vs. accessibility", body: "the draw boundary tool needed to be precise enough for scientific modeling while remaining usable by someone drawing field boundaries on a tablet from a ranch office. the solution was a constrained, opinionated drawing toolbar — limited options, clear visual feedback, and a fields list panel that kept the user grounded in what they'd already defined." },
-    { n: "02", title: "data density without overwhelm", body: "the data collection module aggregates years of agricultural practice data across multiple categories. the challenge was making that density navigable — collapsible sections, progressive disclosure, a persistent error count (\"show only errors: 3\"), and multi-axis filtering (by field, by year, by event) all worked together to give the user control without cognitive overload." },
-    { n: "03", title: "offline-first in remote environments", body: "ranchers and farmers often live and work in areas with no reliable internet connection. the platform had to function fully offline — syncing data when connectivity was restored. this shaped every interaction that involved saving field boundaries or logging practice data: nothing could depend on a live connection, and nothing could be lost." },
-    { n: "04", title: "designing for non-technical users", body: "the target user is an expert in land and livestock — not software. most ranchers' closest reference for data entry is a spreadsheet. every screen had to feel familiar to that mental model: tabular layouts, clear labels, predictable row structures, and no interaction patterns that required prior digital literacy. complexity had to be invisible." },
-    { n: "05", title: "trust in the numbers", body: "the carbon estimate is the emotional core of the product — it's the number that convinces a skeptical farmer to enroll. every design decision in the flow leading up to it had to build confidence that the inputs were correct, the methodology was sound, and the projected payment was real." },
+    { n: "01", title: "Spatial accuracy vs. accessibility", body: "The Draw Boundary tool needed to be precise enough for scientific modeling while remaining usable by someone drawing field boundaries on a tablet from a ranch office. The solution was a constrained, opinionated drawing toolbar — limited options, clear visual feedback, and a fields list panel that kept the user grounded in what they'd already defined." },
+    { n: "02", title: "Data density without overwhelm", body: "The Data Collection module aggregates years of agricultural practice data across multiple categories. The challenge was making that density navigable — collapsible sections, progressive disclosure, a persistent error count (\"Show only errors: 3\"), and multi-axis filtering (by field, by year, by event) all worked together to give the user control without cognitive overload." },
+    { n: "03", title: "Offline-first in remote environments", body: "Ranchers and farmers often live and work in areas with no reliable internet connection. The platform had to function fully offline — syncing data when connectivity was restored. This shaped every interaction that involved saving field boundaries or logging practice data: nothing could depend on a live connection, and nothing could be lost." },
+    { n: "04", title: "Designing for non-technical users", body: "The target user is an expert in land and livestock — not software. Most ranchers' closest reference for data entry is a spreadsheet. Every screen had to feel familiar to that mental model: tabular layouts, clear labels, predictable row structures, and no interaction patterns that required prior digital literacy. Complexity had to be invisible." },
+    { n: "05", title: "Trust in the numbers", body: "The carbon estimate is the emotional core of the product — it's the number that convinces a skeptical farmer to enroll. Every design decision in the flow leading up to it had to build confidence that the inputs were correct, the methodology was sound, and the projected payment was real." },
   ];
   const outcomes = [
-    "interactive satellite boundary drawing",
-    "multi-mode polygon tools",
-    "hierarchical agricultural data collection",
+    "Interactive satellite boundary drawing",
+    "Multi-mode polygon tools",
+    "Hierarchical agricultural data collection",
     "11-year carbon credit projection",
-    "inline error surfacing and validation",
-    "professional design project",
+    "Inline error surfacing and validation",
+    "Professional design project",
   ];
   return (
     <article className="section">
       <a href="#projects" className="back-link reveal">← work</a>
-      <h1 className="reveal sous-title">argo — carbon credits management platform</h1>
-      <p className="sous-meta reveal">ux/ui designer · professional design project · 2024 · figma · b2b saas</p>
+      <h1 className="reveal sous-title">Argo — Carbon Credits Management Platform</h1>
+      <p className="sous-meta reveal">UX/UI Designer · Professional design project · 2024 · Figma · B2B SaaS</p>
       <div className="sous-pills reveal">
         <span className="pill">b2b saas</span>
         <span className="pill">web app</span>
@@ -824,24 +824,24 @@ function ArgoCase({ prev, next }: { prev: Project | null; next: Project | null }
         <span className="pill">data visualization</span>
       </div>
       <div className="confidentiality-notice reveal">
-        this is a real shipped product. name and branding have been changed for confidentiality.
+        This is a real shipped product. Name and branding have been changed for confidentiality.
       </div>
 
       <figure className="sous-mockup reveal">
-        <img src={argoCover} alt="argo — carbon credits management platform cover" loading="lazy" />
+        <img src={argoCover} alt="Argo — carbon credits management platform cover" loading="lazy" />
       </figure>
 
       <section className="sous-section reveal">
         <h2 className="section-title">overview</h2>
         <p className="big">
-          argo is a carbon credits management platform that connects farmers and ranchers with
-          voluntary carbon markets. landowners upload or draw their farm boundaries directly on a
+          Argo is a carbon credits management platform that connects farmers and ranchers with
+          voluntary carbon markets. Landowners upload or draw their farm boundaries directly on a
           satellite map, apply science-backed land management practices, and receive an 11-year
-          projection of the carbon credits their land could generate. argo handles the entire
+          projection of the carbon credits their land could generate. Argo handles the entire
           process — from initial enrollment and soil data collection through credit issuance and
-          payment — taking a percentage for facilitating the program. my work focused on two of the
-          platform's most important user-facing modules: the draw boundary tool and the data
-          collection module.
+          payment — taking a percentage for facilitating the program. My work focused on two of the
+          platform's most important user-facing modules: the Draw Boundary tool and the Data
+          Collection module.
         </p>
         <div className="stat-row">
           {stats.map((s) => (
@@ -857,7 +857,7 @@ function ArgoCase({ prev, next }: { prev: Project | null; next: Project | null }
       <section className="sous-section reveal">
         <h2 className="section-title">the context</h2>
         <div className="industry-context">
-          <h3>farmers are sitting on one of the largest untapped carbon sinks on the planet — and most don't know it.</h3>
+          <h3>Farmers are sitting on one of the largest untapped carbon sinks on the planet — and most don't know it.</h3>
           <p>
             Regenerative land management practices — reduced tillage, cover cropping, improved grazing — sequester carbon in the soil at scale. But translating those practices into verified, tradeable carbon credits requires scientific modeling, regulatory compliance, and years of documentation that most individual landowners can't navigate alone. Argo exists to make that process accessible: a farmer draws their fields, logs their practices, and Argo handles the rest — turning better land stewardship into a new revenue stream.
           </p>
@@ -867,7 +867,7 @@ function ArgoCase({ prev, next }: { prev: Project | null; next: Project | null }
       <section className="sous-section reveal">
         <h2 className="section-title">the estimate</h2>
         <p>
-          Before a farmer commits to any practice changes, Argo gives them a full financial picture. The estimate screen presents two payment options side by side — total carbon tonnage, deductions, payable carbon, and a year-by-year payment calendar — so the decision is financial, not technical.
+          The Estimate screen was the first thing I worked on after joining the project. My specific contribution was adding the <strong>Option B</strong> payment model and its business rules to the existing payment flow — designing a second payout structure that could sit alongside the original Option A without breaking the surrounding screens. Before a farmer commits to any practice changes, Argo gives them a full financial picture: total carbon tonnage, deductions, payable carbon, and a year-by-year payment calendar — so the decision is financial, not technical.
         </p>
 
         <div className="estimate-options">
@@ -908,15 +908,12 @@ function ArgoCase({ prev, next }: { prev: Project | null; next: Project | null }
         </div>
 
         <figure className="sous-mockup" style={{ marginTop: "2rem" }}>
-          <img src={argoEstimate} alt="argo estimate screen" loading="lazy" />
+          <img src={argoEstimate} alt="Argo estimate screen" loading="lazy" />
         </figure>
       </section>
 
       <section className="sous-section reveal">
         <h2 className="section-title">my contribution</h2>
-        <div className="insight-callout" style={{ marginBottom: "1.75rem" }}>
-          <p>After joining the project, I also contributed extra features to the home/dashboard screen — the starting point of the landowner's flow. Even though it wasn't my main contribution, it connects directly to the next features I owned: <strong>Boundaries</strong> and <strong>Data Collection</strong>.</p>
-        </div>
         <p>
           I was primarily responsible for two modules that sit at the beginning and the middle of the landowner journey — the moments where complexity is highest and where dropping out is most likely.
         </p>
@@ -934,11 +931,11 @@ function ArgoCase({ prev, next }: { prev: Project | null; next: Project | null }
       </section>
 
       <figure className="sous-mockup reveal">
-        <img src={argoDrawBoundary} alt="argo draw boundary tool" loading="lazy" />
+        <img src={argoDrawBoundary} alt="Argo Draw Boundary tool" loading="lazy" />
       </figure>
 
       <figure className="sous-mockup reveal">
-        <img src={argoDataCollection} alt="argo data collection module" loading="lazy" />
+        <img src={argoDataCollection} alt="Argo Data Collection module" loading="lazy" />
       </figure>
 
       <section className="sous-section reveal">
@@ -960,10 +957,10 @@ function ArgoCase({ prev, next }: { prev: Project | null; next: Project | null }
       <section className="sous-section reveal">
         <h2 className="section-title">impact</h2>
         <p>
-          argo operates in a market where trust and scientific credibility are the product. the
-          draw boundary tool and data collection module sit at the foundation of that trust —
+          Argo operates in a market where trust and scientific credibility are the product. The
+          Draw Boundary tool and Data Collection module sit at the foundation of that trust —
           they're the surfaces where the platform's scientific claims become the farmer's
-          documented reality. getting these two modules right meant the carbon models were fed
+          documented reality. Getting these two modules right meant the carbon models were fed
           accurate data, the estimates were defensible, and the landowners felt in control of a
           process that could generate meaningful income from land they already own.
         </p>
