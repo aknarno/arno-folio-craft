@@ -233,20 +233,15 @@ function Home() {
       <section className="section about">
         <h2 className="section-title reveal">about</h2>
         <p className="reveal big">
-          i'm arno klettenberg, a ux/ui designer based in curitiba, brazil,
-          focused on building complex digital products that actually work for
-          the people using them. my background spans b2b saas platforms,
-          cross-platform systems, and data-heavy interfaces — from aircraft
-          maintenance management tools used by mro professionals to carbon
-          credit platforms serving farmers and ranchers across north america.
-          i care about the details that most people don't notice until they're
-          missing: the form that doesn't lose your data, the table that's
-          readable at 6am in a shop, the onboarding that doesn't require a
-          manual. i've worked on products that have helped close enterprise
-          deals with robinson helicopter company and garmin, and contributed
-          to systems that operate at scale in regulated, high-stakes
-          environments. i design for clarity, build for context, and take
-          complexity seriously.
+          i'm arno klettenberg, a ux/ui designer based in curitiba, brazil. i
+          design complex digital products for regulated, data-heavy environments
+          — aircraft maintenance platforms, carbon credit systems, and
+          enterprise b2b tools. i care about the details that matter in the
+          field: the table that's readable at 6am in a shop, the form that
+          doesn't lose your data, the map tool that works without internet. my
+          work has contributed to enterprise deals with robinson helicopter
+          company and garmin, and to systems used by farmers and ranchers
+          across north america.
         </p>
         <div className="about-grid reveal">
           <div>
