@@ -5,6 +5,7 @@ import {
   createRootRouteWithContext,
   useRouter,
 } from "@tanstack/react-router";
+import { LanguageProvider } from "@/lib/i18n";
 
 function NotFoundComponent() {
   return (
