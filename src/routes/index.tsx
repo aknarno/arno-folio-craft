@@ -474,12 +474,9 @@ function SousCase({ prev, next }: { prev: Project | null; next: Project | null }
           down to 3–5 actionable matches.
         </p>
         <p>
-          The product is built for the version of the user who is already tired, already
-          hungry, and one step away from opening a delivery app. Cook Mode is designed for
-          high-glare kitchens and messy hands: high-contrast type, oversized tap targets,
-          one step at a time, integrated timers, and a screen that stays awake while the
-          user works. The goal is simple — make healthy cooking the path of least
-          resistance, not another chore on the to-do list.
+          Cook Mode is designed for high-glare kitchens and messy hands: high-contrast type,
+          oversized tap targets, one step at a time, integrated timers, and a screen that
+          stays awake while the user works.
         </p>
         <div className="stat-row">
           {stats.map((s) => (
@@ -564,6 +561,9 @@ function SousCase({ prev, next }: { prev: Project | null; next: Project | null }
         <div className="insight-callout">
           <p>The design principle: every feature in Cook Mode exists to reduce the number of things the user has to think about while physically cooking.</p>
         </div>
+        <figure className="sous-flow reveal">
+          <img src={sousStepByStep} alt="Sous end-to-end flow — five key screens" loading="lazy" />
+        </figure>
       </section>
 
       <section className="sous-section reveal">
@@ -578,9 +578,6 @@ function SousCase({ prev, next }: { prev: Project | null; next: Project | null }
         <img src={sousDesignSystem} alt="Sous design system — colors, typography, components" loading="lazy" />
       </figure>
 
-      <figure className="sous-flow reveal">
-        <img src={sousStepByStep} alt="Sous end-to-end flow — five key screens" loading="lazy" />
-      </figure>
 
       <figure className="sous-mockup reveal">
         <img src={sousMockup} alt="Sous mockup in context" loading="lazy" />
