@@ -13,10 +13,7 @@ export function LanguageProvider({ children }: { children: ReactNode }) {
       const saved = localStorage.getItem("lang") as Lang | null;
       if (saved === "en" || saved === "pt") {
         setLangState(saved);
-        return;
       }
-      const nav = navigator.language?.toLowerCase() ?? "";
-      if (nav.startsWith("pt")) setLangState("pt");
     } catch {}
   }, []);
 
