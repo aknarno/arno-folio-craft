@@ -791,7 +791,7 @@ h1, h2, h3, h4, h5, h6,
   background: #E8DBC8;
   backdrop-filter: blur(8px); z-index: 10;
 }
-.nav-left { display: flex; flex-direction: column; align-items: flex-start; gap: 0.5rem; min-width: 0; }
+.nav-left { display: flex; flex-direction: row; align-items: center; gap: 1rem; min-width: 0; }
 .nav-controls { display: flex; align-items: center; gap: 0.5rem; flex-wrap: wrap; }
 [data-theme="dark"] .nav { background: #060503; border-bottom-color: #060503; }
 .nav-brand {
@@ -1075,7 +1075,7 @@ input:focus, textarea:focus { outline: none; border: 2px solid var(--color-prima
 
   /* Tighten header on mobile so it never overflows */
   .nav { padding: 0.85rem 1rem; gap: 0.5rem; flex-wrap: nowrap; align-items: flex-end; }
-  .nav-left { gap: 0.4rem; min-width: 0; flex: 1 1 auto; }
+  .nav-left { flex-direction: column; align-items: flex-start; gap: 0.4rem; min-width: 0; flex: 1 1 auto; }
   .nav-controls { gap: 0.4rem; }
   .nav-brand-name { font-size: 0.95rem; white-space: nowrap; }
   .theme-toggle { width: 30px; height: 30px; font-size: 0.95rem; flex-shrink: 0; }
