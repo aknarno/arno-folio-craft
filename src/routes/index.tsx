@@ -530,7 +530,31 @@ function OverseerCase({ prev, next }: { prev: ProjectCopy | null; next: ProjectC
       <section className="sous-section focus-section reveal">
         <h2 className="section-title">{o.focusTitle}</h2>
         <p>{o.focusIntro}</p>
-        <div className="decisions-compare">
+        {/* Desktop: aligned row grid */}
+        <div className="decisions-compare decisions-desktop">
+          <h3 className="compare-head">{o.decisionsWorkOrderLabel}</h3>
+          <h3 className="compare-head">{o.decisionsAskseerLabel}</h3>
+          {o.decisions.map((d, i) => (
+            <React.Fragment key={d.n}>
+              <div className="decision-item">
+                <span className="num">{d.n}</span>
+                <div>
+                  <h3>{d.title}</h3>
+                  <p>{d.body}</p>
+                </div>
+              </div>
+              <div className="decision-item">
+                <span className="num">{o.askseerDecisions[i].n}</span>
+                <div>
+                  <h3>{o.askseerDecisions[i].title}</h3>
+                  <p>{o.askseerDecisions[i].body}</p>
+                </div>
+              </div>
+            </React.Fragment>
+          ))}
+        </div>
+        {/* Mobile: stacked columns */}
+        <div className="decisions-compare decisions-mobile">
           <div className="decisions-col">
             <h3 className="compare-head">{o.decisionsWorkOrderLabel}</h3>
             <ol className="numbered-list">
