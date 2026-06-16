@@ -128,20 +128,26 @@ export type Copy = {
     industryTitle: string;
     industryHeadline: string;
     industryBody: string;
-    featuresTitle: string;
-    featuresIntro: string;
-    features: { name: string; body: string }[];
     dsTitle: string;
     dsBody: string;
     dsInsight: string;
     focusTitle: string;
     focusIntro: string;
+    decisionsWorkOrderLabel: string;
+    decisionsAskseerLabel: string;
     decisions: CardCopy[];
+    askseerDecisions: CardCopy[];
+    workOrder: {
+      sectionLabel: string;
+      title: string;
+      summary: string;
+      capabilitiesTitle: string;
+      capabilities: { name: string; body: string }[];
+    };
     impactTitle: string;
     impactBody: string;
     impactStats: { org: string; label: string }[];
     outcomes: string[];
-    reportCaption: string;
     askseer: {
       sectionLabel: string;
       title: string;
@@ -292,36 +298,45 @@ const en: Copy = {
     stats: [
       { label: "platform", value: "web + mobile", sub: "cross-platform B2B SaaS" },
       { label: "users", value: "MROs · mechanics · fleet ops", sub: "pilots and maintenance professionals" },
-      { label: "my contribution", value: "Work Order module", sub: "plus supporting features and design system" },
+      { label: "my contribution", value: "Work Order MX & AskSeer", sub: "plus supporting features and design system" },
       { label: "real-world impact", value: "Robinson · Garmin", sub: "enterprise deals closed" },
     ],
     industryTitle: "the industry context",
     industryHeadline: "Almost every aircraft in the world is still maintained with paper and pencil.",
     industryBody: "Even today, the majority of general aviation and MRO maintenance documentation is still analog — handwritten work orders, paper logbooks, pencil-marked inspection sheets. Regulatory compliance, multi-technician coordination, and customer communication all run through physical documents that can be lost, misread, or never filed. Overseer exists to replace that stack of paper with a single connected platform that travels with the aircraft.",
-    featuresTitle: "platform features",
-    featuresIntro: "Overseer covers the full operational surface of an MRO organization. I worked across several of these modules — each solving a distinct pain point for a different user type.",
-    features: [
-      { name: "My Reservations", body: "A personal view of all aircraft reserved by the logged-in user, with schedule context and aircraft status." },
-      { name: "Manage Members", body: "Role and permission management for everyone inside an organization — mechanics, supervisors, and administrators." },
-      { name: "Manage Aircraft", body: "Full aircraft profile management: make, model, serial number, tail number, time-tracking (TTIS, SFRM, TT, SNEW), and maintenance history." },
-      { name: "Manage Inventory", body: "Organization-level parts and tooling inventory, separate from aircraft-specific components." },
-      { name: "Document Center", body: "Centralized document management for ADs, SBs, maintenance manuals, and aircraft logs — all associated to the relevant aircraft or organization." },
-      { name: "Work Order MX", body: "End-to-end work order lifecycle: creation, discrepancy tracking, labor logging, tooling allocation, cost tracking, approval workflow, and client-ready reporting." },
-      { name: "Parts Ordering Flow", body: "A multi-organization purchasing system built directly into the platform — a mini e-commerce experience where MRO organizations can source parts from other organizations within the network." },
-      { name: "AskSeer — AI Assistant", body: "An AI assistant embedded directly into Overseer that answers aircraft-specific questions, processes uploaded logs, and verifies compliance documentation (ADs, SBs, manuals) without leaving the current screen." },
-    ],
     dsTitle: "design system",
     dsBody: "The Overseer design system existed when I joined the project — but it was significantly outdated and inconsistent. Rather than patching it, I rebuilt it from scratch: re-establishing the token structure, auditing and redrawing components, and documenting usage rules the team could follow. I preserved variables and components where they still held up, but the result was effectively a new system built on the bones of the old one. The Work Order module was the first feature designed entirely within the rebuilt system.",
     dsInsight: "Designing within a system you built yourself creates a different kind of accountability. Every component decision in the Work Order had to work not just for this screen, but for every screen that came after it.",
     focusTitle: "focus: Work Order MX & AskSeer",
-    focusIntro: "Two modules carried the most direct user impact across this platform. Work Order MX became the operational backbone — replacing paper squawk sheets with a single connected workflow — and AskSeer added a conversational layer on top of it, turning dense aircraft data into something users could simply ask for. The decisions below trace the Work Order architecture; the AskSeer case study follows it in detail later on this page.",
+    focusIntro: "Two modules carried the most direct user impact across this platform. Work Order MX became the operational backbone — replacing paper squawk sheets with a single connected workflow — and AskSeer added a conversational layer on top of it, turning dense aircraft data into something users could simply ask for. The decisions below trace the core architectural calls for each, side by side.",
+    decisionsWorkOrderLabel: "Work Order MX",
+    decisionsAskseerLabel: "AskSeer",
     decisions: [
       { n: "01", title: "Work order as the single source of truth", body: "Customer info, aircraft context, schedule, labor rate, tooling, discrepancies, costs, and sign-offs all live inside one work order. Nothing is scattered across separate tools or paper sheets." },
       { n: "02", title: "Hierarchical discrepancy list", body: "Each work order contains a nested discrepancy list — items and sub-items — where mechanics log findings, estimated and actual hours, parts used, action taken, and approval status per line. This replaces the handwritten squawk sheet." },
-      { n: "03", title: "Labor visibility for supervisors", body: "Hours are logged at the sub-item level by technician, giving supervisors a real-time view of job progress without walking the shop floor. The labor report generates a client-ready document from this data automatically." },
+      { n: "03", title: "Labor visibility for supervisors", body: "Hours are logged at the sub-item level by technician, giving supervisors a real-time view of job progress without walking the shop floor — and a client-ready labor report generates automatically from the same data." },
       { n: "04", title: "Tooling allocation", body: "Tools are assigned directly to the work order — not just noted on paper — creating accountability and reducing the 'where is the torque wrench' problem endemic to shared shop environments." },
       { n: "05", title: "Status workflow", body: "Work orders move through defined states (Estimate, In Progress, Submitted, Archived) with role-based permissions on transitions. Customers gain visibility into their aircraft's status without a phone call." },
     ],
+    askseerDecisions: [
+      { n: "01", title: "Conversational layer, not another module", body: "AskSeer was designed to sit on top of Overseer rather than become a separate destination. Users open it inside whatever screen they're already on and ask in natural language." },
+      { n: "02", title: "Context-aware to the current aircraft", body: "The assistant always knows which tail number and which screen the user is on, so answers stay scoped to the right aircraft without re-stating context every turn." },
+      { n: "03", title: "In-chat log upload and processing", body: "Aircraft logs can be dragged directly into the chat for parsing — the assistant extracts and surfaces what's relevant instead of asking the user to dig through a viewer." },
+      { n: "04", title: "Compliance verification in seconds", body: "AD, Service Bulletin, manual, and documentation status can be validated through a single question per aircraft, replacing multi-step cross-referencing across modules." },
+      { n: "05", title: "Embedded floating panel", body: "The assistant lives inside the existing workspace as a floating panel — not a separate tool or new page — so it amplifies the current workflow rather than fragmenting it." },
+    ],
+    workOrder: {
+      sectionLabel: "module 01 of 02",
+      title: "Work Order MX",
+      summary: "Work Order MX is the operational backbone of Overseer. It replaces handwritten squawk sheets, paper logbooks, and scattered spreadsheets with a single connected workflow that travels with the aircraft — from estimate through sign-off and client-ready reporting.",
+      capabilitiesTitle: "key capabilities",
+      capabilities: [
+        { name: "Single source of truth", body: "Customer info, aircraft context, schedule, labor rate, tooling, discrepancies, costs, and sign-offs all live inside one work order." },
+        { name: "Hierarchical discrepancies", body: "Nested items and sub-items capture findings, estimated and actual hours, parts used, action taken, and approval status per line." },
+        { name: "Labor & cost reporting", body: "Hours logged at the sub-item level by technician feed real-time progress views and auto-generated client-ready labor reports." },
+        { name: "Tooling & status workflow", body: "Tools are assigned directly to the work order, and orders progress through defined states with role-based permissions on each transition." },
+      ],
+    },
     impactTitle: "impact",
     impactBody: "Overseer is a live product used by real MRO organizations. The Work Order module — and the broader platform work I contributed to — played a direct role in closing partnerships with two of the largest names in general aviation. These weren't small deals: Robinson Helicopter Company and Garmin both integrated Overseer into their aircraft and systems, validating the platform's readiness for enterprise-scale operations.",
     impactStats: [
@@ -329,9 +344,8 @@ const en: Copy = {
       { org: "Garmin", label: "Integration partnership — live flight logs, digital records, and maintenance management connected to Garmin avionics." },
     ],
     outcomes: ["cross-platform web + mobile", "work order module — built from scratch", "design system reconstruction", "hierarchical discrepancy tracking", "client-ready labor reporting", "Robinson & Garmin partnerships"],
-    reportCaption: "Example of a client-ready labor report generated directly from the platform — no export to a third-party tool required.",
     askseer: {
-      sectionLabel: "a sub-product within Overseer",
+      sectionLabel: "module 02 of 02",
       title: "AskSeer — AI-Powered Maintenance Assistant",
       summary: "AskSeer is an AI chatbot embedded directly into the Overseer platform. It gives maintenance teams, aircraft owners, operators, and administrators instant conversational access to aircraft information, maintenance records, compliance status, and documentation — without forcing them through multiple screens to find it.",
       imageCaption: "AskSeer answering an equipment-list question in context of the currently selected aircraft, embedded directly inside the Work Order MX screen.",
@@ -533,36 +547,45 @@ const pt: Copy = {
     stats: [
       { label: "plataforma", value: "web + mobile", sub: "B2B SaaS multiplataforma" },
       { label: "usuários", value: "MROs · mecânicos · operação de frota", sub: "pilotos e profissionais de manutenção" },
-      { label: "minha contribuição", value: "Módulo de Ordem de Serviço", sub: "mais recursos de apoio e design system" },
+      { label: "minha contribuição", value: "Work Order MX & AskSeer", sub: "mais recursos de apoio e design system" },
       { label: "impacto real", value: "Robinson · Garmin", sub: "contratos enterprise fechados" },
     ],
     industryTitle: "contexto do setor",
     industryHeadline: "Quase toda aeronave do mundo ainda é mantida com papel e lápis.",
     industryBody: "Até hoje, a maior parte da documentação de manutenção de aviação geral e MRO é analógica — ordens de serviço escritas à mão, livros de bordo em papel, fichas de inspeção marcadas a lápis. Compliance regulatório, coordenação entre técnicos e comunicação com o cliente passam por documentos físicos que podem ser perdidos, mal lidos ou nunca arquivados. O Overseer existe para substituir essa pilha de papel por uma plataforma única conectada, que viaja com a aeronave.",
-    featuresTitle: "recursos da plataforma",
-    featuresIntro: "O Overseer cobre toda a superfície operacional de uma organização MRO. Atuei em vários desses módulos — cada um resolvendo uma dor distinta de um tipo de usuário diferente.",
-    features: [
-      { name: "Minhas Reservas", body: "Visão pessoal de todas as aeronaves reservadas pelo usuário logado, com contexto de agenda e status da aeronave." },
-      { name: "Gestão de Membros", body: "Gestão de papéis e permissões para todos os integrantes da organização — mecânicos, supervisores e administradores." },
-      { name: "Gestão de Aeronaves", body: "Cadastro completo da aeronave: fabricante, modelo, número de série, prefixo, controle de horas (TTIS, SFRM, TT, SNEW) e histórico de manutenção." },
-      { name: "Gestão de Estoque", body: "Inventário de peças e ferramentas em nível organizacional, separado dos componentes específicos de cada aeronave." },
-      { name: "Centro de Documentos", body: "Gestão centralizada de documentos para ADs, SBs, manuais de manutenção e logbooks — todos associados à aeronave ou organização correspondente." },
-      { name: "Work Order MX", body: "Ciclo completo da ordem de serviço: criação, rastreio de discrepâncias, registro de mão de obra, alocação de ferramentas, controle de custos, fluxo de aprovação e relatórios prontos para o cliente." },
-      { name: "Fluxo de Compra de Peças", body: "Um sistema de compras multiorganização integrado à plataforma — uma mini experiência de e-commerce em que organizações MRO podem adquirir peças de outras organizações da rede." },
-      { name: "AskSeer — Assistente de IA", body: "Um assistente de IA embutido diretamente no Overseer que responde perguntas específicas sobre cada aeronave, processa logs enviados pelo usuário e verifica documentação de compliance (ADs, SBs, manuais) sem sair da tela atual." },
-    ],
     dsTitle: "design system",
     dsBody: "O design system do Overseer já existia quando entrei no projeto — mas estava bastante desatualizado e inconsistente. Em vez de aplicar remendos, reconstruí do zero: reestabelecendo a estrutura de tokens, auditando e redesenhando componentes e documentando regras de uso que o time pudesse seguir. Preservei variáveis e componentes que ainda funcionavam, mas o resultado foi, na prática, um sistema novo construído sobre o esqueleto do antigo. O módulo de Work Order foi o primeiro recurso desenhado inteiramente dentro do sistema reconstruído.",
     dsInsight: "Projetar dentro de um sistema que você mesmo construiu cria um tipo diferente de responsabilidade. Cada decisão de componente no Work Order precisava funcionar não só nessa tela, mas em todas as telas que viriam depois.",
     focusTitle: "foco: Work Order MX & AskSeer",
-    focusIntro: "Dois módulos concentraram o impacto mais direto sobre o usuário nesta plataforma. O Work Order MX virou a espinha dorsal operacional — substituindo as squawk sheets de papel por um fluxo único e conectado — e o AskSeer adicionou uma camada conversacional sobre ele, transformando dados densos de aeronave em algo que o usuário simplesmente pode perguntar. As decisões abaixo descrevem a arquitetura do Work Order; o estudo de caso do AskSeer aparece em detalhe mais adiante nesta página.",
+    focusIntro: "Dois módulos concentraram o impacto mais direto sobre o usuário nesta plataforma. O Work Order MX virou a espinha dorsal operacional — substituindo as squawk sheets de papel por um fluxo único e conectado — e o AskSeer adicionou uma camada conversacional sobre ele, transformando dados densos de aeronave em algo que o usuário simplesmente pode perguntar. As decisões abaixo descrevem as escolhas arquiteturais centrais de cada um, lado a lado.",
+    decisionsWorkOrderLabel: "Work Order MX",
+    decisionsAskseerLabel: "AskSeer",
     decisions: [
       { n: "01", title: "Ordem de serviço como fonte única da verdade", body: "Dados do cliente, contexto da aeronave, agenda, valor de mão de obra, ferramentas, discrepâncias, custos e aprovações ficam dentro de uma única ordem. Nada espalhado em ferramentas separadas ou em papel." },
       { n: "02", title: "Lista hierárquica de discrepâncias", body: "Cada ordem contém uma lista de discrepâncias aninhada — itens e subitens — onde os mecânicos registram achados, horas estimadas e reais, peças utilizadas, ação tomada e status de aprovação por linha. Isso substitui a squawk sheet manuscrita." },
-      { n: "03", title: "Visibilidade de mão de obra para supervisores", body: "As horas são registradas por técnico no nível do subitem, dando ao supervisor uma visão em tempo real do progresso sem precisar caminhar pelo hangar. O relatório de mão de obra gera automaticamente um documento pronto para o cliente a partir desses dados." },
+      { n: "03", title: "Visibilidade de mão de obra para supervisores", body: "As horas são registradas por técnico no nível do subitem, dando ao supervisor uma visão em tempo real do progresso sem precisar caminhar pelo hangar — e um relatório de mão de obra pronto para o cliente é gerado automaticamente a partir desses dados." },
       { n: "04", title: "Alocação de ferramentas", body: "As ferramentas são atribuídas diretamente à ordem de serviço — não só anotadas em papel — criando responsabilidade e reduzindo o problema do 'onde está o torquímetro' típico de oficinas compartilhadas." },
       { n: "05", title: "Fluxo de status", body: "As ordens passam por estados definidos (Estimativa, Em andamento, Enviada, Arquivada) com permissões baseadas em papel para cada transição. O cliente ganha visibilidade sobre o status da aeronave sem precisar de uma ligação." },
     ],
+    askseerDecisions: [
+      { n: "01", title: "Camada conversacional, não mais um módulo", body: "O AskSeer foi pensado para ficar sobre o Overseer, em vez de virar um destino separado. O usuário abre o assistente dentro da tela onde já está e pergunta em linguagem natural." },
+      { n: "02", title: "Ciente da aeronave atual", body: "O assistente sempre sabe qual prefixo e qual tela estão em uso, mantendo as respostas escopadas para a aeronave certa sem precisar reespecificar contexto a cada turno." },
+      { n: "03", title: "Upload e processamento de logs no chat", body: "Logs de aeronave podem ser arrastados direto para o chat para análise — o assistente extrai e destaca o que é relevante em vez de obrigar o usuário a vasculhar um visualizador." },
+      { n: "04", title: "Verificação de compliance em segundos", body: "Status de AD, Service Bulletin, manual e documentação é validado em uma única pergunta por aeronave, substituindo o cruzamento manual entre vários módulos." },
+      { n: "05", title: "Painel flutuante embutido", body: "O assistente vive dentro do workspace existente como um painel flutuante — não como ferramenta separada nem nova página — amplificando o fluxo atual em vez de fragmentá-lo." },
+    ],
+    workOrder: {
+      sectionLabel: "módulo 01 de 02",
+      title: "Work Order MX",
+      summary: "O Work Order MX é a espinha dorsal operacional do Overseer. Substitui squawk sheets manuscritas, livros de bordo em papel e planilhas espalhadas por um fluxo único e conectado que viaja com a aeronave — do orçamento à assinatura e ao relatório pronto para o cliente.",
+      capabilitiesTitle: "principais capacidades",
+      capabilities: [
+        { name: "Fonte única da verdade", body: "Dados do cliente, contexto da aeronave, agenda, valor de mão de obra, ferramentas, discrepâncias, custos e aprovações ficam dentro de uma única ordem." },
+        { name: "Discrepâncias hierárquicas", body: "Itens e subitens aninhados registram achados, horas estimadas e reais, peças utilizadas, ação tomada e status de aprovação por linha." },
+        { name: "Relatório de mão de obra e custos", body: "As horas registradas por técnico no nível do subitem alimentam tanto a visão de progresso em tempo real quanto relatórios prontos para o cliente, gerados automaticamente." },
+        { name: "Ferramentas e fluxo de status", body: "As ferramentas são atribuídas diretamente à ordem, e as ordens progridem por estados definidos com permissões baseadas em papel a cada transição." },
+      ],
+    },
     impactTitle: "impacto",
     impactBody: "Overseer é um produto real em produção, usado por organizações MRO de verdade. O módulo de Work Order — e o trabalho mais amplo de plataforma para o qual contribuí — teve papel direto no fechamento de parcerias com dois dos maiores nomes da aviação geral. Não foram contratos pequenos: Robinson Helicopter Company e Garmin integraram o Overseer às suas aeronaves e sistemas, validando a prontidão da plataforma para operações em escala enterprise.",
     impactStats: [
@@ -570,9 +593,8 @@ const pt: Copy = {
       { org: "Garmin", label: "Parceria de integração — logs de voo ao vivo, registros digitais e gestão de manutenção conectados à aviônica Garmin." },
     ],
     outcomes: ["web + mobile multiplataforma", "módulo de work order — construído do zero", "reconstrução do design system", "rastreio hierárquico de discrepâncias", "relatório de mão de obra pronto para o cliente", "parcerias com Robinson & Garmin"],
-    reportCaption: "Exemplo de relatório de mão de obra pronto para o cliente, gerado direto da plataforma — sem exportar para nenhuma ferramenta de terceiros.",
     askseer: {
-      sectionLabel: "um sub-produto dentro do Overseer",
+      sectionLabel: "módulo 02 de 02",
       title: "AskSeer — Assistente de Manutenção com IA",
       summary: "AskSeer é um chatbot de IA embutido diretamente na plataforma Overseer. Ele dá às equipes de manutenção, donos de aeronave, operadores e administradores acesso conversacional instantâneo a informações da aeronave, registros de manutenção, status de compliance e documentação — sem obrigá-los a navegar por várias telas para encontrar a resposta.",
       imageCaption: "AskSeer respondendo a uma pergunta sobre lista de equipamentos no contexto da aeronave atualmente selecionada, embutido diretamente na tela Work Order MX.",

@@ -1,125 +1,90 @@
-## AskSeer — Overseer case study additions
+# Overseer page restructure
 
-Three coordinated edits in `src/lib/i18n.tsx` (EN + PT) and `src/routes/index.tsx`. No new routes, no Work-grid card, no design-token changes.
+Goal: present Work Order MX and AskSeer as two parallel, equally-weighted modules on the Overseer case page, with matching structure and a side-by-side decisions comparison.
 
-### 1. Asset
+## 1. "My contribution" stat (i18n EN + PT)
 
-Upload the attached chatbot screenshot via `lovable-assets` and write `src/assets/overseer/askseer.png.asset.json`. Import it in `src/routes/index.tsx` next to the other Overseer images.
+In `overseer.stats`, update the `my contribution` card:
+- EN value: `"Work Order MX & AskSeer"` — sub: `"plus supporting features and design system"`
+- PT value: `"Work Order MX & AskSeer"` — sub: `"mais recursos de apoio e design system"`
 
-### 2. Copy updates in `src/lib/i18n.tsx` (mirrored in EN ~L270 and PT ~L473)
+## 2. Remove "Platform features" section
 
-**a. Platform features — acknowledge AskSeer**
-Add a new entry to the existing `features[]` array so the chatbot is recognized as a first-class module alongside Document Center, Work Order MX, etc.:
+- In `src/routes/index.tsx`, delete the `<section>` rendering `o.featuresTitle / featuresIntro / features` (lines 522–533).
+- In `src/lib/i18n.tsx`, remove `featuresTitle`, `featuresIntro`, and the `features[]` array from the `overseer` type and from both EN and PT copy blocks.
 
-```
-{ name: "AskSeer — AI Assistant",
-  body: "An AI assistant embedded directly into Overseer that answers aircraft-specific questions, processes uploaded logs, and verifies compliance documentation (ADs, SBs, manuals) without leaving the current screen." }
-```
+## 3. Remove labor report image
 
-**b. Rebalance the "focus" framing**
-The current focus block reads as "focus: Work Order MX". Rewrite `focusTitle` and `focusIntro` so the section frames *two* highlighted features instead of one:
+- In `src/routes/index.tsx`, delete the `<figure>` at lines 585–588 (`overseerReport` image + `reportCaption`).
+- Remove the `overseerReport` import (line 10).
+- Remove `reportCaption` from the `overseer` type and from EN/PT copy.
+- Leave the asset file on disk (no other refs); no need to delete it.
 
-- `focusTitle`: "focus: Work Order MX & AskSeer"
-- `focusIntro`: rewritten to ~2 sentences explaining that these are the two modules with the most direct user impact — Work Order MX as the operational backbone, AskSeer as the conversational layer on top of it. The existing 5 numbered decisions remain unchanged (they're Work-Order-specific).
+## 4. Side-by-side decisions grid
 
-**c. New `askseer` sub-object** appended to `overseer`:
+Replace the existing single `numbered-list` inside the "focus: Work Order MX & AskSeer" section with a two-column grid:
 
-```
-askseer: {
-  sectionLabel,                              // "a sub-product within Overseer"
-  title,                                     // "AskSeer — AI-Powered Maintenance Assistant"
-  summary,
-  imageCaption,
-  challengeTitle, challengeIntro, challengeItems[],   // info overload, compliance complexity, navigation
-  solutionTitle, solutionBody,
-  featuresTitle,
-  askseerFeatures: [{name, body}]            // 4 items: Aircraft Info Retrieval, Log Upload, Compliance Verification, Workflow Assistance
-  approachTitle,
-  approachItems: [{title, body}]             // 4 items: Workflows, Conversational UX, Context-Aware, Embedded Experience
-  impactTitle, impactItems[],                // faster info access, less navigation, compliance visibility, efficiency
-  outcomes[]                                 // pill tags
-}
+```text
+focus: Work Order MX & AskSeer
+[ intro paragraph — slightly rewritten so it no longer says "the decisions below trace the Work Order architecture; the AskSeer case follows later" ]
+
+┌────────────── Work Order MX ──────────────┬────────────── AskSeer ──────────────┐
+│ 01 Work order as single source of truth   │ 01 Conversational layer, not module  │
+│ 02 Hierarchical discrepancy list          │ 02 Context-aware to current aircraft │
+│ 03 Labor visibility for supervisors       │ 03 In-chat log upload & processing   │
+│ 04 Tooling allocation                     │ 04 Compliance verification in seconds│
+│ 05 Status workflow                        │ 05 Embedded floating panel           │
+└────────────────────────────────────────────┴───────────────────────────────────────┘
 ```
 
-PT translations written in the same tone as the rest of the `pt` block.
+i18n changes:
+- Keep `overseer.decisions` (Work Order) as-is.
+- Add `overseer.askseerDecisions: CardCopy[]` (5 entries, EN + PT) sourced from the existing AskSeer approach/solution content so both columns have 5 numbered items of comparable weight.
+- Add two short column headers: `decisionsWorkOrderLabel` / `decisionsAskseerLabel` (EN: "Work Order MX" / "AskSeer", PT equivalents).
+- Rewrite `focusIntro` so it frames the comparison instead of deferring AskSeer to "later on the page".
 
-### 3. Layout — `OverseerCase` in `src/routes/index.tsx`
+Markup change in `OverseerCase`:
+- Replace the single `<ol className="numbered-list">` with a `<div className="decisions-compare">` containing two columns; each column has an `<h3>` header and its own `<ol className="numbered-list">`.
 
-Inserted between the existing report figure (L587) and `<CaseNav />` (L589). All class names already exist on the page, so spacing, typography, and reveal animations stay identical.
-
-```tsx
-<div className="askseer-divider reveal" />
-
-<section className="sous-section reveal">
-  <p className="sous-meta">{o.askseer.sectionLabel}</p>
-  <h2 className="sous-title">{o.askseer.title}</h2>
-  <p className="big">{o.askseer.summary}</p>
-</section>
-
-<figure className="sous-mockup reveal">
-  <img src={askseerShot} alt="AskSeer — embedded AI assistant inside Overseer" loading="lazy" />
-  <figcaption className="image-caption">{o.askseer.imageCaption}</figcaption>
-</figure>
-
-<section className="sous-section reveal">                {/* Challenge */}
-  <h2 className="section-title">{o.askseer.challengeTitle}</h2>
-  <p>{o.askseer.challengeIntro}</p>
-  <ul className="feature-list">{o.askseer.challengeItems.map(...)}</ul>
-</section>
-
-<section className="sous-section reveal">                {/* Solution */}
-  <h2 className="section-title">{o.askseer.solutionTitle}</h2>
-  <p className="big">{o.askseer.solutionBody}</p>
-</section>
-
-<section className="sous-section reveal">                {/* Key Features */}
-  <h2 className="section-title">{o.askseer.featuresTitle}</h2>
-  <ul className="feature-list">{o.askseer.askseerFeatures.map(...)}</ul>
-</section>
-
-<section className="sous-section focus-section reveal">  {/* Design Thinking */}
-  <h2 className="section-title">{o.askseer.approachTitle}</h2>
-  <ol className="numbered-list">
-    {o.askseer.approachItems.map((d, i) => ({ n: String(i + 1).padStart(2, "0"), ...d }))...}
-  </ol>
-</section>
-
-<section className="sous-section reveal">                {/* Impact */}
-  <h2 className="section-title">{o.askseer.impactTitle}</h2>
-  <div className="impact-grid">
-    <div className="impact-stats">
-      {o.askseer.impactItems.map((s) => (
-        <div className="impact-stat-card"><p className="impact-org">{s.org}</p><p className="impact-label">{s.label}</p></div>
-      ))}
-    </div>
-  </div>
-  <div className="ia-pills">{o.askseer.outcomes.map((t) => <span className="pill">{t}</span>)}</div>
-</section>
-```
-
-### 4. Minimal CSS
-
-Single rule appended to the overseer-specific CSS block (~L1291) to visually separate the sub-case:
-
+CSS in the overseer-specific block:
 ```css
-.askseer-divider {
-  margin: clamp(4rem, 8vw, 7rem) auto 0;
-  width: 100%;
-  height: 1px;
-  background: linear-gradient(90deg, transparent, var(--color-border), transparent);
-}
+.decisions-compare { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(2rem, 4vw, 4rem); }
+.decisions-compare h3.compare-head { /* small uppercase label, matches sous-meta */ }
+@media (max-width: 760px) { .decisions-compare { grid-template-columns: 1fr; } }
 ```
 
-### Out of scope
+## 5. Parallel Work Order MX / AskSeer sections
 
-- No new route, no card on the Work grid, no nav changes
-- No design-token edits
-- No functional chatbot — narrative case study only
-- Other case studies untouched
+Restructure the page so each module gets its own clearly-labelled block with the same shape: section label, title, mockups, capabilities, impact.
 
-### Verification
+New order inside `OverseerCase` after the design-system section:
 
-- Build passes
-- Scroll Overseer page on desktop + mobile: reveals fire, screenshot scales, sections inherit existing spacing
-- Toggle EN ↔ PT: every new key renders in both languages
-- Platform features list now includes AskSeer; focus section reads as Work Order MX **&** AskSeer
+1. `focus: Work Order MX & AskSeer` intro + side-by-side decisions grid.
+2. `askseer-divider`.
+3. **Work Order MX** sous-section:
+   - `sous-meta`: "module 01 of 02"
+   - `sous-title`: "Work Order MX"
+   - `big` summary paragraph (new short copy — reuses themes from current impactBody + focusIntro).
+   - Figures: `overseerDetail`, `overseerList`.
+   - `feature-list` "key capabilities" — 4 items derived from the existing decisions (single source of truth, hierarchical discrepancies, labor visibility, tooling + status).
+   - `impact-grid` with `impactBody` + `impactStats` (Robinson / Garmin) + outcomes pills (kept).
+4. `askseer-divider`.
+5. **AskSeer** sous-section (existing block, kept structurally identical to Work Order MX):
+   - section label / title / summary
+   - screenshot figure
+   - challenge `feature-list`
+   - solution paragraph
+   - capabilities `feature-list`
+   - approach numbered list (kept — distinct from the comparison grid; it explains how AskSeer was designed)
+   - impact grid + outcomes pills
+6. `CaseNav`.
+
+i18n adds (EN + PT):
+- `overseer.workOrder`: `{ sectionLabel, title, summary, capabilitiesTitle, capabilities: { name, body }[] }` — 4 capability items.
+- Tweak `askseer.sectionLabel` to "module 02 of 02" so the two modules read as a matched pair.
+
+No backend, no new routes, no design-token changes. All styling reuses existing classes; only the new `.decisions-compare` grid rule is added.
+
+## Files touched
+- `src/lib/i18n.tsx` — types + EN + PT copy.
+- `src/routes/index.tsx` — `OverseerCase` JSX + import cleanup + CSS rule for `.decisions-compare`.
