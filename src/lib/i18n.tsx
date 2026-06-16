@@ -326,7 +326,7 @@ const en: Copy = {
       { n: "05", title: "Embedded floating panel", body: "The assistant lives inside the existing workspace as a floating panel — not a separate tool or new page — so it amplifies the current workflow rather than fragmenting it." },
     ],
     workOrder: {
-      sectionLabel: "module 01 of 02",
+      sectionLabel: "module 02 of 02",
       title: "Work Order MX",
       summary: "Work Order MX is the operational backbone of Overseer. It replaces handwritten squawk sheets, paper logbooks, and scattered spreadsheets with a single connected workflow that travels with the aircraft — from estimate through sign-off and client-ready reporting.",
       capabilitiesTitle: "key capabilities",
@@ -345,7 +345,7 @@ const en: Copy = {
     ],
     outcomes: ["cross-platform web + mobile", "work order module — built from scratch", "design system reconstruction", "hierarchical discrepancy tracking", "client-ready labor reporting", "Robinson & Garmin partnerships"],
     askseer: {
-      sectionLabel: "module 02 of 02",
+      sectionLabel: "module 01 of 02",
       title: "AskSeer — AI-Powered Maintenance Assistant",
       summary: "AskSeer is an AI chatbot embedded directly into the Overseer platform. It gives maintenance teams, aircraft owners, operators, and administrators instant conversational access to aircraft information, maintenance records, compliance status, and documentation — without forcing them through multiple screens to find it.",
       imageCaption: "AskSeer answering an equipment-list question in context of the currently selected aircraft, embedded directly inside the Work Order MX screen.",
@@ -575,7 +575,7 @@ const pt: Copy = {
       { n: "05", title: "Painel flutuante embutido", body: "O assistente vive dentro do workspace existente como um painel flutuante — não como ferramenta separada nem nova página — amplificando o fluxo atual em vez de fragmentá-lo." },
     ],
     workOrder: {
-      sectionLabel: "módulo 01 de 02",
+      sectionLabel: "módulo 02 de 02",
       title: "Work Order MX",
       summary: "O Work Order MX é a espinha dorsal operacional do Overseer. Substitui squawk sheets manuscritas, livros de bordo em papel e planilhas espalhadas por um fluxo único e conectado que viaja com a aeronave — do orçamento à assinatura e ao relatório pronto para o cliente.",
       capabilitiesTitle: "principais capacidades",
@@ -594,7 +594,7 @@ const pt: Copy = {
     ],
     outcomes: ["web + mobile multiplataforma", "módulo de work order — construído do zero", "reconstrução do design system", "rastreio hierárquico de discrepâncias", "relatório de mão de obra pronto para o cliente", "parcerias com Robinson & Garmin"],
     askseer: {
-      sectionLabel: "módulo 02 de 02",
+      sectionLabel: "módulo 01 de 02",
       title: "AskSeer — Assistente de Manutenção com IA",
       summary: "AskSeer é um chatbot de IA embutido diretamente na plataforma Overseer. Ele dá às equipes de manutenção, donos de aeronave, operadores e administradores acesso conversacional instantâneo a informações da aeronave, registros de manutenção, status de compliance e documentação — sem obrigá-los a navegar por várias telas para encontrar a resposta.",
       imageCaption: "AskSeer respondendo a uma pergunta sobre lista de equipamentos no contexto da aeronave atualmente selecionada, embutido diretamente na tela Work Order MX.",

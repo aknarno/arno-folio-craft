@@ -532,22 +532,22 @@ function OverseerCase({ prev, next }: { prev: ProjectCopy | null; next: ProjectC
         <p>{o.focusIntro}</p>
         {/* Desktop: aligned row grid */}
         <div className="decisions-compare decisions-desktop">
-          <h3 className="compare-head">{o.decisionsWorkOrderLabel}</h3>
           <h3 className="compare-head">{o.decisionsAskseerLabel}</h3>
+          <h3 className="compare-head">{o.decisionsWorkOrderLabel}</h3>
           {o.decisions.map((d, i) => (
             <>
-              <div className="decision-item">
-                <span className="num">{d.n}</span>
-                <div>
-                  <h3>{d.title}</h3>
-                  <p>{d.body}</p>
-                </div>
-              </div>
               <div className="decision-item">
                 <span className="num">{o.askseerDecisions[i].n}</span>
                 <div>
                   <h3>{o.askseerDecisions[i].title}</h3>
                   <p>{o.askseerDecisions[i].body}</p>
+                </div>
+              </div>
+              <div className="decision-item">
+                <span className="num">{d.n}</span>
+                <div>
+                  <h3>{d.title}</h3>
+                  <p>{d.body}</p>
                 </div>
               </div>
             </>
@@ -556,9 +556,9 @@ function OverseerCase({ prev, next }: { prev: ProjectCopy | null; next: ProjectC
         {/* Mobile: stacked columns */}
         <div className="decisions-compare decisions-mobile">
           <div className="decisions-col">
-            <h3 className="compare-head">{o.decisionsWorkOrderLabel}</h3>
+            <h3 className="compare-head">{o.decisionsAskseerLabel}</h3>
             <ol className="numbered-list">
-              {o.decisions.map((d) => (
+              {o.askseerDecisions.map((d) => (
                 <li key={d.n}>
                   <span className="num">{d.n}</span>
                   <div>
@@ -570,9 +570,9 @@ function OverseerCase({ prev, next }: { prev: ProjectCopy | null; next: ProjectC
             </ol>
           </div>
           <div className="decisions-col">
-            <h3 className="compare-head">{o.decisionsAskseerLabel}</h3>
+            <h3 className="compare-head">{o.decisionsWorkOrderLabel}</h3>
             <ol className="numbered-list">
-              {o.askseerDecisions.map((d) => (
+              {o.decisions.map((d) => (
                 <li key={d.n}>
                   <span className="num">{d.n}</span>
                   <div>
