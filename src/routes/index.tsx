@@ -7,7 +7,7 @@ import sousStepByStep from "@/assets/sous/step-by-step.png";
 import overseerCover from "@/assets/overseer/cover.png";
 import overseerList from "@/assets/overseer/work-order-list.png";
 import overseerDetail from "@/assets/overseer/work-order-detail.png";
-import overseerReport from "@/assets/overseer/labor-report.png";
+
 import askseerAsset from "@/assets/overseer/askseer.png.asset.json";
 import argoCover from "@/assets/argo/cover.png";
 import argoEstimate from "@/assets/argo/estimate.png";
@@ -520,19 +520,6 @@ function OverseerCase({ prev, next }: { prev: ProjectCopy | null; next: ProjectC
       </section>
 
       <section className="sous-section reveal">
-        <h2 className="section-title">{o.featuresTitle}</h2>
-        <p>{o.featuresIntro}</p>
-        <ul className="feature-list">
-          {o.features.map((f) => (
-            <li key={f.name}>
-              <span className="feature-name">{f.name}</span>
-              <span className="feature-body">{f.body}</span>
-            </li>
-          ))}
-        </ul>
-      </section>
-
-      <section className="sous-section reveal">
         <h2 className="section-title">{o.dsTitle}</h2>
         <p>{o.dsBody}</p>
         <div className="insight-callout">
@@ -543,17 +530,44 @@ function OverseerCase({ prev, next }: { prev: ProjectCopy | null; next: ProjectC
       <section className="sous-section focus-section reveal">
         <h2 className="section-title">{o.focusTitle}</h2>
         <p>{o.focusIntro}</p>
-        <ol className="numbered-list">
-          {o.decisions.map((d) => (
-            <li key={d.n}>
-              <span className="num">{d.n}</span>
-              <div>
-                <h3>{d.title}</h3>
-                <p>{d.body}</p>
-              </div>
-            </li>
-          ))}
-        </ol>
+        <div className="decisions-compare">
+          <div className="decisions-col">
+            <h3 className="compare-head">{o.decisionsWorkOrderLabel}</h3>
+            <ol className="numbered-list">
+              {o.decisions.map((d) => (
+                <li key={d.n}>
+                  <span className="num">{d.n}</span>
+                  <div>
+                    <h3>{d.title}</h3>
+                    <p>{d.body}</p>
+                  </div>
+                </li>
+              ))}
+            </ol>
+          </div>
+          <div className="decisions-col">
+            <h3 className="compare-head">{o.decisionsAskseerLabel}</h3>
+            <ol className="numbered-list">
+              {o.askseerDecisions.map((d) => (
+                <li key={d.n}>
+                  <span className="num">{d.n}</span>
+                  <div>
+                    <h3>{d.title}</h3>
+                    <p>{d.body}</p>
+                  </div>
+                </li>
+              ))}
+            </ol>
+          </div>
+        </div>
+      </section>
+
+      <div className="askseer-divider reveal" />
+
+      <section className="sous-section reveal">
+        <p className="sous-meta">{o.workOrder.sectionLabel}</p>
+        <h2 className="sous-title">{o.workOrder.title}</h2>
+        <p className="big">{o.workOrder.summary}</p>
       </section>
 
       <figure className="sous-mockup reveal">
@@ -563,6 +577,18 @@ function OverseerCase({ prev, next }: { prev: ProjectCopy | null; next: ProjectC
       <figure className="sous-mockup reveal">
         <img src={overseerList} alt="Overseer work order list" loading="lazy" />
       </figure>
+
+      <section className="sous-section reveal">
+        <h2 className="section-title">{o.workOrder.capabilitiesTitle}</h2>
+        <ul className="feature-list">
+          {o.workOrder.capabilities.map((f) => (
+            <li key={f.name}>
+              <span className="feature-name">{f.name}</span>
+              <span className="feature-body">{f.body}</span>
+            </li>
+          ))}
+        </ul>
+      </section>
 
       <section className="sous-section reveal">
         <h2 className="section-title">{o.impactTitle}</h2>
@@ -582,12 +608,8 @@ function OverseerCase({ prev, next }: { prev: ProjectCopy | null; next: ProjectC
         </div>
       </section>
 
-      <figure className="sous-mockup reveal">
-        <img src={overseerReport} alt="Overseer labor report" loading="lazy" />
-        <figcaption className="image-caption">{o.reportCaption}</figcaption>
-      </figure>
-
       <div className="askseer-divider reveal" />
+
 
       <section className="sous-section reveal">
         <p className="sous-meta">{o.askseer.sectionLabel}</p>
@@ -1436,5 +1458,25 @@ input:focus, textarea:focus { outline: none; border: 2px solid var(--color-prima
   width: 100%;
   height: 1px;
   background: linear-gradient(90deg, transparent, var(--color-border), transparent);
+}
+.decisions-compare {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: clamp(2rem, 4vw, 4rem);
+  margin-top: 2rem;
+}
+.decisions-compare .decisions-col > .compare-head {
+  font-family: var(--font-display);
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  font-size: 0.78rem;
+  color: var(--color-text-muted);
+  margin: 0 0 1.25rem;
+  padding-bottom: 0.75rem;
+  border-bottom: 1px solid var(--color-border);
+}
+.decisions-compare .numbered-list { margin: 0; }
+@media (max-width: 860px) {
+  .decisions-compare { grid-template-columns: 1fr; gap: 2.5rem; }
 }
 `;

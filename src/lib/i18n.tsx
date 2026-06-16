@@ -345,7 +345,7 @@ const en: Copy = {
     ],
     outcomes: ["cross-platform web + mobile", "work order module — built from scratch", "design system reconstruction", "hierarchical discrepancy tracking", "client-ready labor reporting", "Robinson & Garmin partnerships"],
     askseer: {
-      sectionLabel: "a sub-product within Overseer",
+      sectionLabel: "module 02 of 02",
       title: "AskSeer — AI-Powered Maintenance Assistant",
       summary: "AskSeer is an AI chatbot embedded directly into the Overseer platform. It gives maintenance teams, aircraft owners, operators, and administrators instant conversational access to aircraft information, maintenance records, compliance status, and documentation — without forcing them through multiple screens to find it.",
       imageCaption: "AskSeer answering an equipment-list question in context of the currently selected aircraft, embedded directly inside the Work Order MX screen.",
@@ -594,7 +594,7 @@ const pt: Copy = {
     ],
     outcomes: ["web + mobile multiplataforma", "módulo de work order — construído do zero", "reconstrução do design system", "rastreio hierárquico de discrepâncias", "relatório de mão de obra pronto para o cliente", "parcerias com Robinson & Garmin"],
     askseer: {
-      sectionLabel: "um sub-produto dentro do Overseer",
+      sectionLabel: "módulo 02 de 02",
       title: "AskSeer — Assistente de Manutenção com IA",
       summary: "AskSeer é um chatbot de IA embutido diretamente na plataforma Overseer. Ele dá às equipes de manutenção, donos de aeronave, operadores e administradores acesso conversacional instantâneo a informações da aeronave, registros de manutenção, status de compliance e documentação — sem obrigá-los a navegar por várias telas para encontrar a resposta.",
       imageCaption: "AskSeer respondendo a uma pergunta sobre lista de equipamentos no contexto da aeronave atualmente selecionada, embutido diretamente na tela Work Order MX.",
