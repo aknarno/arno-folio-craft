@@ -532,17 +532,10 @@ function OverseerCase({ prev, next }: { prev: ProjectCopy | null; next: ProjectC
         <p>{o.focusIntro}</p>
         {/* Desktop: aligned row grid */}
         <div className="decisions-compare decisions-desktop">
-          <h3 className="compare-head">{o.decisionsWorkOrderLabel}</h3>
           <h3 className="compare-head">{o.decisionsAskseerLabel}</h3>
+          <h3 className="compare-head">{o.decisionsWorkOrderLabel}</h3>
           {o.decisions.map((d, i) => (
             <>
-              <div className="decision-item">
-                <span className="num">{d.n}</span>
-                <div>
-                  <h3>{d.title}</h3>
-                  <p>{d.body}</p>
-                </div>
-              </div>
               <div className="decision-item">
                 <span className="num">{o.askseerDecisions[i].n}</span>
                 <div>
@@ -550,25 +543,18 @@ function OverseerCase({ prev, next }: { prev: ProjectCopy | null; next: ProjectC
                   <p>{o.askseerDecisions[i].body}</p>
                 </div>
               </div>
+              <div className="decision-item">
+                <span className="num">{d.n}</span>
+                <div>
+                  <h3>{d.title}</h3>
+                  <p>{d.body}</p>
+                </div>
+              </div>
             </>
           ))}
         </div>
         {/* Mobile: stacked columns */}
         <div className="decisions-compare decisions-mobile">
-          <div className="decisions-col">
-            <h3 className="compare-head">{o.decisionsWorkOrderLabel}</h3>
-            <ol className="numbered-list">
-              {o.decisions.map((d) => (
-                <li key={d.n}>
-                  <span className="num">{d.n}</span>
-                  <div>
-                    <h3>{d.title}</h3>
-                    <p>{d.body}</p>
-                  </div>
-                </li>
-              ))}
-            </ol>
-          </div>
           <div className="decisions-col">
             <h3 className="compare-head">{o.decisionsAskseerLabel}</h3>
             <ol className="numbered-list">
@@ -583,57 +569,24 @@ function OverseerCase({ prev, next }: { prev: ProjectCopy | null; next: ProjectC
               ))}
             </ol>
           </div>
-        </div>
-      </section>
-
-      <div className="askseer-divider reveal" />
-
-      <section className="sous-section reveal">
-        <p className="sous-meta">{o.workOrder.sectionLabel}</p>
-        <h2 className="sous-title">{o.workOrder.title}</h2>
-        <p className="big">{o.workOrder.summary}</p>
-      </section>
-
-      <figure className="sous-mockup reveal">
-        <img src={overseerDetail} alt="Overseer work order detail screen" loading="lazy" />
-      </figure>
-
-      <figure className="sous-mockup reveal">
-        <img src={overseerList} alt="Overseer work order list" loading="lazy" />
-      </figure>
-
-      <section className="sous-section reveal">
-        <h2 className="section-title">{o.workOrder.capabilitiesTitle}</h2>
-        <ul className="feature-list">
-          {o.workOrder.capabilities.map((f) => (
-            <li key={f.name}>
-              <span className="feature-name">{f.name}</span>
-              <span className="feature-body">{f.body}</span>
-            </li>
-          ))}
-        </ul>
-      </section>
-
-      <section className="sous-section reveal">
-        <h2 className="section-title">{o.impactTitle}</h2>
-        <div className="impact-grid">
-          <p>{o.impactBody}</p>
-          <div className="impact-stats">
-            {o.impactStats.map((s) => (
-              <div key={s.org} className="impact-stat-card">
-                <p className="impact-org">{s.org}</p>
-                <p className="impact-label">{s.label}</p>
-              </div>
-            ))}
+          <div className="decisions-col">
+            <h3 className="compare-head">{o.decisionsWorkOrderLabel}</h3>
+            <ol className="numbered-list">
+              {o.decisions.map((d) => (
+                <li key={d.n}>
+                  <span className="num">{d.n}</span>
+                  <div>
+                    <h3>{d.title}</h3>
+                    <p>{d.body}</p>
+                  </div>
+                </li>
+              ))}
+            </ol>
           </div>
         </div>
-        <div className="ia-pills">
-          {o.outcomes.map((t) => <span key={t} className="pill">{t}</span>)}
-        </div>
       </section>
 
       <div className="askseer-divider reveal" />
-
 
       <section className="sous-section reveal">
         <p className="sous-meta">{o.askseer.sectionLabel}</p>
@@ -705,6 +658,53 @@ function OverseerCase({ prev, next }: { prev: ProjectCopy | null; next: ProjectC
         </div>
         <div className="ia-pills">
           {o.askseer.outcomes.map((t) => <span key={t} className="pill">{t}</span>)}
+        </div>
+      </section>
+
+      <div className="askseer-divider reveal" />
+
+
+      <section className="sous-section reveal">
+        <p className="sous-meta">{o.workOrder.sectionLabel}</p>
+        <h2 className="sous-title">{o.workOrder.title}</h2>
+        <p className="big">{o.workOrder.summary}</p>
+      </section>
+
+      <figure className="sous-mockup reveal">
+        <img src={overseerDetail} alt="Overseer work order detail screen" loading="lazy" />
+      </figure>
+
+      <figure className="sous-mockup reveal">
+        <img src={overseerList} alt="Overseer work order list" loading="lazy" />
+      </figure>
+
+      <section className="sous-section reveal">
+        <h2 className="section-title">{o.workOrder.capabilitiesTitle}</h2>
+        <ul className="feature-list">
+          {o.workOrder.capabilities.map((f) => (
+            <li key={f.name}>
+              <span className="feature-name">{f.name}</span>
+              <span className="feature-body">{f.body}</span>
+            </li>
+          ))}
+        </ul>
+      </section>
+
+      <section className="sous-section reveal">
+        <h2 className="section-title">{o.impactTitle}</h2>
+        <div className="impact-grid">
+          <p>{o.impactBody}</p>
+          <div className="impact-stats">
+            {o.impactStats.map((s) => (
+              <div key={s.org} className="impact-stat-card">
+                <p className="impact-org">{s.org}</p>
+                <p className="impact-label">{s.label}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+        <div className="ia-pills">
+          {o.outcomes.map((t) => <span key={t} className="pill">{t}</span>)}
         </div>
       </section>
 
