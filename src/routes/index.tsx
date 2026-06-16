@@ -1458,7 +1458,8 @@ input:focus, textarea:focus { outline: none; border: 2px solid var(--color-prima
   align-items: start;
 }
 .impact-grid > p { font-size: 1.02rem; line-height: 1.7; color: var(--color-text); margin: 0; }
-.impact-stats { display: flex; flex-direction: column; gap: 1rem; }
+.impact-grid > :only-child { grid-column: 1 / -1; }
+.impact-stats { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
 .impact-stat-card {
   padding: 1.5rem;
   background: var(--color-surface-offset);
@@ -1476,6 +1477,7 @@ input:focus, textarea:focus { outline: none; border: 2px solid var(--color-prima
 @media (max-width: 768px) {
   .feature-list li { grid-template-columns: 1fr; gap: 0.4rem; }
   .impact-grid { grid-template-columns: 1fr; gap: 1.5rem; }
+  .impact-stats { grid-template-columns: 1fr; }
 }
 .askseer-divider {
   margin: clamp(4rem, 8vw, 7rem) auto 0;
