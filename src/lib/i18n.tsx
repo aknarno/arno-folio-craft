@@ -128,20 +128,26 @@ export type Copy = {
     industryTitle: string;
     industryHeadline: string;
     industryBody: string;
-    featuresTitle: string;
-    featuresIntro: string;
-    features: { name: string; body: string }[];
     dsTitle: string;
     dsBody: string;
     dsInsight: string;
     focusTitle: string;
     focusIntro: string;
+    decisionsWorkOrderLabel: string;
+    decisionsAskseerLabel: string;
     decisions: CardCopy[];
+    askseerDecisions: CardCopy[];
+    workOrder: {
+      sectionLabel: string;
+      title: string;
+      summary: string;
+      capabilitiesTitle: string;
+      capabilities: { name: string; body: string }[];
+    };
     impactTitle: string;
     impactBody: string;
     impactStats: { org: string; label: string }[];
     outcomes: string[];
-    reportCaption: string;
     askseer: {
       sectionLabel: string;
       title: string;
@@ -292,36 +298,45 @@ const en: Copy = {
     stats: [
       { label: "platform", value: "web + mobile", sub: "cross-platform B2B SaaS" },
       { label: "users", value: "MROs · mechanics · fleet ops", sub: "pilots and maintenance professionals" },
-      { label: "my contribution", value: "Work Order module", sub: "plus supporting features and design system" },
+      { label: "my contribution", value: "Work Order MX & AskSeer", sub: "plus supporting features and design system" },
       { label: "real-world impact", value: "Robinson · Garmin", sub: "enterprise deals closed" },
     ],
     industryTitle: "the industry context",
     industryHeadline: "Almost every aircraft in the world is still maintained with paper and pencil.",
     industryBody: "Even today, the majority of general aviation and MRO maintenance documentation is still analog — handwritten work orders, paper logbooks, pencil-marked inspection sheets. Regulatory compliance, multi-technician coordination, and customer communication all run through physical documents that can be lost, misread, or never filed. Overseer exists to replace that stack of paper with a single connected platform that travels with the aircraft.",
-    featuresTitle: "platform features",
-    featuresIntro: "Overseer covers the full operational surface of an MRO organization. I worked across several of these modules — each solving a distinct pain point for a different user type.",
-    features: [
-      { name: "My Reservations", body: "A personal view of all aircraft reserved by the logged-in user, with schedule context and aircraft status." },
-      { name: "Manage Members", body: "Role and permission management for everyone inside an organization — mechanics, supervisors, and administrators." },
-      { name: "Manage Aircraft", body: "Full aircraft profile management: make, model, serial number, tail number, time-tracking (TTIS, SFRM, TT, SNEW), and maintenance history." },
-      { name: "Manage Inventory", body: "Organization-level parts and tooling inventory, separate from aircraft-specific components." },
-      { name: "Document Center", body: "Centralized document management for ADs, SBs, maintenance manuals, and aircraft logs — all associated to the relevant aircraft or organization." },
-      { name: "Work Order MX", body: "End-to-end work order lifecycle: creation, discrepancy tracking, labor logging, tooling allocation, cost tracking, approval workflow, and client-ready reporting." },
-      { name: "Parts Ordering Flow", body: "A multi-organization purchasing system built directly into the platform — a mini e-commerce experience where MRO organizations can source parts from other organizations within the network." },
-      { name: "AskSeer — AI Assistant", body: "An AI assistant embedded directly into Overseer that answers aircraft-specific questions, processes uploaded logs, and verifies compliance documentation (ADs, SBs, manuals) without leaving the current screen." },
-    ],
     dsTitle: "design system",
     dsBody: "The Overseer design system existed when I joined the project — but it was significantly outdated and inconsistent. Rather than patching it, I rebuilt it from scratch: re-establishing the token structure, auditing and redrawing components, and documenting usage rules the team could follow. I preserved variables and components where they still held up, but the result was effectively a new system built on the bones of the old one. The Work Order module was the first feature designed entirely within the rebuilt system.",
     dsInsight: "Designing within a system you built yourself creates a different kind of accountability. Every component decision in the Work Order had to work not just for this screen, but for every screen that came after it.",
     focusTitle: "focus: Work Order MX & AskSeer",
-    focusIntro: "Two modules carried the most direct user impact across this platform. Work Order MX became the operational backbone — replacing paper squawk sheets with a single connected workflow — and AskSeer added a conversational layer on top of it, turning dense aircraft data into something users could simply ask for. The decisions below trace the Work Order architecture; the AskSeer case study follows it in detail later on this page.",
+    focusIntro: "Two modules carried the most direct user impact across this platform. Work Order MX became the operational backbone — replacing paper squawk sheets with a single connected workflow — and AskSeer added a conversational layer on top of it, turning dense aircraft data into something users could simply ask for. The decisions below trace the core architectural calls for each, side by side.",
+    decisionsWorkOrderLabel: "Work Order MX",
+    decisionsAskseerLabel: "AskSeer",
     decisions: [
       { n: "01", title: "Work order as the single source of truth", body: "Customer info, aircraft context, schedule, labor rate, tooling, discrepancies, costs, and sign-offs all live inside one work order. Nothing is scattered across separate tools or paper sheets." },
       { n: "02", title: "Hierarchical discrepancy list", body: "Each work order contains a nested discrepancy list — items and sub-items — where mechanics log findings, estimated and actual hours, parts used, action taken, and approval status per line. This replaces the handwritten squawk sheet." },
-      { n: "03", title: "Labor visibility for supervisors", body: "Hours are logged at the sub-item level by technician, giving supervisors a real-time view of job progress without walking the shop floor. The labor report generates a client-ready document from this data automatically." },
+      { n: "03", title: "Labor visibility for supervisors", body: "Hours are logged at the sub-item level by technician, giving supervisors a real-time view of job progress without walking the shop floor — and a client-ready labor report generates automatically from the same data." },
       { n: "04", title: "Tooling allocation", body: "Tools are assigned directly to the work order — not just noted on paper — creating accountability and reducing the 'where is the torque wrench' problem endemic to shared shop environments." },
       { n: "05", title: "Status workflow", body: "Work orders move through defined states (Estimate, In Progress, Submitted, Archived) with role-based permissions on transitions. Customers gain visibility into their aircraft's status without a phone call." },
     ],
+    askseerDecisions: [
+      { n: "01", title: "Conversational layer, not another module", body: "AskSeer was designed to sit on top of Overseer rather than become a separate destination. Users open it inside whatever screen they're already on and ask in natural language." },
+      { n: "02", title: "Context-aware to the current aircraft", body: "The assistant always knows which tail number and which screen the user is on, so answers stay scoped to the right aircraft without re-stating context every turn." },
+      { n: "03", title: "In-chat log upload and processing", body: "Aircraft logs can be dragged directly into the chat for parsing — the assistant extracts and surfaces what's relevant instead of asking the user to dig through a viewer." },
+      { n: "04", title: "Compliance verification in seconds", body: "AD, Service Bulletin, manual, and documentation status can be validated through a single question per aircraft, replacing multi-step cross-referencing across modules." },
+      { n: "05", title: "Embedded floating panel", body: "The assistant lives inside the existing workspace as a floating panel — not a separate tool or new page — so it amplifies the current workflow rather than fragmenting it." },
+    ],
+    workOrder: {
+      sectionLabel: "module 01 of 02",
+      title: "Work Order MX",
+      summary: "Work Order MX is the operational backbone of Overseer. It replaces handwritten squawk sheets, paper logbooks, and scattered spreadsheets with a single connected workflow that travels with the aircraft — from estimate through sign-off and client-ready reporting.",
+      capabilitiesTitle: "key capabilities",
+      capabilities: [
+        { name: "Single source of truth", body: "Customer info, aircraft context, schedule, labor rate, tooling, discrepancies, costs, and sign-offs all live inside one work order." },
+        { name: "Hierarchical discrepancies", body: "Nested items and sub-items capture findings, estimated and actual hours, parts used, action taken, and approval status per line." },
+        { name: "Labor & cost reporting", body: "Hours logged at the sub-item level by technician feed real-time progress views and auto-generated client-ready labor reports." },
+        { name: "Tooling & status workflow", body: "Tools are assigned directly to the work order, and orders progress through defined states with role-based permissions on each transition." },
+      ],
+    },
     impactTitle: "impact",
     impactBody: "Overseer is a live product used by real MRO organizations. The Work Order module — and the broader platform work I contributed to — played a direct role in closing partnerships with two of the largest names in general aviation. These weren't small deals: Robinson Helicopter Company and Garmin both integrated Overseer into their aircraft and systems, validating the platform's readiness for enterprise-scale operations.",
     impactStats: [
@@ -329,7 +344,6 @@ const en: Copy = {
       { org: "Garmin", label: "Integration partnership — live flight logs, digital records, and maintenance management connected to Garmin avionics." },
     ],
     outcomes: ["cross-platform web + mobile", "work order module — built from scratch", "design system reconstruction", "hierarchical discrepancy tracking", "client-ready labor reporting", "Robinson & Garmin partnerships"],
-    reportCaption: "Example of a client-ready labor report generated directly from the platform — no export to a third-party tool required.",
     askseer: {
       sectionLabel: "a sub-product within Overseer",
       title: "AskSeer — AI-Powered Maintenance Assistant",
