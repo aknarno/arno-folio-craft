@@ -530,7 +530,31 @@ function OverseerCase({ prev, next }: { prev: ProjectCopy | null; next: ProjectC
       <section className="sous-section focus-section reveal">
         <h2 className="section-title">{o.focusTitle}</h2>
         <p>{o.focusIntro}</p>
-        <div className="decisions-compare">
+        {/* Desktop: aligned row grid */}
+        <div className="decisions-compare decisions-desktop">
+          <h3 className="compare-head">{o.decisionsWorkOrderLabel}</h3>
+          <h3 className="compare-head">{o.decisionsAskseerLabel}</h3>
+          {o.decisions.map((d, i) => (
+            <>
+              <div className="decision-item">
+                <span className="num">{d.n}</span>
+                <div>
+                  <h3>{d.title}</h3>
+                  <p>{d.body}</p>
+                </div>
+              </div>
+              <div className="decision-item">
+                <span className="num">{o.askseerDecisions[i].n}</span>
+                <div>
+                  <h3>{o.askseerDecisions[i].title}</h3>
+                  <p>{o.askseerDecisions[i].body}</p>
+                </div>
+              </div>
+            </>
+          ))}
+        </div>
+        {/* Mobile: stacked columns */}
+        <div className="decisions-compare decisions-mobile">
           <div className="decisions-col">
             <h3 className="compare-head">{o.decisionsWorkOrderLabel}</h3>
             <ol className="numbered-list">
@@ -1434,7 +1458,8 @@ input:focus, textarea:focus { outline: none; border: 2px solid var(--color-prima
   align-items: start;
 }
 .impact-grid > p { font-size: 1.02rem; line-height: 1.7; color: var(--color-text); margin: 0; }
-.impact-stats { display: flex; flex-direction: column; gap: 1rem; }
+.impact-grid > :only-child { grid-column: 1 / -1; }
+.impact-stats { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
 .impact-stat-card {
   padding: 1.5rem;
   background: var(--color-surface-offset);
@@ -1452,6 +1477,7 @@ input:focus, textarea:focus { outline: none; border: 2px solid var(--color-prima
 @media (max-width: 768px) {
   .feature-list li { grid-template-columns: 1fr; gap: 0.4rem; }
   .impact-grid { grid-template-columns: 1fr; gap: 1.5rem; }
+  .impact-stats { grid-template-columns: 1fr; }
 }
 .askseer-divider {
   margin: clamp(4rem, 8vw, 7rem) auto 0;
@@ -1459,13 +1485,13 @@ input:focus, textarea:focus { outline: none; border: 2px solid var(--color-prima
   height: 1px;
   background: linear-gradient(90deg, transparent, var(--color-border), transparent);
 }
-.decisions-compare {
+.decisions-compare.decisions-desktop {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: clamp(2rem, 4vw, 4rem);
+  gap: 0 clamp(2rem, 4vw, 4rem);
   margin-top: 2rem;
 }
-.decisions-compare .decisions-col > .compare-head {
+.decisions-compare.decisions-desktop .compare-head {
   font-family: var(--font-display);
   text-transform: uppercase;
   letter-spacing: 0.12em;
@@ -1475,8 +1501,42 @@ input:focus, textarea:focus { outline: none; border: 2px solid var(--color-prima
   padding-bottom: 0.75rem;
   border-bottom: 1px solid var(--color-border);
 }
-.decisions-compare .numbered-list { margin: 0; }
+.decisions-compare.decisions-desktop .decision-item {
+  display: flex;
+  gap: 1.25rem;
+  align-items: flex-start;
+  padding: 1.25rem 0;
+  border-bottom: 1px solid var(--color-divider);
+}
+.decisions-compare.decisions-desktop .decision-item:nth-last-child(1),
+.decisions-compare.decisions-desktop .decision-item:nth-last-child(2) {
+  border-bottom: none;
+}
+.decisions-compare.decisions-desktop .decision-item .num {
+  min-width: 2rem;
+  font-family: var(--font-display); font-weight: 700;
+  font-size: 1rem; letter-spacing: 0.08em;
+  color: var(--color-accent-warm);
+}
+.decisions-compare.decisions-desktop .decision-item h3 {
+  font-family: var(--font-display); font-weight: 700;
+  font-size: 1.1rem; margin: 0 0 0.35rem; color: var(--color-text);
+}
+.decisions-compare.decisions-desktop .decision-item p { margin: 0; color: var(--color-text-muted); font-size: 0.95rem; }
+.decisions-compare.decisions-mobile { display: none; }
+.decisions-compare.decisions-mobile .decisions-col > .compare-head {
+  font-family: var(--font-display);
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  font-size: 0.78rem;
+  color: var(--color-text-muted);
+  margin: 0 0 1.25rem;
+  padding-bottom: 0.75rem;
+  border-bottom: 1px solid var(--color-border);
+}
+.decisions-compare.decisions-mobile .numbered-list { margin: 0; }
 @media (max-width: 860px) {
-  .decisions-compare { grid-template-columns: 1fr; gap: 2.5rem; }
+  .decisions-compare.decisions-desktop { display: none; }
+  .decisions-compare.decisions-mobile { display: grid; grid-template-columns: 1fr; gap: 2.5rem; }
 }
 `;
