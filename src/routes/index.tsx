@@ -8,6 +8,7 @@ import overseerCover from "@/assets/overseer/cover.png";
 import overseerList from "@/assets/overseer/work-order-list.png";
 import overseerDetail from "@/assets/overseer/work-order-detail.png";
 import overseerReport from "@/assets/overseer/labor-report.png";
+import askseerAsset from "@/assets/overseer/askseer.png.asset.json";
 import argoCover from "@/assets/argo/cover.png";
 import argoEstimate from "@/assets/argo/estimate.png";
 import argoDrawBoundary from "@/assets/argo/draw-boundary.png";
@@ -585,6 +586,81 @@ function OverseerCase({ prev, next }: { prev: ProjectCopy | null; next: ProjectC
         <img src={overseerReport} alt="Overseer labor report" loading="lazy" />
         <figcaption className="image-caption">{o.reportCaption}</figcaption>
       </figure>
+
+      <div className="askseer-divider reveal" />
+
+      <section className="sous-section reveal">
+        <p className="sous-meta">{o.askseer.sectionLabel}</p>
+        <h2 className="sous-title">{o.askseer.title}</h2>
+        <p className="big">{o.askseer.summary}</p>
+      </section>
+
+      <figure className="sous-mockup reveal">
+        <img src={askseerAsset.url} alt="AskSeer — embedded AI assistant inside Overseer" loading="lazy" />
+        <figcaption className="image-caption">{o.askseer.imageCaption}</figcaption>
+      </figure>
+
+      <section className="sous-section reveal">
+        <h2 className="section-title">{o.askseer.challengeTitle}</h2>
+        <p>{o.askseer.challengeIntro}</p>
+        <ul className="feature-list">
+          {o.askseer.challengeItems.map((f) => (
+            <li key={f.name}>
+              <span className="feature-name">{f.name}</span>
+              <span className="feature-body">{f.body}</span>
+            </li>
+          ))}
+        </ul>
+      </section>
+
+      <section className="sous-section reveal">
+        <h2 className="section-title">{o.askseer.solutionTitle}</h2>
+        <p className="big">{o.askseer.solutionBody}</p>
+      </section>
+
+      <section className="sous-section reveal">
+        <h2 className="section-title">{o.askseer.featuresTitle}</h2>
+        <ul className="feature-list">
+          {o.askseer.askseerFeatures.map((f) => (
+            <li key={f.name}>
+              <span className="feature-name">{f.name}</span>
+              <span className="feature-body">{f.body}</span>
+            </li>
+          ))}
+        </ul>
+      </section>
+
+      <section className="sous-section focus-section reveal">
+        <h2 className="section-title">{o.askseer.approachTitle}</h2>
+        <ol className="numbered-list">
+          {o.askseer.approachItems.map((d, i) => (
+            <li key={d.title}>
+              <span className="num">{String(i + 1).padStart(2, "0")}</span>
+              <div>
+                <h3>{d.title}</h3>
+                <p>{d.body}</p>
+              </div>
+            </li>
+          ))}
+        </ol>
+      </section>
+
+      <section className="sous-section reveal">
+        <h2 className="section-title">{o.askseer.impactTitle}</h2>
+        <div className="impact-grid">
+          <div className="impact-stats">
+            {o.askseer.impactItems.map((s) => (
+              <div key={s.org} className="impact-stat-card">
+                <p className="impact-org">{s.org}</p>
+                <p className="impact-label">{s.label}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+        <div className="ia-pills">
+          {o.askseer.outcomes.map((t) => <span key={t} className="pill">{t}</span>)}
+        </div>
+      </section>
 
       <CaseNav prev={prev} next={next} />
     </article>
@@ -1354,5 +1430,11 @@ input:focus, textarea:focus { outline: none; border: 2px solid var(--color-prima
 @media (max-width: 768px) {
   .feature-list li { grid-template-columns: 1fr; gap: 0.4rem; }
   .impact-grid { grid-template-columns: 1fr; gap: 1.5rem; }
+}
+.askseer-divider {
+  margin: clamp(4rem, 8vw, 7rem) auto 0;
+  width: 100%;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--color-border), transparent);
 }
 `;
