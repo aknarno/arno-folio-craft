@@ -1007,9 +1007,9 @@ h1 {
   background: var(--color-surface);
   border: 1px solid var(--color-divider);
 }
-.about-grid > div:nth-child(1) { border: 2px solid var(--color-primary); }
-.about-grid > div:nth-child(2) { border: 2px solid var(--color-accent-warm); }
-.about-grid > div:nth-child(3) { border: 2px solid var(--color-primary); }
+.about-grid > div:nth-child(1) { border: 1px solid var(--color-primary); }
+.about-grid > div:nth-child(2) { border: 1px solid var(--color-accent-warm); }
+.about-grid > div:nth-child(3) { border: 1px solid var(--color-primary); }
 .about-grid p { margin: 0 0 0.4rem; }
 .kicker {
   font-family: var(--font-display); font-weight: 700;
