@@ -535,7 +535,7 @@ function OverseerCase({ prev, next }: { prev: ProjectCopy | null; next: ProjectC
           <h3 className="compare-head">{o.decisionsWorkOrderLabel}</h3>
           <h3 className="compare-head">{o.decisionsAskseerLabel}</h3>
           {o.decisions.map((d, i) => (
-            <React.Fragment key={d.n}>
+            <>
               <div className="decision-item">
                 <span className="num">{d.n}</span>
                 <div>
@@ -550,7 +550,7 @@ function OverseerCase({ prev, next }: { prev: ProjectCopy | null; next: ProjectC
                   <p>{o.askseerDecisions[i].body}</p>
                 </div>
               </div>
-            </React.Fragment>
+            </>
           ))}
         </div>
         {/* Mobile: stacked columns */}
