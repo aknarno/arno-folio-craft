@@ -1485,13 +1485,13 @@ input:focus, textarea:focus { outline: none; border: 2px solid var(--color-prima
   height: 1px;
   background: linear-gradient(90deg, transparent, var(--color-border), transparent);
 }
-.decisions-compare {
+.decisions-compare.decisions-desktop {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: clamp(2rem, 4vw, 4rem);
+  gap: 0 clamp(2rem, 4vw, 4rem);
   margin-top: 2rem;
 }
-.decisions-compare .decisions-col > .compare-head {
+.decisions-compare.decisions-desktop .compare-head {
   font-family: var(--font-display);
   text-transform: uppercase;
   letter-spacing: 0.12em;
@@ -1501,8 +1501,42 @@ input:focus, textarea:focus { outline: none; border: 2px solid var(--color-prima
   padding-bottom: 0.75rem;
   border-bottom: 1px solid var(--color-border);
 }
-.decisions-compare .numbered-list { margin: 0; }
+.decisions-compare.decisions-desktop .decision-item {
+  display: flex;
+  gap: 1.25rem;
+  align-items: flex-start;
+  padding: 1.25rem 0;
+  border-bottom: 1px solid var(--color-divider);
+}
+.decisions-compare.decisions-desktop .decision-item:nth-last-child(1),
+.decisions-compare.decisions-desktop .decision-item:nth-last-child(2) {
+  border-bottom: none;
+}
+.decisions-compare.decisions-desktop .decision-item .num {
+  min-width: 2rem;
+  font-family: var(--font-display); font-weight: 700;
+  font-size: 1rem; letter-spacing: 0.08em;
+  color: var(--color-accent-warm);
+}
+.decisions-compare.decisions-desktop .decision-item h3 {
+  font-family: var(--font-display); font-weight: 700;
+  font-size: 1.1rem; margin: 0 0 0.35rem; color: var(--color-text);
+}
+.decisions-compare.decisions-desktop .decision-item p { margin: 0; color: var(--color-text-muted); font-size: 0.95rem; }
+.decisions-compare.decisions-mobile { display: none; }
+.decisions-compare.decisions-mobile .decisions-col > .compare-head {
+  font-family: var(--font-display);
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  font-size: 0.78rem;
+  color: var(--color-text-muted);
+  margin: 0 0 1.25rem;
+  padding-bottom: 0.75rem;
+  border-bottom: 1px solid var(--color-border);
+}
+.decisions-compare.decisions-mobile .numbered-list { margin: 0; }
 @media (max-width: 860px) {
-  .decisions-compare { grid-template-columns: 1fr; gap: 2.5rem; }
+  .decisions-compare.decisions-desktop { display: none; }
+  .decisions-compare.decisions-mobile { display: grid; grid-template-columns: 1fr; gap: 2.5rem; }
 }
 `;
