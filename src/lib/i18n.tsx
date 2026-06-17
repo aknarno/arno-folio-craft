@@ -213,9 +213,9 @@ const en: Copy = {
   },
   selectedWork: "selected work",
   projects: [
-    { slug: "sous", title: "Sous — Just-in-Time Cooking", client: "Portfolio project", year: "2026", role: "UX/UI Designer", summary: "A just-in-time cooking assistant for busy beginners — no pantry database, no decision fatigue, just dinner.", tags: ["mobile", "ux design", "product concept"] },
     { slug: "overseer", title: "Overseer — Aircraft Maintenance Management", client: "Professional design project", year: "2025", role: "UX/UI Designer", summary: "A cross-platform web and mobile MRO platform that consolidates work orders, discrepancies, labor reporting and compliance into a single focused workspace.", tags: ["b2b saas", "web & mobile", "MRO platform", "ux design", "design system"] },
     { slug: "argo", title: "Argo — Carbon Credits Management Platform", client: "Professional design project", year: "2024", role: "UX/UI Designer", summary: "A carbon credits platform connecting farmers and ranchers with voluntary carbon markets — boundary drawing, data collection and an 11-year credit projection.", tags: ["b2b saas", "web app", "agtech", "ux design", "data visualization"] },
+    { slug: "sous", title: "Sous — Just-in-Time Cooking", client: "Portfolio project", year: "2026", role: "UX/UI Designer", summary: "A just-in-time cooking assistant for busy beginners — no pantry database, no decision fatigue, just dinner.", tags: ["mobile", "ux design", "product concept"] },
   ],
   projectsView: { eyebrowSuffix: "selected", title: "projects" },
   contact: {
@@ -462,9 +462,9 @@ const pt: Copy = {
   },
   selectedWork: "trabalhos selecionados",
   projects: [
-    { slug: "sous", title: "Sous — Cozinha Just-in-Time", client: "Projeto de portfólio", year: "2026", role: "Designer UX/UI", summary: "Um assistente de cozinha just-in-time para iniciantes ocupados — sem cadastro de despensa, sem fadiga de decisão, só o jantar.", tags: ["mobile", "ux design", "conceito de produto"] },
     { slug: "overseer", title: "Overseer — Gestão de Manutenção Aeronáutica", client: "Projeto profissional de design", year: "2025", role: "Designer UX/UI", summary: "Uma plataforma MRO web e mobile que consolida ordens de serviço, discrepâncias, relatórios de mão de obra e compliance em um único workspace focado.", tags: ["b2b saas", "web & mobile", "MRO platform", "ux design", "design system"] },
     { slug: "argo", title: "Argo — Plataforma de Gestão de Créditos de Carbono", client: "Projeto profissional de design", year: "2024", role: "Designer UX/UI", summary: "Uma plataforma de créditos de carbono que conecta agricultores e pecuaristas a mercados voluntários — desenho de áreas, coleta de dados e projeção de créditos para 11 anos.", tags: ["b2b saas", "web app", "agtech", "ux design", "visualização de dados"] },
+    { slug: "sous", title: "Sous — Cozinha Just-in-Time", client: "Projeto de portfólio", year: "2026", role: "Designer UX/UI", summary: "Um assistente de cozinha just-in-time para iniciantes ocupados — sem cadastro de despensa, sem fadiga de decisão, só o jantar.", tags: ["mobile", "ux design", "conceito de produto"] },
   ],
   projectsView: { eyebrowSuffix: "selecionados", title: "projetos" },
   contact: {
