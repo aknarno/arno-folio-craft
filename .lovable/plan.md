@@ -1,90 +1,43 @@
-# Overseer page restructure
 
-Goal: present Work Order MX and AskSeer as two parallel, equally-weighted modules on the Overseer case page, with matching structure and a side-by-side decisions comparison.
+## Overseer copy rewrite — plan
 
-## 1. "My contribution" stat (i18n EN + PT)
+Scope: rewrite the body text of the Overseer project detail page for clarity and scannability. Keep every section, heading, image, layout, and design token exactly as-is. English only (`en.overseer` in `src/lib/i18n.tsx`, lines ~294–384). No changes to PT (`pt.overseer`), no changes to `src/routes/index.tsx`, no component/CSS changes.
 
-In `overseer.stats`, update the `my contribution` card:
-- EN value: `"Work Order MX & AskSeer"` — sub: `"plus supporting features and design system"`
-- PT value: `"Work Order MX & AskSeer"` — sub: `"mais recursos de apoio e design system"`
+### Guidelines applied to every string
+- Short, direct sentences. 2–3 sentence chunks max per paragraph.
+- Cut hedging, filler, and repetition ("really", "significantly", "the entire", "across a single connected system").
+- Lead with the point, then support it.
+- Preserve all facts already in the copy: Robinson, Garmin, Work Order MX, AskSeer, web + mobile, MRO users, module numbering, design-system rebuild, floating panel, log upload, AD/SB compliance, hierarchical discrepancies, tooling, status workflow, etc.
+- Do NOT invent new facts, numbers, quotes, or capabilities.
+- Keep exact same field shape (same array lengths, same keys, same `n` numbering, same `name`/`title`/`body` structure). No added or removed bullets/items.
 
-## 2. Remove "Platform features" section
+### Fields to rewrite (all under `en.overseer`)
+- `overview`
+- `industryHeadline`, `industryBody`
+- `dsBody`, `dsInsight`
+- `focusIntro`
+- `decisions[0..4].body` (Work Order MX — 5 items, titles kept)
+- `askseerDecisions[0..4].body` (AskSeer — 5 items, titles kept)
+- `workOrder.summary`
+- `workOrder.capabilities[0..3].body` (names kept)
+- `impactBody`
+- `impactStats[0..1].label` (org names kept)
+- `askseer.summary`
+- `askseer.imageCaption`
+- `askseer.challengeIntro`
+- `askseer.challengeItems[0..2].body` (names kept)
+- `askseer.solutionBody`
+- `askseer.askseerFeatures[0..3].body` (names kept)
+- `askseer.approachItems[0..3].body` (titles kept)
+- `askseer.impactItems[0..3].label` (org kept)
 
-- In `src/routes/index.tsx`, delete the `<section>` rendering `o.featuresTitle / featuresIntro / features` (lines 522–533).
-- In `src/lib/i18n.tsx`, remove `featuresTitle`, `featuresIntro`, and the `features[]` array from the `overseer` type and from both EN and PT copy blocks.
+Section headings, labels (`focusTitle`, `dsTitle`, `impactTitle`, `sectionLabel`, `capabilitiesTitle`, etc.), pills, stats values, and `outcomes` chips stay untouched — they already read as short, scannable chips/labels.
 
-## 3. Remove labor report image
+### Out of scope
+- No changes to layout, grid alignment, images, or the 2×2 impact grid.
+- No changes to PT translations, other projects, or shared components.
+- No structural renaming or merging into "overview/problem/process/solution".
 
-- In `src/routes/index.tsx`, delete the `<figure>` at lines 585–588 (`overseerReport` image + `reportCaption`).
-- Remove the `overseerReport` import (line 10).
-- Remove `reportCaption` from the `overseer` type and from EN/PT copy.
-- Leave the asset file on disk (no other refs); no need to delete it.
-
-## 4. Side-by-side decisions grid
-
-Replace the existing single `numbered-list` inside the "focus: Work Order MX & AskSeer" section with a two-column grid:
-
-```text
-focus: Work Order MX & AskSeer
-[ intro paragraph — slightly rewritten so it no longer says "the decisions below trace the Work Order architecture; the AskSeer case follows later" ]
-
-┌────────────── Work Order MX ──────────────┬────────────── AskSeer ──────────────┐
-│ 01 Work order as single source of truth   │ 01 Conversational layer, not module  │
-│ 02 Hierarchical discrepancy list          │ 02 Context-aware to current aircraft │
-│ 03 Labor visibility for supervisors       │ 03 In-chat log upload & processing   │
-│ 04 Tooling allocation                     │ 04 Compliance verification in seconds│
-│ 05 Status workflow                        │ 05 Embedded floating panel           │
-└────────────────────────────────────────────┴───────────────────────────────────────┘
-```
-
-i18n changes:
-- Keep `overseer.decisions` (Work Order) as-is.
-- Add `overseer.askseerDecisions: CardCopy[]` (5 entries, EN + PT) sourced from the existing AskSeer approach/solution content so both columns have 5 numbered items of comparable weight.
-- Add two short column headers: `decisionsWorkOrderLabel` / `decisionsAskseerLabel` (EN: "Work Order MX" / "AskSeer", PT equivalents).
-- Rewrite `focusIntro` so it frames the comparison instead of deferring AskSeer to "later on the page".
-
-Markup change in `OverseerCase`:
-- Replace the single `<ol className="numbered-list">` with a `<div className="decisions-compare">` containing two columns; each column has an `<h3>` header and its own `<ol className="numbered-list">`.
-
-CSS in the overseer-specific block:
-```css
-.decisions-compare { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(2rem, 4vw, 4rem); }
-.decisions-compare h3.compare-head { /* small uppercase label, matches sous-meta */ }
-@media (max-width: 760px) { .decisions-compare { grid-template-columns: 1fr; } }
-```
-
-## 5. Parallel Work Order MX / AskSeer sections
-
-Restructure the page so each module gets its own clearly-labelled block with the same shape: section label, title, mockups, capabilities, impact.
-
-New order inside `OverseerCase` after the design-system section:
-
-1. `focus: Work Order MX & AskSeer` intro + side-by-side decisions grid.
-2. `askseer-divider`.
-3. **Work Order MX** sous-section:
-   - `sous-meta`: "module 01 of 02"
-   - `sous-title`: "Work Order MX"
-   - `big` summary paragraph (new short copy — reuses themes from current impactBody + focusIntro).
-   - Figures: `overseerDetail`, `overseerList`.
-   - `feature-list` "key capabilities" — 4 items derived from the existing decisions (single source of truth, hierarchical discrepancies, labor visibility, tooling + status).
-   - `impact-grid` with `impactBody` + `impactStats` (Robinson / Garmin) + outcomes pills (kept).
-4. `askseer-divider`.
-5. **AskSeer** sous-section (existing block, kept structurally identical to Work Order MX):
-   - section label / title / summary
-   - screenshot figure
-   - challenge `feature-list`
-   - solution paragraph
-   - capabilities `feature-list`
-   - approach numbered list (kept — distinct from the comparison grid; it explains how AskSeer was designed)
-   - impact grid + outcomes pills
-6. `CaseNav`.
-
-i18n adds (EN + PT):
-- `overseer.workOrder`: `{ sectionLabel, title, summary, capabilitiesTitle, capabilities: { name, body }[] }` — 4 capability items.
-- Tweak `askseer.sectionLabel` to "module 02 of 02" so the two modules read as a matched pair.
-
-No backend, no new routes, no design-token changes. All styling reuses existing classes; only the new `.decisions-compare` grid rule is added.
-
-## Files touched
-- `src/lib/i18n.tsx` — types + EN + PT copy.
-- `src/routes/index.tsx` — `OverseerCase` JSX + import cleanup + CSS rule for `.decisions-compare`.
+### Verification
+- Read the updated `en.overseer` block back and confirm array lengths and keys match the TypeScript `Copy` interface.
+- Rely on the automatic build to confirm no type errors.
