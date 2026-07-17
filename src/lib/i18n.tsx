@@ -133,39 +133,20 @@ export type Copy = {
     dsInsight: string;
     focusTitle: string;
     focusIntro: string;
-    decisionsWorkOrderLabel: string;
-    decisionsAskseerLabel: string;
     decisions: CardCopy[];
-    askseerDecisions: CardCopy[];
     workOrder: {
-      sectionLabel: string;
       title: string;
       summary: string;
       capabilitiesTitle: string;
       capabilities: { name: string; body: string }[];
     };
+    otherFeaturesTitle: string;
+    otherFeaturesIntro: string;
+    otherFeatures: { name: string; body: string }[];
     impactTitle: string;
     impactBody: string;
     impactStats: { org: string; label: string }[];
     outcomes: string[];
-    askseer: {
-      sectionLabel: string;
-      title: string;
-      summary: string;
-      imageCaption: string;
-      challengeTitle: string;
-      challengeIntro: string;
-      challengeItems: { name: string; body: string }[];
-      solutionTitle: string;
-      solutionBody: string;
-      featuresTitle: string;
-      askseerFeatures: { name: string; body: string }[];
-      approachTitle: string;
-      approachItems: { title: string; body: string }[];
-      impactTitle: string;
-      impactItems: { org: string; label: string }[];
-      outcomes: string[];
-    };
   };
   argo: {
     title: string;
