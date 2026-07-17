@@ -1372,11 +1372,34 @@ input:focus, textarea:focus { outline: none; border: 2px solid var(--color-prima
   .impact-grid { grid-template-columns: 1fr; gap: 1.5rem; }
   .impact-stats { grid-template-columns: 1fr; }
 }
-.askseer-divider {
-  margin: clamp(4rem, 8vw, 7rem) auto 0;
+.other-features-table {
   width: 100%;
-  height: 1px;
-  background: linear-gradient(90deg, transparent, var(--color-border), transparent);
+  border-collapse: collapse;
+  margin-top: 1.5rem;
+  font-size: 0.95rem;
+}
+.other-features-table th,
+.other-features-table td {
+  text-align: left;
+  vertical-align: top;
+  padding: 0.9rem 1rem;
+  border-bottom: 1px solid var(--color-border);
+}
+.other-features-table th {
+  width: 30%;
+  font-family: var(--font-display);
+  font-weight: 600;
+  color: var(--color-text);
+}
+.other-features-table td { color: var(--color-text-muted); }
+@media (max-width: 640px) {
+  .other-features-table,
+  .other-features-table tbody,
+  .other-features-table tr,
+  .other-features-table th,
+  .other-features-table td { display: block; width: 100%; }
+  .other-features-table th { padding-bottom: 0.25rem; border-bottom: none; }
+  .other-features-table td { padding-top: 0; }
 }
 .decisions-compare.decisions-desktop {
   display: grid;
