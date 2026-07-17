@@ -8,7 +8,7 @@ import overseerCover from "@/assets/overseer/cover.png";
 import overseerList from "@/assets/overseer/work-order-list.png";
 import overseerDetail from "@/assets/overseer/work-order-detail.png";
 
-import askseerAsset from "@/assets/overseer/askseer.png.asset.json";
+
 import argoCover from "@/assets/argo/cover.png";
 import argoEstimate from "@/assets/argo/estimate.png";
 import argoDrawBoundary from "@/assets/argo/draw-boundary.png";
