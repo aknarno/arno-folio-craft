@@ -8,7 +8,7 @@ import overseerCover from "@/assets/overseer/cover.png";
 import overseerList from "@/assets/overseer/work-order-list.png";
 import overseerDetail from "@/assets/overseer/work-order-detail.png";
 
-import askseerAsset from "@/assets/overseer/askseer.png.asset.json";
+
 import argoCover from "@/assets/argo/cover.png";
 import argoEstimate from "@/assets/argo/estimate.png";
 import argoDrawBoundary from "@/assets/argo/draw-boundary.png";
@@ -530,111 +530,10 @@ function OverseerCase({ prev, next }: { prev: ProjectCopy | null; next: ProjectC
       <section className="sous-section focus-section reveal">
         <h2 className="section-title">{o.focusTitle}</h2>
         <p>{o.focusIntro}</p>
-        {/* Desktop: aligned row grid */}
-        <div className="decisions-compare decisions-desktop">
-          <h3 className="compare-head">{o.decisionsAskseerLabel}</h3>
-          <h3 className="compare-head">{o.decisionsWorkOrderLabel}</h3>
-          {o.decisions.map((d, i) => (
-            <>
-              <div className="decision-item">
-                <span className="num">{o.askseerDecisions[i].n}</span>
-                <div>
-                  <h3>{o.askseerDecisions[i].title}</h3>
-                  <p>{o.askseerDecisions[i].body}</p>
-                </div>
-              </div>
-              <div className="decision-item">
-                <span className="num">{d.n}</span>
-                <div>
-                  <h3>{d.title}</h3>
-                  <p>{d.body}</p>
-                </div>
-              </div>
-            </>
-          ))}
-        </div>
-        {/* Mobile: stacked columns */}
-        <div className="decisions-compare decisions-mobile">
-          <div className="decisions-col">
-            <h3 className="compare-head">{o.decisionsAskseerLabel}</h3>
-            <ol className="numbered-list">
-              {o.askseerDecisions.map((d) => (
-                <li key={d.n}>
-                  <span className="num">{d.n}</span>
-                  <div>
-                    <h3>{d.title}</h3>
-                    <p>{d.body}</p>
-                  </div>
-                </li>
-              ))}
-            </ol>
-          </div>
-          <div className="decisions-col">
-            <h3 className="compare-head">{o.decisionsWorkOrderLabel}</h3>
-            <ol className="numbered-list">
-              {o.decisions.map((d) => (
-                <li key={d.n}>
-                  <span className="num">{d.n}</span>
-                  <div>
-                    <h3>{d.title}</h3>
-                    <p>{d.body}</p>
-                  </div>
-                </li>
-              ))}
-            </ol>
-          </div>
-        </div>
-      </section>
-
-      <div className="askseer-divider reveal" />
-
-      <section className="sous-section reveal">
-        <p className="sous-meta">{o.askseer.sectionLabel}</p>
-        <h2 className="sous-title">{o.askseer.title}</h2>
-        <p className="big">{o.askseer.summary}</p>
-      </section>
-
-      <figure className="sous-mockup reveal">
-        <img src={askseerAsset.url} alt="AskSeer — embedded AI assistant inside Overseer" loading="lazy" />
-        <figcaption className="image-caption">{o.askseer.imageCaption}</figcaption>
-      </figure>
-
-      <section className="sous-section reveal">
-        <h2 className="section-title">{o.askseer.challengeTitle}</h2>
-        <p>{o.askseer.challengeIntro}</p>
-        <ul className="feature-list">
-          {o.askseer.challengeItems.map((f) => (
-            <li key={f.name}>
-              <span className="feature-name">{f.name}</span>
-              <span className="feature-body">{f.body}</span>
-            </li>
-          ))}
-        </ul>
-      </section>
-
-      <section className="sous-section reveal">
-        <h2 className="section-title">{o.askseer.solutionTitle}</h2>
-        <p className="big">{o.askseer.solutionBody}</p>
-      </section>
-
-      <section className="sous-section reveal">
-        <h2 className="section-title">{o.askseer.featuresTitle}</h2>
-        <ul className="feature-list">
-          {o.askseer.askseerFeatures.map((f) => (
-            <li key={f.name}>
-              <span className="feature-name">{f.name}</span>
-              <span className="feature-body">{f.body}</span>
-            </li>
-          ))}
-        </ul>
-      </section>
-
-      <section className="sous-section focus-section reveal">
-        <h2 className="section-title">{o.askseer.approachTitle}</h2>
         <ol className="numbered-list">
-          {o.askseer.approachItems.map((d, i) => (
-            <li key={d.title}>
-              <span className="num">{String(i + 1).padStart(2, "0")}</span>
+          {o.decisions.map((d) => (
+            <li key={d.n}>
+              <span className="num">{d.n}</span>
               <div>
                 <h3>{d.title}</h3>
                 <p>{d.body}</p>
@@ -645,27 +544,6 @@ function OverseerCase({ prev, next }: { prev: ProjectCopy | null; next: ProjectC
       </section>
 
       <section className="sous-section reveal">
-        <h2 className="section-title">{o.askseer.impactTitle}</h2>
-        <div className="impact-grid">
-          <div className="impact-stats">
-            {o.askseer.impactItems.map((s) => (
-              <div key={s.org} className="impact-stat-card">
-                <p className="impact-org">{s.org}</p>
-                <p className="impact-label">{s.label}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-        <div className="ia-pills">
-          {o.askseer.outcomes.map((t) => <span key={t} className="pill">{t}</span>)}
-        </div>
-      </section>
-
-      <div className="askseer-divider reveal" />
-
-
-      <section className="sous-section reveal">
-        <p className="sous-meta">{o.workOrder.sectionLabel}</p>
         <h2 className="sous-title">{o.workOrder.title}</h2>
         <p className="big">{o.workOrder.summary}</p>
       </section>
@@ -688,6 +566,21 @@ function OverseerCase({ prev, next }: { prev: ProjectCopy | null; next: ProjectC
             </li>
           ))}
         </ul>
+      </section>
+
+      <section className="sous-section reveal">
+        <h2 className="section-title">{o.otherFeaturesTitle}</h2>
+        <p>{o.otherFeaturesIntro}</p>
+        <table className="other-features-table">
+          <tbody>
+            {o.otherFeatures.map((f) => (
+              <tr key={f.name}>
+                <th scope="row">{f.name}</th>
+                <td>{f.body}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
       </section>
 
       <section className="sous-section reveal">
@@ -1479,11 +1372,34 @@ input:focus, textarea:focus { outline: none; border: 2px solid var(--color-prima
   .impact-grid { grid-template-columns: 1fr; gap: 1.5rem; }
   .impact-stats { grid-template-columns: 1fr; }
 }
-.askseer-divider {
-  margin: clamp(4rem, 8vw, 7rem) auto 0;
+.other-features-table {
   width: 100%;
-  height: 1px;
-  background: linear-gradient(90deg, transparent, var(--color-border), transparent);
+  border-collapse: collapse;
+  margin-top: 1.5rem;
+  font-size: 0.95rem;
+}
+.other-features-table th,
+.other-features-table td {
+  text-align: left;
+  vertical-align: top;
+  padding: 0.9rem 1rem;
+  border-bottom: 1px solid var(--color-border);
+}
+.other-features-table th {
+  width: 30%;
+  font-family: var(--font-display);
+  font-weight: 600;
+  color: var(--color-text);
+}
+.other-features-table td { color: var(--color-text-muted); }
+@media (max-width: 640px) {
+  .other-features-table,
+  .other-features-table tbody,
+  .other-features-table tr,
+  .other-features-table th,
+  .other-features-table td { display: block; width: 100%; }
+  .other-features-table th { padding-bottom: 0.25rem; border-bottom: none; }
+  .other-features-table td { padding-top: 0; }
 }
 .decisions-compare.decisions-desktop {
   display: grid;
