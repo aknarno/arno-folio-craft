@@ -544,11 +544,11 @@ function OverseerCase({ prev, next }: { prev: ProjectCopy | null; next: ProjectC
       </section>
 
       <figure className="sous-mockup reveal">
-        <img src={overseerDetail} alt="Overseer work order detail screen" loading="lazy" />
+        <img src={overseerList} alt="Overseer work order list" loading="lazy" />
       </figure>
 
       <figure className="sous-mockup reveal">
-        <img src={overseerList} alt="Overseer work order list" loading="lazy" />
+        <img src={overseerDetail} alt="Overseer work order detail screen" loading="lazy" />
       </figure>
 
       <section className="sous-section reveal">
