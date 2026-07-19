@@ -543,11 +543,6 @@ function OverseerCase({ prev, next }: { prev: ProjectCopy | null; next: ProjectC
         </ol>
       </section>
 
-      <section className="sous-section reveal">
-        <h2 className="sous-title">{o.workOrder.title}</h2>
-        <p className="big">{o.workOrder.summary}</p>
-      </section>
-
       <figure className="sous-mockup reveal">
         <img src={overseerDetail} alt="Overseer work order detail screen" loading="lazy" />
       </figure>
