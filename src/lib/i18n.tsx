@@ -135,8 +135,6 @@ export type Copy = {
     focusIntro: string;
     decisions: CardCopy[];
     workOrder: {
-      title: string;
-      summary: string;
       capabilitiesTitle: string;
       capabilities: { name: string; body: string }[];
     };
@@ -298,8 +296,6 @@ const en: Copy = {
       { n: "05", title: "Status workflow", body: "Work orders move through defined states — Estimate, In Progress, Submitted, Archived — with role-based permissions on each transition. Customers see status without making a phone call." },
     ],
     workOrder: {
-      title: "Work Order MX",
-      summary: "Work Order MX is the operational backbone of Overseer. It replaces squawk sheets, paper logbooks, and scattered spreadsheets with one connected workflow that travels with the aircraft — from estimate through sign-off and client-ready reporting.",
       capabilitiesTitle: "key capabilities",
       capabilities: [
         { name: "Single source of truth", body: "Customer, aircraft, schedule, labor rate, tooling, discrepancies, costs, and sign-offs all live inside one work order." },
@@ -508,8 +504,6 @@ const pt: Copy = {
       { n: "05", title: "Fluxo de status", body: "As ordens passam por estados definidos (Estimativa, Em andamento, Enviada, Arquivada) com permissões baseadas em papel para cada transição. O cliente ganha visibilidade sobre o status da aeronave sem precisar de uma ligação." },
     ],
     workOrder: {
-      title: "Work Order MX",
-      summary: "O Work Order MX é a espinha dorsal operacional do Overseer. Substitui squawk sheets manuscritas, livros de bordo em papel e planilhas espalhadas por um fluxo único e conectado que viaja com a aeronave — do orçamento à assinatura e ao relatório pronto para o cliente.",
       capabilitiesTitle: "principais capacidades",
       capabilities: [
         { name: "Fonte única da verdade", body: "Dados do cliente, contexto da aeronave, agenda, valor de mão de obra, ferramentas, discrepâncias, custos e aprovações ficam dentro de uma única ordem." },
