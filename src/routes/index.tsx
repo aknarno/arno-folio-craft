@@ -5,8 +5,8 @@ import sousDesignSystem from "@/assets/sous/design-system.png";
 import sousMockup from "@/assets/sous/mockup.png";
 import sousStepByStep from "@/assets/sous/step-by-step.png";
 import overseerCover from "@/assets/overseer/cover.png";
-import overseerList from "@/assets/overseer/work-order-list.png";
-import overseerDetail from "@/assets/overseer/work-order-detail-updated.png.asset.json";
+import overseerList from "@/assets/overseer/work-order-list-v3.png.asset.json";
+import overseerDetail from "@/assets/overseer/work-order-detail-v4.png.asset.json";
 
 
 import argoCover from "@/assets/argo/cover.png";
@@ -544,7 +544,7 @@ function OverseerCase({ prev, next }: { prev: ProjectCopy | null; next: ProjectC
       </section>
 
       <figure className="sous-mockup reveal">
-        <img src={overseerList} alt="Overseer work order list" loading="lazy" />
+        <img src={overseerList.url} alt="Overseer work order list" loading="lazy" />
       </figure>
 
       <figure className="sous-mockup reveal">
