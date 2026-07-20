@@ -6,7 +6,7 @@ import sousMockup from "@/assets/sous/mockup.png";
 import sousStepByStep from "@/assets/sous/step-by-step.png";
 import overseerCover from "@/assets/overseer/cover.png";
 import overseerList from "@/assets/overseer/work-order-list.png";
-import overseerDetail from "@/assets/overseer/work-order-detail.png";
+import overseerDetail from "@/assets/overseer/work-order-detail-updated.png.asset.json";
 
 
 import argoCover from "@/assets/argo/cover.png";
@@ -548,7 +548,7 @@ function OverseerCase({ prev, next }: { prev: ProjectCopy | null; next: ProjectC
       </figure>
 
       <figure className="sous-mockup reveal">
-        <img src={overseerDetail} alt="Overseer work order detail screen" loading="lazy" />
+        <img src={overseerDetail.url} alt="Overseer work order detail screen" loading="lazy" />
       </figure>
 
       <section className="sous-section reveal">
