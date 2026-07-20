@@ -6,7 +6,7 @@ import sousMockup from "@/assets/sous/mockup.png";
 import sousStepByStep from "@/assets/sous/step-by-step.png";
 import overseerCover from "@/assets/overseer/cover.png";
 import overseerList from "@/assets/overseer/work-order-list.png";
-import overseerDetail from "@/assets/overseer/work-order-detail.png";
+import overseerDetail from "@/assets/overseer/work-order-detail-updated.png.asset.json";
 
 
 import argoCover from "@/assets/argo/cover.png";
